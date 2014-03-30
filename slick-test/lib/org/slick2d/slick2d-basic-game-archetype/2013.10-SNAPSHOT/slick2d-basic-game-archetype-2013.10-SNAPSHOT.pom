@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.slick2d</groupId>
+		<artifactId>slick2d-parent</artifactId>
+		<version>2013.10-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>slick2d-basic-game-archetype</artifactId>
+	<packaging>jar</packaging>
+
+	<name>Slick2D game project archetype</name>
+	<description>Maven archetype for a Slick2D based game</description>
+	<url>https://github.com/nguillaumin/slick2d-maven/</url>
+	<licenses>
+		<license>
+			<name>The BSD 3-Clause License</name>
+			<url>http://www.slick2d.org/documentation/license-bsd/</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>nguillaumin</id>
+			<name>Nicolas Guillaumin</name>
+			<url>https://github.com/nguillaumin/</url>
+			<roles>
+				<role>Maven packager</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>slick2d-developers</id>
+			<name>Slick 2D developers</name>
+			<url>https://bitbucket.org/kevglass/slick/</url>
+		</developer>
+	</developers>
+
+	<scm>
+		<url>git@github.com:nguillaumin/slick2d-maven.git</url>
+		<connection>scm:git:git@github.com:nguillaumin/slick2d-maven.git</connection>
+	</scm>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>archetype-resources/pom.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+				<filtering>false</filtering>
+				<excludes>
+					<exclude>archetype-resources/pom.xml</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<escapeString>\</escapeString>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
