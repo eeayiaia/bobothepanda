@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Class-Path: lib/slick2d-core-2013.10-SNAPSHOT.jar lib/lwjgl-2.9.0.jar 
+ lib/lwjgl-platform-2.9.0-natives-windows.jar lib/lwjgl-platform-2.9.0
+ -natives-linux.jar lib/lwjgl-platform-2.9.0-natives-osx.jar lib/jinpu
+ t-2.0.5.jar lib/jutils-1.0.0.jar lib/jinput-platform-2.0.5-natives-li
+ nux.jar lib/jinput-platform-2.0.5-natives-windows.jar lib/jinput-plat
+ form-2.0.5-natives-osx.jar lib/jorbis-0.0.17.jar
+Build-Jdk: 1.7.0_25
+Built-By: elvirajonsson
+Created-By: Maven Integration for Eclipse
+Main-Class: com.me.game.Game
+
