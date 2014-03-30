@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.slick2d</groupId>
+  <artifactId>slick2d-hiero</artifactId>
+  <versioning>
+    <versions>
+      <version>2013.10-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20140324172515</lastUpdated>
+  </versioning>
+</metadata>
