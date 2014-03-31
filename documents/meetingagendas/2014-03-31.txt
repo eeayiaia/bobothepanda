@@ -1,0 +1,72 @@
+﻿Meeting Agenda
+
+ Date: 2014-03-31
+
+ Facilitator: Elvira Jonsson
+
+ Participants: Elvira Jonsson, Victor Larsson, Sebastian Sandberg, Oscar Muhr
+
+1. Objectives (5 min) Resolve any issues preventing the team to 
+ continue (this should be possible to verify at next meeting, 
+ short clear description, use issues from project site). 
+        
+        -SDD, does not understand the prerequisites for it. Needs an example.
+-Design(class)-mockup, finished
+ 
+
+
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+ etc. , see also 4 
+-Maven is working! Big success!
+-First draft of classes in the design created
+-A draft of classes and implementations of interfaces and methods is finished. 
+
+
+-RAD is not finished
+-SDD is not finished(see point 1)
+
+
+-A digital version of the domain model is finished
+
+
+3. Discussion items (35 min) 
+
+ (a) How do we do...? 
+Good!
+
+ (b) What to do...? 
+        -UC Move should be implemented by Thursday
+-Implement map(s) with TILED.
+
+ 
+
+
+
+4. Outcomes and assignments (5 min) 
+        
+Oscar Should: 
+Check the implementation of TILED
+Implement a map in the code.
+
+
+Victor should:
+        Look and implement the first Use Case.
+        Continue working with the SDD.
+
+
+Elvira should:
+        Look and implement the global game loop.
+
+
+Sebastian should:
+Continue with the class/method setup
+Think about package structure..
+        Write the classes already defined
+        
+
+5. Wrap up 
+
+
+  Next meeting?
+Thursday 3/4 10.00
