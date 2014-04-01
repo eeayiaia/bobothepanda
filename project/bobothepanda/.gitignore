@@ -1,1 +1,19 @@
-/target
+#OSX
+.DS_Store
+
+#Class files
+
+*.class
+
+#Eclipse specific files
+.settings/
+bin/**git 
+.project
+.classpath
+
+#Crash logs
+hs_err_pid*
+
+#Directories
+
+target/
