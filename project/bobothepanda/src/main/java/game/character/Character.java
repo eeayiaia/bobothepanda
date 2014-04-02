@@ -13,7 +13,7 @@ public class Character {
 		this.x = x;
 		this.y = y;
 		
-		sprite = new Image("Textures/Bobo-03.png");
+		sprite = new Image("/data/Bobo-03.png");
 	}
 	
 	public float getX(){

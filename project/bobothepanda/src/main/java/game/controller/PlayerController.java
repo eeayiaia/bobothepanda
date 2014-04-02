@@ -13,9 +13,9 @@ public class PlayerController {
 		handleKeyboardInput(i,delta);
 	}
 	private void handleKeyboardInput(Input i, int delta){
-		if(i.isKeyDown(Input.KEY_LEFT)){
+		if(i.isKeyDown(Input.KEY_LEFT) && bobo.getX() > 0){
 			bobo.moveLeft(delta);
-		}else if(i.isKeyDown(Input.KEY_RIGHT)){
+		}else if(i.isKeyDown(Input.KEY_RIGHT) && bobo.getX() < 608){
 			bobo.moveRight(delta);
 		}
 	}

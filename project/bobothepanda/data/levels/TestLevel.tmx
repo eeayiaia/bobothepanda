@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="32" height="32" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="GroundTiles" tilewidth="32" tileheight="32">
   <image source="../img/tilesets/GroundTiles.png" width="128" height="65"/>
  </tileset>
- <layer name="Background" width="32" height="32">
+ <layer name="Background" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+2VQRLDIAhFXWnuf+J20cw4VD6PqEkXXTg6UXmAH9JKKcd7tM9cu/Vh1mqPnrP7dl7N9+ZzPbKxg2/vnnvK1yt8mlfF99ZP81WeRozq8BvgEw39+Zzv+eH5mPHrV/jWXlQHs/xRnWT4hGn3q3OuP5vp7xl+dEf5R/hRz4veifpI35PY8O6Teu9zFmltBd+Lf4YfzVG+e/6MNgmf5J/GHNW5p+8MX/mxi684d8RP+FT3q/leXFSTlrWaT/49tP4Uf2Rnhp/RObFjtXI3X2ljF19pXmltB380iL4yfK/fKNv9d3Wmlu8Yox5tc0PvvwDveTl8ABAAAA==
+   H4sIAAAAAAAAA7WUSw7AIAhEXVHvf+K6aWImw/CxLghG4QEBnGOMZ8lcYnA2uPv0bsveGQ/9KvGYvcfAeJ08PF63rlu8SFuCV+Fmc/LqVDUqboWXmc0/eZW+Kp6aV9WjLs+LEfFwR2/wFOuUp3atUm9mhjs8JhHPm1/my/7Z6G/A3Hf/F8MHh+JABgAA
   </data>
  </layer>
- <layer name="Ground" width="32" height="32">
+ <layer name="Ground" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3DwQkAAAgEoCNo/5Xboh4pmAAAALChjrevD32Wj58AEAAA
+   H4sIAAAAAAAAA2NgGAWjYBSMgqEBmKiMWUcxRRgA4DF7JUAGAAA=
   </data>
  </layer>
 </map>
