@@ -27,4 +27,10 @@ public class Character {
 	public void render(){
 		sprite.draw(x,y);
 	}
+	public void moveLeft(int delta){
+		x = x - (0.15f*delta);
+	}
+	public void moveRight(int delta){
+		x = x + (0.15f*delta);
+	}
 }

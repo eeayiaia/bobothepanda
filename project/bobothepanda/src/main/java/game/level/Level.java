@@ -14,6 +14,7 @@ public class Level {
 	public Level(String level) throws SlickException{
 		map = new TiledMap("Maps/" + level + "/.tmx","Textures");
 		//character = new ArrayList<Character>();
+		character = new Character(5,5);
 	}
 	
 	public void addCharacter(Character c){
