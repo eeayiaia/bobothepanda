@@ -1,6 +1,7 @@
 package game.state;
 
 import game.level.Level;
+import game.Game;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
