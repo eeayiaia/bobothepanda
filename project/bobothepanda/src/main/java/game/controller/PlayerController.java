@@ -18,5 +18,8 @@ public class PlayerController {
 		}else if(i.isKeyDown(Input.KEY_RIGHT) && bobo.getX() < 608){
 			bobo.moveRight(delta);
 		}
+	/*	if(i.isKeyDown(Input.KEY_UP)){
+			bobo.jump(delta);
+		}*/
 	}
 }
