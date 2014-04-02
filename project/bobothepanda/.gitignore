@@ -8,7 +8,6 @@
 #Eclipse specific files
 .settings/
 bin/**git 
-.project
 .classpath
 
 #Crash logs
