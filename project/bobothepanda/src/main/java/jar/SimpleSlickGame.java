@@ -19,7 +19,7 @@ public class SimpleSlickGame extends BasicGame {
 
 	@Override
 	public void init(GameContainer gc) throws SlickException {
-		boboImage = new Image("Textures/Bobo-03.png");
+		//boboImage = new Image("Textures/Bobo-03.png");
 	}
 
 	@Override
