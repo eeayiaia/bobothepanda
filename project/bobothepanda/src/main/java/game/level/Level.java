@@ -12,7 +12,7 @@ public class Level {
 	//private ArrayList<Character> character;
 	
 	public Level(String level) throws SlickException{
-		map = new TiledMap("Maps/" + level + "/.tmx","Textures");
+		map = new TiledMap("data/levels/TestLevel.tmx","data/img");
 		//character = new ArrayList<Character>();
 		character = new Character(5,5);
 	}
