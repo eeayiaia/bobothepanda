@@ -4,13 +4,13 @@
   <image source="../img/tilesets/GroundTiles.png" width="128" height="65"/>
  </tileset>
  <layer name="Background" width="32" height="32">
-  <data encoding="base64" compression="zlib">
-   eJztlUESwyAIRV1p7n/idtHMOFQ+j6hJF104OlF5gB/SSinHe7TPXLv1YdZqj56z+3Zezffmcz2ysYNv7557ytcrfJpXxffWT/NVnkaM6vAb4BMN/fmc7/nh+Zjx61f41l5UB7P8UZ1k+IRp96tzrj+b6e8ZfnRH+Uf4Uc+L3on6SN+T2PDuk3rvcxZpbQXfi3+GH81Rvnv+jDYJn+SfxhzVuafvDF/5sYuvOHfET/hU96v5XlxUk5a1mk/+PbT+FH9kZ4af0TmxY7VyN19pYxdfaV5pbQd/NIi+Mnyv3yjb/Xd1ppbvGKMebXND778AeYMc4w==
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2VQRLDIAhFXWnuf+J20cw4VD6PqEkXXTg6UXmAH9JKKcd7tM9cu/Vh1mqPnrP7dl7N9+ZzPbKxg2/vnnvK1yt8mlfF99ZP81WeRozq8BvgEw39+Zzv+eH5mPHrV/jWXlQHs/xRnWT4hGn3q3OuP5vp7xl+dEf5R/hRz4veifpI35PY8O6Teu9zFmltBd+Lf4YfzVG+e/6MNgmf5J/GHNW5p+8MX/mxi684d8RP+FT3q/leXFSTlrWaT/49tP4Uf2Rnhp/RObFjtXI3X2ljF19pXmltB380iL4yfK/fKNv9d3Wmlu8Yox5tc0PvvwDveTl8ABAAAA==
   </data>
  </layer>
  <layer name="Ground" width="32" height="32">
-  <data encoding="base64" compression="zlib">
-   eJztw8EJAAAIBKAjaP+V26IeKZgAAACwoY63rw8lrQLB
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3DwQkAAAgEoCNo/5Xboh4pmAAAALChjrevD32Wj58AEAAA
   </data>
  </layer>
 </map>
