@@ -13,4 +13,7 @@
    H4sIAAAAAAAAA2NgGAWjYBSMgqEBmKiMWUcxRRgA4DF7JUAGAAA=
   </data>
  </layer>
+ <objectgroup name="GroundColission" width="20" height="20">
+  <object x="1" y="481" width="638" height="155"/>
+ </objectgroup>
 </map>
