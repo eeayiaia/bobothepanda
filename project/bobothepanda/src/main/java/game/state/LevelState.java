@@ -1,44 +1,39 @@
 package game.state;
 
 import game.level.Level;
-import game.Game;
-import game.character.Character;
-import game.controller.PlayerController;
-
+import main.MainClass;
+import model.CharacterModel;
+import model.Position;
+import controller.CharacterController;
+import view.CharacterView;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+
 public class LevelState extends BasicGameState {
 	private Level level;
 	private String firstLevel;
-	private Character bobo;
+	private CharacterController bobo;
 	private float x = 128, y=416;
-	private PlayerController controller;
 
 	public LevelState(String firstLevel){
 		this.firstLevel = firstLevel;
 	}
 	
-	public void init(GameContainer container, StateBasedGame game)
-			throws SlickException {
+	public void init(GameContainer container, StateBasedGame game)throws SlickException {
+		bobo = new CharacterController(new CharacterModel(new Position(x,y)), new CharacterView());
 		level = new Level(firstLevel);
-		bobo = new Character(x, y);
 		level.addCharacter(bobo);
-		controller = new PlayerController(bobo);
-		
 	}
 
-	public void render(GameContainer container, StateBasedGame game, Graphics g)
-			throws SlickException {
-		g.scale(Game.SCALE, Game.SCALE);
+	public void render(GameContainer container, StateBasedGame game, Graphics g)throws SlickException {
+		g.scale(MainClass.SCALE, MainClass.SCALE);
 		level.render();
 	}
 
-	public void update(GameContainer container, StateBasedGame game, int delta)
-			throws SlickException {
-		controller.handleInput(container.getInput(), delta);
-		
+	public void update(GameContainer container, StateBasedGame game, int delta)throws SlickException {
+		bobo.handleInput(container.getInput(), delta);
 	}
 
 	@Override

@@ -1,24 +1,24 @@
 package game.level;
 
 //import java.util.ArrayList;
-import game.character.Character;
+import controller.CharacterController;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
 public class Level {
 
 	private TiledMap map;
-	private Character character;
+	private CharacterController bobo;
 	//private ArrayList<Character> character;
 	
 	public Level(String level) throws SlickException{
 		map = new TiledMap("data/levels/TestLevel.tmx","data/img");
 		//character = new ArrayList<Character>();
-		character = new Character(5,5);
+		//bobo = new Character(5,5);
 	}
 	
-	public void addCharacter(Character c){
-		character = c;
+	public void addCharacter(CharacterController c){
+		bobo = c;
 		//character.add(c);
 	}
 	
@@ -29,6 +29,6 @@ public class Level {
 			c.render();
 		}
 		*/
-		character.render();
+		bobo.render();
 	}
 }
