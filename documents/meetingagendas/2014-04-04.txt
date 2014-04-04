@@ -1,0 +1,60 @@
+﻿Meeting Agenda
+
+ Date: 2014-04-04
+
+ Facilitator: Elvira Jonsson
+
+ Participants: Oscar Muhr, Victor Larsson, Elvira Jonsson, Sebastian Sandberg
+
+1. Objectives (5 min) Resolve any issues preventing the team to 
+ continue (this should be possible to verify at next meeting, 
+ short clear description, use issues from project site). 
+
+        -We need to learn how to extract Slick from our code.
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+ etc. , see also 4 
+
+        -TILED has been implemented and a working map.
+        -The first Use Case “Move”, is working.
+        -The global game loop is working.
+        -A few more classes have been defined and implemented, (GameController, GameModel, GameView. etc.)
+
+
+
+3. Discussion items (35 min) 
+
+ (a) How do we do...? 
+        -Satisfied. Progress is being achieved.
+
+
+  (b) What to do...? 
+        Bobo should be able to move, (with a proper MVC structure)
+        CollisionDetection should be added to the code, with the help from TILED
+Gravitation should be implemented
+        Use Case: Jump should be implemented.
+
+4. Outcomes and assignments (5 min) 
+
+a) Victor should:
+Implement the mvc structure into bobo Use Case: Move
+
+
+b) Oscar should:
+implement CollisionDetection  
+
+c)Sebastian should:
+implement Use Case: Jump and gravitation.
+
+
+d) Elvira should:
+        Work on the MVC structure.
+
+
+
+
+
+5. Wrap up 
+
+  Next meeting?
+        Monday 7/4 @ 15:15 in M1212
