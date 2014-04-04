@@ -14,12 +14,15 @@ public class CharacterModel {
 		isDead = false;
 		pcs = new PropertyChangeSupport(this);
 	}
-	public void moveLeft(double delta){
+	public void moveLeft(int delta){
 		position.setX(position.getX() - 0.3f*delta);
 	}
 	public void moveRight(int delta){
 		position.setX(position.getX() + 0.3f*delta);
-
+	}
+	
+	public Position getPosition(){
+		return position;
 	}
 
 }

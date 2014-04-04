@@ -1,31 +1,30 @@
 package model;
 
 public class Position {
-	private double x;
-	private double y;
+	private float x;
+	private float y;
 	
-	public Position(double x, double y){
+	public Position(float x, float y){
 		if(x >= 0 && y >= 0){
 			this.x = x;
 			this.y = y;
 		} else {
 			throw new IllegalArgumentException();
 		}
-
 	}
 
-	public double getX() {
+	public float getX() {
 		return x;
 	}
 
-	public double getY() {
+	public float getY() {
 		return y;
 	}
-	public void setX(double x) {
+	public void setX(float x) {
 		this.x = x;
 	}
 
-	public void setY(double y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 	
