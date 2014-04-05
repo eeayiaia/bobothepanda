@@ -43,20 +43,28 @@ public class CharacterModel {
 	
 	
 	private float gravity = 2;
+	private float velocity_Y = 0;
+	private float accelaration_Y;
 	private float groundLevel_Y_Value = 416;
 	
 	
 	/**
 	 * 
-	 * @return
+	 * 
 	 */
 	public void jump(int delta){
-		if(position.getY() == groundLevel_Y_Value){
-			position.setY(position.getY() - 0.3f*delta);
-			
+		
+		if(onGround()){
+			velocity_Y = 0;
 		}
 	}
-	
+	/**
+	 * Checks if the character is on the ground
+	 * @return true if on ground level.
+	 */
+	public boolean onGround(){
+		return (position.getY()== groundLevel_Y_Value) ? true : false; 
+	}
 	public Position getPosition(){
 		return position;
 	}
