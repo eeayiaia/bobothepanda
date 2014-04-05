@@ -3,6 +3,8 @@ package model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+import position.Position;
+
 public class CharacterModel {
 	
 	private double velocity;
@@ -30,11 +32,11 @@ public class CharacterModel {
 	
 	public void moveLeft(int delta){
 		position.setX(position.getX() - 0.3f*delta);
-		pcs.firePropertyChange(CharacterState.MOVING_LEFT.toString(), true, false);
+		pcs.firePropertyChange(CharacterState.MOVING_LEFT.toString(), null, position);
 	}
 	public void moveRight(int delta){
 		position.setX(position.getX() + 0.3f*delta);
-		pcs.firePropertyChange(CharacterState.MOVING_RIGHT.toString(), true, false);
+		pcs.firePropertyChange(CharacterState.MOVING_RIGHT.toString(), null, position);
 	}
 	
 	public Position getPosition(){

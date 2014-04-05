@@ -1,4 +1,4 @@
-package model;
+package position;
 
 public class Position {
 	private float x;

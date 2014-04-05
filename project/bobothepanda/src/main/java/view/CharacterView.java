@@ -3,6 +3,8 @@ package view;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import position.Position;
+
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -46,7 +48,8 @@ public class CharacterView implements PropertyChangeListener{
 		
 		if(evt.getPropertyName().equals("MOVING_LEFT")){
 			
+		}else if(evt.getPropertyName().equals("MOVING_LEFT")){
+			
 		}
-		
 	}
 }
