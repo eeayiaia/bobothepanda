@@ -39,6 +39,23 @@ public class CharacterModel {
 		pcs.firePropertyChange(CharacterState.MOVING_RIGHT.toString(), null, position);
 	}
 	
+	
+	
+	private float gravity = 2;
+	private float groundLevel_Y_Value = 416;
+	
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public void jump(int delta){
+		if(position.getY() == groundLevel_Y_Value){
+			position.setY(position.getY() - 0.3f*delta);
+			
+		}
+	}
+	
 	public Position getPosition(){
 		return position;
 	}
