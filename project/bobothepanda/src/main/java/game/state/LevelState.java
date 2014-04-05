@@ -3,12 +3,14 @@ package game.state;
 import game.level.Level;
 import main.MainClass;
 import model.CharacterModel;
-import model.Position;
 import controller.CharacterController;
 import view.CharacterView;
+
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+
+import position.Position;
 
 
 public class LevelState extends BasicGameState {
