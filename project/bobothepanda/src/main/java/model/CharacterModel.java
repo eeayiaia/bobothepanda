@@ -16,10 +16,11 @@ public class CharacterModel {
 		this.position = position;
 		isDead = false;
 		pcs = new PropertyChangeSupport(this);
+		pcs.firePropertyChange(CharacterState.RENDER.toString(), null, position);
 	}
 	
 	public enum CharacterState{
-		MOVING_RIGHT, MOVING_LEFT, JUMP
+		MOVING_RIGHT, MOVING_LEFT, JUMP, RENDER
 	}
 	
 	public void addPropertyChangeListener(PropertyChangeListener listener) {

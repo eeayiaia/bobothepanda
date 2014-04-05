@@ -21,6 +21,8 @@ public class CharacterView implements PropertyChangeListener{
 	private Animation movingRightAnimation;
 	private Animation movingLeftAnimation;
 	
+	private Position position;
+	
 	public CharacterView() throws SlickException{
 		spriteRight = new Image("/data/Bobo-01.png");
 		spriteLeft = new Image("/data/Bobo-01.png").getFlippedCopy(true, false);
@@ -46,10 +48,18 @@ public class CharacterView implements PropertyChangeListener{
 
 	public void propertyChange(PropertyChangeEvent evt) {
 		
+		position = (Position)evt.getNewValue();
+		
 		if(evt.getPropertyName().equals("MOVING_LEFT")){
+			drawMovingLeftAnimation(position.getX(), position.getY());
+			drawSpriteLeft(position.getX(), position.getY());
 			
 		}else if(evt.getPropertyName().equals("MOVING_LEFT")){
-			
+			drawMovingRightAnimation(position.getX(), position.getY());
+			drawSpriteRight(position.getX(), position.getY());
+		
+		}else if(evt.getPropertyName().equals("RENDER")){
+			drawSpriteRight(position.getX(), position.getY());
 		}
 	}
 }
