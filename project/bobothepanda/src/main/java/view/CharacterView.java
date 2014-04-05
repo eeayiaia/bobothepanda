@@ -23,6 +23,10 @@ public class CharacterView implements PropertyChangeListener{
 	
 	private Position position;
 	
+	/**
+	 * Assigns sprites and animations.
+	 * @throws SlickException
+	 */
 	public CharacterView() throws SlickException{
 		spriteRight = new Image("/data/Bobo-01.png");
 		spriteLeft = new Image("/data/Bobo-01.png").getFlippedCopy(true, false);
@@ -30,19 +34,39 @@ public class CharacterView implements PropertyChangeListener{
 		movingLeftAnimation = new Animation(boboLeftAnimation, 125);
 	}
 	
-	public void drawSpriteRight(float x, float y){
+	/**
+	 * Draws the "SpriteRight"-sprite
+	 * @param x x-coordinate as a float value
+	 * @param y y-coordinate as a float value
+	 */
+	private void drawSpriteRight(float x, float y){
 		spriteRight.draw(x,y);
 	}
 	
-	public void drawSpriteLeft(float x, float y){
+	/**
+	 * Draws the "SpriteLeft"-sprite
+	 * @param x x-coordinate as a float value
+	 * @param y y-coordinate as a float value
+	 */
+	private void drawSpriteLeft(float x, float y){
 		spriteLeft.draw(x,y);
 	}
 	
-	public void drawMovingRightAnimation(float x, float y){
+	/**
+	 * Draws the MovingRightAnimation
+	 * @param x x-coordinate as a float value
+	 * @param y y-coordinate as a float value
+	 */
+	private void drawMovingRightAnimation(float x, float y){
 		movingRightAnimation.draw(x,y);
 	}
 	
-	public void drawMovingLeftAnimation(float x, float y){
+	/**
+	 * Draws the MovingLeftAnimation
+	 * @param x x-coordinate as a float value
+	 * @param y y-coordinate as a float value
+	 */
+	private void drawMovingLeftAnimation(float x, float y){
 		movingLeftAnimation.draw(x,y);
 	}
 
@@ -52,11 +76,11 @@ public class CharacterView implements PropertyChangeListener{
 		
 		if(evt.getPropertyName().equals("MOVING_LEFT")){
 			drawMovingLeftAnimation(position.getX(), position.getY());
-			drawSpriteLeft(position.getX(), position.getY());
+			//drawSpriteLeft(position.getX(), position.getY());
 			
-		}else if(evt.getPropertyName().equals("MOVING_LEFT")){
+		}else if(evt.getPropertyName().equals("MOVING_RIGHT")){
 			drawMovingRightAnimation(position.getX(), position.getY());
-			drawSpriteRight(position.getX(), position.getY());
+			//drawSpriteRight(position.getX(), position.getY());
 		
 		}else if(evt.getPropertyName().equals("RENDER")){
 			drawSpriteRight(position.getX(), position.getY());
