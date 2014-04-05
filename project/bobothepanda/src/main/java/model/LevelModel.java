@@ -3,6 +3,8 @@ package model;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
+import position.Position;
+
 public class LevelModel implements ILevel {
 	TiledMap map;
 	CharacterModel Bobo;
@@ -10,7 +12,7 @@ public class LevelModel implements ILevel {
 	
 	public LevelModel(String file, String folder) throws SlickException{
 		map = new TiledMap(file, folder);
-		Bobo = new CharacterModel(startPosition);
+		Bobo = 
 	}
 	
 	
