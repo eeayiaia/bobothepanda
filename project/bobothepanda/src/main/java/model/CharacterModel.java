@@ -16,6 +16,10 @@ public class CharacterModel {
 		pcs = new PropertyChangeSupport(this);
 	}
 	
+	public enum CharacterState{
+		MOVING_RIGHT, MOVING_LEFT, JUMP
+	}
+	
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
         this.pcs.addPropertyChangeListener(listener);
     }
@@ -26,13 +30,14 @@ public class CharacterModel {
 	
 	public void moveLeft(int delta){
 		position.setX(position.getX() - 0.3f*delta);
+		pcs.firePropertyChange(CharacterState.MOVING_LEFT.toString(), true, false);
 	}
 	public void moveRight(int delta){
 		position.setX(position.getX() + 0.3f*delta);
+		pcs.firePropertyChange(CharacterState.MOVING_RIGHT.toString(), true, false);
 	}
 	
 	public Position getPosition(){
 		return position;
 	}
-
 }

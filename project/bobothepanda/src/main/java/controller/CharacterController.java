@@ -16,6 +16,8 @@ public class CharacterController {
 		
 		this.characterModel = characterModel;
 		this.characterView = characterView;	
+		
+		characterModel.addPropertyChangeListener(characterView);
 	}
 	
 	public void handleInput(Input i, int delta){

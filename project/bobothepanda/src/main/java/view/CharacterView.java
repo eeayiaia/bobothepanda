@@ -1,10 +1,13 @@
 package view;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-public class CharacterView {
+public class CharacterView implements PropertyChangeListener{
 
 	protected Image spriteRight;
 	private Image spriteLeft;
@@ -37,5 +40,13 @@ public class CharacterView {
 	
 	public void drawMovingLeftAnimation(float x, float y){
 		movingLeftAnimation.draw(x,y);
+	}
+
+	public void propertyChange(PropertyChangeEvent evt) {
+		
+		if(evt.getPropertyName().equals("MOVING_LEFT")){
+			
+		}
+		
 	}
 }
