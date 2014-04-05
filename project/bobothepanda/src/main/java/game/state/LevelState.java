@@ -17,7 +17,7 @@ public class LevelState extends BasicGameState {
 	private Level level;
 	private String firstLevel;
 	private CharacterController bobo;
-	private float x = 128, y=416;
+	private float x = 128, y=448;
 
 	public LevelState(String firstLevel){
 		this.firstLevel = firstLevel;
@@ -32,6 +32,7 @@ public class LevelState extends BasicGameState {
 	public void render(GameContainer container, StateBasedGame game, Graphics g)throws SlickException {
 		g.scale(MainClass.SCALE, MainClass.SCALE);
 		level.render();
+		//bobo.render();
 	}
 
 	public void update(GameContainer container, StateBasedGame game, int delta)throws SlickException {

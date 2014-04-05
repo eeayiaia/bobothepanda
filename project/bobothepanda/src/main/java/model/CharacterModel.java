@@ -19,8 +19,7 @@ public class CharacterModel {
 	public CharacterModel(Position position){
 		this.position = position;
 		isDead = false;
-		pcs = new PropertyChangeSupport(this);
-		pcs.firePropertyChange(CharacterState.RENDER.toString(), null, position);
+		pcs = new PropertyChangeSupport(this);	
 	}
 	
 	/**
@@ -29,6 +28,10 @@ public class CharacterModel {
 	 */
 	public enum CharacterState{
 		MOVING_RIGHT, MOVING_LEFT, JUMP, RENDER
+	}
+	
+	public void initBobo(){
+		pcs.firePropertyChange(CharacterState.RENDER.toString(), null, position);
 	}
 	
 	/**
