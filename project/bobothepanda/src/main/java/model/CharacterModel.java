@@ -12,6 +12,10 @@ public class CharacterModel {
 	private boolean isDead;
 	private PropertyChangeSupport pcs;
 	
+	/**
+	 * Sets the starting position and assigns PropertyChangeSupport to this class
+	 * @param position Starting position
+	 */
 	public CharacterModel(Position position){
 		this.position = position;
 		isDead = false;
@@ -19,22 +23,48 @@ public class CharacterModel {
 		pcs.firePropertyChange(CharacterState.RENDER.toString(), null, position);
 	}
 	
+	/**
+	 * The current state of the Character
+	 * MOVING_RIGHT, MOVING_LEFT, JUMP, RENDER
+	 */
 	public enum CharacterState{
 		MOVING_RIGHT, MOVING_LEFT, JUMP, RENDER
 	}
 	
+	/**
+	 * Adds a PropertyChangeListener
+	 * @param listener The listener
+	 */
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
         this.pcs.addPropertyChangeListener(listener);
     }
-
+	
+	/**
+	 * Removes a PropertyChangeListener
+	 * @param listener The listener
+	 */
     public void removePropertyChangeListener(PropertyChangeListener listener) {
         this.pcs.removePropertyChangeListener(listener);
     }
 	
+    /**
+     * Moves the character to the right.
+     * 
+     * TODO Implement acceleration 
+     * 
+     * @param delta
+     */
 	public void moveLeft(int delta){
 		position.setX(position.getX() - 0.3f*delta);
 		pcs.firePropertyChange(CharacterState.MOVING_LEFT.toString(), null, position);
 	}
+	/**
+	 * Moves the character to the right.
+	 * 
+	 * TODO Implement acceleration 
+	 * 
+	 * @param delta
+	 */
 	public void moveRight(int delta){
 		position.setX(position.getX() + 0.3f*delta);
 		pcs.firePropertyChange(CharacterState.MOVING_RIGHT.toString(), null, position);
@@ -81,6 +111,11 @@ public class CharacterModel {
 	public boolean onGround(){
 		return (position.getY()== groundLevel_Y_Value) ? true : false; 
 	}
+	
+	/**
+	 * The current position of the character
+	 * @return The current position of the character as a Position object
+	 */
 	public Position getPosition(){
 		return position;
 	}
