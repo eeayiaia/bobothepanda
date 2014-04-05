@@ -83,7 +83,7 @@ public class CharacterModel {
 	 * Changes the velocity in the y direction of the character. 
 	 * Goes upwards, and then down, until the ground is reached
 	 * Character needs to be on the ground to jump.
-	 */
+	 */	
 	public void jump(int delta){
 		//needs to be on the ground to jump
 		if(onGround()){
@@ -95,15 +95,19 @@ public class CharacterModel {
 					velocity_Y = maxDownwardsVelocityY;
 				}
 				position.setY(position.getY() + velocity_Y * delta);
-				//send property change
+				pcs.firePropertyChange(CharacterState.JUMP.toString(), null, position);
+				
 			}
 			//when the ground is reached
 			velocity_Y = 0;
-			position.setY(position.getY() + velocity_Y * delta);	
+			position.setY(position.getY() + velocity_Y * delta);
+			pcs.firePropertyChange(CharacterState.JUMP.toString(), null, position);
 			//send property change
 		}
 		
 	}
+	
+	
 	/**
 	 * Checks if the character is on the ground
 	 * @return true if on ground level.
