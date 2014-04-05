@@ -44,19 +44,35 @@ public class CharacterModel {
 	
 	private float gravity = 2;
 	private float velocity_Y = 0;
+	private float maxDownwardsVelocityY = 20;
 	private float accelaration_Y;
-	private float groundLevel_Y_Value = 416;
+	private float groundLevel_Y_Value = 416; //value at level 1 atm. 
 	
 	
 	/**
-	 * 
-	 * 
+	 * Changes the velocity in the y direction of the character. 
+	 * Goes upwards, and then down, until the ground is reached
+	 * Character needs to be on the ground to jump.
 	 */
 	public void jump(int delta){
-		
+		//needs to be on the ground to jump
 		if(onGround()){
+			velocity_Y = -20;
+			while(!onGround()){
+				if(velocity_Y < maxDownwardsVelocityY){
+					velocity_Y += gravity;
+				}else{
+					velocity_Y = maxDownwardsVelocityY;
+				}
+				position.setY(position.getY() + velocity_Y * delta);
+				//send property change
+			}
+			//when the ground is reached
 			velocity_Y = 0;
+			position.setY(position.getY() + velocity_Y * delta);	
+			//send property change
 		}
+		
 	}
 	/**
 	 * Checks if the character is on the ground
