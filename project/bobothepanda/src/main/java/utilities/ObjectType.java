@@ -5,5 +5,5 @@ package utilities;
  */
 
 public enum ObjectType {
-		TERRAIN, LETHAL, KEY;
+		TERRAIN, LETHAL, KEY, KEY_PICKED_UP, DOOR, DOOR_OPEN;
 }
