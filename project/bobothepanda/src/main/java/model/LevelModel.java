@@ -1,17 +1,24 @@
 package model;
 
 import java.util.ArrayList;
-
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.tiled.TiledMap;
 import utilities.Position;
 
 public class LevelModel implements ILevel {
-	TiledMap map;
-	CharacterModel playerCharacter;
 	
-	public LevelModel(ArrayList<IMapObject> objectList, CharacterModel playerCharacter) throws SlickException{
+	private CharacterModel playerCharacter;
+	private ArrayList <IMapObject> objectList;
+	
+	
+	public LevelModel(ArrayList<IMapObject> objectList, CharacterModel playerCharacter){
 		this.playerCharacter = playerCharacter;
+		this.objectList = objectList;
+	}
+	public void collision(){
+		for(IMapObject o: objectList){
+			if(o.getPosition().equals(playerCharacter.getPosition())){
+				
+			}
+		}
 	}
 	
 	

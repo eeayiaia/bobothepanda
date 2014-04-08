@@ -1,9 +1,11 @@
 package model;
 
+import java.awt.Rectangle;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 import utilities.Position;
+import utilities.Size;
 
 public class CharacterModel {
 	
@@ -11,7 +13,10 @@ public class CharacterModel {
 	private Position position;
 	private boolean isDead;
 	private PropertyChangeSupport pcs;
-	
+	private final int HEIGHT = 30;
+	private final int WIDTH = 18;
+	private final Size size;
+	private Rectangle hitbox;
 	/**
 	 * Sets the starting position and assigns PropertyChangeSupport to this class
 	 * @param position Starting position
@@ -20,6 +25,9 @@ public class CharacterModel {
 		this.position = position;
 		isDead = false;
 		pcs = new PropertyChangeSupport(this);	
+		size = new Size(WIDTH,HEIGHT);
+		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
+				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 	}
 	
 	/**
@@ -60,6 +68,7 @@ public class CharacterModel {
 	public void moveLeft(int delta){
 		position.setX(position.getX() - 0.3f*delta);
 		pcs.firePropertyChange(CharacterState.MOVING_LEFT.toString(), null, position);
+		hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 	}
 	/**
 	 * Moves the character to the right.
@@ -71,6 +80,8 @@ public class CharacterModel {
 	public void moveRight(int delta){
 		position.setX(position.getX() + 0.3f*delta);
 		pcs.firePropertyChange(CharacterState.MOVING_RIGHT.toString(), null, position);
+		hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
+
 	}
 	
 	
@@ -107,7 +118,7 @@ public class CharacterModel {
 			pcs.firePropertyChange(CharacterState.JUMP.toString(), null, position);
 			//send property change
 		}
-		
+		//TODO set bobos hitbox
 	}
 	
 	
@@ -125,5 +136,8 @@ public class CharacterModel {
 	 */
 	public Position getPosition(){
 		return position;
+	}
+	public Rectangle getHitbox(){
+		return hitbox;
 	}
 }
