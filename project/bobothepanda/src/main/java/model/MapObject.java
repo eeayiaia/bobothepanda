@@ -40,4 +40,7 @@ public class MapObject implements IMapObject {
 	public Rectangle getHitbox() {
 		return hitbox;
 	}
+	public void setObjectType(ObjectType type){
+		this.type = type;
+	}
 }

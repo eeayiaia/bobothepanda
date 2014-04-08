@@ -19,4 +19,6 @@ public interface IMapObject {
 	public ObjectType getObjectType();
 	
 	public Rectangle getHitbox();
+	
+	public void setObjectType(ObjectType type);
 }

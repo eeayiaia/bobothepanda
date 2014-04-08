@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-import utilities.IllegalMovingState;
+import utilities.IllegalMovingStateX;
 import utilities.Position;
 import utilities.Size;
 
@@ -18,7 +18,7 @@ public class CharacterModel {
 	private final int WIDTH = 18;
 	private final Size size;
 	private Rectangle hitbox;
-	private IllegalMovingState illegalMovingState;
+	private IllegalMovingStateX illegalMovingState;
 	/**
 	 * Sets the starting position and assigns PropertyChangeSupport to this class
 	 * @param position Starting position
@@ -30,7 +30,7 @@ public class CharacterModel {
 		size = new Size(WIDTH,HEIGHT);
 		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
-		illegalMovingState = IllegalMovingState.DOWN;
+		illegalMovingState = IllegalMovingStateX.DOWN;
 	}
 	
 	/**
@@ -148,7 +148,7 @@ public class CharacterModel {
 		
 	}
 		
-	public void setIllegalMovingState(IllegalMovingState state){
+	public void setIllegalMovingState(IllegalMovingStateX state){
 		illegalMovingState = state;
 	}
 }
