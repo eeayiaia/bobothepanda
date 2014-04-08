@@ -1,13 +1,14 @@
 package model;
 
+/*
+ * @author Oscar Muhr
+ */
+
+import utilities.ObjectType;
 import utilities.Position;
 import utilities.Size;
 
 public interface IMapObject {
-	
-	public enum ObjectType {
-		TERRAIN, LETHAL, KEY;
-	}
 	
 	public Position getPosition();
 	

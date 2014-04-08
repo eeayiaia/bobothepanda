@@ -1,5 +1,9 @@
 package utilities;
 
+/*
+ * @author Oscar Muhr
+ */
+
 public class Position {
 	private float x;
 	private float y;

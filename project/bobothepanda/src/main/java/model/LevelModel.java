@@ -12,7 +12,6 @@ public class LevelModel implements ILevel {
 	
 	public LevelModel(String file, String folder) throws SlickException{
 		map = new TiledMap(file, folder);
-		Bobo = 
 	}
 	
 	

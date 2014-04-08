@@ -1,5 +1,9 @@
 package utilities;
 
+/*
+ * @author Oscar Muhr
+ */
+
 public class Size {
 	public float height;
 	public float width;
