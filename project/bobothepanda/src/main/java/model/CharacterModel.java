@@ -140,4 +140,8 @@ public class CharacterModel {
 	public Rectangle getHitbox(){
 		return hitbox;
 	}
+	
+	public void die() {
+		
+	}
 }
