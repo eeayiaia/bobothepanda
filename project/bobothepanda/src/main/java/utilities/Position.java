@@ -1,4 +1,4 @@
-package position;
+package utilities;
 
 public class Position {
 	private float x;

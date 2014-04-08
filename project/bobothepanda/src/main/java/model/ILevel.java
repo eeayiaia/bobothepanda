@@ -1,6 +1,6 @@
 package model;
 
-import position.Position;
+import utilities.Position;
 
 public interface ILevel {
 	

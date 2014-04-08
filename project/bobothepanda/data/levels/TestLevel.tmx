@@ -4,8 +4,11 @@
   <image source="../img/tilesets/GroundTiles.png" width="128" height="65"/>
  </tileset>
  <layer name="Background" width="20" height="20">
+  <properties>
+   <property name="Test" value=""/>
+  </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA7WUSw7AIAhEXVHvf+K6aWImw/CxLghG4QEBnGOMZ8lcYnA2uPv0bsveGQ/9KvGYvcfAeJ08PF63rlu8SFuCV+Fmc/LqVDUqboWXmc0/eZW+Kp6aV9WjLs+LEfFwR2/wFOuUp3atUm9mhjs8JhHPm1/my/7Z6G/A3Hf/F8MHh+JABgAA
+   H4sIAAAAAAAAA7WUSw4AIQhDXaH3P/G4mcQ0tHyMC4JReUCorjHG3La2GawN9n5/3sXzSXgYV8nn3WcMzNepg/G6fb3iRd4SvAo3WxPrU/WouBWe0qan0VteZa6Kp/SqZtTlsRwRD9/oC55i3fLUW6v0m9Fwh+dZxGP69WK9fzb6G7D2M/4Df5kn/EAGAAA=
   </data>
  </layer>
  <layer name="Ground" width="20" height="20">
@@ -13,11 +16,7 @@
    H4sIAAAAAAAAA2NgGAWjYBSMgqEBmKiMWUcxRRgA4DF7JUAGAAA=
   </data>
  </layer>
- <objectgroup name="GroundColission" width="20" height="20">
-  <object name="BottomGround" x="0" y="480" width="640" height="160">
-   <properties>
-    <property name="Collision" value=""/>
-   </properties>
-  </object>
+ <objectgroup name="Box" width="20" height="20">
+  <object x="320" y="448" width="32" height="32"/>
  </objectgroup>
 </map>

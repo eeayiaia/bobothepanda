@@ -3,7 +3,7 @@ package model;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
-import position.Position;
+import utilities.Position;
 
 public class LevelModel implements ILevel {
 	TiledMap map;

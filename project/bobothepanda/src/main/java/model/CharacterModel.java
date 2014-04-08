@@ -3,7 +3,7 @@ package model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-import position.Position;
+import utilities.Position;
 
 public class CharacterModel {
 	
