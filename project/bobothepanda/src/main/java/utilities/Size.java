@@ -5,8 +5,8 @@ package utilities;
  */
 
 public class Size {
-	public float height;
 	public float width;
+	public float height;
 	
 	public Size(float width, float height) {
 		this.width = width;

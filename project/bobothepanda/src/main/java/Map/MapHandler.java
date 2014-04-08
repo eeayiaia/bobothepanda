@@ -7,11 +7,14 @@ package Map;
 import java.util.ArrayList;
 
 import model.IMapObject;
+import model.MapObject;
 
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
+import utilities.ObjectType;
 import utilities.Position;
+import utilities.Size;
 
 public class MapHandler implements IMapHandler {
 	
@@ -19,19 +22,19 @@ public class MapHandler implements IMapHandler {
 	private String mapLocation = "data/levels/";
 	private String tilesetLocation = "data/img";
 	private ArrayList<IMapObject> objectList;
-	private Position CharacterStartPosition;
+	private Position characterStartPosition;
 	
 	/*
 	 * Test Constructor
-	 * Loads the map as tmx file. 
+	 * Loads the map from tmx file. 
 	 */
 	public MapHandler() throws SlickException {
-		map = new TiledMap(mapLocation + "TestLevel.tmx","data/img");
+		this("TestLevel");
 	}
 	
 	/*
 	 * Loads a specified level from a .tmx file
-	 * @param levelName the name of the level 
+	 * @param levelName the name of the level
 	 */
 	public MapHandler(String levelName) throws SlickException {
 		map = new TiledMap(mapLocation + levelName + ".tmx", tilesetLocation);
@@ -45,23 +48,32 @@ public class MapHandler implements IMapHandler {
 		int objects = map.getObjectCount(0);
 		
 		for(int i = 0; i < objects; i++) {
-			objectList.add(createObject(i));
+			Position position = new Position((float)map.getObjectX(0,i), (float)map.getObjectY(0,i));
+			ObjectType type = checkObjectType(map.getObjectType(0,i));
+			Size size;
+			if(type == null) {
+				characterStartPosition = position;
+			} else {
+				size = new Size((float)map.getObjectWidth(0,i), (float)map.getObjectHeight(0,i));
+				objectList.add(new MapObject(position, size, type));
+			}
 		}
-		
-		
-		
-		// TODO Auto-generated method stub
-		return null;
+		return objectList;
 	}
 	public Position getCharacterStartPosition() {
-		// TODO Auto-generated method stub
-		return null;
+		return characterStartPosition;
 	}
 	
-	private IMapObject createObject(int objectNumber) {
-		
-		
-		return null;
+	private ObjectType checkObjectType(String type) {
+		if(type.equals("Terrain")) {
+			return ObjectType.TERRAIN;
+		} else if(type.equals("Lethal")) {
+			return ObjectType.LETHAL;
+		} else if(type.equals("Key")) {
+			return ObjectType.KEY;
+		} else {
+			return null;
+		}
 	}
 	
 	
