@@ -35,13 +35,18 @@ public class MapHandler implements IMapHandler {
 	 */
 	public MapHandler(String levelName) throws SlickException {
 		map = new TiledMap(mapLocation + levelName + ".tmx", tilesetLocation);
+		objectList = new ArrayList<IMapObject>();
 	}
 	
 	/*
 	 * @return A list of objects located on the map
 	 */
 	public ArrayList<IMapObject> getMapObjectList() {
+		int objects = map.getObjectCount(0);
 		
+		for(int i = 0; i < objects; i++) {
+			objectList.add(createObject(i));
+		}
 		
 		
 		
@@ -50,6 +55,12 @@ public class MapHandler implements IMapHandler {
 	}
 	public Position getCharacterStartPosition() {
 		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	private IMapObject createObject(int objectNumber) {
+		
+		
 		return null;
 	}
 	
