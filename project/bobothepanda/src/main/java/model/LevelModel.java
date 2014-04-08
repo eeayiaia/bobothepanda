@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+
+import utilities.ObjectType;
 import utilities.Position;
 
 public class LevelModel implements ILevel {
@@ -15,8 +17,10 @@ public class LevelModel implements ILevel {
 	}
 	public void collision(){
 		for(IMapObject o: objectList){
-			if(o.getPosition().equals(playerCharacter.getPosition())){
-				
+			if(o.getHitbox().intersects(playerCharacter.getHitbox())){
+				if(o.getObjectType().equals(ObjectType.TERRAIN){
+					playerCharacter.
+				}
 			}
 		}
 	}
