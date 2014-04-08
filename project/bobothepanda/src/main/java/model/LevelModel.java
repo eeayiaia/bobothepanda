@@ -19,7 +19,9 @@ public class LevelModel implements ILevel {
 		for(IMapObject o: objectList){
 			if(o.getHitbox().intersects(playerCharacter.getHitbox())){
 				if(o.getObjectType().equals(ObjectType.TERRAIN){
-					playerCharacter.
+				
+				} else if (o.getObjectType().equals(ObjectType.KEY))){
+					
 				}
 			}
 		}
