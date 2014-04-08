@@ -1,6 +1,7 @@
 package main;
 
-import game.state.LevelState;
+import game.state.LevelState; // will be deleted later
+import factory.Factory;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
@@ -10,12 +11,19 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class MainClass extends StateBasedGame{
 	
-	//Set the window width
+	/**
+	 * Set the window width
+	 */
 	public static final int WINDOW_WIDTH = 640;
 	
-	//Set the window height and aspect ratio, with regards to width
+	/**
+	 * Set the window height and aspect ratio, with regards to width
+	 */
 	public static final int WINDOW_HEIGHT = WINDOW_WIDTH;
 	
+	/**
+	 * Enable fullscreen
+	 */
 	public static final boolean FULLSCREEN = false;
 	
 	public static final float SCALE = (float) (((double)WINDOW_WIDTH/640));
@@ -27,6 +35,7 @@ public class MainClass extends StateBasedGame{
 	
 	public void initStatesList(GameContainer gc) throws SlickException{
 		
+		//new Factory("level_0"); // this will start the game
 		addState(new LevelState("level_0"));
 		this.enterState(0);
 	}
