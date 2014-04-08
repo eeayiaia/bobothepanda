@@ -3,8 +3,8 @@ package view;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import utilities.Position;
 
+import utilities.Position;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -32,6 +32,7 @@ public class CharacterView implements PropertyChangeListener{
 		spriteLeft = new Image("/data/Bobo-01.png").getFlippedCopy(true, false);
 		movingRightAnimation = new Animation(boboRightAnimation, 125);
 		movingLeftAnimation = new Animation(boboLeftAnimation, 125);
+		
 	}
 	
 	/**
