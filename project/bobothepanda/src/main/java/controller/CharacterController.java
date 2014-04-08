@@ -8,16 +8,12 @@ import view.CharacterView;
 public class CharacterController {
 	
 	private CharacterModel characterModel;
-	private CharacterView characterView;
 	private long lastTimeMoved;
 	private boolean facingRight = true;
 	
-	public CharacterController(CharacterModel characterModel, CharacterView characterView){
+	public CharacterController(CharacterModel characterModel){
 		
 		this.characterModel = characterModel;
-		this.characterView = characterView;	
-		
-		characterModel.addPropertyChangeListener(characterView);
 	}
 	
 	public void handleInput(Input i, int delta){
