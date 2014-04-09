@@ -60,7 +60,7 @@ public class MapHandler implements IMapHandler {
 		} else if(type.equals("Key")) {
 			return ObjectType.KEY;
 		} else {
-			return ObjectType.START_POS;
+			return null;
 		}
 	}
 	
@@ -71,7 +71,7 @@ public class MapHandler implements IMapHandler {
 			Position position = new Position((float)map.getObjectX(0,i), (float)map.getObjectY(0,i));
 			ObjectType type = checkObjectType(map.getObjectType(0,i));
 			Size size;
-			if(type.equals(ObjectType.START_POS)) {
+			if(type == null) {
 				characterStartPosition = position;
 			} else {
 				size = new Size((float)map.getObjectWidth(0,i), (float)map.getObjectHeight(0,i));
@@ -80,5 +80,8 @@ public class MapHandler implements IMapHandler {
 		}
 	}
 	
+	public TiledMap getMap() {
+		return map;
+	}
 	
 }
