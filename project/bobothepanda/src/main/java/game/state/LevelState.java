@@ -4,6 +4,7 @@ import factory.Factory;
 import game.level.Level;
 import main.MainClass;
 import model.CharacterModel;
+import model.LevelModel;
 import controller.CharacterController;
 import utilities.Position;
 import view.CharacterView;
@@ -15,6 +16,8 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class LevelState extends BasicGameState {
 	private Level level;
+	private LevelModel levelModel;
+	private	CharacterModel characterModel;
 	private String firstLevel;
 	private CharacterController characterController;
 	private Factory factory;
@@ -27,8 +30,11 @@ public class LevelState extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame game)throws SlickException {
 		factory  = new Factory(firstLevel);
 		characterController	 = factory.getCharacterController(); 
-		level = new Level(firstLevel);
-		level.addCharacter(characterController);
+		levelModel = factory.getLevelModel();
+		characterModel = factory.getCharacterModel();
+		characterModel.initBobo();
+		//level = new Level(firstLevel);
+		//level.addCharacter(characterController);
 	}
 
 	public void render(GameContainer container, StateBasedGame game, Graphics g)throws SlickException {
