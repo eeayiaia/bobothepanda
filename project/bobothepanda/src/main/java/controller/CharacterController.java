@@ -34,21 +34,4 @@ public class CharacterController {
 		}
 	}
 	
-	public void render(){
-		/*
-		if(lastTimeMoved + 150 > System.currentTimeMillis() && facingRight){
-			characterView.drawMovingRightAnimation(characterModel.getPosition().getX(), characterModel.getPosition().getY());
-		}else if(lastTimeMoved + 150 > System.currentTimeMillis() && !facingRight){
-			characterView.drawMovingLeftAnimation(characterModel.getPosition().getX(),characterModel.getPosition().getY());
-		} else{
-			if(facingRight){
-				characterView.drawSpriteRight(characterModel.getPosition().getX(), characterModel.getPosition().getY());
-			}else{
-				characterView.drawSpriteLeft(characterModel.getPosition().getX(),characterModel.getPosition().getY());
-			}
-		}
-		*/
-		
-		characterModel.initBobo();
-	}
 }
