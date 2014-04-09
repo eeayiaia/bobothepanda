@@ -26,4 +26,29 @@ public class Factory {
 		playerController = new CharacterController(playerModel);
 		level = new LevelModel(map.getMapObjectList(), playerModel);
 	}
+
+
+	public CharacterModel getPlayerModel() {
+		return playerModel;
+	}
+
+
+	public CharacterController getPlayerController() {
+		return playerController;
+	}
+
+
+	public CharacterView getPlayerView() {
+		return playerView;
+	}
+
+
+	public LevelModel getLevel() {
+		return level;
+	}
+
+
+	public IMapHandler getMap() {
+		return map;
+	}
 }
