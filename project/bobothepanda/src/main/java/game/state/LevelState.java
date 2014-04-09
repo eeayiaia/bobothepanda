@@ -25,7 +25,7 @@ public class LevelState extends BasicGameState {
 	}
 	
 	public void init(GameContainer container, StateBasedGame game)throws SlickException {
-		factory  = new Factory("level_0");
+		factory  = new Factory(firstLevel);
 		characterController	 = factory.getCharacterController(); 
 		level = new Level(firstLevel);
 		level.addCharacter(characterController);
