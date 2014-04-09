@@ -39,7 +39,8 @@ public class LevelState extends BasicGameState {
 
 	public void render(GameContainer container, StateBasedGame game, Graphics g)throws SlickException {
 		g.scale(MainClass.SCALE, MainClass.SCALE);
-		level.render();
+		//check continually for collision
+		levelModel.collision();
 		//bobo.render();
 	}
 

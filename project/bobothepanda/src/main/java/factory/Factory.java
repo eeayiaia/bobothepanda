@@ -15,16 +15,16 @@ public class Factory {
 	private CharacterController characterController;
 	private CharacterView characterView;
 	private LevelModel levelModel;
-	private IMapHandler map;
+	private IMapHandler mapHandler;
 	
 	
 	public Factory(String levelName) throws SlickException{
-		map = new MapHandler();
-		characterModel = new CharacterModel(map.getCharacterStartPosition());
+		mapHandler = new MapHandler();
+		characterModel = new CharacterModel(mapHandler.getCharacterStartPosition());
 		characterView = new CharacterView();
 		characterModel.addPropertyChangeListener(characterView);
 		characterController = new CharacterController(characterModel);
-		levelModel = new LevelModel(map.getMapObjectList(), characterModel);
+		levelModel = new LevelModel(mapHandler.getMapObjectList(), characterModel);
 	}
 
 
@@ -48,8 +48,8 @@ public class Factory {
 	}
 
 
-	public IMapHandler getMap() {
-		return map;
+	public IMapHandler getMapHandler() {
+		return mapHandler;
 	}
 
 }
