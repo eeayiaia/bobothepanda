@@ -20,8 +20,9 @@ public class CharacterModel {
 	private final int WIDTH = 18;
 	private final Size size;
 	private Rectangle hitbox;
-	private boolean facingRight;
-	private float lastTimedMoved;
+	private Facing facing;
+	private CharacterState characterState;
+	private long lastTimedMoved;
 	private IllegalMovingStateX illegalMovingStateX;
 	private IllegalMovingStateY illegalMovingStateY;
 
@@ -31,6 +32,7 @@ public class CharacterModel {
 	 */
 	public CharacterModel(Position position){
 		this.position = position;
+		facing = Facing.RIGHT;
 		isDead = false;
 		pcs = new PropertyChangeSupport(this);	
 		size = new Size(WIDTH,HEIGHT);
@@ -38,7 +40,6 @@ public class CharacterModel {
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		illegalMovingStateX = IllegalMovingStateX.NONE;
 		illegalMovingStateY = IllegalMovingStateY.DOWN;
-		
 	}
 	
 	/**
@@ -46,11 +47,20 @@ public class CharacterModel {
 	 * MOVING_RIGHT, MOVING_LEFT, JUMP, RENDER
 	 */
 	public enum CharacterState{
-		MOVING_RIGHT, MOVING_LEFT, JUMP, RENDER
+		MOVING_RIGHT, MOVING_LEFT, JUMPING
+	}
+	
+	public enum Facing{
+		RIGHT, LEFT
 	}
 	
 	public void initBobo(){
-		pcs.firePropertyChange(CharacterState.RENDER.toString(), null, position);
+		if(lastTimedMoved == System.currentTimeMillis()){
+			pcs.firePropertyChange(characterState.toString(), null, position);
+		
+		}else{
+			pcs.firePropertyChange(facing.toString(), null, position);
+		}
 	}
 	
 	/**
@@ -79,9 +89,10 @@ public class CharacterModel {
 	public void moveLeft(int delta){
 		if(!illegalMovingStateX.equals(IllegalMovingStateX.LEFT)){
 			position.setX(position.getX() - 0.3f*delta);
-			pcs.firePropertyChange(CharacterState.MOVING_LEFT.toString(), null, position);
+			characterState = CharacterState.MOVING_LEFT;
 			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
-			facingRight = false;
+			facing = Facing.LEFT;
+			lastTimedMoved = System.currentTimeMillis();
 		}
 	}
 	/**
@@ -94,9 +105,10 @@ public class CharacterModel {
 	public void moveRight(int delta){
 		if(!illegalMovingStateX.equals(IllegalMovingStateX.RIGHT)){
 			position.setX(position.getX() + 0.3f*delta);
-			pcs.firePropertyChange(CharacterState.MOVING_RIGHT.toString(), null, position);
+			characterState = CharacterState.MOVING_RIGHT;
 			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
-			facingRight = true;
+			facing = Facing.RIGHT;
+			lastTimedMoved = System.currentTimeMillis();
 		}
 	}
 	
@@ -125,13 +137,13 @@ public class CharacterModel {
 					velocity_Y = maxDownwardsVelocityY;
 				}
 				position.setY(position.getY() + velocity_Y * delta);
-				pcs.firePropertyChange(CharacterState.JUMP.toString(), null, position);
+				pcs.firePropertyChange(CharacterState.JUMPING.toString(), null, position);
 				
 			}
 			//when the ground is reached
 			velocity_Y = 0;
 			position.setY(position.getY() + velocity_Y * delta);
-			pcs.firePropertyChange(CharacterState.JUMP.toString(), null, position);
+			pcs.firePropertyChange(CharacterState.JUMPING.toString(), null, position);
 			//send property change
 		}
 		//TODO set bobos hitbox
@@ -158,7 +170,7 @@ public class CharacterModel {
 	}
 	
 	public void die() {
-		
+		isDead = true;
 	}
 		
 	public void setIllegalMovingStateX(IllegalMovingStateX state){

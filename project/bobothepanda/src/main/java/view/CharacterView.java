@@ -83,8 +83,11 @@ public class CharacterView implements PropertyChangeListener{
 			drawMovingRightAnimation(position.getX(), position.getY());
 			//drawSpriteRight(position.getX(), position.getY());
 		
-		}else if(evt.getPropertyName().equals("RENDER")){
+		}else if(evt.getPropertyName().equals("RIGHT")){
 			drawSpriteRight(position.getX(), position.getY());
+		
+		}else if(evt.getPropertyName().equals("LEFT")){
+			drawSpriteLeft(position.getX(), position.getY());
 		}
 	}
 }
