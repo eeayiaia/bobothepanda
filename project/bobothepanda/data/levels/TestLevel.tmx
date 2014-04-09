@@ -13,7 +13,7 @@
  </layer>
  <layer name="Ground" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA2NgGAWjYBSMgqEBmKiMWUcxRRgA4DF7JUAGAAA=
+   H4sIAAAAAAAAA2NgGAWjYBSMAvoBRiLEsKkBASYqY9ZRTBEGAK1NucxABgAA
   </data>
  </layer>
  <objectgroup name="" width="20" height="20">

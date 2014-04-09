@@ -33,7 +33,7 @@ public class LevelState extends BasicGameState {
 		characterController	 = factory.getCharacterController(); 
 		levelModel = factory.getLevelModel();
 		characterModel = factory.getCharacterModel();
-		characterModel.initBobo();
+		
 		mapHandler = (MapHandler) factory.getMapHandler();
 		
 		//level = new Level(firstLevel);
@@ -45,7 +45,7 @@ public class LevelState extends BasicGameState {
 		//check continually for collision
 		levelModel.collision();
 		mapHandler.renderMap();
-		//bobo.render();
+		characterModel.initBobo();
 	}
 
 	public void update(GameContainer container, StateBasedGame game, int delta)throws SlickException {

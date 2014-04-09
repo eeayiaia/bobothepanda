@@ -36,8 +36,8 @@ public class LevelModel{
 					playerCharacter.terrainCollision(o.getHitbox());
 				} else if (o.getObjectType().equals(ObjectType.KEY)){
 					playerCharacter.keyCollision(o.getHitbox());
-					objectList.remove(o);
-					door.setObjectType(ObjectType.DOOR_OPEN);
+					//objectList.remove(o);
+					//door.setObjectType(ObjectType.DOOR_OPEN);
 				} else if (o.getObjectType().equals(ObjectType.LETHAL)){
 					playerCharacter.lethalCollision(o.getHitbox());
 				} else if (o.getObjectType().equals(ObjectType.DOOR)){
