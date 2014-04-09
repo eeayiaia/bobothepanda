@@ -61,7 +61,7 @@ public class CharacterModel {
 	/**
 	 * Updates the current character state.
 	 */
-	public void initBobo(){
+	public void update(){
 		if(lastTimedMoved == System.currentTimeMillis()){
 			pcs.firePropertyChange(characterState.toString(), null, position);
 		

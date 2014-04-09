@@ -45,7 +45,7 @@ public class LevelState extends BasicGameState {
 		//check continually for collision
 		levelModel.collision();
 		mapHandler.renderMap();
-		characterModel.initBobo();
+		characterModel.update();
 	}
 
 	public void update(GameContainer container, StateBasedGame game, int delta)throws SlickException {
