@@ -5,6 +5,8 @@ import game.level.Level;
 import main.MainClass;
 import model.CharacterModel;
 import model.LevelModel;
+import Map.IMapHandler;
+import Map.MapHandler;
 import controller.CharacterController;
 import utilities.Position;
 import view.CharacterView;
@@ -21,6 +23,7 @@ public class LevelState extends BasicGameState {
 	private String firstLevel;
 	private CharacterController characterController;
 	private Factory factory;
+	private MapHandler mapHandler;
 	private float x = 128, y=448;
 
 	public LevelState(String firstLevel){
@@ -33,6 +36,8 @@ public class LevelState extends BasicGameState {
 		levelModel = factory.getLevelModel();
 		characterModel = factory.getCharacterModel();
 		characterModel.initBobo();
+		mapHandler = (MapHandler) factory.getMapHandler();
+		
 		//level = new Level(firstLevel);
 		//level.addCharacter(characterController);
 	}
@@ -41,6 +46,7 @@ public class LevelState extends BasicGameState {
 		g.scale(MainClass.SCALE, MainClass.SCALE);
 		//check continually for collision
 		levelModel.collision();
+		mapHandler.renderMap();
 		//bobo.render();
 	}
 

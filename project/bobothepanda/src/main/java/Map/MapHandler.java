@@ -80,8 +80,8 @@ public class MapHandler implements IMapHandler {
 		}
 	}
 	
-	public TiledMap getMap() {
-		return map;
+	public void renderMap(){
+		map.render(0, 0);
 	}
 	
 }
