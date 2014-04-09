@@ -160,7 +160,10 @@ public class CharacterModel {
 	}
 	
 	public void terrainCollision(Rectangle hitbox) {
+		float hitboxMidX = (float)hitbox.getX()/2;
+		float hitboxMidy = (float)hitbox.getY()/2;
 		
+		if(this.)
 	}
 	
 	public void lethalCollision(Rectangle hitbox) {

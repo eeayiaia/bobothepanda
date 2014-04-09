@@ -39,25 +39,13 @@ public class MapHandler implements IMapHandler {
 	public MapHandler(String levelName) throws SlickException {
 		map = new TiledMap(mapLocation + levelName + ".tmx", tilesetLocation);
 		objectList = new ArrayList<IMapObject>();
+		createObjectList();
 	}
 	
 	/*
 	 * @return A list of objects located on the map
 	 */
 	public ArrayList<IMapObject> getMapObjectList() {
-		int objects = map.getObjectCount(0);
-		
-		for(int i = 0; i < objects; i++) {
-			Position position = new Position((float)map.getObjectX(0,i), (float)map.getObjectY(0,i));
-			ObjectType type = checkObjectType(map.getObjectType(0,i));
-			Size size;
-			if(type == null) {
-				characterStartPosition = position;
-			} else {
-				size = new Size((float)map.getObjectWidth(0,i), (float)map.getObjectHeight(0,i));
-				objectList.add(new MapObject(position, size, type));
-			}
-		}
 		return objectList;
 	}
 	public Position getCharacterStartPosition() {
@@ -72,7 +60,23 @@ public class MapHandler implements IMapHandler {
 		} else if(type.equals("Key")) {
 			return ObjectType.KEY;
 		} else {
-			return null;
+			return ObjectType.START_POS;
+		}
+	}
+	
+	private void createObjectList() {
+		int objects = map.getObjectCount(0);
+		
+		for(int i = 0; i < objects; i++) {
+			Position position = new Position((float)map.getObjectX(0,i), (float)map.getObjectY(0,i));
+			ObjectType type = checkObjectType(map.getObjectType(0,i));
+			Size size;
+			if(type.equals(ObjectType.START_POS)) {
+				characterStartPosition = position;
+			} else {
+				size = new Size((float)map.getObjectWidth(0,i), (float)map.getObjectHeight(0,i));
+				objectList.add(new MapObject(position, size, type));
+			}
 		}
 	}
 	
