@@ -163,7 +163,7 @@ public class CharacterModel {
 		float hitboxMidX = (float)hitbox.getX()/2;
 		float hitboxMidy = (float)hitbox.getY()/2;
 		
-		if(this.)
+		//if(this.)
 	}
 	
 	public void lethalCollision(Rectangle hitbox) {
