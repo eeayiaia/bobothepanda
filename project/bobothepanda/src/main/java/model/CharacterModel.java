@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Rectangle;
+import java.awt.geom.Rectangle2D;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
@@ -160,10 +161,21 @@ public class CharacterModel {
 	}
 	
 	public void terrainCollision(Rectangle hitbox) {
-		float hitboxMidX = (float)hitbox.getX()/2;
-		float hitboxMidy = (float)hitbox.getY()/2;
-		
-		//if(this.)
+
+		int bitmask = hitbox.outcode(this.hitbox.getX(),this.hitbox.getY());
+		if(bitmask == Rectangle2D.OUT_LEFT){
+			this.setIllegalMovingStateX(IllegalMovingStateX.RIGHT);
+			this.setIllegalMovingStateY(IllegalMovingStateY.DOWN);
+		} else if(bitmask == Rectangle2D.OUT_RIGHT){
+			this.setIllegalMovingStateX(IllegalMovingStateX.LEFT);
+			this.setIllegalMovingStateY(IllegalMovingStateY.DOWN);
+		} else if(bitmask == Rectangle2D.OUT_BOTTOM){
+			this.setIllegalMovingStateX(null);
+			this.setIllegalMovingStateY(IllegalMovingStateY.UP);
+		} else if(bitmask == Rectangle2D.OUT_TOP){
+			this.setIllegalMovingStateX(null);
+			this.setIllegalMovingStateY(IllegalMovingStateY.DOWN);
+		}
 	}
 	
 	public void lethalCollision(Rectangle hitbox) {
