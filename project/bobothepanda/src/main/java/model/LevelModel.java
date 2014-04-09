@@ -1,5 +1,7 @@
 package model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
 import utilities.IllegalMovingStateX;
@@ -13,6 +15,7 @@ public class LevelModel{
 	private ArrayList <IMapObject> objectList;
 	private IMapObject door;
 	private boolean keyPickedUp;
+	private PropertyChangeSupport pcs;
 	
 	
 	public LevelModel(ArrayList<IMapObject> objectList, CharacterModel playerCharacter){
@@ -45,6 +48,15 @@ public class LevelModel{
 			}
 		}
 	}
+	
+	public void addPropertyChangeListener(PropertyChangeListener listener){
+		pcs.addPropertyChangeListener(listener);
+	}
+	
+	public void removePropertyChangeListener(PropertyChangeListener listener){
+		pcs.removePropertyChangeListener(listener);
+	}
+	
 	public void loadNext(LevelModel level){
 	}
 	

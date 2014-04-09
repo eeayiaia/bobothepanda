@@ -7,6 +7,7 @@ import Map.MapHandler;
 import model.CharacterModel;
 import controller.CharacterController;
 import view.CharacterView;
+import view.LevelView;
 import model.LevelModel;
 
 public class Factory {
@@ -15,6 +16,7 @@ public class Factory {
 	private CharacterController characterController;
 	private CharacterView characterView;
 	private LevelModel levelModel;
+	private LevelView levelView;
 	private IMapHandler mapHandler;
 	
 	
@@ -24,7 +26,11 @@ public class Factory {
 		characterView = new CharacterView();
 		characterModel.addPropertyChangeListener(characterView);
 		characterController = new CharacterController(characterModel);
+		
+		
 		levelModel = new LevelModel(mapHandler.getMapObjectList(), characterModel);
+		levelView = new LevelView();
+		levelModel.addPropertyChangeListener(levelView);
 	}
 
 
