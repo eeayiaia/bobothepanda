@@ -23,7 +23,11 @@ public class LevelState extends BasicGameState {
 	private Factory factory;
 	private MapHandler mapHandler;
 	private float x = 128, y=448;
-
+	
+	/**
+	 * Assigns the value of the firstLevel String variable.
+	 * @param firstLevel String label for the first level to be initiated.
+	 */
 	public LevelState(String firstLevel){
 		this.firstLevel = firstLevel;
 	}
@@ -33,11 +37,7 @@ public class LevelState extends BasicGameState {
 		characterController	 = factory.getCharacterController(); 
 		levelModel = factory.getLevelModel();
 		characterModel = factory.getCharacterModel();
-		
 		mapHandler = (MapHandler) factory.getMapHandler();
-		
-		//level = new Level(firstLevel);
-		//level.addCharacter(characterController);
 	}
 
 	public void render(GameContainer container, StateBasedGame game, Graphics g)throws SlickException {
