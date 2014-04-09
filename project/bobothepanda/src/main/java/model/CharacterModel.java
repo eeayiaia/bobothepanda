@@ -188,7 +188,6 @@ public class CharacterModel {
 	}
 	
 	public void terrainCollision(Rectangle hitbox) {
-
 		int bitmask = hitbox.outcode(this.hitbox.getX(),this.hitbox.getY());
 		if(bitmask == Rectangle2D.OUT_LEFT){
 			this.setIllegalMovingStateX(IllegalMovingStateX.RIGHT);
@@ -206,7 +205,7 @@ public class CharacterModel {
 	}
 	
 	public void lethalCollision(Rectangle hitbox) {
-		
+
 	}
 	
 	public void keyCollision(Rectangle hitbox) {
