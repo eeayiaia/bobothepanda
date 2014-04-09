@@ -11,43 +11,41 @@ public class LevelModel{
 	
 	private CharacterModel playerCharacter;
 	private ArrayList <IMapObject> objectList;
+	private IMapObject door;
+	private boolean keyPickedUp;
 	
 	
 	public LevelModel(ArrayList<IMapObject> objectList, CharacterModel playerCharacter){
 		this.playerCharacter = playerCharacter;
 		this.objectList = objectList;
+		for(IMapObject o: objectList){
+			if(o.getObjectType().equals(ObjectType.DOOR)){
+				door = o;
+			}
+		}
 	}
 	public void collision(){
 		for(IMapObject o: objectList){
 			//Checks if bobo has collided with another object
 			if(o.getHitbox().intersects(playerCharacter.getHitbox())){
 				//if object is terrain
-				if(o.getObjectType().equals(ObjectType.TERRAIN)){
-					//if object if to the left
-					if(o.getHitbox().getCenterX() < playerCharacter.getHitbox().getCenterX()){
-						playerCharacter.setIllegalMovingStateX(IllegalMovingStateX.LEFT);
-						//if object is above bobo
-						if(o.getHitbox().getCenterY() < playerCharacter.getHitbox().getCenterY()){
-							playerCharacter.setIllegalMovingStateY(IllegalMovingStateY.UP);
-						} else {
-							playerCharacter.setIllegalMovingStateY(IllegalMovingStateY.DOWN);
-						}
-					} else {
-						playerCharacter.setIllegalMovingStateX(IllegalMovingStateX.RIGHT);
-						if(o.getHitbox().getCenterY() < playerCharacter.getHitbox().getCenterY()){
-							playerCharacter.setIllegalMovingStateY(IllegalMovingStateY.UP);
-						} else {
-							playerCharacter.setIllegalMovingStateY(IllegalMovingStateY.DOWN);
-						}
-					}
+				if(o.getObjectType().equals(ObjectType.TERRAIN)){	
+					playerCharacter.terrainCollision(o.getHitbox());
 				} else if (o.getObjectType().equals(ObjectType.KEY)){
-					o.setObjectType(ObjectType.KEY_PICKED_UP);
+					playerCharacter.keyCollision(o.getHitbox());
+					objectList.remove(o);
+					door.setObjectType(ObjectType.DOOR_OPEN);
 				} else if (o.getObjectType().equals(ObjectType.LETHAL)){
-					playerCharacter.die();
+					playerCharacter.lethalCollision(o.getHitbox());
+				} else if (o.getObjectType().equals(ObjectType.DOOR)){
+					playerCharacter.terrainCollision(o.getHitbox());
+				} else if(o.getObjectType().equals(ObjectType.DOOR_OPEN)){
+					loadNext(this);
 				}
 			}
 		}
 	}
-	
+	public void loadNext(LevelModel level){
+	}
 	
 }
