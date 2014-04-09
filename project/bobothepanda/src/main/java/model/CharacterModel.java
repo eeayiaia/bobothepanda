@@ -22,6 +22,8 @@ public class CharacterModel {
 	private Rectangle hitbox;
 	private IllegalMovingStateX movingStateX;
 	private IllegalMovingStateY movingStateY;
+	private boolean facingRight;
+	private float lastTimedMoved;
 	/**
 	 * Sets the starting position and assigns PropertyChangeSupport to this class
 	 * @param position Starting position
@@ -77,6 +79,7 @@ public class CharacterModel {
 		position.setX(position.getX() - 0.3f*delta);
 		pcs.firePropertyChange(CharacterState.MOVING_LEFT.toString(), null, position);
 		hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
+		facingRight = false;
 	}
 	/**
 	 * Moves the character to the right.
@@ -89,7 +92,7 @@ public class CharacterModel {
 		position.setX(position.getX() + 0.3f*delta);
 		pcs.firePropertyChange(CharacterState.MOVING_RIGHT.toString(), null, position);
 		hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
-
+		facingRight = true;
 	}
 	
 	
