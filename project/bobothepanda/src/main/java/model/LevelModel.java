@@ -7,7 +7,7 @@ import utilities.IllegalMovingStateY;
 import utilities.ObjectType;
 import utilities.Position;
 
-public class LevelModel implements ILevel {
+public class LevelModel{
 	
 	private CharacterModel playerCharacter;
 	private ArrayList <IMapObject> objectList;
