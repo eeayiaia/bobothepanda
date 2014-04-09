@@ -71,17 +71,19 @@ public class CharacterView implements PropertyChangeListener{
 		movingLeftAnimation.draw(x,y);
 	}
 
+	/**
+	 * Renders the character differently depending on what state
+	 * the character is in.
+	 */
 	public void propertyChange(PropertyChangeEvent evt) {
 		
 		position = (Position)evt.getNewValue();
 		
 		if(evt.getPropertyName().equals("MOVING_LEFT")){
 			drawMovingLeftAnimation(position.getX(), position.getY());
-			//drawSpriteLeft(position.getX(), position.getY());
 			
 		}else if(evt.getPropertyName().equals("MOVING_RIGHT")){
 			drawMovingRightAnimation(position.getX(), position.getY());
-			//drawSpriteRight(position.getX(), position.getY());
 		
 		}else if(evt.getPropertyName().equals("RIGHT")){
 			drawSpriteRight(position.getX(), position.getY());
