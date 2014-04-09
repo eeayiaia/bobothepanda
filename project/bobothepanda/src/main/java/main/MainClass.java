@@ -1,7 +1,6 @@
 package main;
 
-import game.state.LevelState; // will be deleted later
-import factory.Factory;
+import game.state.LevelState;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
@@ -34,8 +33,6 @@ public class MainClass extends StateBasedGame{
 	}
 	
 	public void initStatesList(GameContainer gc) throws SlickException{
-		
-		//new Factory("level_0"); // this will start the game
 		addState(new LevelState("level_0"));
 		this.enterState(0);
 	}
