@@ -50,10 +50,17 @@ public class CharacterModel {
 		MOVING_RIGHT, MOVING_LEFT, JUMPING
 	}
 	
+	/**
+	 * The current direction the character is facing
+	 * RIGH, LEFT
+	 */
 	public enum Facing{
 		RIGHT, LEFT
 	}
 	
+	/**
+	 * Updates the current character state.
+	 */
 	public void initBobo(){
 		if(lastTimedMoved == System.currentTimeMillis()){
 			pcs.firePropertyChange(characterState.toString(), null, position);
