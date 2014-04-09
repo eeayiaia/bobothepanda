@@ -14,7 +14,7 @@ public class Factory {
 	private CharacterModel characterModel;
 	private CharacterController characterController;
 	private CharacterView characterView;
-	private LevelModel level;
+	private LevelModel levelModel;
 	private IMapHandler map;
 	
 	
@@ -24,7 +24,7 @@ public class Factory {
 		characterView = new CharacterView();
 		characterModel.addPropertyChangeListener(characterView);
 		characterController = new CharacterController(characterModel);
-		level = new LevelModel(map.getMapObjectList(), characterModel);
+		levelModel = new LevelModel(map.getMapObjectList(), characterModel);
 	}
 
 
@@ -43,8 +43,8 @@ public class Factory {
 	}
 
 
-	public LevelModel getLevel() {
-		return level;
+	public LevelModel getLevelModel() {
+		return levelModel;
 	}
 
 
