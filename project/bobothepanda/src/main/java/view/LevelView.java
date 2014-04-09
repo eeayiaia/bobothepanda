@@ -11,5 +11,9 @@ public class LevelView implements PropertyChangeListener{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void render(){
+		
+	}
 
 }

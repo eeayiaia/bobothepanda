@@ -1,7 +1,6 @@
 package game.state;
 
 import factory.Factory;
-import game.level.Level;
 import main.MainClass;
 import model.CharacterModel;
 import model.LevelModel;
@@ -17,7 +16,6 @@ import org.newdawn.slick.state.StateBasedGame;
 
 
 public class LevelState extends BasicGameState {
-	private Level level;
 	private LevelModel levelModel;
 	private	CharacterModel characterModel;
 	private String firstLevel;

@@ -30,7 +30,7 @@ public class Factory {
 		
 		levelModel = new LevelModel(mapHandler.getMapObjectList(), characterModel);
 		levelView = new LevelView();
-		levelModel.addPropertyChangeListener(levelView);
+		//levelModel.addPropertyChangeListener(levelView);
 	}
 
 
