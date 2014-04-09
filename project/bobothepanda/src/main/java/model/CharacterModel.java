@@ -158,4 +158,16 @@ public class CharacterModel {
 	public void setIllegalMovingStateY(IllegalMovingStateY state){
 		movingStateY = state;
 	}
+	
+	public void terrainCollision(Rectangle hitbox) {
+		
+	}
+	
+	public void lethalCollision(Rectangle hitbox) {
+		
+	}
+	
+	public void keyCollision(Rectangle hitbox) {
+		
+	}
 }
