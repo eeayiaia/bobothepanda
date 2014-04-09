@@ -1,5 +1,5 @@
 package utilities;
 
 public enum IllegalMovingStateY {
-	UP, DOWN
+	UP, DOWN, NONE
 }

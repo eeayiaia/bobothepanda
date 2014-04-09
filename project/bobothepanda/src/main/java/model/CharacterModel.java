@@ -20,10 +20,11 @@ public class CharacterModel {
 	private final int WIDTH = 18;
 	private final Size size;
 	private Rectangle hitbox;
-	private IllegalMovingStateX movingStateX;
-	private IllegalMovingStateY movingStateY;
 	private boolean facingRight;
 	private float lastTimedMoved;
+	private IllegalMovingStateX illegalMovingStateX;
+	private IllegalMovingStateY illegalMovingStateY;
+
 	/**
 	 * Sets the starting position and assigns PropertyChangeSupport to this class
 	 * @param position Starting position
@@ -35,8 +36,8 @@ public class CharacterModel {
 		size = new Size(WIDTH,HEIGHT);
 		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
-		movingStateX = null;
-		movingStateY = IllegalMovingStateY.DOWN;
+		illegalMovingStateX = IllegalMovingStateX.NONE;
+		illegalMovingStateY = IllegalMovingStateY.DOWN;
 		
 	}
 	
@@ -76,10 +77,12 @@ public class CharacterModel {
      * @param delta
      */
 	public void moveLeft(int delta){
-		position.setX(position.getX() - 0.3f*delta);
-		pcs.firePropertyChange(CharacterState.MOVING_LEFT.toString(), null, position);
-		hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
-		facingRight = false;
+		if(!illegalMovingStateX.equals(IllegalMovingStateX.LEFT)){
+			position.setX(position.getX() - 0.3f*delta);
+			pcs.firePropertyChange(CharacterState.MOVING_LEFT.toString(), null, position);
+			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
+			facingRight = false;
+		}
 	}
 	/**
 	 * Moves the character to the right.
@@ -89,10 +92,12 @@ public class CharacterModel {
 	 * @param delta
 	 */
 	public void moveRight(int delta){
-		position.setX(position.getX() + 0.3f*delta);
-		pcs.firePropertyChange(CharacterState.MOVING_RIGHT.toString(), null, position);
-		hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
-		facingRight = true;
+		if(!illegalMovingStateX.equals(IllegalMovingStateX.RIGHT)){
+			position.setX(position.getX() + 0.3f*delta);
+			pcs.firePropertyChange(CharacterState.MOVING_RIGHT.toString(), null, position);
+			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
+			facingRight = true;
+		}
 	}
 	
 	
@@ -157,10 +162,10 @@ public class CharacterModel {
 	}
 		
 	public void setIllegalMovingStateX(IllegalMovingStateX state){
-		movingStateX = state;
+		illegalMovingStateX = state;
 	}
 	public void setIllegalMovingStateY(IllegalMovingStateY state){
-		movingStateY = state;
+		illegalMovingStateY = state;
 	}
 	
 	public void terrainCollision(Rectangle hitbox) {
