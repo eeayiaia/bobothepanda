@@ -11,35 +11,35 @@ import model.LevelModel;
 
 public class Factory {
 
-	private CharacterModel playerModel;
-	private CharacterController playerController;
-	private CharacterView playerView;
+	private CharacterModel characterModel;
+	private CharacterController characterController;
+	private CharacterView characterView;
 	private LevelModel level;
 	private IMapHandler map;
 	
 	
 	public Factory(String levelName) throws SlickException{
 		map = new MapHandler();
-		playerModel = new CharacterModel(map.getCharacterStartPosition());
-		playerView = new CharacterView();
-		playerModel.addPropertyChangeListener(playerView);
-		playerController = new CharacterController(playerModel);
-		level = new LevelModel(map.getMapObjectList(), playerModel);
+		characterModel = new CharacterModel(map.getCharacterStartPosition());
+		characterView = new CharacterView();
+		characterModel.addPropertyChangeListener(characterView);
+		characterController = new CharacterController(characterModel);
+		level = new LevelModel(map.getMapObjectList(), characterModel);
 	}
 
 
-	public CharacterModel getPlayerModel() {
-		return playerModel;
+	public CharacterModel getCharacterModel() {
+		return characterModel;
 	}
 
 
-	public CharacterController getPlayerController() {
-		return playerController;
+	public CharacterController getCharacterController() {
+		return characterController;
 	}
 
 
-	public CharacterView getPlayerView() {
-		return playerView;
+	public CharacterView getCharacterView() {
+		return characterView;
 	}
 
 
@@ -51,4 +51,5 @@ public class Factory {
 	public IMapHandler getMap() {
 		return map;
 	}
+
 }
