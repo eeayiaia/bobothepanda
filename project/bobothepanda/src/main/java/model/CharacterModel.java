@@ -62,7 +62,7 @@ public class CharacterModel {
 	 * Updates the current character state.
 	 */
 	public void update(){
-		if(lastTimedMoved == System.currentTimeMillis()){
+		if(lastTimedMoved + 150 >= System.currentTimeMillis()){
 			pcs.firePropertyChange(characterState.toString(), null, position);
 		
 		}else{
