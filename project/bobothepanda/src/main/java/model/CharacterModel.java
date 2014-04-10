@@ -194,8 +194,10 @@ public class CharacterModel {
 					(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
 		}
 		if(collisionHitbox != null && ((collision.getObjectType() == ObjectType.TERRAIN) || (collision.getObjectType() == ObjectType.KEY))){
-			int direction = collisionDirection(collisionHitbox);
-			if((direction != Rectangle2D.OUT_RIGHT) && (direction != Rectangle2D.OUT_LEFT)) {
+			int direction = hitbox.outcode(collisionHitbox.getX(),collisionHitbox.getY());
+			if((direction == Rectangle2D.OUT_RIGHT)) {
+			} else if(direction == Rectangle2D.OUT_LEFT) {
+			} else {
 				position.setX(nextPosition.getX());
 			}
 		} else {
