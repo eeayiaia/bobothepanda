@@ -1,12 +1,12 @@
 package main;
 
-import game.state.LevelState;
-
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.GameState;
 import org.newdawn.slick.state.StateBasedGame;
+
+import controller.GameController;
 
 public class MainClass extends StateBasedGame{
 	
@@ -33,7 +33,7 @@ public class MainClass extends StateBasedGame{
 	}
 	
 	public void initStatesList(GameContainer gc) throws SlickException{
-		addState(new LevelState("level_0"));
+		addState(new GameController("level_0"));
 		this.enterState(0);
 	}
 	
