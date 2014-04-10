@@ -6,10 +6,6 @@ package model;
 
 import java.awt.Rectangle;
 
-import utilities.ObjectType;
-import utilities.Position;
-import utilities.Size;
-
 public class MapObject implements IMapObject {
 	
 	private Position position;

@@ -4,11 +4,6 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
-import utilities.IllegalMovingStateX;
-import utilities.IllegalMovingStateY;
-import utilities.ObjectType;
-import utilities.Position;
-
 public class LevelModel{
 	
 	private CharacterModel playerCharacter;

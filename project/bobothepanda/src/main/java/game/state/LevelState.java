@@ -4,10 +4,10 @@ import factory.Factory;
 import main.MainClass;
 import model.CharacterModel;
 import model.LevelModel;
-import Map.IMapHandler;
-import Map.MapHandler;
+import model.Position;
 import controller.CharacterController;
-import utilities.Position;
+import utilities.IMapHandler;
+import utilities.MapHandler;
 import view.CharacterView;
 
 import org.newdawn.slick.*;

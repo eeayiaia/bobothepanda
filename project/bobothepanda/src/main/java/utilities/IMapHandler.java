@@ -1,4 +1,4 @@
-package Map;
+package utilities;
 
 /*
  * @author Oscar Muhr
@@ -7,7 +7,7 @@ package Map;
 import java.util.ArrayList;
 
 import model.IMapObject;
-import utilities.Position;
+import model.Position;
 
 public interface IMapHandler {
 	

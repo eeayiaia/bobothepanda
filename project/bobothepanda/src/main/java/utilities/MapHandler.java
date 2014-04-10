@@ -1,4 +1,4 @@
-package Map;
+package utilities;
 
 /*
  * @author Oscar Muhr
@@ -8,13 +8,12 @@ import java.util.ArrayList;
 
 import model.IMapObject;
 import model.MapObject;
+import model.ObjectType;
+import model.Position;
+import model.Size;
 
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
-
-import utilities.ObjectType;
-import utilities.Position;
-import utilities.Size;
 
 public class MapHandler implements IMapHandler {
 	

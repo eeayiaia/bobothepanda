@@ -1,4 +1,4 @@
-package utilities;
+package model;
 
 /*
  * @author Oscar Muhr

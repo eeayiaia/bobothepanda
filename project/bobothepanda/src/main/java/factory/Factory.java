@@ -2,10 +2,10 @@ package factory;
 
 import org.newdawn.slick.SlickException;
 
-import Map.IMapHandler;
-import Map.MapHandler;
 import model.CharacterModel;
 import controller.CharacterController;
+import utilities.IMapHandler;
+import utilities.MapHandler;
 import view.CharacterView;
 import view.LevelView;
 import model.LevelModel;

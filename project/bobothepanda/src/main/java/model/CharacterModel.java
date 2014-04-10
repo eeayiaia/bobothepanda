@@ -5,15 +5,11 @@ import java.awt.geom.Rectangle2D;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-import utilities.IllegalMovingStateX;
-import utilities.IllegalMovingStateY;
-import utilities.Position;
-import utilities.Size;
-
 public class CharacterModel {
 	
 	private double velocity;
 	private Position position;
+	private Position oldPosition;
 	private boolean isDead;
 	private PropertyChangeSupport pcs;
 	private final int HEIGHT = 30;
@@ -23,8 +19,6 @@ public class CharacterModel {
 	private Facing facing;
 	private CharacterState characterState;
 	private long lastTimedMoved;
-	private IllegalMovingStateX illegalMovingStateX;
-	private IllegalMovingStateY illegalMovingStateY;
 
 	/**
 	 * Sets the starting position and assigns PropertyChangeSupport to this class
@@ -38,8 +32,7 @@ public class CharacterModel {
 		size = new Size(WIDTH,HEIGHT);
 		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
-		illegalMovingStateX = IllegalMovingStateX.NONE;
-		illegalMovingStateY = IllegalMovingStateY.DOWN;
+		oldPosition = position;
 	}
 	
 	/**
@@ -94,13 +87,11 @@ public class CharacterModel {
      * @param delta
      */
 	public void moveLeft(int delta){
-		if(!illegalMovingStateX.equals(IllegalMovingStateX.LEFT)){
 			position.setX(position.getX() - 0.3f*delta);
 			characterState = CharacterState.MOVING_LEFT;
 			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.LEFT;
 			lastTimedMoved = System.currentTimeMillis();
-		}
 	}
 	/**
 	 * Moves the character to the right.
@@ -110,13 +101,11 @@ public class CharacterModel {
 	 * @param delta
 	 */
 	public void moveRight(int delta){
-		if(!illegalMovingStateX.equals(IllegalMovingStateX.RIGHT)){
 			position.setX(position.getX() + 0.3f*delta);
 			characterState = CharacterState.MOVING_RIGHT;
 			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.RIGHT;
 			lastTimedMoved = System.currentTimeMillis();
-		}
 	}
 	
 	
@@ -179,28 +168,13 @@ public class CharacterModel {
 	public void die() {
 		isDead = true;
 	}
-		
-	public void setIllegalMovingStateX(IllegalMovingStateX state){
-		illegalMovingStateX = state;
-	}
-	public void setIllegalMovingStateY(IllegalMovingStateY state){
-		illegalMovingStateY = state;
-	}
 	
 	public void terrainCollision(Rectangle hitbox) {
 		int bitmask = hitbox.outcode(this.hitbox.getX(),this.hitbox.getY());
 		if(bitmask == Rectangle2D.OUT_LEFT){
-			this.setIllegalMovingStateX(IllegalMovingStateX.RIGHT);
-			this.setIllegalMovingStateY(IllegalMovingStateY.DOWN);
 		} else if(bitmask == Rectangle2D.OUT_RIGHT){
-			this.setIllegalMovingStateX(IllegalMovingStateX.LEFT);
-			this.setIllegalMovingStateY(IllegalMovingStateY.DOWN);
 		} else if(bitmask == Rectangle2D.OUT_BOTTOM){
-			this.setIllegalMovingStateX(null);
-			this.setIllegalMovingStateY(IllegalMovingStateY.UP);
 		} else if(bitmask == Rectangle2D.OUT_TOP){
-			this.setIllegalMovingStateX(null);
-			this.setIllegalMovingStateY(IllegalMovingStateY.DOWN);
 		}
 	}
 	
