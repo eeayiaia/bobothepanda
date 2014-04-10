@@ -9,7 +9,6 @@ public class CharacterModel {
 	
 	private final float VELOCITY = 0.25f;
 	private Position position;
-	private Position oldPosition;
 	private boolean isDead;
 	private PropertyChangeSupport pcs;
 	private final int HEIGHT = 30;
@@ -19,12 +18,14 @@ public class CharacterModel {
 	private Facing facing;
 	private CharacterState characterState;
 	private long lastTimedMoved;
+	
+	private Collision collision;
 
 	/**
 	 * Sets the starting position and assigns PropertyChangeSupport to this class
 	 * @param position Starting position
 	 */
-	public CharacterModel(Position position){
+	public CharacterModel(Position position, Collision collision){
 		this.position = position;
 		facing = Facing.RIGHT;
 		isDead = false;
@@ -32,7 +33,7 @@ public class CharacterModel {
 		size = new Size(WIDTH,HEIGHT);
 		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
-		oldPosition = position;
+		this.collision = collision;
 	}
 	
 	/**
@@ -87,8 +88,8 @@ public class CharacterModel {
      * @param delta
      */
 	public void moveLeft(int delta){
-			position.setX(position.getX() - VELOCITY*delta);
 			characterState = CharacterState.MOVING_LEFT;
+			setNewX(delta);
 			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.LEFT;
 			lastTimedMoved = System.currentTimeMillis();
@@ -101,8 +102,8 @@ public class CharacterModel {
 	 * @param delta
 	 */
 	public void moveRight(int delta){
-			position.setX(position.getX() + VELOCITY*delta);
 			characterState = CharacterState.MOVING_RIGHT;
+			setNewX(delta);
 			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.RIGHT;
 			lastTimedMoved = System.currentTimeMillis();
@@ -169,20 +170,36 @@ public class CharacterModel {
 		isDead = true;
 	}
 	
-	public void terrainCollision(Rectangle hitbox) {
+	public int collisionDirection(Rectangle hitbox) {
 		int bitmask = hitbox.outcode(this.hitbox.getX(),this.hitbox.getY());
-		if(bitmask == Rectangle2D.OUT_LEFT){
-		} else if(bitmask == Rectangle2D.OUT_RIGHT){
-		} else if(bitmask == Rectangle2D.OUT_BOTTOM){
-		} else if(bitmask == Rectangle2D.OUT_TOP){
+//		if(bitmask == Rectangle2D.OUT_LEFT){}
+//			
+//		} else if(bitmask == Rectangle2D.OUT_RIGHT){
+//		} else if(bitmask == Rectangle2D.OUT_BOTTOM){
+//		} else if(bitmask == Rectangle2D.OUT_TOP){
+//		}
+		return bitmask;
+	}
+	
+	public void setNewX(int delta) {
+		Rectangle collisionHitbox;
+		Position nextPosition;
+		if(characterState == CharacterState.MOVING_RIGHT) {
+			nextPosition = new Position(position.getX()+VELOCITY*delta, position.getY());
+			collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
+					(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
+		} else {
+			nextPosition = new Position(position.getX()-VELOCITY*delta, position.getY());
+			collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
+					(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
 		}
-	}
-	
-	public void lethalCollision(Rectangle hitbox) {
-
-	}
-	
-	public void keyCollision(Rectangle hitbox) {
-		
+		if(collisionHitbox != null && ((collision.getObjectType() == ObjectType.TERRAIN) || (collision.getObjectType() == ObjectType.KEY))){
+			int direction = collisionDirection(collisionHitbox);
+			if((direction != Rectangle2D.OUT_RIGHT) && (direction != Rectangle2D.OUT_LEFT)) {
+				position.setX(nextPosition.getX());
+			}
+		} else {
+			position.setX(nextPosition.getX());
+		}
 	}
 }

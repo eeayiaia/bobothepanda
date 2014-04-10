@@ -3,6 +3,7 @@ package factory;
 import org.newdawn.slick.SlickException;
 
 import model.CharacterModel;
+import model.Collision;
 import controller.CharacterController;
 import utilities.IMapHandler;
 import utilities.MapHandler;
@@ -18,11 +19,13 @@ public class Factory {
 	private LevelModel levelModel;
 	private LevelView levelView;
 	private IMapHandler mapHandler;
+	private Collision collision;
 	
 	
 	public Factory(String levelName) throws SlickException{
 		mapHandler = new MapHandler();
-		characterModel = new CharacterModel(mapHandler.getCharacterStartPosition());
+		collision = new Collision(mapHandler.getMapObjectList());
+		characterModel = new CharacterModel(mapHandler.getCharacterStartPosition(), collision);
 		characterView = new CharacterView();
 		characterModel.addPropertyChangeListener(characterView);
 		characterController = new CharacterController(characterModel);

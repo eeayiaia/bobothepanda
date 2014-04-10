@@ -19,7 +19,7 @@
  <objectgroup name="" width="20" height="20">
   <object type="Terrain" x="320" y="448" width="32" height="32"/>
   <object type="Lethal" x="160" y="448" width="32" height="32"/>
-  <object type="Startpos" x="32" y="448" width="32" height="32"/>
+  <object type="Startpos" x="416" y="448" width="32" height="32"/>
   <object type="Key" x="448" y="448" width="32" height="32"/>
  </objectgroup>
 </map>

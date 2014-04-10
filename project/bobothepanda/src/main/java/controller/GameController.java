@@ -39,8 +39,6 @@ public class GameController extends BasicGameState {
 
 	public void render(GameContainer container, StateBasedGame game, Graphics g)throws SlickException {
 		g.scale(MainClass.SCALE, MainClass.SCALE);
-		//check continually for collision
-		levelModel.collision();
 		mapHandler.renderMap();
 		characterModel.update();
 	}

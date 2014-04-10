@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Rectangle;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -22,26 +23,14 @@ public class LevelModel{
 			}
 		}
 	}
-	public void collision(){
+	public Rectangle collidedWith(Rectangle characterHitbox){
 		for(IMapObject o: objectList){
 			//Checks if bobo has collided with another object
 			if(o.getHitbox().intersects(playerCharacter.getHitbox())){
-				//if object is terrain
-				if(o.getObjectType().equals(ObjectType.TERRAIN)){	
-					playerCharacter.terrainCollision(o.getHitbox());
-				} else if (o.getObjectType().equals(ObjectType.KEY)){
-					playerCharacter.keyCollision(o.getHitbox());
-					//objectList.remove(o);
-					//door.setObjectType(ObjectType.DOOR_OPEN);
-				} else if (o.getObjectType().equals(ObjectType.LETHAL)){
-					playerCharacter.lethalCollision(o.getHitbox());
-				} else if (o.getObjectType().equals(ObjectType.DOOR)){
-					playerCharacter.terrainCollision(o.getHitbox());
-				} else if(o.getObjectType().equals(ObjectType.DOOR_OPEN)){
-					loadNext(this);
-				}
+				return o.getHitbox();
 			}
 		}
+		return null;
 	}
 	
 	public void addPropertyChangeListener(PropertyChangeListener listener){
