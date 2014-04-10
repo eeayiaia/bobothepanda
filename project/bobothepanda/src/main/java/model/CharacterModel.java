@@ -7,7 +7,7 @@ import java.beans.PropertyChangeSupport;
 
 public class CharacterModel {
 	
-	private double velocity;
+	private final float VELOCITY = 0.25f;
 	private Position position;
 	private Position oldPosition;
 	private boolean isDead;
@@ -87,7 +87,7 @@ public class CharacterModel {
      * @param delta
      */
 	public void moveLeft(int delta){
-			position.setX(position.getX() - 0.3f*delta);
+			position.setX(position.getX() - VELOCITY*delta);
 			characterState = CharacterState.MOVING_LEFT;
 			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.LEFT;
@@ -101,7 +101,7 @@ public class CharacterModel {
 	 * @param delta
 	 */
 	public void moveRight(int delta){
-			position.setX(position.getX() + 0.3f*delta);
+			position.setX(position.getX() + VELOCITY*delta);
 			characterState = CharacterState.MOVING_RIGHT;
 			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.RIGHT;
