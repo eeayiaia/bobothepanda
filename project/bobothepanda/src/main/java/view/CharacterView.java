@@ -20,9 +20,7 @@ public class CharacterView implements PropertyChangeListener{
 	
 	private Animation movingRightAnimation;
 	private Animation movingLeftAnimation;
-	
-	private Position position;
-	
+		
 	/**
 	 * Assigns sprites and animations.
 	 * @throws SlickException
@@ -77,19 +75,20 @@ public class CharacterView implements PropertyChangeListener{
 	 */
 	public void propertyChange(PropertyChangeEvent evt) {
 		
-		position = (Position)evt.getNewValue();
+		float x = ((Position)evt.getNewValue()).getX();
+		float y = ((Position)evt.getNewValue()).getY();
 		
 		if(evt.getPropertyName().equals("MOVING_LEFT")){
-			drawMovingLeftAnimation(position.getX(), position.getY());
+			drawMovingLeftAnimation(x,y);
 			
 		}else if(evt.getPropertyName().equals("MOVING_RIGHT")){
-			drawMovingRightAnimation(position.getX(), position.getY());
+			drawMovingRightAnimation(x,y);
 		
 		}else if(evt.getPropertyName().equals("RIGHT")){
-			drawSpriteRight(position.getX(), position.getY());
+			drawSpriteRight(x,y);
 		
 		}else if(evt.getPropertyName().equals("LEFT")){
-			drawSpriteLeft(position.getX(), position.getY());
+			drawSpriteLeft(x, y);
 		}
 	}
 }
