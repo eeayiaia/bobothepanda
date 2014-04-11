@@ -1,0 +1,67 @@
+﻿Meeting Agenda
+
+ Date: 2014-04-11
+
+ Facilitator: Elvira Jonsson
+
+ Participants: Oscar Muhr, Victor Larsson, Sebastian Sandberg
+
+1. Objectives (5 min) Resolve any issues preventing the team to 
+ continue (this should be possible to verify at next meeting, 
+ short clear description, use issues from project site). 
+
+
+- Fix bugs in collision detection
+- Just keep working
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+ etc. , see also 4 
+
+
+- Slick has been extracted from the Model
+- Overall dependency between packages has been reduced
+- Gravitation is still not implemented, but should be the next step forward
+- Project has been adapted to fit the MVC structure
+- Collisiondetection is working, although the effects of it requires some fixing
+
+3. Discussion items (35 min) 
+
+ (a) How do we do...? 
+
+        - The project is moving forward at a good pace
+- Documentation and code comments are lacking
+- Would be good to have a clear structure in who works with what
+
+ (b) What to do...?
+
+
+- Implement gravity
+        - Implement the jump UC
+- Fix bugs with Collision
+- Write SDD and RAD
+- Fix connection between factory and controller packages
+- Comment the code (Javadoc)
+
+
+________________
+
+
+4. Outcomes and assignments (5 min) 
+
+ (a) Everyone should comment their code
+
+ (b) Elvira should fix the connection between factory and controller packages. Update RAD.
+
+ (c) Victor should write the SDD
+ 
+  (c) Sebastian should work on implementing Gravity nad jump
+
+
+  (c) Oscar should fix the bugs with collision and extend it to include all types of collision. Should also oversee the work of Sebastians Gravity implementation.
+
+5. Wrap up 
+
+ (a) Next meeting?
+
+
+Skype meeting during week 16 or/and 17.
