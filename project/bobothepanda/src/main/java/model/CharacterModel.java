@@ -238,8 +238,6 @@ public class CharacterModel {
 			characterState = CharacterState.IDLE;
 		} else{
 			position.setY(nextPosition.getY());
-		}
-			position.setY(position.getY()+ 0.1f);
-		
+		}		
 	}
 }
