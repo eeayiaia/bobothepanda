@@ -37,6 +37,7 @@ public class CharacterModel {
 		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		this.collision = collision;
+		characterState = CharacterState.IDLE;
 	
 	}
 	
@@ -45,7 +46,7 @@ public class CharacterModel {
 	 * MOVING_RIGHT, MOVING_LEFT, JUMP, RENDER
 	 */
 	public enum CharacterState{
-		MOVING_RIGHT, MOVING_LEFT, JUMPING
+		MOVING_RIGHT, MOVING_LEFT, JUMPING, IDLE
 	}
 	
 	/**
@@ -60,7 +61,7 @@ public class CharacterModel {
 	 * Updates the current character state.
 	 */
 	public void update(){
-		if(lastTimedMoved + 150 >= System.currentTimeMillis()){
+		if(lastTimedMoved + 150 >= System.currentTimeMillis() && !characterState.equals(CharacterState.IDLE)){
 			pcs.firePropertyChange(characterState.toString(), null, position);
 		
 		}else{
@@ -213,6 +214,7 @@ public class CharacterModel {
 		}
 		if(collisionHitbox != null && ((collision.getObjectType() == ObjectType.TERRAIN) || (collision.getObjectType() == ObjectType.KEY))){
 			int direction = hitbox.outcode(collisionHitbox.getX(),collisionHitbox.getY());
+			characterState = CharacterState.IDLE;
 			if((direction == Rectangle2D.OUT_RIGHT)) {
 			} else if(direction == Rectangle2D.OUT_LEFT) {
 			} else {
