@@ -228,12 +228,17 @@ public class CharacterModel {
 			position.setX(nextPosition.getX());
 		}
 	}
+	/**
+	 * Sets the next y value if the next position is valid
+	 * @param delta
+	 */
 	public void setNewY(int delta){
 		Rectangle collisionHitbox;
 	//	Position nextPosition;
 		nextPosition = new Position(position.getX(),position.getY()+yVelocity*delta);
 		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
+		// if there is a collision the position remains the same and bobo stands still
 		if(collisionHitbox != null && (collision.getObjectType().equals(ObjectType.TERRAIN) || collision.getObjectType().equals(ObjectType.KEY))){
 			characterState = CharacterState.IDLE;
 		} else{
