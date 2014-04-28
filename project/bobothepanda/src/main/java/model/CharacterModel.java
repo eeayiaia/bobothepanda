@@ -38,7 +38,7 @@ public class CharacterModel {
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		this.collision = collision;
 		characterState = CharacterState.IDLE;
-	
+		//position.setY(position.getY()-100);
 	}
 	
 	/**
@@ -234,5 +234,9 @@ public class CharacterModel {
 		if(characterState == CharacterState.JUMPING){
 			nextPosition = new Position(position.getX(),position.getY()+VELOCITY*delta);
 		}
+		
+		//TODO implement velocity and delta in some way
+		position.setY(position.getY()+ 0.1f);
+		
 	}
 }
