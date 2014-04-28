@@ -8,7 +8,10 @@ import java.beans.PropertyChangeSupport;
 public class CharacterModel {
 	
 	private final float VELOCITY = 0.25f;
+	private float yVelocity = 0;
+	private float xVelocity = 0;
 	private Position position;
+	private Position nextPosition;
 	private boolean isDead;
 	private PropertyChangeSupport pcs;
 	private final int HEIGHT = 30;
@@ -108,8 +111,9 @@ public class CharacterModel {
 			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.RIGHT;
 			lastTimedMoved = System.currentTimeMillis();
-			System.out.println(position.getX());
-			System.out.println(hitbox.getX());
+			xVelocity = (nextPosition.getX() - position.getX())/delta;
+			System.out.println(xVelocity);
+
 	}
 	
 	
@@ -197,8 +201,8 @@ public class CharacterModel {
 	
 	public void setNewX(int delta) {
 		Rectangle collisionHitbox;
-		Position nextPosition;
-		if(characterState == CharacterState.MOVING_RIGHT) {
+	//	Position nextPosition;
+		if(characterState.equals(CharacterState.MOVING_RIGHT)) {
 			nextPosition = new Position(position.getX()+VELOCITY*delta, position.getY());
 			collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 					(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
@@ -219,6 +223,10 @@ public class CharacterModel {
 		}
 	}
 	public void setNewY(int delta){
-		
+		Rectangle collisionHitbox;
+	//	Position nextPosition;
+		if(characterState == CharacterState.JUMPING){
+			nextPosition = new Position(position.getX(),position.getY()+VELOCITY*delta);
+		}
 	}
 }
