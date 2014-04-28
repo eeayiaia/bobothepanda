@@ -203,7 +203,6 @@ public class CharacterModel {
 //		}
 		return bitmask;
 	}
-	
 	public void setNewX(int delta) {
 		Rectangle collisionHitbox;
 	//	Position nextPosition;
