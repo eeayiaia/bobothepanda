@@ -38,7 +38,7 @@ public class CharacterModel {
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		this.collision = collision;
 		characterState = CharacterState.IDLE;
-		//position.setY(position.getY()-100);
+		position.setY(position.getY()-100);
 	}
 	
 	/**
@@ -237,12 +237,9 @@ public class CharacterModel {
 		if(collisionHitbox != null && (collision.getObjectType().equals(ObjectType.TERRAIN) || collision.getObjectType().equals(ObjectType.KEY))){
 			characterState = CharacterState.IDLE;
 		} else{
-			position.setX(nextPosition.getX());
 			position.setY(nextPosition.getY());
 		}
-		
-		//TODO implement velocity and delta in some way
-		position.setY(position.getY()+ 0.1f);
+			position.setY(position.getY()+ 0.1f);
 		
 	}
 }
