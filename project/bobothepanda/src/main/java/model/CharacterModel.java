@@ -168,6 +168,10 @@ public class CharacterModel {
 		return (position.getY()== groundLevel_Y_Value);/* ? true : false;*/ 
 	}
 	
+	/**
+	 * Applies gravity to the character if it isn't touching the ground.
+	 * @param delta 1000millis divided by the frame rate.
+	 */
 	public void applyGravity(int delta){
 		if(!onGround()){
 			setNewY(delta);
