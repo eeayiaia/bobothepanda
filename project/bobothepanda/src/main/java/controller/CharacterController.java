@@ -30,6 +30,8 @@ public class CharacterController {
 			characterModel.jump(delta);
 			
 		}
+		
+		characterModel.applyGravity(delta);
 	}
 	
 }

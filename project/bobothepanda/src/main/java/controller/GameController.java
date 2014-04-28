@@ -40,11 +40,12 @@ public class GameController extends BasicGameState {
 	public void render(GameContainer container, StateBasedGame game, Graphics g)throws SlickException {
 		g.scale(MainClass.SCALE, MainClass.SCALE);
 		mapHandler.renderMap();
+		characterModel.update();
 	}
 
 	public void update(GameContainer container, StateBasedGame game, int delta)throws SlickException {
 		characterController.handleInput(container.getInput(), delta);
-		characterModel.update(delta);
+		
 	}
 
 	@Override
