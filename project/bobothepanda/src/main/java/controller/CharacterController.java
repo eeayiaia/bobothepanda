@@ -28,8 +28,8 @@ public class CharacterController {
 			characterModel.moveRight(delta);
 			lastTimeMoved = System.currentTimeMillis();
 			facingRight = true;
-		}else if(i.isKeyDown(Input.KEY_SPACE) && characterModel.onGround()){
-			characterModel.moveRight(delta);
+		}else if(i.isKeyDown(Input.KEY_SPACE)/* && characterModel.onGround()*/){
+			characterModel.jump(delta);
 			lastTimeMoved = System.currentTimeMillis();
 		}
 	}

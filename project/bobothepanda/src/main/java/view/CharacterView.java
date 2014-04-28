@@ -89,6 +89,8 @@ public class CharacterView implements PropertyChangeListener{
 		
 		}else if(evt.getPropertyName().equals("LEFT")){
 			drawSpriteLeft(x, y);
+		}else if(evt.getPropertyName().equals("JUMPING")){
+			drawSpriteLeft(x,y);
 		}
 	}
 }

@@ -34,6 +34,7 @@ public class CharacterModel {
 		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		this.collision = collision;
+	
 	}
 	
 	/**
@@ -115,7 +116,7 @@ public class CharacterModel {
 	private float velocity_Y = 0;
 	private float maxDownwardsVelocityY = 20;
 	private float accelaration_Y;
-	private float groundLevel_Y_Value = 416; //value at level 1 atm. 
+	private float groundLevel_Y_Value = 448; //value at level 1 atm. 416 + height?
 	
 	
 	/**
@@ -124,10 +125,15 @@ public class CharacterModel {
 	 * Character needs to be on the ground to jump.
 	 */	
 	public void jump(int delta){
+		System.out.println("In jump");
 		//needs to be on the ground to jump
 		if(onGround()){
+			System.out.println("In on ground");
 			velocity_Y = -20;
+			position.setY(position.getY() + velocity_Y * delta);
+
 			while(!onGround()){
+				System.out.println("In jump while");
 				if(velocity_Y < maxDownwardsVelocityY){
 					velocity_Y += gravity;
 				}else{
@@ -152,7 +158,7 @@ public class CharacterModel {
 	 * @return true if on ground level.
 	 */
 	public boolean onGround(){
-		return (position.getY()== groundLevel_Y_Value) ? true : false; 
+		return (position.getY()== groundLevel_Y_Value);/* ? true : false;*/ 
 	}
 	
 	/**
