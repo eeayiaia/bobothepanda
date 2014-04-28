@@ -59,13 +59,15 @@ public class CharacterModel {
 	/**
 	 * Updates the current character state.
 	 */
-	public void update(){
+	public void update(int delta){
 		if(lastTimedMoved + 150 >= System.currentTimeMillis()){
 			pcs.firePropertyChange(characterState.toString(), null, position);
 		
 		}else{
 			pcs.firePropertyChange(facing.toString(), null, position);
 		}
+		
+		applyGravity(delta);
 	}
 	
 	/**
@@ -167,9 +169,9 @@ public class CharacterModel {
 		return (position.getY()== groundLevel_Y_Value);/* ? true : false;*/ 
 	}
 	
-	public void applyGravity(){
+	public void applyGravity(int delta){
 		if(!onGround()){
-			setNewY(position.getY() + 0.1);
+			setNewY(delta);
 		}
 	}
 	
