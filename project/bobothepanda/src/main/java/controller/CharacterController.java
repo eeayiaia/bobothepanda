@@ -22,15 +22,13 @@ public class CharacterController {
 	private void handleKeyboardInput(Input i, int delta){
 		if(i.isKeyDown(Input.KEY_LEFT) && characterModel.getPosition().getX() > 0){
 			characterModel.moveLeft(delta);
-			lastTimeMoved = System.currentTimeMillis();
-			facingRight = false;
+
 		}else if(i.isKeyDown(Input.KEY_RIGHT) && characterModel.getPosition().getX() < 608){
 			characterModel.moveRight(delta);
-			lastTimeMoved = System.currentTimeMillis();
-			facingRight = true;
+			
 		}else if(i.isKeyDown(Input.KEY_SPACE)/* && characterModel.onGround()*/){
 			characterModel.jump(delta);
-			lastTimeMoved = System.currentTimeMillis();
+			
 		}
 	}
 	
