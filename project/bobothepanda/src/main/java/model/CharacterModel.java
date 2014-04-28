@@ -163,6 +163,12 @@ public class CharacterModel {
 		return (position.getY()== groundLevel_Y_Value);/* ? true : false;*/ 
 	}
 	
+	public void applyGravity(){
+		if(!onGround()){
+			setNewY(position.getY() + 0.1);
+		}
+	}
+	
 	/**
 	 * The current position of the character
 	 * @return The current position of the character as a Position object
