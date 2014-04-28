@@ -108,6 +108,8 @@ public class CharacterModel {
 			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.RIGHT;
 			lastTimedMoved = System.currentTimeMillis();
+			System.out.println(position.getX());
+			System.out.println(hitbox.getX());
 	}
 	
 	
@@ -209,5 +211,8 @@ public class CharacterModel {
 		} else {
 			position.setX(nextPosition.getX());
 		}
+	}
+	public void setNewY(int delta){
+		
 	}
 }
