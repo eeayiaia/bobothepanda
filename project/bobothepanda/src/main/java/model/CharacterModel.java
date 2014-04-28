@@ -119,12 +119,8 @@ public class CharacterModel {
 	
 	
 	
-	private float gravity = 2;
-	private float velocity_Y = 0;
-	private float maxDownwardsVelocityY = 20;
-	private float accelaration_Y;
-	private float groundLevel_Y_Value = 448; //value at level 1 atm. 416 + height?
-	
+	private float gravity = 0.005f;
+
 	
 	/**
 	 * Changes the velocity in the y direction of the character. 
@@ -136,27 +132,8 @@ public class CharacterModel {
 		//needs to be on the ground to jump
 		if(onGround()){
 			System.out.println("In on ground");
-			velocity_Y = -20;
-			position.setY(position.getY() + velocity_Y * delta);
-
-			while(!onGround()){
-				System.out.println("In jump while");
-				if(velocity_Y < maxDownwardsVelocityY){
-					velocity_Y += gravity;
-				}else{
-					velocity_Y = maxDownwardsVelocityY;
-				}
-				position.setY(position.getY() + velocity_Y * delta);
-				pcs.firePropertyChange(CharacterState.JUMPING.toString(), null, position);
-				
-			}
-			//when the ground is reached
-			velocity_Y = 0;
-			position.setY(position.getY() + velocity_Y * delta);
-			pcs.firePropertyChange(CharacterState.JUMPING.toString(), null, position);
-			//send property change
+			yVelocity = -4f;
 		}
-		//TODO set bobos hitbox
 	}
 	
 	
@@ -165,7 +142,15 @@ public class CharacterModel {
 	 * @return true if on ground level.
 	 */
 	public boolean onGround(){
-		return (position.getY()== groundLevel_Y_Value);/* ? true : false;*/ 
+		Rectangle collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
+				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
+		// if there is a collision the position remains the same and bobo stands still
+		if(collisionHitbox != null && (collision.getObjectType().equals(ObjectType.TERRAIN) || collision.getObjectType().equals(ObjectType.KEY))){
+			return true;
+		} else{
+			return false;
+		}		
+
 	}
 	
 	/**
@@ -173,9 +158,9 @@ public class CharacterModel {
 	 * @param delta 1000millis divided by the frame rate.
 	 */
 	public void applyGravity(int delta){
-		if(!onGround()){
+		/*if(!onGround()){*/
 			setNewY(delta);
-		}
+		/*}*/
 	}
 	
 	/**
@@ -234,14 +219,17 @@ public class CharacterModel {
 	 */
 	public void setNewY(int delta){
 		Rectangle collisionHitbox;
+		//Change velocity due to gravity
+		yVelocity += gravity * delta;
 	//	Position nextPosition;
-		nextPosition = new Position(position.getX(),position.getY()+yVelocity*delta);
+		nextPosition = new Position(position.getX(),position.getY()+yVelocity);
 		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
 		// if there is a collision the position remains the same and bobo stands still
 		if(collisionHitbox != null && (collision.getObjectType().equals(ObjectType.TERRAIN) || collision.getObjectType().equals(ObjectType.KEY))){
 			characterState = CharacterState.IDLE;
 		} else{
+			
 			position.setY(nextPosition.getY());
 		}		
 	}
