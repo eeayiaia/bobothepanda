@@ -8,7 +8,7 @@ import java.beans.PropertyChangeSupport;
 public class CharacterModel {
 	
 	private final float VELOCITY = 0.25f;
-	private float yVelocity = 0;
+	private float yVelocity = 0.15f;
 	private float xVelocity = 0;
 	private Position position;
 	private Position nextPosition;
@@ -222,7 +222,7 @@ public class CharacterModel {
 			if((direction == Rectangle2D.OUT_RIGHT)) {
 			} else if(direction == Rectangle2D.OUT_LEFT) {
 			} else {
-				position.setX(nextPosition.getX());
+			//	position.setX(nextPosition.getX());
 			}
 		} else {
 			position.setX(nextPosition.getX());
@@ -231,8 +231,14 @@ public class CharacterModel {
 	public void setNewY(int delta){
 		Rectangle collisionHitbox;
 	//	Position nextPosition;
-		if(characterState == CharacterState.JUMPING){
-			nextPosition = new Position(position.getX(),position.getY()+VELOCITY*delta);
+		nextPosition = new Position(position.getX(),position.getY()+yVelocity*delta);
+		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
+				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
+		if(collisionHitbox != null && (collision.getObjectType().equals(ObjectType.TERRAIN) || collision.getObjectType().equals(ObjectType.KEY))){
+			characterState = CharacterState.IDLE;
+		} else{
+			position.setX(nextPosition.getX());
+			position.setY(nextPosition.getY());
 		}
 		
 		//TODO implement velocity and delta in some way
