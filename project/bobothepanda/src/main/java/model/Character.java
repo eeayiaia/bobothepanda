@@ -21,7 +21,7 @@ public class Character {
 	private Facing facing;
 	private CharacterState characterState;
 	private long lastTimedMoved;
-	
+	private float gravity = 0.05f;
 	private Collision collision;
 
 	/**
@@ -38,7 +38,7 @@ public class Character {
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		this.collision = collision;
 		characterState = CharacterState.IDLE;
-		position.setY(position.getY()-100);
+		position.setY(position.getY());
 	}
 	
 	/**
@@ -119,7 +119,7 @@ public class Character {
 	
 	
 	
-	private float gravity = 0.005f;
+	
 
 	
 	/**
@@ -132,7 +132,7 @@ public class Character {
 		//needs to be on the ground to jump
 		if(onGround()){
 			System.out.println("In on ground");
-			yVelocity = -4f;
+			yVelocity = -15f;
 		}
 	}
 	
@@ -238,8 +238,8 @@ public class Character {
 	 */
 	private void setYVelocity(int delta){
 		Float nextYVelocity = yVelocity + gravity * delta;
-		if(nextYVelocity > 4f){
-			yVelocity = 4f;
+		if(nextYVelocity > 15f){
+			yVelocity = 15f;
 		}else{
 			yVelocity = nextYVelocity;
 		}
