@@ -5,7 +5,7 @@ import java.awt.geom.Rectangle2D;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class CharacterModel {
+public class Character {
 	
 	private final float VELOCITY = 0.25f;
 	private float yVelocity = 0.15f;
@@ -28,7 +28,7 @@ public class CharacterModel {
 	 * Sets the starting position and assigns PropertyChangeSupport to this class
 	 * @param position Starting position
 	 */
-	public CharacterModel(Position position, Collision collision){
+	public Character(Position position, Collision collision){
 		this.position = position;
 		facing = Facing.RIGHT;
 		isDead = false;

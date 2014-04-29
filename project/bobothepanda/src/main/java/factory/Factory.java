@@ -2,21 +2,21 @@ package factory;
 
 import org.newdawn.slick.SlickException;
 
-import model.CharacterModel;
+import model.Character;
 import model.Collision;
 import controller.CharacterController;
 import utilities.IMapHandler;
 import utilities.MapHandler;
 import view.CharacterView;
 import view.LevelView;
-import model.LevelModel;
+import model.Level;
 
 public class Factory {
 
-	private CharacterModel characterModel;
+	private Character character;
 	private CharacterController characterController;
 	private CharacterView characterView;
-	private LevelModel levelModel;
+	private Level level;
 	private LevelView levelView;
 	private IMapHandler mapHandler;
 	private Collision collision;
@@ -25,20 +25,20 @@ public class Factory {
 	public Factory(String levelName) throws SlickException{
 		mapHandler = new MapHandler();
 		collision = new Collision(mapHandler.getMapObjectList());
-		characterModel = new CharacterModel(mapHandler.getCharacterStartPosition(), collision);
+		character = new Character(mapHandler.getCharacterStartPosition(), collision);
 		characterView = new CharacterView();
-		characterModel.addPropertyChangeListener(characterView);
-		characterController = new CharacterController(characterModel);
+		character.addPropertyChangeListener(characterView);
+		characterController = new CharacterController(character);
 		
 		
-		levelModel = new LevelModel(mapHandler.getMapObjectList(), characterModel);
+		level = new Level(mapHandler.getMapObjectList(), character);
 		levelView = new LevelView();
 		//levelModel.addPropertyChangeListener(levelView);
 	}
 
 
-	public CharacterModel getCharacterModel() {
-		return characterModel;
+	public Character getCharacterModel() {
+		return character;
 	}
 
 
@@ -52,8 +52,8 @@ public class Factory {
 	}
 
 
-	public LevelModel getLevelModel() {
-		return levelModel;
+	public Level getLevelModel() {
+		return level;
 	}
 
 

@@ -5,16 +5,16 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
-public class LevelModel{
+public class Level{
 	
-	private CharacterModel playerCharacter;
+	private Character playerCharacter;
 	private ArrayList <IMapObject> objectList;
 	private IMapObject door;
 	private boolean keyPickedUp;
 	private PropertyChangeSupport pcs;
 	
 	
-	public LevelModel(ArrayList<IMapObject> objectList, CharacterModel playerCharacter){
+	public Level(ArrayList<IMapObject> objectList, Character playerCharacter){
 		this.playerCharacter = playerCharacter;
 		this.objectList = objectList;
 		for(IMapObject o: objectList){
@@ -41,7 +41,7 @@ public class LevelModel{
 		pcs.removePropertyChangeListener(listener);
 	}
 	
-	public void loadNext(LevelModel level){
+	public void loadNext(Level level){
 	}
 	
 }

@@ -2,8 +2,8 @@ package controller;
 
 import factory.Factory;
 import main.MainClass;
-import model.CharacterModel;
-import model.LevelModel;
+import model.Character;
+import model.Level;
 import utilities.MapHandler;
 
 
@@ -13,8 +13,8 @@ import org.newdawn.slick.state.StateBasedGame;
 
 
 public class GameController extends BasicGameState {
-	private LevelModel levelModel;
-	private	CharacterModel characterModel;
+	private Level level;
+	private	Character character;
 	private String firstLevel;
 	private CharacterController characterController;
 	private Factory factory;
@@ -32,15 +32,15 @@ public class GameController extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame game)throws SlickException {
 		factory  = new Factory(firstLevel);
 		characterController	 = factory.getCharacterController(); 
-		levelModel = factory.getLevelModel();
-		characterModel = factory.getCharacterModel();
+		level = factory.getLevelModel();
+		character = factory.getCharacterModel();
 		mapHandler = (MapHandler) factory.getMapHandler();
 	}
 
 	public void render(GameContainer container, StateBasedGame game, Graphics g)throws SlickException {
 		g.scale(MainClass.SCALE, MainClass.SCALE);
 		mapHandler.renderMap();
-		characterModel.update();
+		character.update();
 	}
 
 	public void update(GameContainer container, StateBasedGame game, int delta)throws SlickException {
