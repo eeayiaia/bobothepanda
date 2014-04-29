@@ -23,7 +23,7 @@ public class MapHandler implements IMapHandler {
 	private ArrayList<IMapObject> objectList;
 	private Position characterStartPosition;
 	
-	/*
+	/**
 	 * Test Constructor
 	 * Loads the map from tmx file. 
 	 */
@@ -31,7 +31,7 @@ public class MapHandler implements IMapHandler {
 		this("TestLevel");
 	}
 	
-	/*
+	/**
 	 * Loads a specified level from a .tmx file
 	 * @param levelName the name of the level
 	 */
@@ -41,16 +41,25 @@ public class MapHandler implements IMapHandler {
 		createObjectList();
 	}
 	
-	/*
+	/**
 	 * @return A list of objects located on the map
 	 */
 	public ArrayList<IMapObject> getMapObjectList() {
 		return objectList;
 	}
+	
+	/**
+	 * @return The starting position of the character.
+	 */
 	public Position getCharacterStartPosition() {
 		return characterStartPosition;
 	}
 	
+	/**
+	 * Assigns an object type based on input string.
+	 * @param type Type of object, String value
+	 * @return ObjectType enum.
+	 */
 	private ObjectType checkObjectType(String type) {
 		if(type.equals("Terrain")) {
 			return ObjectType.TERRAIN;
@@ -63,6 +72,9 @@ public class MapHandler implements IMapHandler {
 		}
 	}
 	
+	/**
+	 * Creates a list of all the MapObjects.
+	 */
 	private void createObjectList() {
 		int objects = map.getObjectCount(0);
 		
@@ -79,6 +91,9 @@ public class MapHandler implements IMapHandler {
 		}
 	}
 	
+	/**
+	 * Renders the current map.
+	 */
 	public void renderMap(){
 		map.render(0, 0);
 	}
