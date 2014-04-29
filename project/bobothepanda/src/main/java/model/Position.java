@@ -25,10 +25,16 @@ public class Position {
 		return y;
 	}
 	public void setX(float x) {
+		if (x < 0){
+			throw new IllegalArgumentException();
+		}
 		this.x = x;
 	}
 
 	public void setY(float y) {
+		if(y < 0){
+			throw new IllegalArgumentException();
+		}
 		this.y = y;
 	}
 	
