@@ -38,10 +38,7 @@ public class Character {
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		this.collision = collision;
 		characterState = CharacterState.IDLE;
-<<<<<<< HEAD
-=======
 		position.setY(position.getY());
->>>>>>> 14fa186f312bfe7fdbe5dc00a5ff77fde995e715
 	}
 	
 	/**
