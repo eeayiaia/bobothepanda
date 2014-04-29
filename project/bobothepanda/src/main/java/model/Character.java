@@ -38,7 +38,6 @@ public class Character {
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		this.collision = collision;
 		characterState = CharacterState.IDLE;
-		position.setY(position.getY()-100);
 	}
 	
 	/**
@@ -113,7 +112,6 @@ public class Character {
 			facing = Facing.RIGHT;
 			lastTimedMoved = System.currentTimeMillis();
 			xVelocity = (nextPosition.getX() - position.getX())/delta;
-			System.out.println(xVelocity);
 
 	}
 	
@@ -206,7 +204,7 @@ public class Character {
 			if((direction == Rectangle2D.OUT_RIGHT)) {
 			} else if(direction == Rectangle2D.OUT_LEFT) {
 			} else {
-			//	position.setX(nextPosition.getX());
+				//position.setX(nextPosition.getX());
 			}
 		} else {
 			position.setX(nextPosition.getX());
