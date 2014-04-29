@@ -15,7 +15,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class GameController extends BasicGameState {
 	private Level level;
 	private	Character character;
-	private String firstLevel;
+	private String currentLevel;
 	private CharacterController characterController;
 	private Factory factory;
 	private MapHandler mapHandler;
@@ -25,12 +25,12 @@ public class GameController extends BasicGameState {
 	 * Assigns the value of the firstLevel String variable.
 	 * @param firstLevel String label for the first level to be initiated.
 	 */
-	public GameController(String firstLevel){
-		this.firstLevel = firstLevel;
+	public GameController(String currentLevel){
+		this.currentLevel = currentLevel;
 	}
 	
 	public void init(GameContainer container, StateBasedGame game)throws SlickException {
-		factory  = new Factory(firstLevel);
+		factory  = new Factory(currentLevel);
 		characterController	 = factory.getCharacterController(); 
 		level = factory.getLevelModel();
 		character = factory.getCharacterModel();

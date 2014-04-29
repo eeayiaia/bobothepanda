@@ -35,7 +35,19 @@ public class MapHandler implements IMapHandler {
 	 * Loads a specified level from a .tmx file
 	 * @param levelName the name of the level
 	 */
-	public MapHandler(String levelName) throws SlickException {
+	public MapHandler(String levelName){
+		try{
+			loadLevel(levelName);
+		
+		}catch(SlickException e){
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	/**
+	 * Loads the specified level.
+	 */
+	public void loadLevel(String levelName) throws SlickException{
 		map = new TiledMap(mapLocation + levelName + ".tmx", tilesetLocation);
 		objectList = new ArrayList<IMapObject>();
 		createObjectList();
@@ -97,5 +109,4 @@ public class MapHandler implements IMapHandler {
 	public void renderMap(){
 		map.render(0, 0);
 	}
-	
 }
