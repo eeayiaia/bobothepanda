@@ -37,7 +37,6 @@ public class Character {
 		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		this.collision = collision;
-		characterState = CharacterState.IDLE;
 		position.setY(position.getY());
 	}
 	
@@ -46,7 +45,7 @@ public class Character {
 	 * MOVING_RIGHT, MOVING_LEFT, JUMP, RENDER
 	 */
 	public enum CharacterState{
-		MOVING_RIGHT, MOVING_LEFT, JUMPING, IDLE
+		MOVING_RIGHT, MOVING_LEFT, JUMPING
 	}
 	
 	/**
@@ -61,7 +60,7 @@ public class Character {
 	 * Updates the current character state.
 	 */
 	public void update(){
-		if(lastTimedMoved + 150 >= System.currentTimeMillis() && !characterState.equals(CharacterState.IDLE)){
+		if(lastTimedMoved + 150 >= System.currentTimeMillis()){
 			pcs.firePropertyChange(characterState.toString(), null, position);
 		
 		}else{
@@ -157,9 +156,10 @@ public class Character {
 	 * @param delta 1000millis divided by the frame rate.
 	 */
 	public void applyGravity(int delta){
-		/*if(!onGround()){*/
+		//if(!onGround()){
 			setNewY(delta);
-		/*}*/
+		//}	
+			
 	}
 	
 	/**
@@ -201,7 +201,6 @@ public class Character {
 		}
 		if(collisionHitbox != null && ((collision.getObjectType() == ObjectType.TERRAIN) || (collision.getObjectType() == ObjectType.KEY))){
 			int direction = hitbox.outcode(collisionHitbox.getX(),collisionHitbox.getY());
-			characterState = CharacterState.IDLE;
 			if((direction == Rectangle2D.OUT_RIGHT)) {
 			} else if(direction == Rectangle2D.OUT_LEFT) {
 			} else {
@@ -224,12 +223,9 @@ public class Character {
 		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
 		// if there is a collision the position remains the same and bobo stands still
-		if(collisionHitbox != null && (collision.getObjectType().equals(ObjectType.TERRAIN) || collision.getObjectType().equals(ObjectType.KEY))){
-			characterState = CharacterState.IDLE;
-		} else{
-			
+		if(collisionHitbox == null) {//&& (collision.getObjectType().equals(ObjectType.TERRAIN) || collision.getObjectType().equals(ObjectType.KEY))){
 			position.setY(nextPosition.getY());
-		}		
+		} 
 	}
 	/**
 	 * Changes the velocity. Makes sure that the velocity does not exceed a certain amount.
