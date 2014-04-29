@@ -6,32 +6,32 @@ import org.junit.Test;
 
 public class CharacterModelTest {
 
-	@Test
+//	@Test
 	public void testCharacterModel() {
 		fail("Not yet implemented");
 	}
 
-	@Test
+	//@Test
 	public void testAddPropertyChangeListener() {
 		fail("Not yet implemented");
 	}
 
-	@Test
+	//@Test
 	public void testRemovePropertyChangeListener() {
 		fail("Not yet implemented");
 	}
 
-	@Test
+	//@Test
 	public void testMoveLeft() {
 		fail("Not yet implemented");
 	}
 
-	@Test
+	//@Test
 	public void testMoveRight() {
 		fail("Not yet implemented");
 	}
 
-	@Test
+	//@Test
 	public void testGetPosition() {
 		fail("Not yet implemented");
 	}
