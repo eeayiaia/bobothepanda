@@ -37,7 +37,7 @@ public class Character {
 		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		this.collision = collision;
-		position.setY(position.getY());
+		//nextPosition = new Position(position.getX(),position.getY()+yVelocity);
 	}
 	
 	/**
@@ -112,14 +112,8 @@ public class Character {
 			facing = Facing.RIGHT;
 			lastTimedMoved = System.currentTimeMillis();
 			xVelocity = (nextPosition.getX() - position.getX())/delta;
-
 	}
-	
-	
-	
-	
 
-	
 	/**
 	 * Changes the velocity in the y direction of the character. 
 	 * Goes upwards, and then down, until the ground is reached
@@ -134,7 +128,6 @@ public class Character {
 		}
 	}
 	
-	
 	/**
 	 * Checks if the character is on the ground
 	 * @return true if on ground level.
@@ -148,7 +141,6 @@ public class Character {
 		} else{
 			return false;
 		}		
-
 	}
 	
 	/**
@@ -158,8 +150,7 @@ public class Character {
 	public void applyGravity(int delta){
 		//if(!onGround()){
 			setNewY(delta);
-		//}	
-			
+		//}		
 	}
 	
 	/**
