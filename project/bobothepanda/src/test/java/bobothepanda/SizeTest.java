@@ -6,10 +6,11 @@ package bobothepanda;
 import static org.junit.Assert.*;
 import model.Size;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class SizeTest {
+public class SizeTest extends Assert {
 	private Size size;
 
 	@Before
@@ -19,17 +20,17 @@ public class SizeTest {
 
 	@Test
 	public void testGetWidth() {
-		assertTrue(size.getWidth() == 10f);
+		assertEquals(size.getWidth(), 10f, 0);
 	}
 
 	@Test
 	public void testGetHeight() {
-		assertTrue(size.getHeight() == 9.5f);
+		assertEquals(size.getHeight(), 9.5f, 0);
 	}
 
 	@Test
 	public void testGetArea() {
-		assertTrue(size.getArea() == (size.getHeight()*size.getWidth()));
+		assertEquals(size.getArea(), size.getHeight()*size.getWidth(), 0);
 	}
 
 }

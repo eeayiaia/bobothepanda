@@ -9,10 +9,11 @@ import model.ObjectType;
 import model.Position;
 import model.Size;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MapObjectTest {
+public class MapObjectTest extends Assert{
 	private MapObject mapObject;
 
 	@Before
@@ -32,7 +33,7 @@ public class MapObjectTest {
 
 	@Test
 	public void testGetObjectType() {
-		assertTrue(mapObject.getObjectType().equals(ObjectType.TERRAIN));
+		assertTrue(mapObject.getObjectType() == (ObjectType.TERRAIN));
 	}
 
 	@Test
@@ -43,7 +44,7 @@ public class MapObjectTest {
 	@Test
 	public void testSetObjectType() {
 		mapObject.setObjectType(ObjectType.KEY);
-		assertTrue(mapObject.getObjectType().equals(ObjectType.KEY));
+		assertTrue(mapObject.getObjectType() == (ObjectType.KEY));
 	}
 
 }

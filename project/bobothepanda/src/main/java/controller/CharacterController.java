@@ -26,7 +26,8 @@ public class CharacterController {
 		}else if(i.isKeyDown(Input.KEY_RIGHT) && character.getPosition().getX() < 608){
 			character.moveRight(delta);
 			
-		}else if(i.isKeyPressed(Input.KEY_SPACE)/* && characterModel.onGround()*/){
+		}
+		if(i.isKeyPressed(Input.KEY_SPACE)/* && characterModel.onGround()*/){
 			character.jump(delta);
 			
 		}
