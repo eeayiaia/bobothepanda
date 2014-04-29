@@ -19,6 +19,7 @@ public class MapObject implements IMapObject {
 		this.type = type;
 		hitbox = new Rectangle((int)Math.round(position.getX()), (int)Math.round(position.getY()), 
 								(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
+
 	}
 
 	public Position getPosition() {
