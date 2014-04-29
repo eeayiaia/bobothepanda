@@ -9,8 +9,8 @@ public class Size {
 	public float height;
 	
 	public Size(float width, float height) {
-		this.width = width;
-		this.height = height;
+		this.width = Math.abs(width);
+		this.height = Math.abs(height);
 	}
 	
 	public float getWidth() {
