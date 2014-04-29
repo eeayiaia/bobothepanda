@@ -219,7 +219,7 @@ public class CharacterModel {
 	public void setNewY(int delta){
 		Rectangle collisionHitbox;
 		//Change velocity due to gravity
-		yVelocity += gravity * delta;
+		setYVelocity(delta);
 	//	Position nextPosition;
 		nextPosition = new Position(position.getX(),position.getY()+yVelocity);
 		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
@@ -231,5 +231,17 @@ public class CharacterModel {
 			
 			position.setY(nextPosition.getY());
 		}		
+	}
+	/**
+	 * Changes the velocity. Makes sure that the velocity does not exceed a certain amount.
+	 * @param delta
+	 */
+	private void setYVelocity(int delta){
+		Float nextYVelocity = yVelocity + gravity * delta;
+		if(nextYVelocity > 4f){
+			yVelocity = 4f;
+		}else{
+			yVelocity = nextYVelocity;
+		}
 	}
 }
