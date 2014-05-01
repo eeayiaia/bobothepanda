@@ -207,8 +207,13 @@ public class Character {
 		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
 		// if there is a collision the position remains the same and bobo stands still
-		if(collisionHitbox != null && (collision.getObjectType().equals(ObjectType.TERRAIN) || collision.getObjectType().equals(ObjectType.KEY))){
-			
+		if(collisionHitbox != null && (collision.getObjectType().equals(ObjectType.TERRAIN))){
+			if(yVelocity < 0) {
+				position.setY((float)(collisionHitbox.getY() + collisionHitbox.getHeight() + 1));
+				yVelocity = 0;
+			} else if(yVelocity > 0) {
+				position.setY((float)(collisionHitbox.getY() - HEIGHT - 1));
+			}
 		} else {
 			position.setY(nextPosition.getY());
 		}
