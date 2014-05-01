@@ -183,11 +183,11 @@ public class Character {
 		if(collisionHitbox != null && ((collision.getObjectType().equals(ObjectType.TERRAIN)))){	
 			if(characterState.equals(CharacterState.MOVING_RIGHT)) {
 				if((nextPosition.getX() + WIDTH) >= (float)collisionHitbox.getX()) {
-					position.setX((float)collisionHitbox.getX() - WIDTH - 1);
+					position.setX((float)collisionHitbox.getX() - WIDTH);
 				}
 			}else if(characterState.equals(CharacterState.MOVING_LEFT)) {
 				if(nextPosition.getX() <= (float)collisionHitbox.getX() + collisionHitbox.getWidth()) {
-					position.setX((float)(collisionHitbox.getX() + collisionHitbox.getWidth() + 1));
+					position.setX((float)(collisionHitbox.getX() + collisionHitbox.getWidth()));
 				}
 			}
 		} else {
@@ -209,10 +209,10 @@ public class Character {
 		// if there is a collision the position remains the same and bobo stands still
 		if(collisionHitbox != null && (collision.getObjectType().equals(ObjectType.TERRAIN))){
 			if(yVelocity < 0) {
-				position.setY((float)(collisionHitbox.getY() + collisionHitbox.getHeight() + 1));
+				position.setY((float)(collisionHitbox.getY() + collisionHitbox.getHeight()));
 				yVelocity = 0;
 			} else if(yVelocity > 0) {
-				position.setY((float)(collisionHitbox.getY() - HEIGHT - 1));
+				position.setY((float)(collisionHitbox.getY() - HEIGHT));
 			}
 		} else {
 			position.setY(nextPosition.getY());
