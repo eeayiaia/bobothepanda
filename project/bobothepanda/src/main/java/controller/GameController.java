@@ -19,7 +19,7 @@ public class GameController extends BasicGameState {
 	private CharacterController characterController;
 	private Factory factory;
 	private MapHandler mapHandler;
-	private float x = 128, y=448;
+	
 	
 	/**
 	 * Assigns the value of the firstLevel String variable.
