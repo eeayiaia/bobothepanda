@@ -31,6 +31,7 @@ public class Character {
 	public Character(Position position, Collision collision){
 		this.position = position;
 		facing = Facing.RIGHT;
+		characterState = CharacterState.IDLE;
 		isDead = false;
 		pcs = new PropertyChangeSupport(this);	
 		size = new Size(WIDTH,HEIGHT);
@@ -45,7 +46,7 @@ public class Character {
 	 * MOVING_RIGHT, MOVING_LEFT, JUMP, RENDER
 	 */
 	public enum CharacterState{
-		MOVING_RIGHT, MOVING_LEFT, JUMPING
+		MOVING_RIGHT, MOVING_LEFT, JUMPING, IDLE
 	}
 	
 	/**
