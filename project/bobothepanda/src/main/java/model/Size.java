@@ -29,9 +29,7 @@ public class Size {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Float.floatToIntBits(height);
-		result = prime * result + Float.floatToIntBits(width);
-		return result;
+		return prime * (prime * result + Float.floatToIntBits(height)) + Float.floatToIntBits(width);
 	}
 
 	@Override
