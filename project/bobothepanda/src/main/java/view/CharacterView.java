@@ -78,18 +78,18 @@ public class CharacterView implements PropertyChangeListener{
 		float x = ((Position)evt.getNewValue()).getX();
 		float y = ((Position)evt.getNewValue()).getY();
 		
-		if(evt.getPropertyName().equals("MOVING_LEFT")){
+		if("MOVING_LEFT".equals(evt.getPropertyName())){
 			drawMovingLeftAnimation(x,y);
 			
-		}else if(evt.getPropertyName().equals("MOVING_RIGHT")){
+		}else if("MOVING_RIGHT".equals(evt.getPropertyName())){
 			drawMovingRightAnimation(x,y);
 		
-		}else if(evt.getPropertyName().equals("RIGHT")){
+		}else if("RIGHT".equals(evt.getPropertyName())){
 			drawSpriteRight(x,y);
 		
-		}else if(evt.getPropertyName().equals("LEFT")){
+		}else if("LEFT".equals(evt.getPropertyName())){
 			drawSpriteLeft(x, y);
-		}else if(evt.getPropertyName().equals("JUMPING")){
+		}else if("JUMPING".equals(evt.getPropertyName())){
 			drawSpriteLeft(x,y);
 		}
 	}
