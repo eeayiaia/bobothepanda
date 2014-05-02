@@ -47,7 +47,7 @@ public class MapHandler implements IMapHandler {
 	/**
 	 * Loads the specified level.
 	 */
-	public void loadLevel(String levelName) throws SlickException{
+	public final void loadLevel(String levelName) throws SlickException{
 		map = new TiledMap(mapLocation + levelName + ".tmx", tilesetLocation);
 		objectList = new ArrayList<IMapObject>();
 		createObjectList();
