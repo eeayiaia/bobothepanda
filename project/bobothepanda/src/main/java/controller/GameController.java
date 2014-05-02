@@ -19,6 +19,7 @@ public class GameController extends BasicGameState {
 	private CharacterController characterController;
 	private Factory factory;
 	private MapHandler mapHandler;
+	private GameContainer container;
 	
 	
 	/**
@@ -30,6 +31,7 @@ public class GameController extends BasicGameState {
 	}
 	
 	public void init(GameContainer container, StateBasedGame game)throws SlickException {
+		this.container = container; 
 		factory  = new Factory(currentLevel);
 		characterController	 = factory.getCharacterController(); 
 		level = factory.getLevelModel();
@@ -56,7 +58,7 @@ public class GameController extends BasicGameState {
 	@Override
 	public void keyPressed(int key, char code){
 		if(key == Input.KEY_ESCAPE){
-			System.exit(0);
+			container.exit();
 		}
 	}
 }

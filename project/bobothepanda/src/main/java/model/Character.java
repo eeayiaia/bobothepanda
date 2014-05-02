@@ -12,7 +12,6 @@ public class Character {
 	private float xVelocity = 0;
 	private Position position;
 	private Position nextPosition;
-	private boolean isDead;
 	private PropertyChangeSupport pcs;
 	private final int HEIGHT = 30;
 	private final int WIDTH = 18;
@@ -32,7 +31,6 @@ public class Character {
 		this.position = position;
 		facing = Facing.RIGHT;
 		characterState = CharacterState.IDLE;
-		isDead = false;
 		pcs = new PropertyChangeSupport(this);	
 		size = new Size(WIDTH,HEIGHT);
 		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
@@ -166,13 +164,13 @@ public class Character {
 	}
 	
 	public void die() {
-		isDead = true;
+		//TODO: handle death
 	}
 	
 	public void setNewX(int delta) {
 		Rectangle collisionHitbox;
 	//	Position nextPosition;
-		if(characterState.equals(CharacterState.MOVING_RIGHT)) {
+		if(characterState==CharacterState.MOVING_RIGHT) {
 			nextPosition = new Position(position.getX()+VELOCITY*delta, position.getY());
 			collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 					(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
@@ -181,12 +179,12 @@ public class Character {
 			collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 					(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
 		}
-		if(collisionHitbox != null && ((collision.getObjectType().equals(ObjectType.TERRAIN)))){	
-			if(characterState.equals(CharacterState.MOVING_RIGHT)) {
+		if(collisionHitbox != null && ((collision.getObjectType()==ObjectType.TERRAIN))){	
+			if(characterState==CharacterState.MOVING_RIGHT) {
 				if((nextPosition.getX() + WIDTH) >= (float)collisionHitbox.getX()) {
 					position.setX((float)collisionHitbox.getX() - WIDTH);
 				}
-			}else if(characterState.equals(CharacterState.MOVING_LEFT)) {
+			}else if(characterState==CharacterState.MOVING_LEFT) {
 				if(nextPosition.getX() <= (float)collisionHitbox.getX() + collisionHitbox.getWidth()) {
 					position.setX((float)(collisionHitbox.getX() + collisionHitbox.getWidth()));
 				}
@@ -208,7 +206,7 @@ public class Character {
 		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
 		// if there is a collision the position remains the same and bobo stands still
-		if(collisionHitbox != null && (collision.getObjectType().equals(ObjectType.TERRAIN))){
+		if(collisionHitbox != null && (collision.getObjectType()==ObjectType.TERRAIN)){
 			if(yVelocity < 0) {
 				position.setY((float)(collisionHitbox.getY() + collisionHitbox.getHeight()));
 				yVelocity = 0;
