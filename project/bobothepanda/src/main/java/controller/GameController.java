@@ -37,26 +37,17 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	}
 	
 	public void init(GameContainer container, StateBasedGame game)throws SlickException {
-		/*
-		this.container = container; 
-		factory  = new Factory(currentLevel);
-		characterController	 = factory.getCharacterController(); 
-		level = factory.getLevelModel();
-		level.addPropertyChangeListener(this);
-		character = factory.getCharacterModel();
-		character.addPropertyChangeListener(level);
-		mapHandler = (MapHandler) factory.getMapHandler();
-		*/
-		
 		this.container = container;
 		mapHandler = new MapHandler();
 		collision = new Collision(mapHandler.getMapObjectList());
+		
 		character = new Character(mapHandler.getCharacterStartPosition(), collision);
 		characterView = new CharacterView();
 		character.addPropertyChangeListener(characterView);
+		level = new Level(mapHandler.getMapObjectList(), character);
 		character.addPropertyChangeListener(level);
 		characterController = new CharacterController(character);
-		level = new Level(mapHandler.getMapObjectList(), character);
+		
 		//level.addPropertyChangeListener(this);
 		//levelView = new LevelView();
 	}
