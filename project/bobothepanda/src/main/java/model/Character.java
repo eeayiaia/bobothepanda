@@ -37,7 +37,7 @@ public class Character {
 		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		this.collision = collision;
-		//nextPosition = new Position(position.getX(),position.getY()+yVelocity);
+		nextPosition = new Position(position.getX(),position.getY()+yVelocity);
 	}
 	
 	/**
