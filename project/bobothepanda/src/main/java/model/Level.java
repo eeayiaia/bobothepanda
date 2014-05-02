@@ -16,6 +16,7 @@ public class Level implements PropertyChangeListener{
 	public Level(ArrayList<IMapObject> objectList, Character playerCharacter){
 		this.playerCharacter = playerCharacter;
 		this.objectList = objectList;
+		this.pcs = new PropertyChangeSupport(this);
 	}
 	public Rectangle collidedWith(Rectangle characterHitbox){
 		for(IMapObject o: objectList){
