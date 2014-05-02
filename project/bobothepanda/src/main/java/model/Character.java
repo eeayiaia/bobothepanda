@@ -1,7 +1,6 @@
 package model;
 
 import java.awt.Rectangle;
-import java.awt.geom.Rectangle2D;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
@@ -9,7 +8,6 @@ public class Character {
 	
 	private final float VELOCITY = 0.25f;
 	private float yVelocity = 0.15f;
-	private float xVelocity = 0;
 	private Position position;
 	private Position nextPosition;
 	private PropertyChangeSupport pcs;
@@ -110,7 +108,6 @@ public class Character {
 			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.RIGHT;
 			lastTimedMoved = System.currentTimeMillis();
-			xVelocity = (nextPosition.getX() - position.getX())/delta;
 	}
 
 	/**
