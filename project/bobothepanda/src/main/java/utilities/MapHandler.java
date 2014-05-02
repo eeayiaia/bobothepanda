@@ -73,11 +73,11 @@ public class MapHandler implements IMapHandler {
 	 * @return ObjectType enum.
 	 */
 	private ObjectType checkObjectType(String type) {
-		if(type.equals("Terrain")) {
+		if("Terrain".equals(type)) {
 			return ObjectType.TERRAIN;
-		} else if(type.equals("Lethal")) {
+		} else if("Lethal".equals(type)) {
 			return ObjectType.LETHAL;
-		} else if(type.equals("Key")) {
+		} else if("Key".equals(type)) {
 			return ObjectType.KEY;
 		} else {
 			return null;
