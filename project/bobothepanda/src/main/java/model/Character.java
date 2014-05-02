@@ -9,7 +9,6 @@ public class Character {
 	private final float VELOCITY = 0.25f;
 	private float yVelocity = 0.15f;
 	private Position position;
-	private Position nextPosition;
 	private PropertyChangeSupport pcs;
 	private final int HEIGHT = 30;
 	private final int WIDTH = 18;
@@ -34,7 +33,6 @@ public class Character {
 		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		this.collision = collision;
-		nextPosition = new Position(position.getX(),position.getY()+yVelocity);
 	}
 	
 	/**
@@ -129,6 +127,7 @@ public class Character {
 	 * @return true if on ground level.
 	 */
 	public boolean onGround(){
+		Position nextPosition = new Position(position.getX(),position.getY()+yVelocity);
 		Rectangle collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
 		// if there is a collision the position remains the same and bobo stands still
@@ -166,7 +165,7 @@ public class Character {
 	
 	public void setNewX(int delta) {
 		Rectangle collisionHitbox;
-	//	Position nextPosition;
+		Position nextPosition;
 		if(characterState==CharacterState.MOVING_RIGHT) {
 			nextPosition = new Position(position.getX()+VELOCITY*delta, position.getY());
 			collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
@@ -198,7 +197,7 @@ public class Character {
 		Rectangle collisionHitbox;
 		//Change velocity due to gravity
 		setYVelocity(delta);
-	//	Position nextPosition;
+		Position nextPosition;
 		nextPosition = new Position(position.getX(),position.getY()+yVelocity);
 		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
