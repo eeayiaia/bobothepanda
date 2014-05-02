@@ -17,16 +17,14 @@ import org.newdawn.slick.state.StateBasedGame;
 
 
 public class GameController extends BasicGameState implements PropertyChangeListener{
-	private Level level;
+	
 	private	Character character;
 	private String currentLevel;
 	private CharacterController characterController;
 	private MapHandler mapHandler;
 	private GameContainer container;
-	private Collision collision;
-	private CharacterView characterView;
 	//private LevelView levelView;
-	private int currentLevelNumber;
+//	private int currentLevelNumber;
 	
 	
 	/**
@@ -34,21 +32,18 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	 * @param firstLevel String label for the first level to be initiated.
 	 */
 	public GameController(){
-		currentLevelNumber = 1;
-		currentLevel = "level" + currentLevelNumber;
+//		currentLevelNumber = 1;
+		currentLevel = "level" + 1;
 	}
 	
 	public void init(GameContainer container, StateBasedGame game)throws SlickException {
 		this.container = container;
-		
-		
 		mapHandler = new MapHandler(currentLevel);
-		collision = new Collision(mapHandler.getMapObjectList());
+		Collision collision = new Collision(mapHandler.getMapObjectList());
 		
 		character = new Character(mapHandler.getCharacterStartPosition(), collision);
-		characterView = new CharacterView();
-		character.addPropertyChangeListener(characterView);
-		level = new Level(mapHandler.getMapObjectList(), character);
+		character.addPropertyChangeListener(new CharacterView());
+		Level level = new Level(mapHandler.getMapObjectList(), character);
 		character.addPropertyChangeListener(level);
 		characterController = new CharacterController(character);
 		
