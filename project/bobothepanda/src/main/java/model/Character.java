@@ -13,7 +13,7 @@ public class Character {
 	private final static int HEIGHT = 30;
 	private final static int WIDTH = 18;
 	private final Size size;
-//	private Rectangle hitbox;
+	private Rectangle hitbox;
 	private Facing facing;
 	private CharacterState characterState;
 	private long lastTimedMoved; 
@@ -29,8 +29,8 @@ public class Character {
 		characterState = CharacterState.IDLE;
 		pcs = new PropertyChangeSupport(this);	
 		size = new Size(WIDTH,HEIGHT);
-//		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
-//				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
+		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
+				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		this.collision = collision;
 	}
 	
@@ -88,7 +88,7 @@ public class Character {
 	public void moveLeft(int delta){
 			characterState = CharacterState.MOVING_LEFT;
 			setNewX(delta);
-//			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
+			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.LEFT;
 			lastTimedMoved = System.currentTimeMillis();
 	}
@@ -102,7 +102,7 @@ public class Character {
 	public void moveRight(int delta){
 			characterState = CharacterState.MOVING_RIGHT;
 			setNewX(delta);
-//			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
+			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.RIGHT;
 			lastTimedMoved = System.currentTimeMillis();
 	}
@@ -154,9 +154,9 @@ public class Character {
 	public Position getPosition(){
 		return position;
 	}
-//	public Rectangle getHitbox(){
-//		return hitbox;
-//	}
+	public Rectangle getHitbox(){
+		return hitbox;
+	}
 	
 	public void die() {
 		//TODO: handle death
@@ -166,27 +166,31 @@ public class Character {
 		Rectangle collisionHitbox;
 		Position nextPosition;
 		final float VELOCITY = 0.25f;
+		
 		if(characterState==CharacterState.MOVING_RIGHT) {
 			nextPosition = new Position(position.getX()+VELOCITY*delta, position.getY());
-			collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
-					(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
 		} else {
 			nextPosition = new Position(position.getX()-VELOCITY*delta, position.getY());
-			collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
-					(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
+		}
+		float nextPositionXValue = nextPosition.getX();
+		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPositionXValue), 
+				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
+		float collisionHitboxXValue = 0;
+		if(collisionHitbox != null){
+			collisionHitboxXValue = (float) collisionHitbox.getX();
 		}
 		if(collisionHitbox != null && ((collision.getObjectType()==ObjectType.TERRAIN))){	
 			if(characterState==CharacterState.MOVING_RIGHT) {
-				if((nextPosition.getX() + WIDTH) >= (float)collisionHitbox.getX()) {
-					position.setX((float)collisionHitbox.getX() - WIDTH);
+				if((nextPositionXValue + WIDTH) >= collisionHitboxXValue) {
+					position.setX(collisionHitboxXValue - WIDTH);
 				}
 			}else if(characterState==CharacterState.MOVING_LEFT) {
-				if(nextPosition.getX() <= (float)collisionHitbox.getX() + collisionHitbox.getWidth()) {
-					position.setX((float)(collisionHitbox.getX() + collisionHitbox.getWidth()));
+				if(nextPositionXValue <= collisionHitboxXValue + collisionHitbox.getWidth()) {
+					position.setX((float)(collisionHitboxXValue + collisionHitbox.getWidth()));
 				}
 			}
 		} else {
-			position.setX(nextPosition.getX());
+			position.setX(nextPositionXValue);
 		}
 	}
 	/**
