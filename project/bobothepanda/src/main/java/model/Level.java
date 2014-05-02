@@ -1,11 +1,12 @@
 package model;
 
 import java.awt.Rectangle;
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
-public class Level{
+public class Level implements PropertyChangeListener{
 	
 	private Character playerCharacter;
 	private ArrayList <IMapObject> objectList;
@@ -32,5 +33,9 @@ public class Level{
 	
 	public void removePropertyChangeListener(PropertyChangeListener listener){
 		pcs.removePropertyChangeListener(listener);
+	}
+	public void propertyChange(PropertyChangeEvent evt) {
+		// TODO Auto-generated method stub
+		
 	}
 }

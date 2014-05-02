@@ -1,25 +1,31 @@
 package controller;
 
-import factory.Factory;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 import main.MainClass;
 import model.Character;
+import model.Collision;
 import model.Level;
 import utilities.MapHandler;
-
+import view.CharacterView;
+import view.LevelView;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 
-public class GameController extends BasicGameState {
+public class GameController extends BasicGameState implements PropertyChangeListener{
 	private Level level;
 	private	Character character;
 	private String currentLevel;
 	private CharacterController characterController;
-	private Factory factory;
 	private MapHandler mapHandler;
 	private GameContainer container;
+	private Collision collision;
+	private CharacterView characterView;
+	//private LevelView levelView;
 	
 	
 	/**
@@ -31,12 +37,28 @@ public class GameController extends BasicGameState {
 	}
 	
 	public void init(GameContainer container, StateBasedGame game)throws SlickException {
+		/*
 		this.container = container; 
 		factory  = new Factory(currentLevel);
 		characterController	 = factory.getCharacterController(); 
 		level = factory.getLevelModel();
+		level.addPropertyChangeListener(this);
 		character = factory.getCharacterModel();
+		character.addPropertyChangeListener(level);
 		mapHandler = (MapHandler) factory.getMapHandler();
+		*/
+		
+		this.container = container;
+		mapHandler = new MapHandler();
+		collision = new Collision(mapHandler.getMapObjectList());
+		character = new Character(mapHandler.getCharacterStartPosition(), collision);
+		characterView = new CharacterView();
+		character.addPropertyChangeListener(characterView);
+		character.addPropertyChangeListener(level);
+		characterController = new CharacterController(character);
+		level = new Level(mapHandler.getMapObjectList(), character);
+		//level.addPropertyChangeListener(this);
+		//levelView = new LevelView();
 	}
 
 	public void render(GameContainer container, StateBasedGame game, Graphics g)throws SlickException {
@@ -60,5 +82,10 @@ public class GameController extends BasicGameState {
 		if(key == Input.KEY_ESCAPE){
 			container.exit();
 		}
+	}
+
+	public void propertyChange(PropertyChangeEvent evt) {
+		
+		
 	}
 }
