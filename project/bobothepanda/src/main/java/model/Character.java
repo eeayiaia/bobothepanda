@@ -123,7 +123,7 @@ public class Character {
 		System.out.println("In jump");
 		//needs to be on the ground to jump
 		if(onGround()){
-			System.out.println("In on ground");
+			
 			yVelocity = -15f;
 		}
 	}

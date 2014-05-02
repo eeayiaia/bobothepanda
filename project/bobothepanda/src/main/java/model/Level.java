@@ -9,19 +9,12 @@ public class Level{
 	
 	private Character playerCharacter;
 	private ArrayList <IMapObject> objectList;
-	private IMapObject door;
-	private boolean keyPickedUp;
 	private PropertyChangeSupport pcs;
 	
 	
 	public Level(ArrayList<IMapObject> objectList, Character playerCharacter){
 		this.playerCharacter = playerCharacter;
 		this.objectList = objectList;
-		for(IMapObject o: objectList){
-			if(o.getObjectType().equals(ObjectType.DOOR)){
-				door = o;
-			}
-		}
 	}
 	public Rectangle collidedWith(Rectangle characterHitbox){
 		for(IMapObject o: objectList){
