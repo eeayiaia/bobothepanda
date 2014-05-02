@@ -185,8 +185,9 @@ public class Character {
 					position.setX(collisionHitboxXValue - WIDTH);
 				}
 			}else if(characterState==CharacterState.MOVING_LEFT) {
-				if(nextPositionXValue <= collisionHitboxXValue + collisionHitbox.getWidth()) {
-					position.setX((float)(collisionHitboxXValue + collisionHitbox.getWidth()));
+				double newX = collisionHitboxXValue + collisionHitbox.getWidth();
+				if(nextPositionXValue <= newX) {
+					position.setX((float)newX);
 				}
 			}
 		} else {
