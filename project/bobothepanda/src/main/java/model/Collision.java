@@ -31,6 +31,11 @@ public class Collision {
 	}
 	
 	public Position getObjectPosition() {
-		return currentObject.getPosition();
+		if(currentObject != null){
+			return currentObject.getPosition();
+		}else{
+			return null;
+		}
+		
 	}
 }
