@@ -28,7 +28,7 @@ public class MapHandler implements IMapHandler {
 	 * Loads the map from tmx file. 
 	 */
 	public MapHandler() throws SlickException {
-		this("level01");
+		this("level1");
 	}
 	
 	/**

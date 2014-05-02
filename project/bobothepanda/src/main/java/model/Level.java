@@ -33,8 +33,4 @@ public class Level{
 	public void removePropertyChangeListener(PropertyChangeListener listener){
 		pcs.removePropertyChangeListener(listener);
 	}
-	
-	public void loadNext(Level level){
-	}
-	
 }
