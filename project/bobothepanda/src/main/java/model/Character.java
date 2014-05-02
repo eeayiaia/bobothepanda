@@ -6,18 +6,17 @@ import java.beans.PropertyChangeSupport;
 
 public class Character {
 	
-	private final float VELOCITY = 0.25f;
+	
 	private float yVelocity = 0.15f;
 	private Position position;
 	private PropertyChangeSupport pcs;
-	private final int HEIGHT = 30;
-	private final int WIDTH = 18;
+	private final static int HEIGHT = 30;
+	private final static int WIDTH = 18;
 	private final Size size;
-	private Rectangle hitbox;
+//	private Rectangle hitbox;
 	private Facing facing;
 	private CharacterState characterState;
-	private long lastTimedMoved;
-	private float gravity = 0.05f;
+	private long lastTimedMoved; 
 	private Collision collision;
 
 	/**
@@ -30,8 +29,8 @@ public class Character {
 		characterState = CharacterState.IDLE;
 		pcs = new PropertyChangeSupport(this);	
 		size = new Size(WIDTH,HEIGHT);
-		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
-				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
+//		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
+//				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		this.collision = collision;
 	}
 	
@@ -89,7 +88,7 @@ public class Character {
 	public void moveLeft(int delta){
 			characterState = CharacterState.MOVING_LEFT;
 			setNewX(delta);
-			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
+//			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.LEFT;
 			lastTimedMoved = System.currentTimeMillis();
 	}
@@ -103,7 +102,7 @@ public class Character {
 	public void moveRight(int delta){
 			characterState = CharacterState.MOVING_RIGHT;
 			setNewX(delta);
-			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
+//			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.RIGHT;
 			lastTimedMoved = System.currentTimeMillis();
 	}
@@ -129,9 +128,9 @@ public class Character {
 	public boolean onGround(){
 		Position nextPosition = new Position(position.getX(),position.getY()+yVelocity);
 		Rectangle collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
-				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
+				(int)Math.round(nextPosition.getY()), (int)size.getWidth(), (int)size.getHeight()));
 		// if there is a collision the position remains the same and bobo stands still
-		if(collisionHitbox != null && (collision.getObjectType().equals(ObjectType.TERRAIN) || collision.getObjectType().equals(ObjectType.KEY))){
+		if(collisionHitbox != null && (collision.getObjectType()==ObjectType.TERRAIN)){
 			return true;
 		} else{
 			return false;
@@ -155,9 +154,9 @@ public class Character {
 	public Position getPosition(){
 		return position;
 	}
-	public Rectangle getHitbox(){
-		return hitbox;
-	}
+//	public Rectangle getHitbox(){
+//		return hitbox;
+//	}
 	
 	public void die() {
 		//TODO: handle death
@@ -166,6 +165,7 @@ public class Character {
 	public void setNewX(int delta) {
 		Rectangle collisionHitbox;
 		Position nextPosition;
+		final float VELOCITY = 0.25f;
 		if(characterState==CharacterState.MOVING_RIGHT) {
 			nextPosition = new Position(position.getX()+VELOCITY*delta, position.getY());
 			collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
@@ -218,6 +218,7 @@ public class Character {
 	 * @param delta
 	 */
 	private void setYVelocity(int delta){
+		float gravity = 0.05f;
 		Float nextYVelocity = yVelocity + gravity * delta;
 		if(nextYVelocity > 15f){
 			yVelocity = 15f;
