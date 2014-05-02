@@ -26,19 +26,23 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private Collision collision;
 	private CharacterView characterView;
 	//private LevelView levelView;
+	private int currentLevelNumber;
 	
 	
 	/**
 	 * Assigns the value of the firstLevel String variable.
 	 * @param firstLevel String label for the first level to be initiated.
 	 */
-	public GameController(String currentLevel){
-		this.currentLevel = currentLevel;
+	public GameController(){
+		currentLevelNumber = 1;
+		currentLevel = "level" + currentLevelNumber;
 	}
 	
 	public void init(GameContainer container, StateBasedGame game)throws SlickException {
 		this.container = container;
-		mapHandler = new MapHandler();
+		
+		
+		mapHandler = new MapHandler(currentLevel);
 		collision = new Collision(mapHandler.getMapObjectList());
 		
 		character = new Character(mapHandler.getCharacterStartPosition(), collision);

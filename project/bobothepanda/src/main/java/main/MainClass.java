@@ -32,7 +32,7 @@ public class MainClass extends StateBasedGame{
 	}
 	
 	public void initStatesList(GameContainer gc) throws SlickException{
-		addState(new GameController("level_0"));
+		addState(new GameController());
 		this.enterState(0);
 	}
 	
