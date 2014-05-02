@@ -13,11 +13,6 @@ public class CharacterView implements PropertyChangeListener{
 
 	protected Image spriteRight;
 	private Image spriteLeft;
-	private Image [] boboRightAnimation = {new Image("/data/Bobo-01.png"), new Image("/data/BoboRightLeg-01.png"),
-	                                  new Image("/data/Bobo-01.png"), new Image("/data/BoboLeftLeg-01.png")};
-	private Image [] boboLeftAnimation = {new Image("/data/Bobo-01.png").getFlippedCopy(true, false), new Image("/data/BoboRightLeg-01.png").getFlippedCopy(true, false),
-            new Image("/data/Bobo-01.png").getFlippedCopy(true, false), new Image("/data/BoboLeftLeg-01.png").getFlippedCopy(true, false)};
-	
 	private Animation movingRightAnimation;
 	private Animation movingLeftAnimation;
 		
@@ -26,6 +21,11 @@ public class CharacterView implements PropertyChangeListener{
 	 * @throws SlickException
 	 */
 	public CharacterView() throws SlickException{
+		Image [] boboRightAnimation = {new Image("/data/Bobo-01.png"), new Image("/data/BoboRightLeg-01.png"),
+                new Image("/data/Bobo-01.png"), new Image("/data/BoboLeftLeg-01.png")};
+		Image [] boboLeftAnimation = {new Image("/data/Bobo-01.png").getFlippedCopy(true, false), new Image("/data/BoboRightLeg-01.png").getFlippedCopy(true, false),
+	            new Image("/data/Bobo-01.png").getFlippedCopy(true, false), new Image("/data/BoboLeftLeg-01.png").getFlippedCopy(true, false)};
+		
 		spriteRight = new Image("/data/Bobo-01.png");
 		spriteLeft = new Image("/data/Bobo-01.png").getFlippedCopy(true, false);
 		movingRightAnimation = new Animation(boboRightAnimation, 125);
