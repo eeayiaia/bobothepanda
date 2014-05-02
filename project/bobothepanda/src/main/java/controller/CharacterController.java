@@ -3,13 +3,11 @@ package controller;
 import org.newdawn.slick.Input;
 
 import model.Character;
-import view.CharacterView;
+
 
 public class CharacterController {
 	
 	private Character character;
-	private long lastTimeMoved;
-	private boolean facingRight = true;
 	
 	public CharacterController(Character character){
 		
