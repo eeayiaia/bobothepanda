@@ -32,5 +32,6 @@
   <object type="Lethal" x="128" y="486" width="96" height="26"/>
   <object type="Door" x="576" y="416" width="32" height="64"/>
   <object type="Startpos" x="32" y="66" width="18" height="30"/>
+  <object type="Terrain" x="0" y="0" width="1" height="640"/>
  </objectgroup>
 </map>

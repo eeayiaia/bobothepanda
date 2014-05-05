@@ -36,11 +36,6 @@ public class Level implements PropertyChangeListener{
 		pcs.removePropertyChangeListener(listener);
 	}
 	public void propertyChange(PropertyChangeEvent evt) {
-		System.out.println("changing level...");
 		
-		if("loadNextLevel".equals(evt.getPropertyName())){
-			System.out.println("changing level...");
-			pcs.firePropertyChange("loadNewLevel", null, null);
-		}
 	}
 }
