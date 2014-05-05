@@ -79,6 +79,8 @@ public class MapHandler implements IMapHandler {
 			return ObjectType.LETHAL;
 		} else if("Key".equals(type)) {
 			return ObjectType.KEY;
+		} else if("Door".equals(type)){
+			return ObjectType.DOOR;
 		} else {
 			return null;
 		}

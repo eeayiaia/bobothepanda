@@ -129,7 +129,7 @@ public class Character {
 		Rectangle collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 				(int)Math.round(nextPosition.getY()), (int)size.getWidth(), (int)size.getHeight()));
 		// if there is a collision the position remains the same and bobo stands still
-		if(collisionHitbox != null && (collision.getObjectType()==ObjectType.TERRAIN)){
+		if(collisionHitbox != null && ((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR))){
 			return true;
 		} else{
 			return false;
@@ -178,7 +178,7 @@ public class Character {
 		if(collisionHitbox != null){
 			collisionHitboxXValue = (float) collisionHitbox.getX();
 		}
-		if(collisionHitbox != null && ((collision.getObjectType()==ObjectType.TERRAIN))){	
+		if(collisionHitbox != null && ((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR))){	
 			if(characterState==CharacterState.MOVING_RIGHT) {
 				if((nextPositionXValue + WIDTH) >= collisionHitboxXValue) {
 					position.setX(collisionHitboxXValue - WIDTH);
@@ -207,7 +207,7 @@ public class Character {
 		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
 		// if there is a collision the position remains the same and bobo stands still
-		if(collisionHitbox != null && (collision.getObjectType()==ObjectType.TERRAIN)){
+		if(collisionHitbox != null && ((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR))){
 			if(yVelocity < 0) {
 				position.setY((float)(collisionHitbox.getY() + collisionHitbox.getHeight()));
 				yVelocity = 0;
