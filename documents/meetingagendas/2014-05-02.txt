@@ -1,0 +1,72 @@
+﻿Meeting Agenda
+
+ Date: 2014-05-02
+
+ Facilitator: Victor Larsson
+
+ Participants: Elvira Jonsson, Sebastian Sandberg, Oscar Muhr
+
+1. Objectives (5 min) Resolve any issues preventing the team to 
+ continue (this should be possible to verify at next meeting, 
+ short clear description, use issues from project site). 
+
+
+- Still very little documentation
+- Still bugs in the code
+- More tests still needed
+- Only one map
+- Collision has to be separated from the Character class(for next iteration in the development process)
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+ etc. , see also 4 
+
+
+- Started to write tests
+- Created a more competent tmx file
+- Bug fixing is moving forward
+- Collision is now working as intended
+
+3. Discussion items (35 min) 
+
+ (a) How do we do...? 
+- It feels like we are back on track
+- No major issues preventing us from working on new features
+
+ (b) What to do...? 
+- Documentation, RAD and SDD
+- implement Death and nextlevel
+- Implement actions for collision with all types of objects
+- Create 1 more map
+- Walk and jump at the same time
+- More tests
+- Fix/Remove Factory
+
+
+4. Outcomes and assignments (5 min) 
+
+ (a) Everyone should…
+- Write documentation (RAD, SDD, javadoc)
+
+ (b) Oscar should... 
+- Create 1 more map
+- Fix all collisions
+
+ (c) Sebastian should... 
+- Keep the code clean from bugs
+- Walk and jump at the same time.
+
+
+  (d) Victor should…
+- Keep implementing nextLevel
+- Fix/remove factory
+
+
+  (e) Elvira should…
+- write more tests
+
+5. Wrap up 
+
+Next meeting? 
+
+
+Monday 5/5 10.00 M1212D
