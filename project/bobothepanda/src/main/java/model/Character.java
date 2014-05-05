@@ -36,7 +36,7 @@ public class Character {
 	
 	/**
 	 * The current state of the Character
-	 * MOVING_RIGHT, MOVING_LEFT, JUMP, RENDER
+	 * MOVING_RIGHT, MOVING_LEFT, JUMPING, IDLE
 	 */
 	public enum CharacterState{
 		MOVING_RIGHT, MOVING_LEFT, JUMPING, IDLE
@@ -113,7 +113,6 @@ public class Character {
 	 * Character needs to be on the ground to jump.
 	 */	
 	public void jump(int delta){
-		System.out.println("In jump");
 		//needs to be on the ground to jump
 		if(onGround()){
 			
@@ -190,7 +189,8 @@ public class Character {
 					position.setX((float)newX);
 				}
 			}
-		} else {
+		}
+		else {
 			position.setX(nextPositionXValue);
 		}
 	}

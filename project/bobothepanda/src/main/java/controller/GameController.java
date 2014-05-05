@@ -19,12 +19,12 @@ import org.newdawn.slick.state.StateBasedGame;
 public class GameController extends BasicGameState implements PropertyChangeListener{
 	
 	private	Character character;
-	private String currentLevel;
+	//private String currentLevel;
 	private CharacterController characterController;
 	private MapHandler mapHandler;
 	private GameContainer container;
 	//private LevelView levelView;
-//	private int currentLevelNumber;
+	private int currentLevelNumber;
 	
 	
 	/**
@@ -32,13 +32,12 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	 * @param firstLevel String label for the first level to be initiated.
 	 */
 	public GameController(){
-//		currentLevelNumber = 1;
-		currentLevel = "level" + 1;
+		currentLevelNumber = 1;
 	}
 	
 	public void init(GameContainer container, StateBasedGame game)throws SlickException {
 		this.container = container;
-		mapHandler = new MapHandler(currentLevel);
+		mapHandler = new MapHandler("level" + currentLevelNumber);
 		Collision collision = new Collision(mapHandler.getMapObjectList());
 		
 		character = new Character(mapHandler.getCharacterStartPosition(), collision);
@@ -47,7 +46,8 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		character.addPropertyChangeListener(level);
 		characterController = new CharacterController(character);
 		
-		//level.addPropertyChangeListener(this);
+		level.addPropertyChangeListener(this);
+		System.out.println("game.init");
 		//levelView = new LevelView();
 	}
 
@@ -75,7 +75,13 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	}
 
 	public void propertyChange(PropertyChangeEvent evt) {
-		
-		
+		if("loadNextLevel".equals(evt.getPropertyName())){
+			loadNextLevel();
+		}
+	}
+
+	public void loadNextLevel() {
+		currentLevelNumber++;
+		//mapHandler = new MapHandler("level" + currentLevelNumber);
 	}
 }
