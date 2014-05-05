@@ -1,0 +1,75 @@
+﻿Meeting Agenda
+
+ Date: 2014-05-05
+
+ Facilitator: Elvira Jonsson
+
+ Participants: Elvira Jonsson, Oscars Muhr, Victor Larsson, Sebastian Sandberg.
+
+1. Objectives (5 min) Resolve any issues preventing the team to
+ continue (this should be possible to verify at next meeting,
+ short clear description, use issues from project site).
+
+ - pmd violations 
+ - documentation
+
+
+
+2. Reports (15 min) From previous meetings, (un)solved issues,
+ etc. , see also 4
+
+
+Solved:
+ - A new map has been created
+ - Test files have been created
+ - All findbugs bugs have been resolved
+ - Factory has been removed from the code
+ - Walk and jump can now be done at the same time
+ -
+Unresolved:
+ Deadly collision
+ Key Collision
+ Documentation
+
+3. Discussion items (35 min)
+
+ (a) How do we do...?
+We need to expand our project.
+
+ (b) What to do...?
+Documentation
+Death
+Remaining Collisions
+Load next level
+pmd violations
+more tests
+
+
+
+4. Outcomes and assignments (5 min)
+
+ (a) All should...
+
+ (b) Elvira should....
+Remove pmd violations
+
+
+ (c) Oscar should…
+Collisions
+
+
+
+
+  (d) Victor should…
+          - Load Next Level
+  
+
+
+  (e) Sebastian should…
+        Tests!
+        
+
+5. Wrap up
+
+ (a) Next meeting?
+        Thursday 10.00
