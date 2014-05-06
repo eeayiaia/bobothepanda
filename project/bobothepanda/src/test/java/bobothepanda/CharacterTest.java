@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Character;
+import model.Character.CharacterState;
 import model.Collision;
 import model.IMapObject;
 import model.MapObject;
@@ -19,11 +20,10 @@ import org.junit.Test;
 public class CharacterTest extends Assert {
 	private Collision collision;
 	private Character character;
-	Position position;
+	Position position = new Position(3f,3f);
 	
 	@Before
 	public void setUp() throws Exception {
-		position = new Position(3f,3f);
 		IMapObject terrain = new MapObject(new Position(1f,1f), new Size(5f,5f), ObjectType.TERRAIN);
 		final List <IMapObject> list = new ArrayList <IMapObject>();
 		list.add(terrain);
@@ -54,4 +54,13 @@ public class CharacterTest extends Assert {
 		assertEquals(hitbox, character.getHitbox());
 
 	}
+	
+	@Test
+	public void testMoveRightwithCollision(){
+		Position oldPosition = character.getPosition();
+		character.moveRight(100);
+		assertEquals(oldPosition, character.getPosition());;
+	}
+	
+	
 }
