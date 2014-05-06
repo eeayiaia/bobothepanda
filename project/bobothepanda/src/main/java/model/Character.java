@@ -185,20 +185,23 @@ public class Character {
 			
 			if(collision.getObjectType() == ObjectType.KEY){
 				keyPickedUP = true;
-			}
-			//should be ObjectType.OPEN_DOOR
-			if(collision.getObjectType() == ObjectType.DOOR && keyPickedUP){
-				pcs.firePropertyChange("loadNewLevel", null, null);
-			}
-			
-			if(characterState==CharacterState.MOVING_RIGHT) {
-				if((nextPositionXValue + WIDTH) >= collisionHitboxXValue) {
-					position.setX(collisionHitboxXValue - WIDTH);
+				//possible to go right through the key
+				position.setX(nextPositionXValue);
+			}else{
+				//should be ObjectType.OPEN_DOOR
+				if(collision.getObjectType() == ObjectType.DOOR && keyPickedUP){
+					pcs.firePropertyChange("loadNewLevel", null, null);
 				}
-			}else if(characterState==CharacterState.MOVING_LEFT) {
-				double newX = collisionHitboxXValue + collisionHitbox.getWidth();
-				if(nextPositionXValue <= newX) {
-					position.setX((float)newX);
+				
+				if(characterState==CharacterState.MOVING_RIGHT) {
+					if((nextPositionXValue + WIDTH) >= collisionHitboxXValue) {
+						position.setX(collisionHitboxXValue - WIDTH);
+					}
+				}else if(characterState==CharacterState.MOVING_LEFT) {
+					double newX = collisionHitboxXValue + collisionHitbox.getWidth();
+					if(nextPositionXValue <= newX) {
+						position.setX((float)newX);
+					}
 				}
 			}
 		}
