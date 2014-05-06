@@ -1,5 +1,6 @@
 package bobothepanda;
 
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,5 +45,14 @@ public class CharacterTest extends Assert {
 	@Test
 	public void validateNotOnGround(){
 		assertFalse(new Character(new Position(8f, 8f), collision).onGround());
+	}
+	
+	@Test
+	public void testGetHitbox(){
+		Size size = new Size(18,30);
+		Rectangle hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
+				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
+		assertEquals(hitbox, character.getHitbox());
+
 	}
 }
