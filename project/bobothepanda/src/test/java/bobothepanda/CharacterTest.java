@@ -18,15 +18,14 @@ import org.junit.Test;
 
 public class CharacterTest extends Assert {
 	private Collision collision;
-	private IMapObject terrain;
-	private final List <IMapObject> list = new ArrayList <IMapObject>();
 	private Character character;
 	Position position;
 	
 	@Before
 	public void setUp() throws Exception {
 		position = new Position(3f,3f);
-		terrain = new MapObject(new Position(1f,1f), new Size(5f,5f), ObjectType.TERRAIN);
+		IMapObject terrain = new MapObject(new Position(1f,1f), new Size(5f,5f), ObjectType.TERRAIN);
+		final List <IMapObject> list = new ArrayList <IMapObject>();
 		list.add(terrain);
 		collision = new Collision(list);
 		character = new Character(position, collision);
