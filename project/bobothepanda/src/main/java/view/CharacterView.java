@@ -11,23 +11,24 @@ import org.newdawn.slick.SlickException;
 
 public class CharacterView implements PropertyChangeListener{
 
-	protected Image spriteRight;
-	private Image spriteLeft;
-	private Animation movingRightAnimation;
-	private Animation movingLeftAnimation;
+	private final Image spriteRight;
+	private final Image spriteLeft;
+	private final Animation movingRightAnimation;
+	private final Animation movingLeftAnimation;
+	private final static String SPRITE_RIGHT_IMAGE = "/data/Bobo-01.png";
 		
 	/**
 	 * Assigns sprites and animations.
 	 * @throws SlickException
 	 */
 	public CharacterView() throws SlickException{
-		Image [] boboRightAnimation = {new Image("/data/Bobo-01.png"), new Image("/data/BoboRightLeg-01.png"),
-                new Image("/data/Bobo-01.png"), new Image("/data/BoboLeftLeg-01.png")};
-		Image [] boboLeftAnimation = {new Image("/data/Bobo-01.png").getFlippedCopy(true, false), new Image("/data/BoboRightLeg-01.png").getFlippedCopy(true, false),
-	            new Image("/data/Bobo-01.png").getFlippedCopy(true, false), new Image("/data/BoboLeftLeg-01.png").getFlippedCopy(true, false)};
+		final Image [] boboRightAnimation = {new Image(SPRITE_RIGHT_IMAGE), new Image("/data/BoboRightLeg-01.png"),
+                new Image(SPRITE_RIGHT_IMAGE), new Image("/data/BoboLeftLeg-01.png")};
+		final Image [] boboLeftAnimation = {new Image(SPRITE_RIGHT_IMAGE).getFlippedCopy(true, false), new Image("/data/BoboRightLeg-01.png").getFlippedCopy(true, false),
+	            new Image(SPRITE_RIGHT_IMAGE).getFlippedCopy(true, false), new Image("/data/BoboLeftLeg-01.png").getFlippedCopy(true, false)};
 		
-		spriteRight = new Image("/data/Bobo-01.png");
-		spriteLeft = new Image("/data/Bobo-01.png").getFlippedCopy(true, false);
+		spriteRight = new Image(SPRITE_RIGHT_IMAGE);
+		spriteLeft = new Image(SPRITE_RIGHT_IMAGE).getFlippedCopy(true, false);
 		movingRightAnimation = new Animation(boboRightAnimation, 125);
 		movingLeftAnimation = new Animation(boboLeftAnimation, 125);
 		
@@ -79,14 +80,15 @@ public class CharacterView implements PropertyChangeListener{
 	 * Renders the character differently depending on what state
 	 * the character is in.
 	 */
+	@SuppressWarnings("PMD.DataflowAnomalyAnalysis")
 	public void propertyChange(PropertyChangeEvent evt) {
 		
-		Position pos = (Position) evt.getNewValue();
+		final Position pos = (Position) evt.getNewValue();
 		
 		if(pos != null){
 
-			float x = pos.getX();
-			float y = pos.getY();
+			final float x = pos.getX();
+			final float y = pos.getY();
 		
 			switch (Facing.valueOf(evt.getPropertyName())) {
 			case MOVING_LEFT:
