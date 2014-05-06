@@ -82,31 +82,35 @@ public class CharacterView implements PropertyChangeListener{
 	public void propertyChange(PropertyChangeEvent evt) {
 		
 		Position pos = (Position) evt.getNewValue();
-		float x = pos.getX();
-		float y = pos.getY();
 		
-		switch (Facing.valueOf(evt.getPropertyName())) {
-		case MOVING_LEFT:
-			drawMovingLeftAnimation(x,y);
-			break;
+		if(pos != null){
+
+			float x = pos.getX();
+			float y = pos.getY();
 		
-		case MOVING_RIGHT:
-			drawMovingRightAnimation(x,y);
-			break;
-		
-		case RIGHT: 
-			drawSpriteRight(x,y);
-			break;
+			switch (Facing.valueOf(evt.getPropertyName())) {
+			case MOVING_LEFT:
+				drawMovingLeftAnimation(x,y);
+				break;
 			
-		case LEFT:
-			drawSpriteLeft(x, y);
-			break;
+			case MOVING_RIGHT:
+				drawMovingRightAnimation(x,y);
+				break;
 			
-		case JUMPING:
-			break;
-			
-		default:
-			break;
+			case RIGHT: 
+				drawSpriteRight(x,y);
+				break;
+				
+			case LEFT:
+				drawSpriteLeft(x, y);
+				break;
+				
+			case JUMPING:
+				break;
+				
+			default:
+				break;
+			}
 		}
 	}
 }

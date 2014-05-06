@@ -182,8 +182,9 @@ public class Character {
 		}
 		if(collisionHitbox != null && ((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR))){	
 			
+			//should be ObjectType.OPEN_DOOR
 			if(collision.getObjectType() == ObjectType.DOOR){
-				pcs.firePropertyChange("loadNewLevel", true, false);
+				pcs.firePropertyChange("loadNewLevel", null, null);
 			}
 			
 			if(characterState==CharacterState.MOVING_RIGHT) {

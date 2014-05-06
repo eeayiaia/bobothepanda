@@ -75,7 +75,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	}
 
 	public void propertyChange(PropertyChangeEvent evt) {
-		if("loadNextLevel".equals(evt.getPropertyName())){
+		if("loadNewLevel".equals(evt.getPropertyName())){
 			System.out.println("in GameController");
 			//loadNextLevel();
 		}
