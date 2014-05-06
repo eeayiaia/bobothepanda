@@ -20,6 +20,7 @@ public class Character {
 	private CharacterState characterState;
 	private long lastTimedMoved; 
 	private final Collision collision;
+	private boolean keyPickedUP;
 
 	/**
 	 * Sets the starting position and assigns PropertyChangeSupport to this class
@@ -180,10 +181,13 @@ public class Character {
 		if(collisionHitbox != null){
 			collisionHitboxXValue = (float) collisionHitbox.getX();
 		}
-		if(collisionHitbox != null && ((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR))){	
+		if(collisionHitbox != null && ((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR) || (collision.getObjectType() == ObjectType.KEY))){	
 			
+			if(collision.getObjectType() == ObjectType.KEY){
+				keyPickedUP = true;
+			}
 			//should be ObjectType.OPEN_DOOR
-			if(collision.getObjectType() == ObjectType.DOOR){
+			if(collision.getObjectType() == ObjectType.DOOR && keyPickedUP){
 				pcs.firePropertyChange("loadNewLevel", null, null);
 			}
 			
