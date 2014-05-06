@@ -4,13 +4,13 @@
   <image source="../img/tilesets/GroundTiles.png" width="128" height="128"/>
  </tileset>
  <layer name="Tile Layer 1" width="20" height="20">
-  <data encoding="base64" compression="zlib">
-   eJzjYGBg4BjFo3gUj+JRPIpJxAAxiQyB
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+NgYGDgGMWjeBSP4lE8iknEAJ6zctZABgAA
   </data>
  </layer>
  <layer name="Tile Layer 2" width="20" height="20">
-  <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjALyAQsQM+OQY8KDcQE2KEYGnFCaFQ8mBfBSyTyQ35H9BNPLTqJ7YGbhcgu+cMSF8fmNWhgAFfsBUg==
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA2NgGAWjYBSMAvIBCxAz45BjwoNxATYoRgacUJoVDyYF8FLJPJDfkf0E08tOontgZuFyC75wxIXx+Y1aGACUyNxQQAYAAA==
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="20" height="20">
