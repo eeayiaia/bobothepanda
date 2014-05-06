@@ -4,7 +4,7 @@ package utilities;
  * @author Oscar Muhr
  */
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.newdawn.slick.SlickException;
 
@@ -13,9 +13,9 @@ import model.Position;
 
 public interface IMapHandler {
 	
-	public ArrayList<IMapObject> getMapObjectList();
+	List<IMapObject> getMapObjectList();
 	
-	public Position getCharacterStartPosition();
+	Position getCharacterStartPosition();
 	
-	public void loadLevel(String levelName) throws SlickException;
+	void loadLevel(String levelName) throws SlickException;
 }
