@@ -4,22 +4,22 @@ import java.awt.Rectangle;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-@SuppressWarnings("PMD.CyclomaticComplexity")
+@SuppressWarnings("PMD")
 
 public class Character {
 	
 	
 	private float yVelocity = 0.15f;
-	private Position position;
-	private PropertyChangeSupport pcs;
+	private final Position position;
+	private final PropertyChangeSupport pcs;
 	private final static int HEIGHT = 30;
 	private final static int WIDTH = 18;
 	private final Size size;
-	private Rectangle hitbox;
+	private final Rectangle hitbox;
 	private Facing facing;
 	private CharacterState characterState;
 	private long lastTimedMoved; 
-	private Collision collision;
+	private final Collision collision;
 
 	/**
 	 * Sets the starting position and assigns PropertyChangeSupport to this class
@@ -127,8 +127,8 @@ public class Character {
 	 * @return true if on ground level.
 	 */
 	public boolean onGround(){
-		Position nextPosition = new Position(position.getX(),position.getY()+yVelocity);
-		Rectangle collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
+		final Position nextPosition = new Position(position.getX(),position.getY()+yVelocity);
+		final Rectangle collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 				(int)Math.round(nextPosition.getY()), (int)size.getWidth(), (int)size.getHeight()));
 		// if there is a collision the position remains the same and bobo stands still
 		if(collisionHitbox != null && ((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR))){

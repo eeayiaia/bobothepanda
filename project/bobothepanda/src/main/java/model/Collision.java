@@ -1,18 +1,18 @@
 package model;
 
 import java.awt.Rectangle;
-import java.util.ArrayList;
+import java.util.List;
 
 public class Collision {
-	ArrayList<IMapObject> objectList;
-	IMapObject currentObject;
+	private final List <IMapObject> objectList;
+	private IMapObject currentObject;
 	
-	public Collision(ArrayList<IMapObject> objectList) {
+	public Collision(List <IMapObject> objectList) {
 		this.objectList = objectList;
 	}
 	
 	public Rectangle collidedWith(Rectangle characterHitbox){
-		for(IMapObject o: objectList){
+		for(final IMapObject o: objectList){
 			//Checks if bobo has collided with another object
 			if(o.getHitbox().intersects(characterHitbox)){
 				currentObject = o;
@@ -25,17 +25,14 @@ public class Collision {
 	public ObjectType getObjectType() {
 		if(currentObject != null) {
 			return currentObject.getObjectType();
-		} else {
-			return null;
 		}
+		return null;
 	}
 	
 	public Position getObjectPosition() {
 		if(currentObject != null){
 			return currentObject.getPosition();
-		}else{
-			return null;
 		}
-		
+		return null;
 	}
 }
