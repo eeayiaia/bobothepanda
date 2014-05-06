@@ -72,7 +72,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			container.exit();
 		}
 	}
-
+	@SuppressWarnings("PMD.SystemPrintln")
 	public void propertyChange(PropertyChangeEvent evt) {
 		if("loadNewLevel".equals(evt.getPropertyName())){
 			System.out.println("in GameController");

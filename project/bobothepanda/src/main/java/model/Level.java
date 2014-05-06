@@ -5,7 +5,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.List;
-
+@SuppressWarnings("PMD")
 public class Level implements PropertyChangeListener{
 	
 //	private final Character playerCharacter;
