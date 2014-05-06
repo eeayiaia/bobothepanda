@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-@SuppressWarnings("PMD")
+@SuppressWarnings("PMD.CyclomaticComplexity")
 
 public class Character {
 	
