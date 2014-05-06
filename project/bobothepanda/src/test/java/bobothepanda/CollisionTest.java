@@ -1,9 +1,8 @@
 package bobothepanda;
 
-import static org.junit.Assert.*;
 
-import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.List;
 
 import model.Collision;
 import model.Character;
@@ -17,13 +16,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import utilities.MapHandler;
-
 public class CollisionTest extends Assert{
 	private Collision collision;
 	private Character character;
 	private IMapObject terrain;
-	private ArrayList <IMapObject> list = new ArrayList <IMapObject>();
+	private final List <IMapObject> list = new ArrayList <IMapObject>();
 
 	@Before
 	public void setUp() throws Exception {
@@ -41,11 +38,11 @@ public class CollisionTest extends Assert{
 	@Test
 	public void testGetObjectType() {
 		collision.collidedWith(character.getHitbox());
-		assertTrue(collision.getObjectType() == ObjectType.TERRAIN);
+		assertSame(collision.getObjectType(),ObjectType.TERRAIN);
 	}
 	@Test
 	public void testGetObjectTypeNull(){
-		assertTrue(collision.getObjectType() == null);
+		assertNull(collision.getObjectType());
 	}
 
 	@Test
