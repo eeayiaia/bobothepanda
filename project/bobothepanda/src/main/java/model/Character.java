@@ -4,6 +4,8 @@ import java.awt.Rectangle;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+@SuppressWarnings("PMD")
+
 public class Character {
 	
 	
@@ -179,6 +181,11 @@ public class Character {
 			collisionHitboxXValue = (float) collisionHitbox.getX();
 		}
 		if(collisionHitbox != null && ((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR))){	
+			
+			if(collision.getObjectType() == ObjectType.DOOR){
+				pcs.firePropertyChange("loadNewLevel", true, false);
+			}
+			
 			if(characterState==CharacterState.MOVING_RIGHT) {
 				if((nextPositionXValue + WIDTH) >= collisionHitboxXValue) {
 					position.setX(collisionHitboxXValue - WIDTH);

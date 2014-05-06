@@ -6,6 +6,8 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 
+import org.newdawn.slick.particles.effects.FireEmitter;
+
 public class Level implements PropertyChangeListener{
 	
 	private Character playerCharacter;
@@ -36,6 +38,9 @@ public class Level implements PropertyChangeListener{
 		pcs.removePropertyChangeListener(listener);
 	}
 	public void propertyChange(PropertyChangeEvent evt) {
-		
+		if("loadNewLevel".equals(evt.getPropertyName())){
+			System.out.println("in level");
+			pcs.firePropertyChange("loadNewLevel", true, false);
+		}
 	}
 }
