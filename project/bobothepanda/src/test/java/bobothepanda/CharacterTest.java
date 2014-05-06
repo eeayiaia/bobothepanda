@@ -55,12 +55,7 @@ public class CharacterTest extends Assert {
 
 	}
 	
-	@Test
-	public void testMoveRightwithCollision(){
-		Position oldPosition = character.getPosition();
-		character.moveRight(100);
-		assertEquals(oldPosition, character.getPosition());;
-	}
+	
 	
 	
 }
