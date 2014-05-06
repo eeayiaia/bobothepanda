@@ -8,13 +8,13 @@ import java.awt.Rectangle;
 
 public interface IMapObject {
 	
-	public Position getPosition();
+	Position getPosition();
 	
-	public Size getSize();
+	Size getSize();
 	
-	public ObjectType getObjectType();
+	ObjectType getObjectType();
 	
-	public Rectangle getHitbox();
+	Rectangle getHitbox();
 	
-	public void setObjectType(ObjectType type);
+	void setObjectType(ObjectType type);
 }
