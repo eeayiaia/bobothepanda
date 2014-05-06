@@ -5,6 +5,7 @@ package utilities;
  */
 
 import java.util.ArrayList;
+import java.util.List;
 
 import model.IMapObject;
 import model.MapObject;
@@ -18,16 +19,16 @@ import org.newdawn.slick.tiled.TiledMap;
 public class MapHandler implements IMapHandler {
 	
 	private TiledMap map;
-	private String mapLocation = "data/levels/";
-	private String tilesetLocation = "data/img";
-	private ArrayList<IMapObject> objectList;
+	private final static String MAP_LOCATION = "data/levels/";
+	private final static String TILESET_LOCATION = "data/img";
+	private List<IMapObject> objectList;
 	private Position characterStartPosition;
 	
 	/**
 	 * Test Constructor
 	 * Loads the map from tmx file. 
 	 */
-	public MapHandler() throws SlickException {
+	public MapHandler() {
 		this("level1");
 	}
 	
@@ -35,6 +36,7 @@ public class MapHandler implements IMapHandler {
 	 * Loads a specified level from a .tmx file
 	 * @param levelName the name of the level
 	 */
+	@SuppressWarnings("PMD.SystemPrintln")
 	public MapHandler(String levelName){
 		try{
 			loadLevel(levelName);
@@ -48,7 +50,7 @@ public class MapHandler implements IMapHandler {
 	 * Loads the specified level.
 	 */
 	public final void loadLevel(String levelName) throws SlickException{
-		map = new TiledMap(mapLocation + levelName + ".tmx", tilesetLocation);
+		map = new TiledMap(MAP_LOCATION + levelName + ".tmx", TILESET_LOCATION);
 		objectList = new ArrayList<IMapObject>();
 		createObjectList();
 	}
@@ -56,7 +58,7 @@ public class MapHandler implements IMapHandler {
 	/**
 	 * @return A list of objects located on the map
 	 */
-	public ArrayList<IMapObject> getMapObjectList() {
+	public List<IMapObject> getMapObjectList() {
 		return objectList;
 	}
 	
@@ -89,12 +91,13 @@ public class MapHandler implements IMapHandler {
 	/**
 	 * Creates a list of all the MapObjects.
 	 */
+	@SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
 	private void createObjectList() {
-		int objects = map.getObjectCount(0);
+		final int objects = map.getObjectCount(0);
 		
 		for(int i = 0; i < objects; i++) {
-			Position position = new Position((float)map.getObjectX(0,i), (float)map.getObjectY(0,i));
-			ObjectType type = checkObjectType(map.getObjectType(0,i));
+			final Position position = new Position((float)map.getObjectX(0,i), (float)map.getObjectY(0,i));
+			final ObjectType type = checkObjectType(map.getObjectType(0,i));
 			Size size;
 			if(type == null) {
 				characterStartPosition = position;
