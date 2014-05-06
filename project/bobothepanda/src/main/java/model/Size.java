@@ -5,8 +5,8 @@ package model;
  */
 
 public class Size {
-	private float width;
-	private float height;
+	private final float width;
+	private final float height;
 	
 	public Size(float width, float height) {
 		this.width = Math.abs(width);
@@ -28,23 +28,28 @@ public class Size {
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		final int result = 1;
 		return prime * (prime * result + Float.floatToIntBits(height)) + Float.floatToIntBits(width);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj){
 			return true;
-		if (obj == null)
+		}
+		if (obj == null){
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()){
 			return false;
-		Size other = (Size) obj;
-		if (Float.floatToIntBits(height) != Float.floatToIntBits(other.height))
+		}
+		final Size other = (Size) obj;
+		if (Float.floatToIntBits(height) != Float.floatToIntBits(other.height)){
 			return false;
-		if (Float.floatToIntBits(width) != Float.floatToIntBits(other.width))
+		}
+		if (Float.floatToIntBits(width) != Float.floatToIntBits(other.width)){
 			return false;
+		}
 		return true;
 	}
 	
