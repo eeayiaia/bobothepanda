@@ -9,7 +9,6 @@ import model.Collision;
 import model.Level;
 import utilities.MapHandler;
 import view.CharacterView;
-import view.LevelView;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -32,22 +31,22 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	 * @param firstLevel String label for the first level to be initiated.
 	 */
 	public GameController(){
+		super();
 		currentLevelNumber = 1;
 	}
 	
 	public void init(GameContainer container, StateBasedGame game)throws SlickException {
 		this.container = container;
 		mapHandler = new MapHandler("level" + currentLevelNumber);
-		Collision collision = new Collision(mapHandler.getMapObjectList());
+		final Collision collision = new Collision(mapHandler.getMapObjectList());
 		
 		character = new Character(mapHandler.getCharacterStartPosition(), collision);
 		character.addPropertyChangeListener(new CharacterView());
-		Level level = new Level(mapHandler.getMapObjectList(), character);
+		final Level level = new Level(mapHandler.getMapObjectList(), character);
 		character.addPropertyChangeListener(level);
 		characterController = new CharacterController(character);
 		
 		level.addPropertyChangeListener(this);
-		System.out.println("game.init");
 		//levelView = new LevelView();
 	}
 

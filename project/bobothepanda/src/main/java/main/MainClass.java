@@ -24,7 +24,7 @@ public class MainClass extends StateBasedGame{
 	 */
 	public static final boolean FULLSCREEN = false;
 	
-	public static final float SCALE = (float) (((double)WINDOW_WIDTH/640));
+	public static final float SCALE = (float) ((double)WINDOW_WIDTH/640);
 	public static final String GAME_NAME = "Bobo the panda";
 	
 	public MainClass(){

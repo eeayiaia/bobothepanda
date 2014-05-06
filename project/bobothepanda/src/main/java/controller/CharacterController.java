@@ -7,7 +7,7 @@ import model.Character;
 
 public class CharacterController {
 	
-	private Character character;
+	private final Character character;
 	
 	public CharacterController(Character character){
 		
