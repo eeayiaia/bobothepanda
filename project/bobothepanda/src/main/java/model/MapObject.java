@@ -8,10 +8,10 @@ import java.awt.Rectangle;
 
 public class MapObject implements IMapObject {
 	
-	private Position position;
-	private Size size;
+	private final Position position;
+	private final Size size;
 	private ObjectType type;
-	private Rectangle hitbox;
+	private final Rectangle hitbox;
 	
 	public MapObject(Position position, Size size, ObjectType type) {
 		this.position = position;

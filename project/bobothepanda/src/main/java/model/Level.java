@@ -1,6 +1,6 @@
 package model;
 
-import java.awt.Rectangle;
+//import java.awt.Rectangle;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -8,14 +8,14 @@ import java.util.List;
 
 public class Level implements PropertyChangeListener{
 	
-	private final Character playerCharacter;
-	private final List <IMapObject> objectList;
+//	private final Character playerCharacter;
+//	private final List <IMapObject> objectList;
 	private final PropertyChangeSupport pcs;
 	
 	
 	public Level(List <IMapObject> objectList, Character playerCharacter){
-		this.playerCharacter = playerCharacter;
-		this.objectList = objectList;
+//		this.playerCharacter = playerCharacter;
+//		this.objectList = objectList;
 		this.pcs = new PropertyChangeSupport(this);
 	}
 
