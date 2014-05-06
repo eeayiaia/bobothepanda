@@ -33,7 +33,7 @@ public class MapObjectTest extends Assert{
 
 	@Test
 	public void testGetObjectType() {
-		assertTrue(mapObject.getObjectType() == (ObjectType.TERRAIN));
+		assertSame(mapObject.getObjectType(),ObjectType.TERRAIN);
 	}
 
 	@Test
@@ -44,7 +44,7 @@ public class MapObjectTest extends Assert{
 	@Test
 	public void testSetObjectType() {
 		mapObject.setObjectType(ObjectType.KEY);
-		assertTrue(mapObject.getObjectType() == (ObjectType.KEY));
+		assertSame(mapObject.getObjectType(),ObjectType.KEY);
 	}
 
 }
