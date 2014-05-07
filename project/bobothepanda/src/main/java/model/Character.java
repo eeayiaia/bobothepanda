@@ -232,12 +232,16 @@ public class Character {
 		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
 		// if there is a collision the position remains the same and bobo stands still
-		if(collisionHitbox != null && ((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR))){
-			if(yVelocity < 0) {
-				position.setY((float)(collisionHitbox.getY() + collisionHitbox.getHeight()));
-				yVelocity = 0;
-			} else if(yVelocity > 0) {
-				position.setY((float)(collisionHitbox.getY() - HEIGHT));
+		if(collisionHitbox != null){
+			if((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR)) {
+				if(yVelocity < 0) {
+					position.setY((float)(collisionHitbox.getY() + collisionHitbox.getHeight()));
+					yVelocity = 0;
+				} else if(yVelocity > 0) {
+					position.setY((float)(collisionHitbox.getY() - HEIGHT));
+				}
+			} else if(collision.getObjectType() == ObjectType.LETHAL) {
+				pcs.firePropertyChange("reloadLevel", null, null);
 			}
 		} else {
 			position.setY(nextPosition.getY());
