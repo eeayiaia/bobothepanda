@@ -4,15 +4,15 @@ import java.awt.Rectangle;
 import java.util.List;
 
 public class Collision {
-	private final List <IMapObject> objectList;
-	private IMapObject currentObject;
+	private final List <MapObject> objectList;
+	private MapObject currentObject;
 	
-	public Collision(List <IMapObject> objectList) {
+	public Collision(List <MapObject> objectList) {
 		this.objectList = objectList;
 	}
 	
 	public Rectangle collidedWith(Rectangle characterHitbox){
-		for(final IMapObject o: objectList){
+		for(final MapObject o: objectList){
 			//Checks if bobo has collided with another object
 			if(o.getHitbox().intersects(characterHitbox)){
 				currentObject = o;
@@ -24,7 +24,7 @@ public class Collision {
 	
 	public ObjectType getObjectType() {
 		if(currentObject != null) {
-			return currentObject.getObjectType();
+		//	return currentObject.getObjectType();
 		}
 		return null;
 	}

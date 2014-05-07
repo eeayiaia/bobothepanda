@@ -1,13 +1,12 @@
 package utilities;
 
-/*
+/**
  * @author Oscar Muhr
  */
 
 import java.util.ArrayList;
 import java.util.List;
 
-import model.IMapObject;
 import model.MapObject;
 import model.ObjectType;
 import model.Position;
@@ -21,7 +20,7 @@ public class MapHandler implements IMapHandler {
 	private TiledMap map;
 	private final static String MAP_LOCATION = "data/levels/";
 	private final static String TILESET_LOCATION = "data/img";
-	private List<IMapObject> objectList;
+	private List<MapObject> objectList;
 	private Position characterStartPosition;
 	
 	/**
@@ -51,14 +50,14 @@ public class MapHandler implements IMapHandler {
 	 */
 	public final void loadLevel(String levelName) throws SlickException{
 		map = new TiledMap(MAP_LOCATION + levelName + ".tmx", TILESET_LOCATION);
-		objectList = new ArrayList<IMapObject>();
+		objectList = new ArrayList<MapObject>();
 		createObjectList();
 	}
 	
 	/**
 	 * @return A list of objects located on the map
 	 */
-	public List<IMapObject> getMapObjectList() {
+	public List<MapObject> getMapObjectList() {
 		return objectList;
 	}
 	

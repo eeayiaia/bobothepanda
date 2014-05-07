@@ -9,11 +9,11 @@ import java.util.List;
 public class Level implements PropertyChangeListener{
 	
 //	private final Character playerCharacter;
-//	private final List <IMapObject> objectList;
+//	private final List <MapObject> objectList;
 	private final PropertyChangeSupport pcs;
 	
 	
-	public Level(List <IMapObject> objectList, Character playerCharacter){
+	public Level(List <MapObject> objectList, Character playerCharacter){
 //		this.playerCharacter = playerCharacter;
 //		this.objectList = objectList;
 		this.pcs = new PropertyChangeSupport(this);
