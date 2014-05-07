@@ -45,6 +45,10 @@ public class Character {
 		MOVING_RIGHT, MOVING_LEFT, JUMPING, IDLE
 	}
 	
+	public CharacterState getCharacterState(){
+		return this.characterState;
+	}
+	
 	/**
 	 * The current direction the character is facing
 	 * RIGH, LEFT
@@ -53,6 +57,9 @@ public class Character {
 		RIGHT, LEFT
 	}
 	
+	public Facing getFacing(){
+		return this.facing;
+	}
 	/**
 	 * Updates the current character state.
 	 */
