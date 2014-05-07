@@ -71,15 +71,17 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
 	@Override
 	public void keyPressed(int key, char code){
 		if(key == Input.KEY_ESCAPE){
 			container.exit();
 		}
 	}
+	
 	@SuppressWarnings("PMD.SystemPrintln")
 	public void propertyChange(PropertyChangeEvent evt) {
-		if("loadNewLevel".equals(evt.getPropertyName())){
+		if("loadLevel".equals(evt.getPropertyName())){
 			try {
 				loadLevel(false);
 			} catch (SlickException e) {
@@ -95,7 +97,12 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			}
 		}
 	}
-
+	
+	/**
+	 * Loads a new level or reloads the current level
+	 * @param loadCurrentLevel true: loads current level, false: loads next level.
+	 * @throws SlickException
+	 */
 	public final void loadLevel(boolean loadCurrentLevel) throws SlickException{
 		if(!loadCurrentLevel){
 			currentLevelNumber++;
