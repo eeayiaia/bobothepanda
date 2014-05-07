@@ -6,7 +6,7 @@ import java.util.List;
 
 import model.Collision;
 import model.Character;
-import model.MapObject;
+import model.AbstractMapObject;
 import model.Position;
 import model.Size;
 import model.Terrain;
@@ -18,7 +18,7 @@ import org.junit.Test;
 public class CollisionTest extends Assert{
 	private Collision collision;
 	private Character character;
-	private final List <MapObject> list = new ArrayList <MapObject>();
+	private final List <AbstractMapObject> list = new ArrayList <AbstractMapObject>();
 
 
 	@Before
@@ -29,7 +29,7 @@ public class CollisionTest extends Assert{
 
 	@Test
 	public void testCollidedWith(){
-		final MapObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
+		final AbstractMapObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
 		list.add(terrain);
 		assertTrue(collision.collidedWith(character.getHitbox()).equals(terrain.getHitbox()));
 	}
@@ -41,7 +41,7 @@ public class CollisionTest extends Assert{
 
 	@Test
 	public void testGetObjectType() {
-		final MapObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
+		final AbstractMapObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
 		list.add(terrain);
 		collision.collidedWith(character.getHitbox());
 		assertSame(terrain, collision.getObjectType());
@@ -53,7 +53,7 @@ public class CollisionTest extends Assert{
 
 	@Test
 	public void testGetObjectPosition() {
-		final MapObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
+		final AbstractMapObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
 		list.add(terrain);
 		collision.collidedWith(character.getHitbox());
 		assertTrue(collision.getObjectPosition().equals(new Position(1f,1f)));

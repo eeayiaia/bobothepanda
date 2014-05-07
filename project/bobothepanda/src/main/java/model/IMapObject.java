@@ -3,17 +3,17 @@ package model;
 import java.awt.Rectangle;
 
 public interface IMapObject {
-	public void doCollision();
+	void doCollision();
 
-	public Position getPosition();
+	Position getPosition();
 
-	public Size getSize();
+	Size getSize();
 	
-	public Rectangle getHitbox();
+	Rectangle getHitbox();
 	
-	public void setX(float xValue);
+	void setX(float xValue);
 	
-	public void setY(float yValue);
+	void setY(float yValue);
 	
-	public void setPosition(Position position);
+	void setPosition(Position position);
 }

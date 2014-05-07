@@ -9,7 +9,7 @@ import java.util.List;
 
 import model.Door;
 import model.Key;
-import model.MapObject;
+import model.AbstractMapObject;
 import model.ObjectType;
 import model.Position;
 import model.Size;
@@ -24,7 +24,7 @@ public class MapHandler implements IMapHandler {
 	private TiledMap map;
 	private final static String MAP_LOCATION = "data/levels/";
 	private final static String TILESET_LOCATION = "data/img";
-	private List<MapObject> objectList;
+	private List<AbstractMapObject> objectList;
 	private Position characterStartPosition;
 	
 	/**
@@ -54,14 +54,14 @@ public class MapHandler implements IMapHandler {
 	 */
 	public final void loadLevel(String levelName) throws SlickException{
 		map = new TiledMap(MAP_LOCATION + levelName + ".tmx", TILESET_LOCATION);
-		objectList = new ArrayList<MapObject>();
+		objectList = new ArrayList<AbstractMapObject>();
 		createObjectList();
 	}
 	
 	/**
 	 * @return A list of objects located on the map
 	 */
-	public List<MapObject> getMapObjectList() {
+	public List<AbstractMapObject> getMapObjectList() {
 		return objectList;
 	}
 	
@@ -77,7 +77,7 @@ public class MapHandler implements IMapHandler {
 	 * @param type Type of object, String value
 	 * @return ObjectType enum.
 	 */
-	private MapObject createNewMapObject (String type, Position position, Size size) {
+	private AbstractMapObject createNewMapObject (String type, Position position, Size size) {
 		if("Terrain".equals(type)) {
 			return new Terrain(position, size);
 		} else if("Lethal".equals(type)) {

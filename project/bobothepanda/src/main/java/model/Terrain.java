@@ -1,6 +1,6 @@
 package model;
 
-public class Terrain extends MapObject {
+public class Terrain extends AbstractMapObject {
 
 	public Terrain(Position position, Size size) {
 		super(position, size);

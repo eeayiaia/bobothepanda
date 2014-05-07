@@ -1,6 +1,6 @@
 package model;
 
-public class StaticLethalObject extends MapObject {
+public class StaticLethalObject extends AbstractMapObject {
 
 	public StaticLethalObject(Position position, Size size) {
 		super(position, size);

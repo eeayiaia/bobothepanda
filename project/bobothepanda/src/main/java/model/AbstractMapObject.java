@@ -6,13 +6,13 @@ package model;
 
 import java.awt.Rectangle;
 
-public abstract class MapObject implements IMapObject {
+public abstract class AbstractMapObject implements IMapObject {
 	
 	private final Position position;
 	private final Size size;
 	private final Rectangle hitbox;
 	
-	public MapObject(Position position, Size size) {
+	public AbstractMapObject(Position position, Size size) {
 		this.position = position;
 		this.size = size;
 		hitbox = new Rectangle((int)Math.round(position.getX()), (int)Math.round(position.getY()), 

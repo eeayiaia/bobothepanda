@@ -6,7 +6,7 @@ package model;
  *
  */
 
-public class Projectile extends MapObject{
+public class Projectile extends AbstractMapObject{
 
 	public Projectile(Position position, Size size) {
 		super(position, size);

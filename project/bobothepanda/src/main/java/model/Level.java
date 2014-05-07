@@ -13,7 +13,7 @@ public class Level implements PropertyChangeListener{
 	private final PropertyChangeSupport pcs;
 	
 	
-	public Level(List <MapObject> objectList, Character playerCharacter){
+	public Level(List <AbstractMapObject> objectList, Character playerCharacter){
 //		this.playerCharacter = playerCharacter;
 //		this.objectList = objectList;
 		this.pcs = new PropertyChangeSupport(this);

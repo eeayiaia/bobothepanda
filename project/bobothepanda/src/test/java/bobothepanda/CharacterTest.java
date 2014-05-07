@@ -6,7 +6,7 @@ import java.util.List;
 
 import model.Character;
 import model.Collision;
-import model.MapObject;
+import model.AbstractMapObject;
 import model.Position;
 import model.Size;
 import model.Terrain;
@@ -22,8 +22,8 @@ public class CharacterTest extends Assert {
 	
 	@Before
 	public void setUp() throws Exception {
-		final MapObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
-		final List <MapObject> list = new ArrayList <MapObject>();
+		final AbstractMapObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
+		final List <AbstractMapObject> list = new ArrayList <AbstractMapObject>();
 		list.add(terrain);
 		collision = new Collision(list);
 		character = new Character(position, collision);

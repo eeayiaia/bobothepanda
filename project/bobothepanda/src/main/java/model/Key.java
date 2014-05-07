@@ -1,6 +1,6 @@
 package model;
 
-public class Key extends MapObject {
+public class Key extends AbstractMapObject {
 
 	public Key(Position position, Size size) {
 		super(position, size);
