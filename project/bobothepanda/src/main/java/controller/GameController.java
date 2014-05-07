@@ -32,7 +32,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	 */
 	public GameController() throws SlickException{
 		super();
-		loadLevel(false);
+		loadLevel(false );
 	}
 	
 	public void init(GameContainer container, StateBasedGame game) throws SlickException{
