@@ -179,7 +179,12 @@ public class Character {
 		if(characterState==CharacterState.MOVING_RIGHT) {
 			nextPosition = new Position(position.getX()+VELOCITY*delta, position.getY());
 		} else {
-			nextPosition = new Position(position.getX()-VELOCITY*delta, position.getY());
+			float xMinusVelocity = position.getX()-VELOCITY*delta;
+			if(xMinusVelocity>= 0){
+				nextPosition = new Position(xMinusVelocity, position.getY());
+			}else{
+				nextPosition = new Position(position.getX(), position.getY());
+			}
 		}
 		float nextPositionXValue = nextPosition.getX();
 		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPositionXValue), 
@@ -228,7 +233,13 @@ public class Character {
 		//Change velocity due to gravity
 		setYVelocity(delta);
 		Position nextPosition;
-		nextPosition = new Position(position.getX(),position.getY()+yVelocity);
+		float yAndYVelocity = position.getY() + yVelocity; 
+		if(yAndYVelocity >= 0){
+			nextPosition = new Position(position.getX(),yAndYVelocity);
+		}else{
+			nextPosition = new Position(position.getX(), position.getY());
+		}
+		
 		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
 		// if there is a collision the position remains the same and bobo stands still
