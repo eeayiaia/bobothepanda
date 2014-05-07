@@ -18,7 +18,6 @@ import org.newdawn.slick.state.StateBasedGame;
 public class GameController extends BasicGameState implements PropertyChangeListener{
 	
 	private	Character character;
-	//private String currentLevel;
 	private CharacterController characterController;
 	private MapHandler mapHandler;
 	private GameContainer container;
@@ -29,9 +28,11 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	/**
 	 * Assigns the value of the firstLevel String variable.
 	 * @param firstLevel String label for the first level to be initiated.
+	 * @throws SlickException 
 	 */
-	public GameController(){
+	public GameController() throws SlickException{
 		super();
+		loadNextLevel();
 	}
 	
 	public void init(GameContainer container, StateBasedGame game) throws SlickException{
@@ -50,7 +51,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		level.addPropertyChangeListener(this);
 		*/
 		
-		loadNextLevel();
+		
 		//levelView = new LevelView();
 	}
 
@@ -88,15 +89,14 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		}
 	}
 
-	public void loadNextLevel() throws SlickException{
+	public final void loadNextLevel() throws SlickException{
 		currentLevelNumber++;
 		
 		mapHandler = new MapHandler("level" + currentLevelNumber);
-		Collision collision = new Collision(mapHandler.getMapObjectList());
-		
+		final Collision collision = new Collision(mapHandler.getMapObjectList());
 		character = new Character(mapHandler.getCharacterStartPosition(), collision);
 		character.addPropertyChangeListener(new CharacterView());
-		Level level = new Level(mapHandler.getMapObjectList(), character);
+		final Level level = new Level(mapHandler.getMapObjectList(), character);
 		character.addPropertyChangeListener(level);
 		characterController = new CharacterController(character);
 		
