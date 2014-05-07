@@ -6,7 +6,7 @@ package model;
 
 import java.awt.Rectangle;
 
-public abstract class MapObject {
+public abstract class MapObject implements IMapObject {
 	
 	private final Position position;
 	private final Size size;
@@ -23,11 +23,11 @@ public abstract class MapObject {
 	abstract public void doCollision();
 
 	public Position getPosition() {
-		return new Position(position);
+		return position;
 	}
 
 	public Size getSize() {
-		return new Size(size);
+		return size;
 	}
 	
 	public Rectangle getHitbox() {

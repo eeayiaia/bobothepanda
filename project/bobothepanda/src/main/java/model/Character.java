@@ -139,7 +139,8 @@ public class Character {
 		final Rectangle collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
 				(int)Math.round(nextPosition.getY()), (int)size.getWidth(), (int)size.getHeight()));
 		// if there is a collision the position remains the same and bobo stands still
-		if(collisionHitbox != null && ((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR))){
+		if(collisionHitbox != null && (collision.getObjectType().getClass().equals(Terrain.class) || collision.getObjectType().getClass() == Door.class)){
+			System.out.println("hej");
 			return true;
 		} else{
 			return false;
@@ -194,14 +195,14 @@ public class Character {
 			collisionHitboxXValue = (float) collisionHitbox.getX();
 		}
 		if(collisionHitbox != null) {	
-			if(((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR) || (collision.getObjectType() == ObjectType.KEY))) {
-				if(collision.getObjectType() == ObjectType.KEY){
+			if(collision.getObjectType().getClass() == Terrain.class || collision.getObjectType().getClass() == Door.class || collision.getObjectType().getClass() == Key.class) {
+				if(collision.getObjectType().getClass() == Key.class){
 					keyPickedUP = true;
 					//possible to go right through the key
 					position.setX(nextPositionXValue);
 				}else{
 					//should be ObjectType.OPEN_DOOR
-					if(collision.getObjectType() == ObjectType.DOOR && keyPickedUP){
+					if(collision.getObjectType().getClass() == Door.class && keyPickedUP){
 						pcs.firePropertyChange("loadLevel", null, null);
 					}
 					
@@ -216,7 +217,7 @@ public class Character {
 						}
 					}
 				}
-			} else if(collision.getObjectType() == ObjectType.LETHAL) {
+			} else if(collision.getObjectType().getClass() == StaticLethalObject.class) {
 				pcs.firePropertyChange("reloadLevel", null, null);
 			}
 		}
@@ -244,19 +245,19 @@ public class Character {
 				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
 		// if there is a collision the position remains the same and bobo stands still
 		if(collisionHitbox != null){
-			if(collision.getObjectType() == ObjectType.KEY){
+			if(collision.getObjectType().getClass() == Key.class){
 				keyPickedUP = true;
 				//possible to go right through the key
 				position.setY(nextPosition.getY());
 			}
-			if((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR)) {
+			if(collision.getObjectType().getClass() == Terrain.class || collision.getObjectType().getClass() == Door.class) {
 				if(yVelocity < 0) {
 					position.setY((float)(collisionHitbox.getY() + collisionHitbox.getHeight()));
 					yVelocity = 0;
 				} else if(yVelocity > 0) {
 					position.setY((float)(collisionHitbox.getY() - HEIGHT));
 				}
-			} else if(collision.getObjectType() == ObjectType.LETHAL) {
+			} else if(collision.getObjectType().getClass() == StaticLethalObject.class) {
 				pcs.firePropertyChange("reloadLevel", null, null);
 			}
 		} else {

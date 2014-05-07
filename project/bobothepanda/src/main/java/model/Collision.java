@@ -22,9 +22,9 @@ public class Collision {
 		return null;
 	}
 	
-	public ObjectType getObjectType() {
+	public MapObject getObjectType() {
 		if(currentObject != null) {
-		//	return currentObject.getObjectType();
+			return currentObject;
 		}
 		return null;
 	}

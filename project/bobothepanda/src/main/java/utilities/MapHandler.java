@@ -7,10 +7,14 @@ package utilities;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Door;
+import model.Key;
 import model.MapObject;
 import model.ObjectType;
 import model.Position;
 import model.Size;
+import model.StaticLethalObject;
+import model.Terrain;
 
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
@@ -73,15 +77,15 @@ public class MapHandler implements IMapHandler {
 	 * @param type Type of object, String value
 	 * @return ObjectType enum.
 	 */
-	private ObjectType checkObjectType(String type) {
+	private MapObject createNewMapObject (String type, Position position, Size size) {
 		if("Terrain".equals(type)) {
-			return ObjectType.TERRAIN;
+			return new Terrain(position, size);
 		} else if("Lethal".equals(type)) {
-			return ObjectType.LETHAL;
+			return new StaticLethalObject(position, size);
 		} else if("Key".equals(type)) {
-			return ObjectType.KEY;
+			return new Key(position, size);
 		} else if("Door".equals(type)){
-			return ObjectType.DOOR;
+			return new Door(position, size);
 		} else {
 			return null;
 		}
@@ -96,13 +100,13 @@ public class MapHandler implements IMapHandler {
 		
 		for(int i = 0; i < objects; i++) {
 			final Position position = new Position((float)map.getObjectX(0,i), (float)map.getObjectY(0,i));
-			final ObjectType type = checkObjectType(map.getObjectType(0,i));
+			String type = map.getObjectType(0,i);
 			Size size;
-			if(type == null) {
+			if(type.equals("Startpos")) {
 				characterStartPosition = position;
 			} else {
 				size = new Size((float)map.getObjectWidth(0,i), (float)map.getObjectHeight(0,i));
-				objectList.add(new MapObject(position, size, type));
+				objectList.add(createNewMapObject(type, position, size));
 			}
 		}
 	}
