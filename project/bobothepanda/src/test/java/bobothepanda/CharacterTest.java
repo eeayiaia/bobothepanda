@@ -6,11 +6,10 @@ import java.util.List;
 
 import model.Character;
 import model.Collision;
-import model.IMapObject;
 import model.MapObject;
-import model.ObjectType;
 import model.Position;
 import model.Size;
+import model.Terrain;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -23,8 +22,8 @@ public class CharacterTest extends Assert {
 	
 	@Before
 	public void setUp() throws Exception {
-		final IMapObject terrain = new MapObject(new Position(1f,1f), new Size(5f,5f), ObjectType.TERRAIN);
-		final List <IMapObject> list = new ArrayList <IMapObject>();
+		final MapObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
+		final List <MapObject> list = new ArrayList <MapObject>();
 		list.add(terrain);
 		collision = new Collision(list);
 		character = new Character(position, collision);
