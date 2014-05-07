@@ -244,6 +244,11 @@ public class Character {
 				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
 		// if there is a collision the position remains the same and bobo stands still
 		if(collisionHitbox != null){
+			if(collision.getObjectType() == ObjectType.KEY){
+				keyPickedUP = true;
+				//possible to go right through the key
+				position.setY(nextPosition.getY());
+			}
 			if((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR)) {
 				if(yVelocity < 0) {
 					position.setY((float)(collisionHitbox.getY() + collisionHitbox.getHeight()));
