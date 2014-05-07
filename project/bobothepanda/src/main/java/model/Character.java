@@ -188,28 +188,31 @@ public class Character {
 		if(collisionHitbox != null){
 			collisionHitboxXValue = (float) collisionHitbox.getX();
 		}
-		if(collisionHitbox != null && ((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR) || (collision.getObjectType() == ObjectType.KEY))){	
-			
-			if(collision.getObjectType() == ObjectType.KEY){
-				keyPickedUP = true;
-				//possible to go right through the key
-				position.setX(nextPositionXValue);
-			}else{
-				//should be ObjectType.OPEN_DOOR
-				if(collision.getObjectType() == ObjectType.DOOR && keyPickedUP){
-					pcs.firePropertyChange("loadNewLevel", null, null);
-				}
-				
-				if(characterState==CharacterState.MOVING_RIGHT) {
-					if((nextPositionXValue + WIDTH) >= collisionHitboxXValue) {
-						position.setX(collisionHitboxXValue - WIDTH);
+		if(collisionHitbox != null) {	
+			if(((collision.getObjectType()==ObjectType.TERRAIN) || (collision.getObjectType()==ObjectType.DOOR) || (collision.getObjectType() == ObjectType.KEY))) {
+				if(collision.getObjectType() == ObjectType.KEY){
+					keyPickedUP = true;
+					//possible to go right through the key
+					position.setX(nextPositionXValue);
+				}else{
+					//should be ObjectType.OPEN_DOOR
+					if(collision.getObjectType() == ObjectType.DOOR && keyPickedUP){
+						pcs.firePropertyChange("loadLevel", null, null);
 					}
-				}else if(characterState==CharacterState.MOVING_LEFT) {
-					double newX = collisionHitboxXValue + collisionHitbox.getWidth();
-					if(nextPositionXValue <= newX) {
-						position.setX((float)newX);
+					
+					if(characterState==CharacterState.MOVING_RIGHT) {
+						if((nextPositionXValue + WIDTH) >= collisionHitboxXValue) {
+							position.setX(collisionHitboxXValue - WIDTH);
+						}
+					}else if(characterState==CharacterState.MOVING_LEFT) {
+						double newX = collisionHitboxXValue + collisionHitbox.getWidth();
+						if(nextPositionXValue <= newX) {
+							position.setX((float)newX);
+						}
 					}
 				}
+			} else if(collision.getObjectType() == ObjectType.LETHAL) {
+				pcs.firePropertyChange("reloadLevel", null, null);
 			}
 		}
 		else {
