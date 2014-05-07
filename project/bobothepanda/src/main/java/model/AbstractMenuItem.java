@@ -1,5 +1,7 @@
 package model;
-
+/**
+ * @author Elvira Jonsson
+ */
 import java.awt.Rectangle;
 
 public abstract class AbstractMenuItem {
