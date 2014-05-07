@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Character;
-import model.Character.CharacterState;
 import model.Collision;
 import model.IMapObject;
 import model.MapObject;
@@ -20,11 +19,11 @@ import org.junit.Test;
 public class CharacterTest extends Assert {
 	private Collision collision;
 	private Character character;
-	Position position = new Position(3f,3f);
+	private final Position position = new Position(3f,3f);
 	
 	@Before
 	public void setUp() throws Exception {
-		IMapObject terrain = new MapObject(new Position(1f,1f), new Size(5f,5f), ObjectType.TERRAIN);
+		final IMapObject terrain = new MapObject(new Position(1f,1f), new Size(5f,5f), ObjectType.TERRAIN);
 		final List <IMapObject> list = new ArrayList <IMapObject>();
 		list.add(terrain);
 		collision = new Collision(list);
@@ -33,7 +32,7 @@ public class CharacterTest extends Assert {
 	
 	@Test
 	public void testGetPosition(){
-		assertTrue(position.equals(character.getPosition()));
+		assertEquals(position, character.getPosition());
 	}
 	
 	@Test
@@ -48,8 +47,8 @@ public class CharacterTest extends Assert {
 	
 	@Test
 	public void testGetHitbox(){
-		Size size = new Size(18,30);
-		Rectangle hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
+		final Size size = new Size(18,30);
+		final Rectangle hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		assertEquals(hitbox, character.getHitbox());
 
@@ -59,24 +58,24 @@ public class CharacterTest extends Assert {
 	@Test
 	public void testMoveRightFacingRight(){
 		character.moveRight(10);
-		assertTrue(Character.Facing.RIGHT==character.getFacing());
+		assertSame(Character.Facing.RIGHT, character.getFacing());
 	}
 	
 	@Test
 	public void testMoveRightCharacterState(){
 		character.moveRight(10);
-		assertTrue(Character.CharacterState.MOVING_RIGHT==character.getCharacterState());
+		assertSame(Character.CharacterState.MOVING_RIGHT, character.getCharacterState());
 	}
 	
 	@Test
 	public void testMoveLeftFacingLeft(){
 		character.moveLeft(10);
-		assertTrue(Character.Facing.LEFT==character.getFacing());
+		assertSame(Character.Facing.LEFT, character.getFacing());
 	}
 	
 	@Test
 	public void testMoveLeftCharacterState(){
 		character.moveLeft(10);
-		assertTrue(Character.CharacterState.MOVING_LEFT==character.getCharacterState());
+		assertSame(Character.CharacterState.MOVING_LEFT, character.getCharacterState());
 	}
 }
