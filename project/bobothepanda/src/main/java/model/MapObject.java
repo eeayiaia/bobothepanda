@@ -19,6 +19,8 @@ public abstract class MapObject {
 								(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 
 	}
+	
+	abstract public void doCollision();
 
 	public Position getPosition() {
 		return new Position(position);
