@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="GroundTiles" tilewidth="32" tileheight="32">
+  <image source="../img/tilesets/GroundTiles.png" width="128" height="128"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="20" height="20">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+NgYGDgGMWjmALMhoZh4uxoeKDMG8UjA7MAMRMaZiagB109pZh1hGEACKIwqkAGAAA=
+  </data>
+ </layer>
+ <objectgroup name="Hitboxes" width="20" height="20">
+  <object type="Start" x="352" y="224" width="128" height="64"/>
+  <object type="Quit" x="160" y="224" width="128" height="64"/>
+  <object type="Character" x="316" y="448" width="18" height="30"/>
+ </objectgroup>
+</map>
