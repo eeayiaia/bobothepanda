@@ -9,13 +9,17 @@ public class Position {
 	private float x;
 	private float y;
 	
-	public Position(float x, float y){
+	public Position(float x, float y) {
 		if(x >= 0 && y >= 0){
 			this.x = x;
 			this.y = y;
 		} else {
 			throw new IllegalArgumentException();
 		}
+	}
+	
+	public Position(Position position) {
+		this(position.getX(), position.getY());
 	}
 
 	public float getX() {
