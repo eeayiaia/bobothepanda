@@ -32,7 +32,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	 */
 	public GameController() throws SlickException{
 		super();
-		loadNextLevel();
+		loadLevel(true);
 	}
 	
 	public void init(GameContainer container, StateBasedGame game) throws SlickException{
@@ -80,18 +80,27 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	@SuppressWarnings("PMD.SystemPrintln")
 	public void propertyChange(PropertyChangeEvent evt) {
 		if("loadNewLevel".equals(evt.getPropertyName())){
-			System.out.println("in GameController");
 			try {
-				loadNextLevel();
+				loadLevel(false);
+			} catch (SlickException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		
+		if("reloadLevel".equals(evt.getPropertyName())){
+			try {
+				loadLevel(true);
 			} catch (SlickException e) {
 				System.out.println(e.getMessage());
 			}
 		}
 	}
 
-	public final void loadNextLevel() throws SlickException{
-		currentLevelNumber++;
-		
+	public final void loadLevel(boolean loadCurrentLevel) throws SlickException{
+		if(!loadCurrentLevel){
+			currentLevelNumber++;
+		}
+	
 		mapHandler = new MapHandler("level" + currentLevelNumber);
 		final Collision collision = new Collision(mapHandler.getMapObjectList());
 		character = new Character(mapHandler.getCharacterStartPosition(), collision);
