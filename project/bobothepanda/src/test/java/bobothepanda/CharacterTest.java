@@ -56,6 +56,27 @@ public class CharacterTest extends Assert {
 	}
 	
 	
+	@Test
+	public void testMoveRightFacingRight(){
+		character.moveRight(10);
+		assertTrue(Character.Facing.RIGHT==character.getFacing());
+	}
 	
+	@Test
+	public void testMoveRightCharacterState(){
+		character.moveRight(10);
+		assertTrue(Character.CharacterState.MOVING_RIGHT==character.getCharacterState());
+	}
 	
+	@Test
+	public void testMoveLeftFacingLeft(){
+		character.moveLeft(10);
+		assertTrue(Character.Facing.LEFT==character.getFacing());
+	}
+	
+	@Test
+	public void testMoveLeftCharacterState(){
+		character.moveLeft(10);
+		assertTrue(Character.CharacterState.MOVING_LEFT==character.getCharacterState());
+	}
 }
