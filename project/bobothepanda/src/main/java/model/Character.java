@@ -140,7 +140,6 @@ public class Character {
 				(int)Math.round(nextPosition.getY()), (int)size.getWidth(), (int)size.getHeight()));
 		// if there is a collision the position remains the same and bobo stands still
 		if(collisionHitbox != null && (collision.getObjectType().getClass().equals(Terrain.class) || collision.getObjectType().getClass() == Door.class)){
-			System.out.println("hej");
 			return true;
 		} else{
 			return false;
