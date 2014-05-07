@@ -27,7 +27,9 @@ public class MenuMapHandler implements IMapHandler {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	public void createList(){
+		//TODO
+	}
 
 	public List<IMapObject> getMapObjectList() {
 		// TODO Auto-generated method stub
