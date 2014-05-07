@@ -13,6 +13,10 @@ public class Size {
 		this.height = Math.abs(height);
 	}
 	
+	public Size(Size size) {
+		this(size.getWidth(), size.getHeight());
+	}
+	
 	public float getWidth() {
 		return width;
 	}

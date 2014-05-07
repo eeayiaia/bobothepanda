@@ -6,38 +6,42 @@ package model;
 
 import java.awt.Rectangle;
 
-public class MapObject implements IMapObject {
+public abstract class MapObject {
 	
 	private final Position position;
 	private final Size size;
-	private ObjectType type;
 	private final Rectangle hitbox;
 	
-	public MapObject(Position position, Size size, ObjectType type) {
+	public MapObject(Position position, Size size) {
 		this.position = position;
 		this.size = size;
-		this.type = type;
 		hitbox = new Rectangle((int)Math.round(position.getX()), (int)Math.round(position.getY()), 
 								(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 
 	}
 
 	public Position getPosition() {
-		return position;
+		return new Position(position);
 	}
 
 	public Size getSize() {
-		return size;
-	}
-
-	public ObjectType getObjectType() {
-		return type;
+		return new Size(size);
 	}
 	
 	public Rectangle getHitbox() {
-		return hitbox;
+		return new Rectangle(hitbox);
 	}
-	public void setObjectType(ObjectType type){
-		this.type = type;
+	
+	public void setX(float xValue) {
+		position.setX(xValue);
+	}
+	
+	public void setY(float yValue) {
+		position.setY(yValue);
+	}
+	
+	public void setPosition(Position position) {
+		setX(position.getX());
+		setY(position.getY());
 	}
 }
