@@ -2,8 +2,8 @@ package utilities;
 
 import java.util.List;
 
+import model.AbstractMenuItem;
 import model.IMapObject;
-import model.IMenuItem;
 import model.Position;
 
 import org.newdawn.slick.SlickException;
@@ -14,7 +14,7 @@ public class MenuMapHandler {
 	private TiledMap map;
 	private final static String MAP_LOCATION = "data/menu";
 	private final static String TILESET_LOCATION = "data/img";
-	private List<IMenuItem> objectList;
+	private List<AbstractMenuItem> objectList;
 	private Position characterPosition;
 	
 	public MenuMapHandler(){
