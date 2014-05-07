@@ -38,7 +38,7 @@ public class CollisionTest extends Assert{
 	@Test
 	public void testGetObjectType() {
 		collision.collidedWith(character.getHitbox());
-		assertSame(collision.getObjectType(),ObjectType.TERRAIN);
+		assertSame(terrain, collision.getObjectType());
 	}
 	@Test
 	public void testGetObjectTypeNull(){
@@ -50,5 +50,9 @@ public class CollisionTest extends Assert{
 		collision.collidedWith(character.getHitbox());
 		assertTrue(collision.getObjectPosition().equals(new Position(1f,1f)));
 	}
-
+	
+	@Test
+	public void testGetObjectPositionNull(){
+		assertNull(collision.getObjectPosition());
+	}
 }

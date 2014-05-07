@@ -18,7 +18,7 @@
 //
 //	@Before
 //	public void setUp() throws Exception {
-//		mapObject = new MapObject(new Position(1f,1f), new Size(3f, 3f), ObjectType.TERRAIN);
+//		mapObject = new MapObject(new Position(1f,1f), new Size(3f, 3f));
 //	}
 //
 //	@Test
