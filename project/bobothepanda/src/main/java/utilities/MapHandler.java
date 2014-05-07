@@ -10,7 +10,6 @@ import java.util.List;
 import model.Door;
 import model.Key;
 import model.AbstractMapObject;
-import model.ObjectType;
 import model.Position;
 import model.Size;
 import model.StaticLethalObject;
@@ -100,9 +99,9 @@ public class MapHandler implements IMapHandler {
 		
 		for(int i = 0; i < objects; i++) {
 			final Position position = new Position((float)map.getObjectX(0,i), (float)map.getObjectY(0,i));
-			String type = map.getObjectType(0,i);
+			final String type = map.getObjectType(0,i);
 			Size size;
-			if(type.equals("Startpos")) {
+			if("Startpos".equals(type)) {
 				characterStartPosition = position;
 			} else {
 				size = new Size((float)map.getObjectWidth(0,i), (float)map.getObjectHeight(0,i));

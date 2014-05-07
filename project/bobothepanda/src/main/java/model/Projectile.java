@@ -12,7 +12,9 @@ public class Projectile extends AbstractMapObject{
 		super(position, size);
 	}
 	
-	public void doCollision(){
-		
+	@Override
+	public void doCollision() {
+		// TODO Auto-generated method stub
+
 	}
 }
