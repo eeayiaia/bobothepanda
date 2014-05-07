@@ -2,7 +2,8 @@ package model;
 
 import java.awt.Rectangle;
 
-public class MenuItem {
+public class MenuItem implements IMenuItem{
+	
 	private final Position position;
 	private final Size size;
 	private MenuObjectType type;
