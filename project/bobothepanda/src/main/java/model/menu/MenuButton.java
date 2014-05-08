@@ -10,7 +10,7 @@ import model.Size;
  */
 
 public class MenuButton extends AbstractMenuItem{
-	private String name;
+	private final String name;
 	
 	public MenuButton(Position position, Size size, String name){
 		super(position,size);

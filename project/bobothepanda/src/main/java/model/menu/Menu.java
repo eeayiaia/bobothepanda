@@ -8,4 +8,7 @@ public class Menu {
 	public Menu(List <AbstractMenuItem> menuItems){
 		this.menuItems = menuItems;
 	}
+	public List <AbstractMenuItem> getMenuItems(){
+		return menuItems;
+	}
 }

@@ -38,12 +38,13 @@ public class MapHandler implements IMapHandler {
 	 * Loads a specified level from a .tmx file
 	 * @param levelName the name of the level
 	 */
+	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 	public MapHandler(String levelName){
 		try{
 			loadLevel(levelName);
 		
 		}catch(SlickException e){
-			throw new MapHandlerException();
+			throw new MapHandlerException(e);
 		}
 	}
 	

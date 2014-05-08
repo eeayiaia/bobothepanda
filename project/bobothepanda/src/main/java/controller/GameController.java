@@ -79,13 +79,13 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			container.exit();
 		}
 	}
-	
+	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 	public void propertyChange(PropertyChangeEvent evt) {
 		if("loadLevel".equals(evt.getPropertyName())){
 			try {
 				loadLevel(false);
 			} catch (SlickException e) {
-				throw new MapHandlerException();
+				throw new MapHandlerException(e);
 			}
 		}
 		
@@ -93,7 +93,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			try {
 				loadLevel(true);
 			} catch (SlickException e) {
-				throw new MapHandlerException();
+				throw new MapHandlerException(e);
 			}
 		}
 	}
