@@ -33,4 +33,13 @@ public class Level implements PropertyChangeListener{
 			pcs.firePropertyChange("reloadLevel", null, null);
 		}
 	}
+	
+	public void update(int delta){
+		
+		//TODO set gravity etc.
+		
+		
+	}
+	
+	
 }
