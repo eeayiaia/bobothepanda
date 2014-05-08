@@ -97,7 +97,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			}
 		}
 	}
-	
+
 	/**
 	 * Loads a new level or reloads the current level
 	 * @param loadCurrentLevel true: loads current level, false: loads next level.

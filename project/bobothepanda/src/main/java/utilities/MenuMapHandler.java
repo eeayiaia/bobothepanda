@@ -20,7 +20,7 @@ public class MenuMapHandler {
 	private final static String MAP_LOCATION = "data/menu";
 	private final static String TILESET_LOCATION = "data/img";
 	private List<AbstractMenuItem> menuItemList;
-//	private Position characterPosition;
+	private Position characterPosition;
 	
 	public MenuMapHandler(){
 		this("gameMenu");
@@ -43,8 +43,10 @@ public class MenuMapHandler {
 			final String type = map.getObjectType(0, i);
 			final Position tmpPos = new Position((float)map.getObjectX(0, i), (float)map.getObjectY(0, i));
 			final Size tmpSize = new Size(map.getObjectWidth(0, i), map.getObjectHeight(0, i));
-			if(type.equals("Start") || type.equals("Quit")){
+			if("Start".equals(type) || "Quit".equals(type)){
 				menuItemList.add(new MenuButton(tmpPos, tmpSize, type));
+			} else {
+				characterPosition = tmpPos;
 			}
 		}
 	}
@@ -53,8 +55,7 @@ public class MenuMapHandler {
 		return menuItemList;
 	}
 
-	public Position getCharacterStartPosition() {
-		// TODO Auto-generated method stub
-		return null;
+	public Position getCharacterPosition() {
+		return characterPosition;
 	}
 }
