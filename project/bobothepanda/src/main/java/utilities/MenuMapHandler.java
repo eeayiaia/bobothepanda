@@ -6,11 +6,11 @@ package utilities;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.AbstractMenuItem;
 import model.IMapObject;
-import model.MenuButton;
 import model.Position;
 import model.Size;
+import model.menu.AbstractMenuItem;
+import model.menu.MenuButton;
 
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;

@@ -1,8 +1,11 @@
-package model;
+package model.menu;
 /**
  * @author Elvira Jonsson
  */
 import java.awt.Rectangle;
+
+import model.Position;
+import model.Size;
 
 public abstract class AbstractMenuItem {
 	private final Position position;

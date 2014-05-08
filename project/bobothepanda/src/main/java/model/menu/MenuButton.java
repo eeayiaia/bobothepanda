@@ -1,4 +1,8 @@
-package model;
+package model.menu;
+
+import model.Position;
+import model.Size;
+
 /**
  * 
  * @author elvirajonsson
