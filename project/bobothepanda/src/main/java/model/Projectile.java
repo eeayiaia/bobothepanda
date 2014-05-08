@@ -8,6 +8,8 @@ package model;
 
 public class Projectile extends AbstractMapObject{
 
+	private final float VELOCITY = 0.25f;
+	
 	public Projectile(Position position, Size size) {
 		super(position, size);
 	}
@@ -16,5 +18,15 @@ public class Projectile extends AbstractMapObject{
 	public void doCollision() {
 		// TODO Auto-generated method stub
 
+	}
+
+	/**
+	 * Updates the position of the projectile.
+	 * @param delta
+	 */
+	public void update(int delta){
+		
+		setX(VELOCITY * delta);
+		
 	}
 }
