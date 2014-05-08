@@ -6,6 +6,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import controller.GameController;
+import controller.MenuController;
 
 public class MainClass extends StateBasedGame{
 	
@@ -33,7 +34,8 @@ public class MainClass extends StateBasedGame{
 	
 	public void initStatesList(GameContainer gc) throws SlickException{
 		addState(new GameController());
-		this.enterState(0);
+		addState(new MenuController());
+		this.enterState(1);
 	}
 	
 	public static void main(String[] args) throws SlickException{

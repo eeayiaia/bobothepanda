@@ -17,7 +17,7 @@ import org.newdawn.slick.tiled.TiledMap;
 public class MenuMapHandler {
 	
 	private TiledMap map;
-	private final static String MAP_LOCATION = "data/menu";
+	private final static String MAP_LOCATION = "data/menu/";
 	private final static String TILESET_LOCATION = "data/img";
 	private List<AbstractMenuItem> menuItemList;
 	private Position characterPosition;
@@ -57,5 +57,8 @@ public class MenuMapHandler {
 
 	public Position getCharacterPosition() {
 		return characterPosition;
+	}
+	public void renderMap(){
+		map.render(0, 0);
 	}
 }
