@@ -38,13 +38,12 @@ public class MapHandler implements IMapHandler {
 	 * Loads a specified level from a .tmx file
 	 * @param levelName the name of the level
 	 */
-	@SuppressWarnings("PMD.SystemPrintln")
 	public MapHandler(String levelName){
 		try{
 			loadLevel(levelName);
 		
 		}catch(SlickException e){
-			System.out.println(e.getMessage());
+			throw new MapHandlerException();
 		}
 	}
 	

@@ -8,6 +8,7 @@ import model.Character;
 import model.Collision;
 import model.Level;
 import utilities.MapHandler;
+import utilities.MapHandlerException;
 import view.CharacterView;
 
 import org.newdawn.slick.*;
@@ -32,7 +33,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	 */
 	public GameController() throws SlickException{
 		super();
-		loadLevel(false );
+		loadLevel(false);
 	}
 	
 	public void init(GameContainer container, StateBasedGame game) throws SlickException{
@@ -79,13 +80,12 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		}
 	}
 	
-	@SuppressWarnings("PMD.SystemPrintln")
 	public void propertyChange(PropertyChangeEvent evt) {
 		if("loadLevel".equals(evt.getPropertyName())){
 			try {
 				loadLevel(false);
 			} catch (SlickException e) {
-				System.out.println(e.getMessage());
+				throw new MapHandlerException();
 			}
 		}
 		
@@ -93,7 +93,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			try {
 				loadLevel(true);
 			} catch (SlickException e) {
-				System.out.println(e.getMessage());
+				throw new MapHandlerException();
 			}
 		}
 	}
