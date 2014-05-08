@@ -50,9 +50,8 @@ public class MenuMapHandler {
 		}
 	}
 
-	public List<IMapObject> getMapObjectList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<AbstractMenuItem> getMenuItemList() {
+		return menuItemList;
 	}
 
 	public Position getCharacterStartPosition() {
