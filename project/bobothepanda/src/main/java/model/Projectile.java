@@ -5,10 +5,10 @@ package model;
  * @author Victor Larsson
  *
  */
-
+@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 public class Projectile extends AbstractMapObject{
 
-	private final float VELOCITY = 0.25f;
+	private final static float VELOCITY = 0.25f;
 	
 	public Projectile(Position position, Size size) {
 		super(position, size);

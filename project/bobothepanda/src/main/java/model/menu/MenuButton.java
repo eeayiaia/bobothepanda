@@ -1,7 +1,5 @@
 package model.menu;
 
-import java.awt.Point;
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 import model.Position;
@@ -26,13 +24,8 @@ public class MenuButton extends AbstractMenuItem{
 		return name;
 	}
 	@Override
-	public void mouseClicked(Position position) {
-		final Point point = new Point((int)Math.round(position.getX()), (int)Math.round(position.getY()));
-		if(this.getHitbox().contains(point)){
+	public void mouseClicked() {
 			pcs.firePropertyChange(name, true, false);
-		}
 	}
-	public void addListener(PropertyChangeListener listener){
-		pcs.addPropertyChangeListener(listener);
-	}
+	
 }
