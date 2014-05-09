@@ -16,4 +16,8 @@ public interface IMapObject {
 	void setY(float yValue);
 	
 	void setPosition(Position position);
+	
+	void doCollision(Character character);
+	
+//	void doCollision(AbstractMovingObject MovingObject);
 }

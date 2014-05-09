@@ -11,5 +11,9 @@ public class Door extends AbstractMapObject {
 		// TODO Auto-generated method stub
 
 	}
+	AbstractMapObject.doCollision(this);
+	public void doCollision(Character character){
+		character.setNewX(5);
+	}
 
 }
