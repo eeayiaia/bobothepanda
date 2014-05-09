@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * A class to calculates an objects velocity in Y, and it's Y position.
+ * @author Sebastian
+ *
+ */
+
 public class Gravity {
 	private final int GRAVITY;
 
