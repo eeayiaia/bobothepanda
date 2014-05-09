@@ -19,9 +19,4 @@ public class MenuButton extends AbstractMenuItem{
 	public String getName(){
 		return name;
 	}
-	@Override
-	public void actionPerformed() {
-		// TODO Auto-generated method stub
-		
-	}
 }
