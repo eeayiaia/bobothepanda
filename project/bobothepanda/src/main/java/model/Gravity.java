@@ -24,7 +24,8 @@ public class Gravity {
 	}
 	
 	/**
-	 * Calculates the new yPosition of the object
+	 * Calculates the new yPosition of the object. This method should 
+	 * be called AFTER getNewVelocity has been called
 	 * 
 	 * @param yPosition The current yPosition of the object
 	 * @param yVelocity	The current yVelocity of the object
