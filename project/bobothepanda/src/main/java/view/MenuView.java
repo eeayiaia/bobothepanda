@@ -23,6 +23,18 @@ public class MenuView implements PropertyChangeListener{
 		
 	}
 
+	public Image getStartButton() {
+		return startButton;
+	}
+
+	public Image getQuitButton() {
+		return quitButton;
+	}
+
+	public Animation getCharacterAnimation() {
+		return characterAnimation;
+	}
+
 	public void propertyChange(PropertyChangeEvent evt) {
 		// TODO Auto-generated method stub
 		

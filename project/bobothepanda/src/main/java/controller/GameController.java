@@ -37,7 +37,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	}
 	
 	public void init(GameContainer container, StateBasedGame game) throws SlickException{
-		//this.container = container;
+		this.container = container;
 		
 		/*
 		mapHandler = new MapHandler("level" + currentLevelNumber);
