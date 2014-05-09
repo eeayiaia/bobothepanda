@@ -19,6 +19,7 @@ public class Gravity {
 	 * @return The new Velocity of the object
 	 */
 	public float getNewVelocity(float yVelocity, int delta){
+		//TODO add check, so that the maximum velocity is at certain speed
 		//velocity formula
 		return yVelocity + this.getGravity() * delta;
 	}
@@ -32,7 +33,7 @@ public class Gravity {
 	 * @param delta	The difference in time
 	 * @return The new yPosition of the object
 	 */
-	public float getNewPosition(int yPosition, float yVelocity, int delta){
+	public float getNewYPosition(int yPosition, float yVelocity, int delta){
 		//position formula
 		return (float) (yPosition + yVelocity * delta + 0.5 * this.getGravity() * delta * delta);
 		
