@@ -12,4 +12,9 @@ public class Terrain extends AbstractMapObject {
 
 	}
 
+	public void doCollision(Character character) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

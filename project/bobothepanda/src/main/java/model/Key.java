@@ -12,4 +12,9 @@ public class Key extends AbstractMapObject {
 
 	}
 
+	public void doCollision(Character character) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

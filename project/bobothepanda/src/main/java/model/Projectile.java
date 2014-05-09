@@ -29,4 +29,9 @@ public class Projectile extends AbstractMapObject{
 		setX(VELOCITY * delta);
 		
 	}
+
+	public void doCollision(Character character) {
+		// TODO Auto-generated method stub
+		
+	}
 }
