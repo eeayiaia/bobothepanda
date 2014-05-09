@@ -22,7 +22,7 @@ public abstract class AbstractMenuItem {
 	public Rectangle getHitbox(){
 		return hitbox;
 	}
-	public abstract void mouseClicked(Position pos);
+	public abstract void mouseClicked();
 
 	
 }
