@@ -3,7 +3,6 @@ package model;
 import java.awt.Rectangle;
 
 public interface IMapObject {
-	void doCollision();
 
 	Position getPosition();
 
@@ -19,5 +18,5 @@ public interface IMapObject {
 	
 	void doCollision(Character character);
 	
-//	void doCollision(AbstractMovingObject MovingObject);
+	void doCollision(IMapObject mapObject);
 }

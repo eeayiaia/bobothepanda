@@ -6,14 +6,12 @@ public class Door extends AbstractMapObject {
 		super(position, size);
 	}
 	
-	@Override
-	public void doCollision() {
-		// TODO Auto-generated method stub
-
-	}
-	
 	public void doCollision(Character character){
 		// TODO 
 	}
 
+	public void doCollision(IMapObject mapObject) {
+		// TODO Auto-generated method stub
+		
+	}
 }

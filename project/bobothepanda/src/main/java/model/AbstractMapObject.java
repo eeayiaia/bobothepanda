@@ -19,8 +19,6 @@ public abstract class AbstractMapObject implements IMapObject {
 								(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 
 	}
-	
-	abstract public void doCollision();
 
 	public Position getPosition() {
 		return position;
