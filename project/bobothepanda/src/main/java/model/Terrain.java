@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * 
+ * @author Oscar Muhr
+ *
+ */
+
 public class Terrain extends AbstractMapObject {
 
 	public Terrain(Position position, Size size) {

@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * @author Oscar Muhr
+ */
+
 import java.awt.Rectangle;
 import java.util.List;
 

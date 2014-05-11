@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * 
+ * @author Oscar Muhr
+ *
+ */
+
 public class Door extends AbstractMapObject {
 
 	public Door(Position position, Size size) {

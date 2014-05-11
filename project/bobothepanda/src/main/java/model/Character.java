@@ -1,4 +1,4 @@
-package model;
+	package model;
 
 import java.awt.Rectangle;
 import java.beans.PropertyChangeListener;
@@ -17,6 +17,8 @@ public class Character {
 	private final Size size;
 	private final Rectangle hitbox;
 	private Facing facing;
+	//CharacterState onödig, bör ersättas med att kolla om hastigheten är positiv eller negativ
+	//Hastigheten bör också flyttas upp så att den är tillgänglig i hela klassen
 	private CharacterState characterState;
 	private long lastTimedMoved; 
 	private final Collision collision;
