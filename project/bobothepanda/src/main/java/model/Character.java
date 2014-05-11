@@ -19,6 +19,7 @@ public class Character {
 	private Facing facing;
 	//CharacterState onödig, bör ersättas med att kolla om hastigheten är positiv eller negativ
 	//Hastigheten bör också flyttas upp så att den är tillgänglig i hela klassen
+	final float XVELOCITY = 0.25f;
 	private CharacterState characterState;
 	private long lastTimedMoved; 
 	private final Collision collision;
@@ -50,6 +51,14 @@ public class Character {
 	public CharacterState getCharacterState(){
 		return this.characterState;
 	}
+	
+	/**
+	 * Get the velocity of the character
+	 */
+	public float getXVelocity() {
+		return XVELOCITY;
+	}
+	
 	
 	/**
 	 * The current direction the character is facing
@@ -176,12 +185,12 @@ public class Character {
 	public void setNewX(int delta) {
 		Rectangle collisionHitbox;
 		Position nextPosition;
-		final float VELOCITY = 0.25f;
+		
 		
 		if(characterState==CharacterState.MOVING_RIGHT) {
-			nextPosition = new Position(position.getX()+VELOCITY*delta, position.getY());
+			nextPosition = new Position(position.getX()+XVELOCITY*delta, position.getY());
 		} else {
-			float xMinusVelocity = position.getX()-VELOCITY*delta;
+			float xMinusVelocity = position.getX()-XVELOCITY*delta;
 			if(xMinusVelocity>= 0){
 				nextPosition = new Position(xMinusVelocity, position.getY());
 			}else{
