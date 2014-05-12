@@ -1,0 +1,68 @@
+﻿Meeting Agenda
+
+ Date: 2014-05-12
+
+ Facilitator: Elvira Jonsson
+
+ Participants: Elvira Jonsson, Victor Larsson, Oscar Muhr, Sebastian Sandberg
+
+1. Objectives (5 min) Resolve any issues preventing the team to 
+ continue (this should be possible to verify at next meeting, 
+ short clear description, use issues from project site). 
+
+
+Collision needs to be resolved!
+
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+ etc. , see also 4 
+        In progress:
+        DOCUMENTATION
+        Moving Enemies
+        Collision
+        Menu
+
+
+Solved:
+Gravity has been extracted from character class, and can now be applied to any class
+Projectiles
+
+
+
+
+
+3. Discussion items (35 min) 
+
+ (a) How do we do...? 
+        We are doing progress. All group members know what the group as a whole is about to do. Each member should also know exactly what they should be working on. 
+The colision class is a bottleneck at the moment, it needs to be resolved.
+
+ (b) What to do...?
+Moving Enemies needs to be implemented
+Projectiles should be created
+Collision should be resolved
+A first draft of menus should be done 
+
+4. Outcomes and assignments (5 min) 
+
+ (a) Elvira should
+        Finish a first draft of menus
+
+  (b) Victor should.... 
+        Finish projectiles
+
+  (c) Oscar should…
+Refactor collision completely
+
+
+  (d) Sebastian should…
+        Fix moving enemies.
+
+
+ (e) If assignment is finished, you should….
+Write documentation
+
+5. Wrap up 
+
+ (b) Next meeting?
+        Thursday 15/5 10.00 1212F
