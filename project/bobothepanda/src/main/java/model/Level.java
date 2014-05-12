@@ -20,8 +20,7 @@ public class Level implements PropertyChangeListener{
 	public Level(List <IMapObject> objectList, Character playerCharacter){
 //		this.playerCharacter = playerCharacter;
 //		this.objectList = objectList;
-		projectile = new Projectile(new Position(392.0f, 450.0f), new Size(4,4));
-		//System.out.println(projectile.getPosition().getX() +" "+ projectile.getPosition().getY());
+		projectile = new Projectile(new Position(392.0f, 470.0f), new Size(4,4));
 		this.pcs = new PropertyChangeSupport(this);
 		
 	}
@@ -43,12 +42,12 @@ public class Level implements PropertyChangeListener{
 	
 	//TODO göra om både update och render, alternativt ta bort render
 	public void update(int delta){
-		//projectile.update(delta);
+		projectile.update(delta);
 		
 		//TODO set gravity etc.	
 	}
 	public void render(){
-		//pcs.firePropertyChange("drawProjectile", null, projectile.getPosition());
+		pcs.firePropertyChange("drawProjectile", null, projectile.getPosition());
 	}
 	
 	
