@@ -3,7 +3,6 @@ package view;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import org.newdawn.slick.*;
-import org.newdawn.slick.*;
 
 import model.Position;
 

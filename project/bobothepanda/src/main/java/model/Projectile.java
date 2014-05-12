@@ -28,7 +28,7 @@ public class Projectile extends MovingLethalEnemy{
 
 	public void setNewX(int delta) {
 		
-		float nextPositionX = getPosition().getX() - VELOCITY * delta;
+		final float nextPositionX = getPosition().getX() - VELOCITY * delta;
 		
 		//Position nextPosition = new Position(nextPositionX, getPosition().getY());
 		
