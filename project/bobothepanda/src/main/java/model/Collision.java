@@ -15,6 +15,10 @@ public class Collision {
 		this.objectList = objectList;
 	}
 	
+	public static boolean collision(Rectangle collider, Rectangle collidedWith){
+		return collider.intersects(collidedWith);
+	}
+	
 	public Rectangle collidedWith(Rectangle characterHitbox){
 		for(final AbstractMapObject o: objectList){
 			//Checks if bobo has collided with another object

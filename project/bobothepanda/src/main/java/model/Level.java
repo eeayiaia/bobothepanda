@@ -8,13 +8,13 @@ import java.util.List;
 @SuppressWarnings("PMD")
 public class Level implements PropertyChangeListener{
 	
-//	private final Character playerCharacter;
-//	private final List <MapObject> objectList;
+	private final Character playerCharacter;
+//	private final List <IMapObject> objectList;
 	private final PropertyChangeSupport pcs;
 	
 	
 	public Level(List <AbstractMapObject> objectList, Character playerCharacter){
-//		this.playerCharacter = playerCharacter;
+		this.playerCharacter = playerCharacter;
 //		this.objectList = objectList;
 		this.pcs = new PropertyChangeSupport(this);
 	}
@@ -35,10 +35,16 @@ public class Level implements PropertyChangeListener{
 	}
 	
 	public void update(int delta){
-		
+
 		//TODO set gravity etc.
 		
 		
+	}
+	
+	public void checkCollisions() {
+//		for(IMapObject o: objectList) {
+//			Collision.collision(playerCharacter.getHitbox(), o.getHitbox());
+//		}
 	}
 	
 	

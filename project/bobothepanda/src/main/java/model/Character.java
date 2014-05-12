@@ -11,6 +11,7 @@ public class Character {
 	private Gravity gravity = new Gravity (0.01f);
 	private float yVelocity = 0.15f;
 	private final Position position;
+	private final Position oldPosition;
 	private final PropertyChangeSupport pcs;
 	private final static int HEIGHT = 30;
 	private final static int WIDTH = 18;
@@ -31,6 +32,7 @@ public class Character {
 	 */
 	public Character(Position position, Collision collision){
 		this.position = position;
+		oldPosition = position;
 		facing = Facing.RIGHT;
 		characterState = CharacterState.IDLE;
 		pcs = new PropertyChangeSupport(this);	
