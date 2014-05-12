@@ -8,7 +8,7 @@ import java.beans.PropertyChangeSupport;
 
 public class Character {
 	
-	
+	private Gravity gravity = new Gravity (0.01f);
 	private float yVelocity = 0.15f;
 	private final Position position;
 	private final PropertyChangeSupport pcs;
@@ -137,7 +137,7 @@ public class Character {
 		//needs to be on the ground to jump
 		if(onGround()){
 			
-			yVelocity = -15f;
+			yVelocity = -2f;
 		}
 	}
 	
@@ -242,9 +242,10 @@ public class Character {
 	public void setNewY(int delta){
 		Rectangle collisionHitbox;
 		//Change velocity due to gravity
-		setYVelocity(delta);
+		yVelocity = gravity.getNewVelocity(yVelocity, delta);
 		Position nextPosition;
-		float yAndYVelocity = position.getY() + yVelocity; 
+		// Set next Y due to gravity
+		float yAndYVelocity = gravity.getNewYPosition(position.getY(), yVelocity, delta);/*position.getY() + yVelocity;*/ 
 		if(yAndYVelocity >= 0){
 			nextPosition = new Position(position.getX(),yAndYVelocity);
 		}else{
@@ -278,13 +279,13 @@ public class Character {
 	 * Changes the velocity. Makes sure that the velocity does not exceed a certain amount.
 	 * @param delta
 	 */
-	private void setYVelocity(int delta){
-		float gravity = 0.05f;
-		Float nextYVelocity = yVelocity + gravity * delta;
-		if(nextYVelocity > 15f){
-			yVelocity = 15f;
-		}else{
-			yVelocity = nextYVelocity;
-		}
-	}
+//	private void setYVelocity(int delta){
+//		float gravity = 0.05f;
+//		Float nextYVelocity = yVelocity + gravity * delta;
+//		if(nextYVelocity > 15f){
+//			yVelocity = 15f;
+//		}else{
+//			yVelocity = nextYVelocity;
+//		}
+//	}
 }
