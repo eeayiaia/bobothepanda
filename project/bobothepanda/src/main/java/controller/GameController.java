@@ -10,6 +10,7 @@ import model.Level;
 import utilities.MapHandler;
 import utilities.MapHandlerException;
 import view.CharacterView;
+import view.LevelView;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -22,7 +23,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private CharacterController characterController;
 	private MapHandler mapHandler;
 	private GameContainer container;
-	//private LevelView levelView;
+	private Level level;
 	private int currentLevelNumber;
 	
 	
@@ -60,10 +61,13 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		g.scale(MainClass.SCALE, MainClass.SCALE);
 		mapHandler.renderMap();
 		character.update();
+		level.render();
+		
 	}
 
 	public void update(GameContainer container, StateBasedGame game, int delta)throws SlickException {
 		characterController.handleInput(container.getInput(), delta);
+		level.update(delta);
 		
 	}
 
@@ -112,7 +116,9 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		final Collision collision = new Collision(mapHandler.getMapObjectList());
 		character = new Character(mapHandler.getCharacterStartPosition(), collision);
 		character.addPropertyChangeListener(new CharacterView());
-		final Level level = new Level(mapHandler.getMapObjectList(), character);
+		level = new Level(mapHandler.getMapObjectList(), character);
+		final LevelView levelView = new LevelView();
+		level.addPropertyChangeListener(levelView);
 		character.addPropertyChangeListener(level);
 		characterController = new CharacterController(character);
 		

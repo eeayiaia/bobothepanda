@@ -5,18 +5,25 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.List;
+import model.Projectile;
+import model.Position;
+
 @SuppressWarnings("PMD")
 public class Level implements PropertyChangeListener{
 	
 	private final Character playerCharacter;
 //	private final List <IMapObject> objectList;
 	private final PropertyChangeSupport pcs;
+	private Projectile projectile;
 	
 	
 	public Level(List <AbstractMapObject> objectList, Character playerCharacter){
 		this.playerCharacter = playerCharacter;
 //		this.objectList = objectList;
+		projectile = new Projectile(new Position(392.0f, 450.0f), new Size(4,4));
+		//System.out.println(projectile.getPosition().getX() +" "+ projectile.getPosition().getY());
 		this.pcs = new PropertyChangeSupport(this);
+		
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener listener){
@@ -34,12 +41,16 @@ public class Level implements PropertyChangeListener{
 		}
 	}
 	
+	//TODO göra om både update och render, alternativt ta bort render
 	public void update(int delta){
-
-		//TODO set gravity etc.
+		//projectile.update(delta);
 		
-		
+		//TODO set gravity etc.	
 	}
+	public void render(){
+		//pcs.firePropertyChange("drawProjectile", null, projectile.getPosition());
+	}
+	
 	
 	public void checkCollisions() {
 //		for(IMapObject o: objectList) {

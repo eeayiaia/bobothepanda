@@ -6,7 +6,7 @@ package model;
  *
  */
 @edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
-public class Projectile extends AbstractMapObject{
+public class Projectile extends AbstractMovingMapObject{
 
 	private final static float VELOCITY = 0.25f;
 	
@@ -20,8 +20,19 @@ public class Projectile extends AbstractMapObject{
 	 */
 	public void update(int delta){
 		
-		setX(VELOCITY * delta);
+		//setX(VELOCITY * delta);
 		
+		setNewX(delta);
+		
+	}
+
+	public void setNewX(int delta) {
+		
+		float nextPositionX = getPosition().getX() - VELOCITY * delta;
+		
+		//Position nextPosition = new Position(nextPositionX, getPosition().getY());
+		
+		setX(nextPositionX);
 	}
 
 	public void doCollision(Character character) {
