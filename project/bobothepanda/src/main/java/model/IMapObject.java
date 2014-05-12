@@ -17,6 +17,4 @@ public interface IMapObject {
 	void setPosition(Position position);
 	
 	void doCollision(Character character);
-	
-	void doCollision(IMapObject mapObject);
 }

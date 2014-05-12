@@ -11,14 +11,14 @@ import model.Position;
 @SuppressWarnings("PMD")
 public class Level implements PropertyChangeListener{
 	
-	private final Character playerCharacter;
+//	private final Character playerCharacter;
 //	private final List <IMapObject> objectList;
 	private final PropertyChangeSupport pcs;
 	private Projectile projectile;
 	
 	
-	public Level(List <AbstractMapObject> objectList, Character playerCharacter){
-		this.playerCharacter = playerCharacter;
+	public Level(List <IMapObject> objectList, Character playerCharacter){
+//		this.playerCharacter = playerCharacter;
 //		this.objectList = objectList;
 		projectile = new Projectile(new Position(392.0f, 450.0f), new Size(4,4));
 		//System.out.println(projectile.getPosition().getX() +" "+ projectile.getPosition().getY());

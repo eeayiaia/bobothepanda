@@ -8,12 +8,12 @@ import java.util.List;
 
 import org.newdawn.slick.SlickException;
 
-import model.AbstractMapObject;
+import model.IMapObject;
 import model.Position;
 
 public interface IMapHandler {
 	
-	List<AbstractMapObject> getMapObjectList();
+	List<IMapObject> getMapObjectList();
 	
 	Position getCharacterStartPosition();
 	

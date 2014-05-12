@@ -4,12 +4,13 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.BlockingObject;
 import model.Character;
 import model.Collision;
 import model.AbstractMapObject;
+import model.IMapObject;
 import model.Position;
 import model.Size;
-import model.Terrain;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,8 +23,8 @@ public class CharacterTest extends Assert {
 	
 	@Before
 	public void setUp() throws Exception {
-		final AbstractMapObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
-		final List <AbstractMapObject> list = new ArrayList <AbstractMapObject>();
+		final AbstractMapObject terrain = new BlockingObject(new Position(1f,1f), new Size(5f,5f));
+		final List <IMapObject> list = new ArrayList <IMapObject>();
 		list.add(terrain);
 		collision = new Collision(list);
 		character = new Character(position, collision);

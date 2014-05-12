@@ -6,18 +6,22 @@ package model;
  *
  */
 
-public class Door extends AbstractMapObject {
+public class Door extends BlockingObject {
 
 	public Door(Position position, Size size) {
 		super(position, size);
 	}
 	
+	/**
+	 * If the character has the key it lets the next level be loaded
+	 * otherwise it just blocks the character
+	 */
+	@Override
 	public void doCollision(Character character){
-		// TODO 
-	}
-
-	public void doCollision(IMapObject mapObject) {
-		// TODO Auto-generated method stub
-		
+		if(character.getKeyPickedUp()) {
+			character.levelComplete();
+		} else {
+			super.doCollision(character);
+		}
 	}
 }

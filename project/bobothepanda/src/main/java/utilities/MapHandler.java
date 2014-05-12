@@ -7,13 +7,14 @@ package utilities;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.BlockingObject;
 import model.Door;
+import model.IMapObject;
 import model.Key;
 import model.AbstractMapObject;
+import model.LethalEnemy;
 import model.Position;
 import model.Size;
-import model.StaticLethalObject;
-import model.Terrain;
 
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
@@ -23,7 +24,7 @@ public class MapHandler implements IMapHandler {
 	private TiledMap map;
 	private final static String MAP_LOCATION = "data/levels/";
 	private final static String TILESET_LOCATION = "data/img";
-	private List<AbstractMapObject> objectList;
+	private List<IMapObject> objectList;
 	private Position characterStartPosition;
 	
 	/**
@@ -53,14 +54,14 @@ public class MapHandler implements IMapHandler {
 	 */
 	public final void loadLevel(String levelName) throws SlickException{
 		map = new TiledMap(MAP_LOCATION + levelName + ".tmx", TILESET_LOCATION);
-		objectList = new ArrayList<AbstractMapObject>();
+		objectList = new ArrayList<IMapObject>();
 		createObjectList();
 	}
 	
 	/**
 	 * @return A list of objects located on the map
 	 */
-	public List<AbstractMapObject> getMapObjectList() {
+	public List<IMapObject> getMapObjectList() {
 		return objectList;
 	}
 	
@@ -78,9 +79,9 @@ public class MapHandler implements IMapHandler {
 	 */
 	private AbstractMapObject createNewMapObject (String type, Position position, Size size) {
 		if("Terrain".equals(type)) {
-			return new Terrain(position, size);
+			return new BlockingObject(position, size);
 		} else if("Lethal".equals(type)) {
-			return new StaticLethalObject(position, size);
+			return new LethalEnemy(position, size);
 		} else if("Key".equals(type)) {
 			return new Key(position, size);
 		} else if("Door".equals(type)){

@@ -1,5 +1,6 @@
 package model;
 
+@SuppressWarnings("PMD")
 public class Key extends AbstractMapObject {
 
 	public Key(Position position, Size size) {
@@ -7,13 +8,8 @@ public class Key extends AbstractMapObject {
 	}
 
 	public void doCollision(Character character) {
-		// TODO Auto-generated method stub
+		boolean testingMethod = true;
+		character.setKeyPickedUp(testingMethod);
 		
 	}
-
-	public void doCollision(IMapObject mapObject) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
