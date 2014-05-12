@@ -36,8 +36,7 @@ public class Projectile extends AbstractMovingMapObject{
 	}
 
 	public void doCollision(Character character) {
-		// TODO Auto-generated method stub
-		
+		character.die();
 	}
 
 	public void doCollision(IMapObject mapObject) {
