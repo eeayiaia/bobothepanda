@@ -1,6 +1,5 @@
 package model;
 
-//import java.awt.Rectangle;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -11,15 +10,21 @@ import model.Position;
 @SuppressWarnings("PMD")
 public class Level implements PropertyChangeListener{
 	
-//	private final Character playerCharacter;
-//	private final List <IMapObject> objectList;
+	private final Character playerCharacter;
 	private final PropertyChangeSupport pcs;
 	private Projectile projectile;
+	private final List <BlockingObject> blockingObjects;
+	private final List <LethalEnemy> staticEnemies;
+	private final List <MovingLethalEnemy> movingEnemies;
+	private Key key;
 	
 	
-	public Level(List <IMapObject> objectList, Character playerCharacter){
-//		this.playerCharacter = playerCharacter;
-//		this.objectList = objectList;
+	public Level(List <BlockingObject> blockingObjects, List <LethalEnemy> staticEnemies, List <MovingLethalEnemy> movingEnemies, Key key, Character playerCharacter){
+		this.playerCharacter = playerCharacter;
+		this.blockingObjects = blockingObjects;
+		this.staticEnemies = staticEnemies;
+		this.movingEnemies = movingEnemies;
+		this.key = key;
 		projectile = new Projectile(new Position(392.0f, 470.0f), new Size(4,4));
 		this.pcs = new PropertyChangeSupport(this);
 		
@@ -43,18 +48,39 @@ public class Level implements PropertyChangeListener{
 	//TODO göra om både update och render, alternativt ta bort render
 	public void update(int delta){
 		projectile.update(delta);
-		
+		checkCollisions();
 		//TODO set gravity etc.	
 	}
 	public void render(){
 		pcs.firePropertyChange("drawProjectile", null, projectile.getPosition());
 	}
 	
-	
+	/**
+	 * Loops through all objects on the map and checks if any collisions has occured
+	 * then takes action accordingly.
+	 */
 	public void checkCollisions() {
-//		for(IMapObject o: objectList) {
-//			Collision.collision(playerCharacter.getHitbox(), o.getHitbox());
-//		}
+		Collision.collision(playerCharacter.getHitbox(), key.getHitbox());
+		for(LethalEnemy e: staticEnemies) {
+			if(Collision.collision(playerCharacter.getHitbox(), e.getHitbox())) {
+				e.doCollision(playerCharacter);
+			}
+		}
+		for(MovingLethalEnemy e: movingEnemies) {
+			if(Collision.collision(playerCharacter.getHitbox(), e.getHitbox())) {
+				e.doCollision(playerCharacter);
+			}
+			for(BlockingObject o: blockingObjects) {
+				if(Collision.collision(e.getHitbox(), o.getHitbox())) {
+					o.doCollision(e);
+				}
+			}
+		}
+		for(BlockingObject o: blockingObjects) {
+			if(Collision.collision(playerCharacter.getHitbox(), o.getHitbox())) {
+				o.doCollision(playerCharacter);
+			}
+		}
 	}
 	
 	

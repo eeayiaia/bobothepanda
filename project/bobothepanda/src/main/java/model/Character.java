@@ -23,14 +23,13 @@ public class Character {
 	private static float XVELOCITY = 0.25f;
 	private CharacterState characterState;
 	private long lastTimedMoved; 
-	private final Collision collision;
 	private boolean keyPickedUp;
 
 	/**
 	 * Sets the starting position and assigns PropertyChangeSupport to this class
 	 * @param position Starting position
 	 */
-	public Character(Position position, Collision collision){
+	public Character(Position position){
 		this.position = position;
 	//	oldPosition = position;
 		facing = Facing.RIGHT;
@@ -39,7 +38,6 @@ public class Character {
 		size = new Size(WIDTH,HEIGHT);
 		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
-		this.collision = collision;
 	}
 	
 	/**
@@ -169,17 +167,17 @@ public class Character {
 	 * Checks if the character is on the ground
 	 * @return true if on ground level.
 	 */
-	public boolean onGround(){
-		final Position nextPosition = new Position(position.getX(),position.getY()+yVelocity);
-		final Rectangle collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
-				(int)Math.round(nextPosition.getY()), (int)size.getWidth(), (int)size.getHeight()));
-		// if there is a collision the position remains the same and bobo stands still
-		if(collisionHitbox != null && (collision.getObjectType().getClass().equals(BlockingObject.class) || collision.getObjectType().getClass() == Door.class)){
-			return true;
-		} else{
-			return false;
-		}		
-	}
+//	public boolean onGround(){
+//		final Position nextPosition = new Position(position.getX(),position.getY()+yVelocity);
+//		final Rectangle collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
+//				(int)Math.round(nextPosition.getY()), (int)size.getWidth(), (int)size.getHeight()));
+//		// if there is a collision the position remains the same and bobo stands still
+//		if(collisionHitbox != null && (collision.getObjectType().getClass().equals(BlockingObject.class) || collision.getObjectType().getClass() == Door.class)){
+//			return true;
+//		} else{
+//			return false;
+//		}		
+//	}
 	
 	/**
 	 * Applies gravity to the character if it isn't touching the ground.
@@ -206,99 +204,99 @@ public class Character {
 		pcs.firePropertyChange("reloadLevel", null, null);
 	}
 	
-	public void setNewX(int delta) {
-		Rectangle collisionHitbox;
-		Position nextPosition;
-		
-		
-		if(characterState==CharacterState.MOVING_RIGHT) {
-			nextPosition = new Position(position.getX()+XVELOCITY*delta, position.getY());
-		} else {
-			float xMinusVelocity = position.getX()-XVELOCITY*delta;
-			if(xMinusVelocity>= 0){
-				nextPosition = new Position(xMinusVelocity, position.getY());
-			}else{
-				nextPosition = new Position(position.getX(), position.getY());
-			}
-		}
-		float nextPositionXValue = nextPosition.getX();
-		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPositionXValue), 
-				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
-		float collisionHitboxXValue = 0;
-		if(collisionHitbox != null){
-			collisionHitboxXValue = (float) collisionHitbox.getX();
-		}
-		if(collisionHitbox != null) {	
-			if(collision.getObjectType().getClass() == BlockingObject.class || collision.getObjectType().getClass() == Door.class || collision.getObjectType().getClass() == Key.class) {
-				if(collision.getObjectType().getClass() == Key.class){
-					keyPickedUp = true;
-					//possible to go right through the key
-					position.setX(nextPositionXValue);
-				}else{
-					//should be ObjectType.OPEN_DOOR
-					if(collision.getObjectType().getClass() == Door.class && keyPickedUp){
-						pcs.firePropertyChange("loadLevel", null, null);
-					}
-					
-					if(characterState==CharacterState.MOVING_RIGHT) {
-						if((nextPositionXValue + WIDTH) >= collisionHitboxXValue) {
-							position.setX(collisionHitboxXValue - WIDTH);
-						}
-					}else if(characterState==CharacterState.MOVING_LEFT) {
-						double newX = collisionHitboxXValue + collisionHitbox.getWidth();
-						if(nextPositionXValue <= newX) {
-							position.setX((float)newX);
-						}
-					}
-				}
-			} else if(collision.getObjectType().getClass() == LethalEnemy.class) {
-				pcs.firePropertyChange("reloadLevel", null, null);
-			}
-		}
-		else {
-			position.setX(nextPositionXValue);
-		}
-	}
-	/**
-	 * Sets the next y value if the next position is valid
-	 * @param delta
-	 */
-	public void setNewY(int delta){
-		Rectangle collisionHitbox;
-		//Change velocity due to gravity
-		yVelocity = gravity.getNewVelocity(yVelocity, delta);
-		Position nextPosition;
-		// Set next Y due to gravity
-		float yAndYVelocity = gravity.getNewYPosition(position.getY(), yVelocity, delta);/*position.getY() + yVelocity;*/ 
-		if(yAndYVelocity >= 0){
-			nextPosition = new Position(position.getX(),yAndYVelocity);
-		}else{
-			nextPosition = new Position(position.getX(), position.getY());
-		}
-		
-		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
-				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
-		// if there is a collision the position remains the same and bobo stands still
-		if(collisionHitbox != null){
-			if(collision.getObjectType().getClass() == Key.class){
-				keyPickedUp = true;
-				//possible to go right through the key
-				position.setY(nextPosition.getY());
-			}
-			if(collision.getObjectType().getClass() == BlockingObject.class || collision.getObjectType().getClass() == Door.class) {
-				if(yVelocity < 0) {
-					position.setY((float)(collisionHitbox.getY() + collisionHitbox.getHeight()));
-					yVelocity = 0;
-				} else if(yVelocity > 0) {
-					position.setY((float)(collisionHitbox.getY() - HEIGHT));
-				}
-			} else if(collision.getObjectType().getClass() == LethalEnemy.class) {
-				pcs.firePropertyChange("reloadLevel", null, null);
-			}
-		} else {
-			position.setY(nextPosition.getY());
-		}
-	}
+//	public void setNewX(int delta) {
+//		Rectangle collisionHitbox;
+//		Position nextPosition;
+//		
+//		
+//		if(characterState==CharacterState.MOVING_RIGHT) {
+//			nextPosition = new Position(position.getX()+XVELOCITY*delta, position.getY());
+//		} else {
+//			float xMinusVelocity = position.getX()-XVELOCITY*delta;
+//			if(xMinusVelocity>= 0){
+//				nextPosition = new Position(xMinusVelocity, position.getY());
+//			}else{
+//				nextPosition = new Position(position.getX(), position.getY());
+//			}
+//		}
+//		float nextPositionXValue = nextPosition.getX();
+//		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPositionXValue), 
+//				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
+//		float collisionHitboxXValue = 0;
+//		if(collisionHitbox != null){
+//			collisionHitboxXValue = (float) collisionHitbox.getX();
+//		}
+//		if(collisionHitbox != null) {	
+//			if(collision.getObjectType().getClass() == BlockingObject.class || collision.getObjectType().getClass() == Door.class || collision.getObjectType().getClass() == Key.class) {
+//				if(collision.getObjectType().getClass() == Key.class){
+//					keyPickedUp = true;
+//					//possible to go right through the key
+//					position.setX(nextPositionXValue);
+//				}else{
+//					//should be ObjectType.OPEN_DOOR
+//					if(collision.getObjectType().getClass() == Door.class && keyPickedUp){
+//						pcs.firePropertyChange("loadLevel", null, null);
+//					}
+//					
+//					if(characterState==CharacterState.MOVING_RIGHT) {
+//						if((nextPositionXValue + WIDTH) >= collisionHitboxXValue) {
+//							position.setX(collisionHitboxXValue - WIDTH);
+//						}
+//					}else if(characterState==CharacterState.MOVING_LEFT) {
+//						double newX = collisionHitboxXValue + collisionHitbox.getWidth();
+//						if(nextPositionXValue <= newX) {
+//							position.setX((float)newX);
+//						}
+//					}
+//				}
+//			} else if(collision.getObjectType().getClass() == LethalEnemy.class) {
+//				pcs.firePropertyChange("reloadLevel", null, null);
+//			}
+//		}
+//		else {
+//			position.setX(nextPositionXValue);
+//		}
+//	}
+//	/**
+//	 * Sets the next y value if the next position is valid
+//	 * @param delta
+//	 */
+//	public void setNewY(int delta){
+//		Rectangle collisionHitbox;
+//		//Change velocity due to gravity
+//		yVelocity = gravity.getNewVelocity(yVelocity, delta);
+//		Position nextPosition;
+//		// Set next Y due to gravity
+//		float yAndYVelocity = gravity.getNewYPosition(position.getY(), yVelocity, delta);/*position.getY() + yVelocity;*/ 
+//		if(yAndYVelocity >= 0){
+//			nextPosition = new Position(position.getX(),yAndYVelocity);
+//		}else{
+//			nextPosition = new Position(position.getX(), position.getY());
+//		}
+//		
+//		collisionHitbox = collision.collidedWith(new Rectangle((int)Math.round(nextPosition.getX()), 
+//				(int)Math.round(nextPosition.getY()), WIDTH, HEIGHT));
+//		// if there is a collision the position remains the same and bobo stands still
+//		if(collisionHitbox != null){
+//			if(collision.getObjectType().getClass() == Key.class){
+//				keyPickedUp = true;
+//				//possible to go right through the key
+//				position.setY(nextPosition.getY());
+//			}
+//			if(collision.getObjectType().getClass() == BlockingObject.class || collision.getObjectType().getClass() == Door.class) {
+//				if(yVelocity < 0) {
+//					position.setY((float)(collisionHitbox.getY() + collisionHitbox.getHeight()));
+//					yVelocity = 0;
+//				} else if(yVelocity > 0) {
+//					position.setY((float)(collisionHitbox.getY() - HEIGHT));
+//				}
+//			} else if(collision.getObjectType().getClass() == LethalEnemy.class) {
+//				pcs.firePropertyChange("reloadLevel", null, null);
+//			}
+//		} else {
+//			position.setY(nextPosition.getY());
+//		}
+//	}
 	/**
 	 * Changes the velocity. Makes sure that the velocity does not exceed a certain amount.
 	 * @param delta

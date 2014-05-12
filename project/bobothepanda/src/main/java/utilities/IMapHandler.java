@@ -8,12 +8,21 @@ import java.util.List;
 
 import org.newdawn.slick.SlickException;
 
-import model.IMapObject;
+import model.BlockingObject;
+import model.Key;
+import model.LethalEnemy;
+import model.MovingLethalEnemy;
 import model.Position;
 
 public interface IMapHandler {
 	
-	List<IMapObject> getMapObjectList();
+	List<BlockingObject> getBlockingObjectList();
+	
+	List<LethalEnemy> getStaticEnemyList();
+
+	List<MovingLethalEnemy> getMovingEnemyList();
+	
+	Key getKey();
 	
 	Position getCharacterStartPosition();
 	

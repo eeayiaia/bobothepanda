@@ -2,11 +2,16 @@ package controller;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.List;
 
 import main.MainClass;
+import model.BlockingObject;
 import model.Character;
 import model.Collision;
+import model.Key;
+import model.LethalEnemy;
 import model.Level;
+import model.MovingLethalEnemy;
 import utilities.MapHandler;
 import utilities.MapHandlerException;
 import view.CharacterView;
@@ -113,10 +118,9 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		}
 	
 		mapHandler = new MapHandler("level" + currentLevelNumber);
-		final Collision collision = new Collision(mapHandler.getMapObjectList());
-		character = new Character(mapHandler.getCharacterStartPosition(), collision);
+		character = new Character(mapHandler.getCharacterStartPosition());
 		character.addPropertyChangeListener(new CharacterView());
-		level = new Level(mapHandler.getMapObjectList(), character);
+		level = new Level(mapHandler.getBlockingObjectList(), mapHandler.getStaticEnemyList(), mapHandler.getMovingEnemyList(), mapHandler.getKey(), character);
 		final LevelView levelView = new LevelView();
 		level.addPropertyChangeListener(levelView);
 		character.addPropertyChangeListener(level);

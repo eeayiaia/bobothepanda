@@ -13,6 +13,7 @@ import model.IMapObject;
 import model.Key;
 import model.AbstractMapObject;
 import model.LethalEnemy;
+import model.MovingLethalEnemy;
 import model.Position;
 import model.Size;
 
@@ -24,7 +25,10 @@ public class MapHandler implements IMapHandler {
 	private TiledMap map;
 	private final static String MAP_LOCATION = "data/levels/";
 	private final static String TILESET_LOCATION = "data/img";
-	private List<IMapObject> objectList;
+	private List <BlockingObject> blockingObjects;
+	private List <LethalEnemy> staticEnemies;
+	private List <MovingLethalEnemy> movingEnemies;
+	private Key key;
 	private Position characterStartPosition;
 	
 	/**
@@ -54,16 +58,40 @@ public class MapHandler implements IMapHandler {
 	 */
 	public final void loadLevel(String levelName) throws SlickException{
 		map = new TiledMap(MAP_LOCATION + levelName + ".tmx", TILESET_LOCATION);
-		objectList = new ArrayList<IMapObject>();
-		createObjectList();
+		blockingObjects = new ArrayList<BlockingObject>();
+		createObjectLists();
 	}
 	
 	/**
-	 * @return A list of objects located on the map
+	 * @return A list of the blocking objects located on the map
 	 */
-	public List<IMapObject> getMapObjectList() {
-		return objectList;
+	public List<BlockingObject> getBlockingObjectList() {
+		return blockingObjects;
 	}
+	
+	/**
+	 * @return A list of the static lethal enemies on the map
+	 */
+	public List<LethalEnemy> getStaticEnemyList() {
+		return staticEnemies;
+	}
+	
+	/**
+	 * 
+	 * @return A list of the moving enemies on the map
+	 */
+	public List<MovingLethalEnemy> getMovingEnemyList() {
+		return movingEnemies;
+	}
+	
+	/**
+	 * 
+	 * @return The key on the map
+	 */
+	public Key getKey() {
+		return key;
+	}
+	
 	
 	/**
 	 * @return The starting position of the character.
@@ -73,29 +101,10 @@ public class MapHandler implements IMapHandler {
 	}
 	
 	/**
-	 * Assigns an object type based on input string.
-	 * @param type Type of object, String value
-	 * @return ObjectType enum.
-	 */
-	private AbstractMapObject createNewMapObject (String type, Position position, Size size) {
-		if("Terrain".equals(type)) {
-			return new BlockingObject(position, size);
-		} else if("Lethal".equals(type)) {
-			return new LethalEnemy(position, size);
-		} else if("Key".equals(type)) {
-			return new Key(position, size);
-		} else if("Door".equals(type)){
-			return new Door(position, size);
-		} else {
-			return null;
-		}
-	}
-	
-	/**
 	 * Creates a list of all the MapObjects.
 	 */
 	@SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
-	private void createObjectList() {
+	private void createObjectLists() {
 		final int objects = map.getObjectCount(0);
 		
 		for(int i = 0; i < objects; i++) {
@@ -106,7 +115,15 @@ public class MapHandler implements IMapHandler {
 				characterStartPosition = position;
 			} else {
 				size = new Size((float)map.getObjectWidth(0,i), (float)map.getObjectHeight(0,i));
-				objectList.add(createNewMapObject(type, position, size));
+				if("Terrain".equals(type)) {
+					blockingObjects.add(new BlockingObject(position, size));
+				} else if("Lethal".equals(type)) {
+					staticEnemies.add(new LethalEnemy(position, size));
+				} else if("Door".equals(type)) {
+					blockingObjects.add(new Door(position, size));
+				} else if("Key".equals(type)) {
+					key = new Key(position, size);
+				}
 			}
 		}
 	}
