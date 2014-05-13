@@ -8,18 +8,15 @@ import java.beans.PropertyChangeSupport;
 
 public class Character {
 	
-	private Gravity gravity = new Gravity (0.01f);
-	private float yVelocity = 0.15f;
+	private CharacterState characterState;
+	//private Gravity gravity = new Gravity (0.01f);
 	private final Position position;
 	private final Position oldPosition;
 	private final PropertyChangeSupport pcs;
-	private final static int HEIGHT = 30;
-	private final static int WIDTH = 18;
 	private final Size size;
 	private Facing facing;
-	//CharacterState onödig, bör ersättas med att kolla om hastigheten är positiv eller negativ
-	//Hastigheten bör också flyttas upp så att den är tillgänglig i hela klassen
-	private static float XVELOCITY = 0.25f;
+	private float yVelocity = 0.15f;
+	private float xVelocity = 0;
 	private long lastTimedMoved; 
 	private boolean keyPickedUp;
 
@@ -35,6 +32,17 @@ public class Character {
 		this.size = size;
 	}
 	
+	/**
+	 * The states that a character can have.
+	 */
+	public enum CharacterState {
+		MOVING_RIGHT,
+		MOVING_LEFT;
+	}
+	
+	/**
+	 * @return The hitbox surrounding the character.
+	 */
 	public Rectangle getHitbox() {
 		return new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
@@ -66,9 +74,8 @@ public class Character {
 	 * Get the velocity of the character
 	 */
 	public float getXVelocity() {
-		return XVELOCITY;
+		return xVelocity;
 	}
-	
 	
 	/**
 	 * The current direction the character is facing
@@ -117,7 +124,8 @@ public class Character {
      * @param delta
      */
 	public void moveLeft(int delta){
-			characterState = CharacterState.MOVING_LEFT;
+		characterState = CharacterState.MOVING_LEFT;
+			xVelocity = -0.25f;
 			setNewX(delta);
 			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.LEFT;
@@ -131,11 +139,11 @@ public class Character {
 	 * @param delta
 	 */
 	public void moveRight(int delta){
-			characterState = CharacterState.MOVING_RIGHT;
-			setNewX(delta);
-			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
-			facing = Facing.RIGHT;
-			lastTimedMoved = System.currentTimeMillis();
+		characterState = CharacterState.MOVING_RIGHT;
+		xVelocity = 0.25f;
+		setNewX(delta);
+		facing = Facing.RIGHT;
+		lastTimedMoved = System.currentTimeMillis();
 	}
 
 	/**
