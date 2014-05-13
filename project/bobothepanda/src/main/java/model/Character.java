@@ -11,17 +11,15 @@ public class Character {
 	private Gravity gravity = new Gravity (0.01f);
 	private float yVelocity = 0.15f;
 	private final Position position;
-	//private final Position oldPosition;
+	private final Position oldPosition;
 	private final PropertyChangeSupport pcs;
 	private final static int HEIGHT = 30;
 	private final static int WIDTH = 18;
 	private final Size size;
-	private final Rectangle hitbox;
 	private Facing facing;
 	//CharacterState onödig, bör ersättas med att kolla om hastigheten är positiv eller negativ
 	//Hastigheten bör också flyttas upp så att den är tillgänglig i hela klassen
 	private static float XVELOCITY = 0.25f;
-	private CharacterState characterState;
 	private long lastTimedMoved; 
 	private boolean keyPickedUp;
 
@@ -29,27 +27,17 @@ public class Character {
 	 * Sets the starting position and assigns PropertyChangeSupport to this class
 	 * @param position Starting position
 	 */
-	public Character(Position position){
+	public Character(Position position, Size size){
 		this.position = position;
-	//	oldPosition = position;
+		oldPosition = position;
 		facing = Facing.RIGHT;
-		characterState = CharacterState.IDLE;
 		pcs = new PropertyChangeSupport(this);	
-		size = new Size(WIDTH,HEIGHT);
-		hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
+		this.size = size;
+	}
+	
+	public Rectangle getHitbox() {
+		return new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
-	}
-	
-	/**
-	 * The current state of the Character
-	 * MOVING_RIGHT, MOVING_LEFT, JUMPING, IDLE
-	 */
-	public enum CharacterState{
-		MOVING_RIGHT, MOVING_LEFT, JUMPING, IDLE
-	}
-	
-	public CharacterState getCharacterState(){
-		return this.characterState;
 	}
 	
 	/**
@@ -195,9 +183,6 @@ public class Character {
 	 */
 	public Position getPosition(){
 		return position;
-	}
-	public Rectangle getHitbox(){
-		return hitbox;
 	}
 	
 	public void die() {

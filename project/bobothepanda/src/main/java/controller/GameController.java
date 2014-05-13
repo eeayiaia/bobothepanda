@@ -12,6 +12,7 @@ import model.Key;
 import model.LethalEnemy;
 import model.Level;
 import model.MovingLethalEnemy;
+import model.Size;
 import utilities.MapHandler;
 import utilities.MapHandlerException;
 import view.CharacterView;
@@ -30,6 +31,8 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private GameContainer container;
 	private Level level;
 	private int currentLevelNumber;
+	private final float WIDTH = 18;
+	private final float HEIGHT = 30;
 	
 	
 	/**
@@ -118,7 +121,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		}
 	
 		mapHandler = new MapHandler("level" + currentLevelNumber);
-		character = new Character(mapHandler.getCharacterStartPosition());
+		character = new Character(mapHandler.getCharacterStartPosition(), new Size(WIDTH, HEIGHT));
 		character.addPropertyChangeListener(new CharacterView());
 		level = new Level(mapHandler.getBlockingObjectList(), mapHandler.getStaticEnemyList(), mapHandler.getMovingEnemyList(), mapHandler.getKey(), character);
 		final LevelView levelView = new LevelView();
