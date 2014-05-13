@@ -20,6 +20,8 @@ public class MovingLethalEnemy extends LethalEnemy {
 		if(this.getPosition().getY() > character.getPosition().getY()){
 			dead = true;
 			//TODO remove self
+			//property change or update call? Or anything at all? 
+			//Should level.update always iterate the list for enemy.isdead() == remove from list?
 		}else{
 			character.die();
 		}
