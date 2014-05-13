@@ -26,10 +26,11 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 		menu.addListener(this);
 	}
 	public void handleInput(Input i, int delta){
+		final Position cursorPos = new Position((float)i.getAbsoluteMouseX(),(float)i.getAbsoluteMouseY());
 		if(i.isMousePressed(Input.MOUSE_LEFT_BUTTON)){
-			final Position cursorPos = new Position((float)i.getAbsoluteMouseX(),(float)i.getAbsoluteMouseY());
 			menu.mouseClicked(cursorPos);
 		}
+		menu.update(cursorPos);
 	}
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {

@@ -18,6 +18,7 @@ public class Menu {
 	public List <AbstractMenuItem> getMenuItems(){
 		return menuItems;
 	}
+
 	@SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
 	public void mouseClicked(Position position){
 		for(final AbstractMenuItem butt:menuItems){
@@ -32,6 +33,9 @@ public class Menu {
 	}
 	public void addListener(PropertyChangeListener listener){
 		pcs.addPropertyChangeListener(listener);
+	}
+	public void update(Position cursorPos) {
+		pcs.firePropertyChange("Update", true, false);
 	}
 	
 }
