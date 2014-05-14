@@ -37,4 +37,8 @@ public class Projectile extends MovingEnemy{
 	public void visit(Terrain terrain){
 		//TODO Remove self
 	}
+	
+	public void visit(FixedEnemy fixedEnemy){
+		//TODO Remove self
+	}
 }
