@@ -10,21 +10,16 @@ import model.Position;
 @SuppressWarnings("PMD")
 public class Level implements PropertyChangeListener{
 	
-	private final Character playerCharacter;
 	private final PropertyChangeSupport pcs;
 	private Projectile projectile;
-	private final List <Terrain> blockingObjects;
-	private final List <FixedEnemy> staticEnemies;
-	private final List <MovingEnemy> movingEnemies;
+	private final List <AbstractMovingObject> abstractMovingObjects;
 	private Key key;
+	private List<AbstractFixedObject> abstractFixedObjects;
 	
 	
-	public Level(List <Terrain> blockingObjects, List <FixedEnemy> staticEnemies, List <MovingEnemy> movingEnemies, Key key, Character playerCharacter){
-		this.playerCharacter = playerCharacter;
-		this.blockingObjects = blockingObjects;
-		this.staticEnemies = staticEnemies;
-		this.movingEnemies = movingEnemies;
-		this.key = key;
+	public Level(List <AbstractMovingObject> abstractMovingObjects, List <AbstractFixedObject> abstractFixedObjects){
+		this.abstractMovingObjects = abstractMovingObjects;
+		this.abstractFixedObjects = abstractFixedObjects;
 		projectile = new Projectile(new Position(392.0f, 470.0f), new Size(4,4));
 		this.pcs = new PropertyChangeSupport(this);
 		

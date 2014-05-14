@@ -47,9 +47,11 @@ public class MovingEnemy extends AbstractMovingObject {
 	
 	public void visit(Character character){
 		//If the character comes from above, object will remove itself
-		if(getPosition().getY() > character.getPosition().getY()){
+		if(this.getPosition().getY() > character.getPosition().getY()){
 			dead = true;
 			//TODO remove self 
+		}else{
+			character.die();
 		}
 	}
 }
