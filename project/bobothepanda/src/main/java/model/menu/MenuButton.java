@@ -11,21 +11,15 @@ import model.Size;
  *
  */
 
-public class MenuButton extends AbstractMenuItem{
-	private final String name;
+public class MenuButton extends MenuItem{
 	private final PropertyChangeSupport pcs;
 	
 	public MenuButton(Position position, Size size, String name){
-		super(position,size);
-		this.name = name;
+		super(position,size, name);
 		pcs = new PropertyChangeSupport(this);
 	}
-	public String getName(){
-		return name;
-	}
-	@Override
 	public void mouseClicked() {
-			pcs.firePropertyChange(name, true, false);
+			pcs.firePropertyChange(this.getType(), true, false);
 	}
 	
 }

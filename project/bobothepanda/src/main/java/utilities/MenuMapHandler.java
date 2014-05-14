@@ -8,7 +8,7 @@ import java.util.List;
 
 import model.Position;
 import model.Size;
-import model.menu.AbstractMenuItem;
+import model.menu.MenuItem;
 import model.menu.MenuButton;
 
 import org.newdawn.slick.SlickException;
@@ -19,7 +19,7 @@ public class MenuMapHandler {
 	private TiledMap map;
 	private final static String MAP_LOCATION = "data/menu/";
 	private final static String TILESET_LOCATION = "data/img";
-	private List<AbstractMenuItem> menuItemList;
+	private List<MenuItem> menuItemList;
 	private Position characterPosition;
 	
 	public MenuMapHandler(){
@@ -32,7 +32,7 @@ public class MenuMapHandler {
 		} catch (SlickException e){
 			throw new MapHandlerException(e);
 		}
-		menuItemList = new ArrayList<AbstractMenuItem>();
+		menuItemList = new ArrayList<MenuItem>();
 		createList();
 		
 	}
@@ -46,12 +46,12 @@ public class MenuMapHandler {
 			if("Start".equals(type) || "Quit".equals(type)){
 				menuItemList.add(new MenuButton(tmpPos, tmpSize, type));
 			} else {
-				characterPosition = tmpPos;
+				menuItemList.add(new MenuItem(tmpPos, tmpSize, type));
 			}
 		}
 	}
 
-	public List<AbstractMenuItem> getMenuItemList() {
+	public List<MenuItem> getMenuItemList() {
 		return menuItemList;
 	}
 

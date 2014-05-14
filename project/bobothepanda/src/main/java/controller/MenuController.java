@@ -13,29 +13,36 @@ import org.newdawn.slick.state.StateBasedGame;
 import main.MainClass;
 import model.Position;
 import model.menu.Menu;
+import model.menu.MenuState;
 import utilities.MenuMapHandler;
+import view.MenuView;
 
 public class MenuController extends BasicGameState implements PropertyChangeListener{
-	private final Menu menu;
-	private final MenuMapHandler menuMapHandler;
+	private Menu menu;
+	private MenuMapHandler menuMapHandler;
+	private GameContainer container;
 	
 	public MenuController(){
 		super();
-		menuMapHandler = new MenuMapHandler();
-		menu = new Menu(menuMapHandler.getMenuItemList());
-		menu.addListener(this);
+
 	}
 	public void handleInput(Input i, int delta){
 		final Position cursorPos = new Position((float)i.getAbsoluteMouseX(),(float)i.getAbsoluteMouseY());
 		if(i.isMousePressed(Input.MOUSE_LEFT_BUTTON)){
 			menu.mouseClicked(cursorPos);
 		}
-		menu.update(cursorPos);
+		menu.setMenuState(cursorPos);
 	}
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
-		menu.setCharacterPosition(menuMapHandler.getCharacterPosition());
+		menuMapHandler = new MenuMapHandler();
+		menu = new Menu(menuMapHandler.getMenuItemList());
+		menu.addListener(this);
+		menu.addListener(new MenuView());
 		menu.startMenu();
+		this.container = container;
+
+		
 	//	final GameContainer conta = container;
 		//TODO what should this method do?
 
@@ -44,7 +51,10 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 	public void render(GameContainer container, StateBasedGame game, Graphics g)
 			throws SlickException {
 		g.scale(MainClass.SCALE, MainClass.SCALE);
-		menuMapHandler.renderMap();		
+		menuMapHandler.renderMap();
+		menu.update();
+		
+		
 	}
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
@@ -56,8 +66,17 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 		return 1;
 	}
 	public void propertyChange(PropertyChangeEvent evt) {
-		//TODO
-		
+		String source = evt.getPropertyName();
+		switch(MenuState.valueOf(source)){
+			case QUIT_BUTTON_CLICKED:
+				container.exit();
+				break;
+			case START_BUTTON_CLICKED:
+				break;
+		default:
+			break;
+		}
+
 	}
 
 }
