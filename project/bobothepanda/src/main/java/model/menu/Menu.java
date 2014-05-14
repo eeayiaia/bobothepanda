@@ -65,9 +65,9 @@ public class Menu {
 	public void mouseClicked(Position pos){
 		final Point point = new Point((int)Math.round(pos.getX()), (int)Math.round(pos.getY()));
 		if(quitButton.getHitbox().contains(point)){
-			menuState = MenuState.QUIT_BUTTON_CLICKED;
+			pcs.firePropertyChange(MenuState.QUIT_BUTTON_CLICKED.toString(), true, false);
 		} else if(startButton.getHitbox().contains(point)){
-			menuState = MenuState.START_BUTTON_CLICKED;
+			pcs.firePropertyChange(MenuState.START_BUTTON_CLICKED.toString(), true, false);
 		}
 	}
 	public void addListener(PropertyChangeListener listener){

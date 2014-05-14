@@ -21,6 +21,7 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 	private Menu menu;
 	private MenuMapHandler menuMapHandler;
 	private GameContainer container;
+	private StateBasedGame game;
 	
 	public MenuController(){
 		super();
@@ -41,6 +42,7 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 		menu.addListener(new MenuView());
 		menu.startMenu();
 		this.container = container;
+		this.game = game;
 
 		
 	//	final GameContainer conta = container;
@@ -72,6 +74,7 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 				container.exit();
 				break;
 			case START_BUTTON_CLICKED:
+				game.enterState(0);
 				break;
 		default:
 			break;

@@ -91,10 +91,6 @@ public class MenuView implements PropertyChangeListener{
 		case CURSOR_ON_START:
 			drawHoverStart();
 			break;
-		case QUIT_BUTTON_CLICKED:
-			break;
-		case START_BUTTON_CLICKED:
-			break;
 		case UPDATE:
 			drawDefault();
 			break;
