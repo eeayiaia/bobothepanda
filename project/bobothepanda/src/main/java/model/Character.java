@@ -11,7 +11,7 @@ public class Character extends AbstractMovingObject{
 	private CharacterState characterState;
 	//private Gravity gravity = new Gravity (0.01f);
 	private final Position position;
-	private final Position oldPosition;
+	private Position oldPosition;
 	private final PropertyChangeSupport pcs;
 	private final Size size;
 	private Facing facing;
@@ -127,8 +127,9 @@ public class Character extends AbstractMovingObject{
 	public void moveLeft(int delta){
 		characterState = CharacterState.MOVING_LEFT;
 			xVelocity = -0.25f;
-			setNewX(delta);
-			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
+			this.oldPosition = this.getPosition();
+			position.setX(position.getX() + xVelocity * delta );
+//			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.LEFT;
 			lastTimedMoved = System.currentTimeMillis();
 	}
@@ -142,7 +143,8 @@ public class Character extends AbstractMovingObject{
 	public void moveRight(int delta){
 		characterState = CharacterState.MOVING_RIGHT;
 		xVelocity = 0.25f;
-		setNewX(delta);
+		this.oldPosition = this.getPosition();
+		position.setX(position.getX() + xVelocity * delta );
 		facing = Facing.RIGHT;
 		lastTimedMoved = System.currentTimeMillis();
 	}
@@ -154,10 +156,10 @@ public class Character extends AbstractMovingObject{
 	 */	
 	public void jump(int delta){
 		//needs to be on the ground to jump
-		if(onGround()){
+//		if(onGround()){
 			
 			yVelocity = -2f;
-		}
+//		}
 	}
 	
 	/**
@@ -181,9 +183,16 @@ public class Character extends AbstractMovingObject{
 	 * @param delta 1000millis divided by the frame rate.
 	 */
 	public void applyGravity(int delta){
-		//if(!onGround()){
-			setNewY(delta);
-		//}		
+//		//Change velocity due to gravity
+//		yVelocity = gravity.getNewVelocity(yVelocity, delta);
+//		Position nextPosition;
+//		// Set next Y due to gravity
+//		float yAndYVelocity = gravity.getNewYPosition(position.getY(), yVelocity, delta);/*position.getY() + yVelocity;*/ 
+//		if(yAndYVelocity >= 0){
+//			nextPosition = new Position(position.getX(),yAndYVelocity);
+//		}else{
+//			nextPosition = new Position(position.getX(), position.getY());
+//		}	
 	}
 	
 	/**

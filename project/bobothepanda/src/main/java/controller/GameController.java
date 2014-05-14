@@ -7,7 +7,6 @@ import java.util.List;
 import main.MainClass;
 import model.Terrain;
 import model.Character;
-import model.Collision;
 import model.Key;
 import model.FixedEnemy;
 import model.Level;
