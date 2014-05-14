@@ -2,6 +2,6 @@ package model;
 
 public interface IVisitable {
 	
-	void accept(IVisitor);
+	void accept(IVisitor visitor);
 	
 }
