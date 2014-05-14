@@ -12,7 +12,7 @@ import model.Door;
 import model.IMapObject;
 import model.Key;
 import model.AbstractFixedObject;
-import model.LethalEnemy;
+import model.FixedEnemy;
 import model.MovingLethalEnemy;
 import model.Position;
 import model.Size;
@@ -26,7 +26,7 @@ public class MapHandler implements IMapHandler {
 	private final static String MAP_LOCATION = "data/levels/";
 	private final static String TILESET_LOCATION = "data/img";
 	private List <Terrain> blockingObjects;
-	private List <LethalEnemy> staticEnemies;
+	private List <FixedEnemy> staticEnemies;
 	private List <MovingLethalEnemy> movingEnemies;
 	private Key key;
 	private Position characterStartPosition;
@@ -72,7 +72,7 @@ public class MapHandler implements IMapHandler {
 	/**
 	 * @return A list of the static lethal enemies on the map
 	 */
-	public List<LethalEnemy> getStaticEnemyList() {
+	public List<FixedEnemy> getStaticEnemyList() {
 		return staticEnemies;
 	}
 	
@@ -118,7 +118,7 @@ public class MapHandler implements IMapHandler {
 				if("Terrain".equals(type)) {
 					blockingObjects.add(new Terrain(position, size));
 				} else if("Lethal".equals(type)) {
-					staticEnemies.add(new LethalEnemy(position, size));
+					staticEnemies.add(new FixedEnemy(position, size));
 				} else if("Door".equals(type)) {
 					blockingObjects.add(new Door(position, size));
 				} else if("Key".equals(type)) {

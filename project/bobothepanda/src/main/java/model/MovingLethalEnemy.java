@@ -1,6 +1,6 @@
 package model;
 
-public class MovingLethalEnemy extends LethalEnemy {
+public class MovingLethalEnemy extends FixedEnemy {
 	
 	private int xDirection = 1;
 	private boolean dead;

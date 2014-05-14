@@ -9,7 +9,7 @@ import model.Terrain;
 import model.Character;
 import model.Collision;
 import model.Key;
-import model.LethalEnemy;
+import model.FixedEnemy;
 import model.Level;
 import model.MovingLethalEnemy;
 import model.Size;

@@ -1,5 +1,11 @@
 package model;
 
+/**
+ * 
+ * @author Oscar Muhr
+ *
+ */
+
 @SuppressWarnings("PMD")
 public class Key extends AbstractCollectibleObject {
 

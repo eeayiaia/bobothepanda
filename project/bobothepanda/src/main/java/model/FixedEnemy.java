@@ -1,8 +1,8 @@
 package model;
 
-public class LethalEnemy extends AbstractFixedObject {
+public class FixedEnemy extends AbstractFixedObject {
 	
-	public LethalEnemy(Position position, Size size) {
+	public FixedEnemy(Position position, Size size) {
 		super(position, size);
 	}
 	/**
