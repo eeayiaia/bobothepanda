@@ -25,20 +25,6 @@ public class MovingEnemy extends AbstractMovingObject {
 		}else{
 			character.die();
 		}
-		
-		
-	}
-	
-	/**
-	 * 
-	 * @param mapObject the object the MovingLethalObject has collided with
-	 * if mapObject is blockableObject and the collision is in the x direction, the movement direction of the movingLethalEnemy object will change its direction.
-	 *
-	 */
-	public void doCollision(IMapObject mapObject){
-		//TODO 
-		//if collision is in the x direction
-		this.setReverseXDirection();
 	}
 	
 	public void setNewX(int delta){
@@ -62,6 +48,10 @@ public class MovingEnemy extends AbstractMovingObject {
 	}
 	
 	public void visit(MovingEnemy movingEnemy){
+		setReverseXDirection();
+	}
+	
+	public void visit(Terrain terrain){
 		setReverseXDirection();
 	}
 }

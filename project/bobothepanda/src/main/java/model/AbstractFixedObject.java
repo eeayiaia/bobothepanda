@@ -16,6 +16,9 @@ public abstract class AbstractFixedObject extends AbstractMapObject implements I
 		this.position = position;
 		this.size = size;
 	}
-
+	
+	public void accept(IVisitor visitor){
+		visitor.visit(this);
+	}
 
 }
