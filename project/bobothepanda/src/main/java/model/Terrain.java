@@ -14,7 +14,6 @@ public class Terrain extends AbstractFixedObject {
 	}
 
 	public void accept(IVisitor visitor) {
-		// TODO Auto-generated method stub
-		
+		visitor.visit(this);	
 	}
 }

@@ -205,6 +205,16 @@ public class Character {
 		die();
 	}
 	
+	//Should perhaps only decrease hitpoints or something like that, not kill
+	public void visit(Projectile projectile){
+		die();
+	}
+	
+	//terrain collision
+	public void visit(){
+		//TODO stop movement
+	}
+	
 //	public void setNewX(int delta) {
 //		Rectangle collisionHitbox;
 //		Position nextPosition;
