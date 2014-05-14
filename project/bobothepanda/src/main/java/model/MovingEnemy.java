@@ -47,6 +47,10 @@ public class MovingEnemy extends AbstractMovingObject {
 		setReverseXDirection();
 	}
 	
+	public void visit(FixedEnemy fixedEnemy){
+		setReverseXDirection();
+	}
+	
 	public void visit(Character character){
 		//If the character comes from above, object will remove itself
 		if(getPosition().getY() > character.getPosition().getY()){
