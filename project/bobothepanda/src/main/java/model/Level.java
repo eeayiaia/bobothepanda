@@ -55,27 +55,39 @@ public class Level implements PropertyChangeListener{
 	 * then takes action accordingly.
 	 */
 	public void checkCollisions() {
-		Collision.collision(playerCharacter.getHitbox(), key.getHitbox());
-		for(FixedEnemy e: staticEnemies) {
-			if(Collision.collision(playerCharacter.getHitbox(), e.getHitbox())) {
-				e.doCollision(playerCharacter);
+		
+		for(AbstractMapObject o: abstractMapObjects){
+			if(o instanceof AbstractMovingObject){
+				for(AbstractMapObject i: abstractMapObjects)
+					if(!o.equals(i) && i instanceof IVisitable){
+						if(collision(o.getHitbox(), i.getHitbox())){
+							((AbstractMovingObject) o).visit((IVisitable) i);
+						}
+					}
 			}
+			
 		}
-		for(MovingEnemy e: movingEnemies) {
-			if(Collision.collision(playerCharacter.getHitbox(), e.getHitbox())) {
-				e.doCollision(playerCharacter);
-			}
-			for(Terrain o: blockingObjects) {
-				if(Collision.collision(e.getHitbox(), o.getHitbox())) {
-					o.doCollision(e);
-				}
-			}
-		}
-		for(Terrain o: blockingObjects) {
-			if(Collision.collision(playerCharacter.getHitbox(), o.getHitbox())) {
-				o.doCollision(playerCharacter);
-			}
-		}
+//		Collision.collision(playerCharacter.getHitbox(), key.getHitbox());
+//		for(FixedEnemy e: staticEnemies) {
+//			if(Collision.collision(playerCharacter.getHitbox(), e.getHitbox())) {
+//				e.doCollision(playerCharacter);
+//			}
+//		}
+//		for(MovingEnemy e: movingEnemies) {
+//			if(Collision.collision(playerCharacter.getHitbox(), e.getHitbox())) {
+//				e.doCollision(playerCharacter);
+//			}
+//			for(Terrain o: blockingObjects) {
+//				if(Collision.collision(e.getHitbox(), o.getHitbox())) {
+//					o.doCollision(e);
+//				}
+//			}
+//		}
+//		for(Terrain o: blockingObjects) {
+//			if(Collision.collision(playerCharacter.getHitbox(), o.getHitbox())) {
+//				o.doCollision(playerCharacter);
+//			}
+//		}
 	}
 	
 	public boolean collision(Rectangle collider, Rectangle collidedWith){
