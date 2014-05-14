@@ -1,11 +1,11 @@
 package model;
 
-public class MovingLethalEnemy extends AbstractMovingObject {
+public class MovingEnemy extends AbstractMovingObject {
 	
 	private int xDirection = 1;
 	private boolean dead;
 
-	public MovingLethalEnemy(Position position, Size size) {
+	public MovingEnemy(Position position, Size size) {
 		super(position, size);
 		dead = false;
 		// TODO Auto-generated constructor stub

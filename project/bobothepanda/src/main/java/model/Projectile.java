@@ -6,7 +6,7 @@ package model;
  *
  */
 @edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
-public class Projectile extends MovingLethalEnemy{
+public class Projectile extends MovingEnemy{
 
 	private static float VELOCITY = 0.25f;
 	
