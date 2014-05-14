@@ -17,8 +17,9 @@ public class Level implements PropertyChangeListener{
 	private final List <AbstractMapObject> abstractMapObjects;
 	
 	
-	public Level(List <AbstractMapObject> abstractMapObjects){
+	public Level(List <AbstractMapObject> abstractMapObjects, Character player){
 		this.abstractMapObjects = abstractMapObjects;
+		abstractMapObjects.add(player);
 		projectile = new Projectile(new Position(392.0f, 470.0f), new Size(4,4));
 		this.pcs = new PropertyChangeSupport(this);
 		

@@ -10,7 +10,7 @@ public class Character extends AbstractMovingObject{
 	
 	private CharacterState characterState;
 	private Gravity gravity = new Gravity (0.01f);
-	//private final Position position;
+	private final Position position;
 	private Position oldPosition;
 	private float oldY;
 	private float oldX;
@@ -28,8 +28,7 @@ public class Character extends AbstractMovingObject{
 	 */
 	public Character(Position position, Size size){
 		super(position, size);
-		//System.out.println(position.getY());
-		//this.position = position;
+		this.position = position;
 		oldPosition = position;
 		facing = Facing.RIGHT;
 		pcs = new PropertyChangeSupport(this);	
@@ -188,7 +187,7 @@ public class Character extends AbstractMovingObject{
 	public void applyGravity(int delta){
 		//Change velocity due to gravity
 		yVelocity = gravity.getNewVelocity(yVelocity, delta);
-		oldY = getPosition().getY();
+		oldY = position.getY();
 		getPosition().setY(getPosition().getY() + yVelocity);
 //		Position nextPosition;
 //		// Set next Y due to gravity

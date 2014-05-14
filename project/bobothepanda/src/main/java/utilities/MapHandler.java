@@ -93,7 +93,7 @@ public class MapHandler implements IMapHandler {
 			} else if("Key".equals(type)) {
 				objects.add(new Key(position, size));
 			} else if("Startpos".equals(type)) {
-				objects.add(new Character(position, size));
+				characterStartPosition = position;
 			}
 		}
 	}
