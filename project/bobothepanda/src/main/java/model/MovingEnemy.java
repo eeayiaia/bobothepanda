@@ -60,4 +60,8 @@ public class MovingEnemy extends AbstractMovingObject {
 	public boolean isDead(){
 		return this.dead;
 	}
+	
+	public void visit(MovingEnemy movingEnemy){
+		setReverseXDirection();
+	}
 }
