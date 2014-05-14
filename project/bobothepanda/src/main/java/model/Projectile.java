@@ -29,4 +29,8 @@ public class Projectile extends MovingEnemy{
 			setNewX(delta, velocity);	
 		}
 	}
+	
+	public void visit(Character character){
+		//TODO Remove self
+	}
 }
