@@ -30,14 +30,17 @@ public class Projectile extends MovingEnemy{
 		}
 	}
 	
+	@Override
 	public void visit(Character character){
 		//TODO Remove self
 	}
 	
+	@Override
 	public void visit(Terrain terrain){
 		//TODO Remove self
 	}
 	
+	@Override
 	public void visit(FixedEnemy fixedEnemy){
 		//TODO Remove self
 	}

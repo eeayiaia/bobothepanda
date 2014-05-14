@@ -9,7 +9,6 @@ public class AbstractMovingObject extends AbstractMapObject implements IVisitor,
 
 	public void visit(IVisitable i) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	public void accept(IVisitor visitor) {
