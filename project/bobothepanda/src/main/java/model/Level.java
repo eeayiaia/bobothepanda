@@ -15,7 +15,6 @@ public class Level implements PropertyChangeListener{
 	private final PropertyChangeSupport pcs;
 	private Projectile projectile;
 	private final List <AbstractMapObject> abstractMapObjects;
-	private Key key;
 	
 	
 	public Level(List <AbstractMapObject> abstractMapObjects){

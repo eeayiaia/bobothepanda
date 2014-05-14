@@ -2,15 +2,10 @@ package controller;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.List;
 
 import main.MainClass;
-import model.Terrain;
 import model.Character;
-import model.Key;
-import model.FixedEnemy;
 import model.Level;
-import model.MovingEnemy;
 import model.Size;
 import utilities.MapHandler;
 import utilities.MapHandlerException;

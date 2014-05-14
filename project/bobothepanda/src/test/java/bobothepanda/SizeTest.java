@@ -3,7 +3,6 @@ package bobothepanda;
  * Test class for Size
  * @author Elvira Jonsson
  */
-import static org.junit.Assert.*;
 import model.Size;
 
 import org.junit.Assert;
