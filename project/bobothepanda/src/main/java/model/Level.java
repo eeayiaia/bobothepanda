@@ -15,11 +15,11 @@ public class Level implements PropertyChangeListener{
 	private Projectile projectile;
 	private final List <Terrain> blockingObjects;
 	private final List <FixedEnemy> staticEnemies;
-	private final List <MovingEnemyRENAME> movingEnemies;
+	private final List <MovingEnemy> movingEnemies;
 	private Key key;
 	
 	
-	public Level(List <Terrain> blockingObjects, List <FixedEnemy> staticEnemies, List <MovingEnemyRENAME> movingEnemies, Key key, Character playerCharacter){
+	public Level(List <Terrain> blockingObjects, List <FixedEnemy> staticEnemies, List <MovingEnemy> movingEnemies, Key key, Character playerCharacter){
 		this.playerCharacter = playerCharacter;
 		this.blockingObjects = blockingObjects;
 		this.staticEnemies = staticEnemies;
@@ -66,7 +66,7 @@ public class Level implements PropertyChangeListener{
 				e.doCollision(playerCharacter);
 			}
 		}
-		for(MovingEnemyRENAME e: movingEnemies) {
+		for(MovingEnemy e: movingEnemies) {
 			if(Collision.collision(playerCharacter.getHitbox(), e.getHitbox())) {
 				e.doCollision(playerCharacter);
 			}

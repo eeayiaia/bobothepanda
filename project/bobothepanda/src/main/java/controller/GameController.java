@@ -11,7 +11,7 @@ import model.Collision;
 import model.Key;
 import model.FixedEnemy;
 import model.Level;
-import model.MovingEnemyRENAME;
+import model.MovingEnemy;
 import model.Size;
 import utilities.MapHandler;
 import utilities.MapHandlerException;
