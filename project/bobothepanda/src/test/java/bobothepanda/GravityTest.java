@@ -19,6 +19,7 @@ public class GravityTest extends Assert {
 	@Before
 	public void setUp() {
 		gravity = new Gravity(0.15f);
+		delta = 17;
 	}
 	
 	@Test
@@ -29,9 +30,22 @@ public class GravityTest extends Assert {
 	@Test
 	public void testGetNewVelocity() {
 		velocity = 0.15f;
-		delta = 17;
 		
 		assertEquals(gravity.getNewVelocity(velocity, delta), velocity+gravity.getGravity()*delta, 0);
 	}
 	
+	@Test
+	public void testGetNewVelocityMaxValue() {
+		velocity = 0.51f;
+		
+		assertEquals(gravity.getNewVelocity(velocity, delta), 0.5f, 0);
+	}
+	
+	@Test
+	public void testGetNewYPosition() {
+		velocity = 0.2f;
+		float yValue = 10f;
+		
+		assertEquals(gravity.getNewYPosition(yValue, velocity, delta), yValue + velocity * delta + 0.5 * gravity.getGravity() * delta * delta, 0);
+	}
 }
