@@ -11,4 +11,8 @@ public class FixedEnemy extends AbstractFixedObject {
 	public void doCollision(Character character) {
 		character.die();
 	}
+	public void accept(IVisitor visitor) {
+		// TODO Auto-generated method stub
+		
+	}
 }
