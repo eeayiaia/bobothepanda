@@ -6,7 +6,7 @@ package model;
 
 import java.awt.Rectangle;
 
-public abstract class AbstractFixedObject implements IMapObject {
+public abstract class AbstractFixedObject implements IVisitable {
 	
 	private final Position position;
 	private final Size size;
