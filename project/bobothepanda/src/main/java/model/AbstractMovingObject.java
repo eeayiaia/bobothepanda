@@ -4,7 +4,6 @@ public class AbstractMovingObject extends AbstractMapObject implements IVisitor,
 
 	public AbstractMovingObject(Position position, Size size) {
 		super(position, size);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void visit(IVisitable i) {
