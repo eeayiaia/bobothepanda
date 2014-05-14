@@ -2,33 +2,27 @@ package model;
 
 public class MovingEnemy extends AbstractMovingObject {
 	
-	private int xDirection;
+	private float velocity = 0.25f;
 	private boolean dead;
 
 	public MovingEnemy(Position position, Size size) {
 		super(position, size);
 		dead = false;
-		xDirection = 1;
-	}
-	
-	public void setNewX(int delta){
-		final float nextPositionX = getPosition().getX() - xDirection * delta;
-		setX(nextPositionX);
 	}
 	
 	/**
-	 * reverses the xDirection
+	 * reverses the velocity
 	 */
-	private void setReverseXDirection(){
-		xDirection *= -1;
+	private void setReverseVelocity(){
+		velocity *= -1;
 	}
 	
 	/**
 	 * Returns the current direction the enemy is moving, in the x-axis
-	 * @return -1 = moving left, 1 = moving left
+	 * @return negative = moving left, positive = moving right
 	 */
-	public int getXDirection(){
-		return xDirection;
+	public float getVelocity(){
+		return velocity;
 	}
 	
 	/**
@@ -40,15 +34,15 @@ public class MovingEnemy extends AbstractMovingObject {
 	}
 	
 	public void visit(MovingEnemy movingEnemy){
-		setReverseXDirection();
+		setReverseVelocity();
 	}
 	
 	public void visit(Terrain terrain){
-		setReverseXDirection();
+		setReverseVelocity();
 	}
 	
 	public void visit(FixedEnemy fixedEnemy){
-		setReverseXDirection();
+		setReverseVelocity();
 	}
 	
 	public void visit(Character character){

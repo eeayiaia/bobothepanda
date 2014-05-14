@@ -15,5 +15,9 @@ public class AbstractMovingObject extends AbstractMapObject implements IVisitor,
 	public void accept(IVisitor visitor) {
 		visitor.visit(this);
 	}
-
+	
+	public void setNewX(int delta, float velocity){
+		final float nextPositionX = getPosition().getX() - velocity * delta;
+		setX(nextPositionX);
+	}
 }
