@@ -12,14 +12,12 @@ public class Level implements PropertyChangeListener{
 	
 	private final PropertyChangeSupport pcs;
 	private Projectile projectile;
-	private final List <AbstractMovingObject> abstractMovingObjects;
+	private final List <AbstractMapObject> abstractMapObjects;
 	private Key key;
-	private List<AbstractFixedObject> abstractFixedObjects;
 	
 	
-	public Level(List <AbstractMovingObject> abstractMovingObjects, List <AbstractFixedObject> abstractFixedObjects){
-		this.abstractMovingObjects = abstractMovingObjects;
-		this.abstractFixedObjects = abstractFixedObjects;
+	public Level(List <AbstractMapObject> abstractMapObjects){
+		this.abstractMapObjects = abstractMapObjects;
 		projectile = new Projectile(new Position(392.0f, 470.0f), new Size(4,4));
 		this.pcs = new PropertyChangeSupport(this);
 		
