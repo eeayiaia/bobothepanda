@@ -13,7 +13,7 @@ import model.IMapObject;
 import model.Key;
 import model.AbstractFixedObject;
 import model.FixedEnemy;
-import model.MovingEnemy;
+import model.MovingEnemyRENAME;
 import model.Position;
 import model.Size;
 
@@ -27,7 +27,7 @@ public class MapHandler implements IMapHandler {
 	private final static String TILESET_LOCATION = "data/img";
 	private List <Terrain> blockingObjects;
 	private List <FixedEnemy> staticEnemies;
-	private List <MovingEnemy> movingEnemies;
+	private List <MovingEnemyRENAME> movingEnemies;
 	private Key key;
 	private Position characterStartPosition;
 	
@@ -80,7 +80,7 @@ public class MapHandler implements IMapHandler {
 	 * 
 	 * @return A list of the moving enemies on the map
 	 */
-	public List<MovingEnemy> getMovingEnemyList() {
+	public List<MovingEnemyRENAME> getMovingEnemyList() {
 		return movingEnemies;
 	}
 	

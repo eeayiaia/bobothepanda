@@ -202,7 +202,7 @@ public class Character extends AbstractMovingObject{
 		die();
 	}
 	
-	public void visit(MovingEnemy movingEnemy){
+	public void visit(MovingEnemyRENAME movingEnemy){
 		die();
 	}
 	

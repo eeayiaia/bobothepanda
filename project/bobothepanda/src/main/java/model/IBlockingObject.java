@@ -4,6 +4,6 @@ public interface IBlockingObject {
 	
 	void doCollision(Projectile projectile);
 	
-	void doCollision(MovingEnemy enemy);
+	void doCollision(MovingEnemyRENAME enemy);
 	
 }

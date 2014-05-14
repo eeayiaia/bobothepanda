@@ -11,7 +11,7 @@ import org.newdawn.slick.SlickException;
 import model.Terrain;
 import model.Key;
 import model.FixedEnemy;
-import model.MovingEnemy;
+import model.MovingEnemyRENAME;
 import model.Position;
 
 public interface IMapHandler {
@@ -20,7 +20,7 @@ public interface IMapHandler {
 	
 	List<FixedEnemy> getStaticEnemyList();
 
-	List<MovingEnemy> getMovingEnemyList();
+	List<MovingEnemyRENAME> getMovingEnemyList();
 	
 	Key getKey();
 	

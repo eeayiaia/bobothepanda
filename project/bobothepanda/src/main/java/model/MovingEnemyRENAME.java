@@ -1,11 +1,11 @@
 package model;
 
-public class MovingEnemy extends AbstractMovingObject {
+public class MovingEnemyRENAME extends AbstractMovingObject {
 	
 	private float velocity = 0.25f;
 	private boolean dead;
 
-	public MovingEnemy(Position position, Size size) {
+	public MovingEnemyRENAME(Position position, Size size) {
 		super(position, size);
 		dead = false;
 	}
@@ -33,7 +33,7 @@ public class MovingEnemy extends AbstractMovingObject {
 		return dead;
 	}
 	
-	public void visit(MovingEnemy movingEnemy){
+	public void visit(MovingEnemyRENAME movingEnemy){
 		setReverseVelocity();
 	}
 	
