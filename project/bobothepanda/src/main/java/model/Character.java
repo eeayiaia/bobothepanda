@@ -211,8 +211,12 @@ public class Character {
 	}
 	
 	//terrain collision
-	public void visit(){
+	public void visit(Terrain terrain){
 		//TODO stop movement
+	}
+	
+	public void visit(Key key){
+		keyPickedUp = true;
 	}
 	
 //	public void setNewX(int delta) {
