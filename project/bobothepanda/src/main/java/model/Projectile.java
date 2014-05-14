@@ -33,4 +33,8 @@ public class Projectile extends MovingEnemy{
 	public void visit(Character character){
 		//TODO Remove self
 	}
+	
+	public void visit(Terrain terrain){
+		//TODO Remove self
+	}
 }
