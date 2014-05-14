@@ -12,7 +12,6 @@ public class FixedEnemy extends AbstractFixedObject {
 		character.die();
 	}
 	public void accept(IVisitor visitor) {
-		// TODO Auto-generated method stub
-		
+		visitor.visit(this);
 	}
 }

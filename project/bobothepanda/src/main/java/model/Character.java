@@ -197,6 +197,10 @@ public class Character {
 		pcs.firePropertyChange("reloadLevel", null, null);
 	}
 	
+	public void visit(FixedEnemy fixedEnemy){
+		die();
+	}
+	
 //	public void setNewX(int delta) {
 //		Rectangle collisionHitbox;
 //		Position nextPosition;
