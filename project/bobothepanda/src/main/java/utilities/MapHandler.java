@@ -7,13 +7,11 @@ package utilities;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.AbstractMapObject;
 import model.Terrain;
 import model.Door;
-import model.IMapObject;
 import model.Key;
-import model.AbstractFixedObject;
 import model.FixedEnemy;
-import model.MovingEnemy;
 import model.Position;
 import model.Size;
 
@@ -25,10 +23,7 @@ public class MapHandler implements IMapHandler {
 	private TiledMap map;
 	private final static String MAP_LOCATION = "data/levels/";
 	private final static String TILESET_LOCATION = "data/img";
-	private List <Terrain> blockingObjects;
-	private List <FixedEnemy> staticEnemies;
-	private List <MovingEnemy> movingEnemies;
-	private Key key;
+	private List <AbstractMapObject> objects;
 	private Position characterStartPosition;
 	
 	/**
@@ -58,40 +53,16 @@ public class MapHandler implements IMapHandler {
 	 */
 	public final void loadLevel(String levelName) throws SlickException{
 		map = new TiledMap(MAP_LOCATION + levelName + ".tmx", TILESET_LOCATION);
-		blockingObjects = new ArrayList<Terrain>();
+		objects = new ArrayList<AbstractMapObject>();
 		createObjectLists();
 	}
 	
 	/**
-	 * @return A list of the blocking objects located on the map
+	 * @return A list of the fixed objects located on the map
 	 */
-	public List<Terrain> getBlockingObjectList() {
-		return blockingObjects;
+	public List<AbstractMapObject> getMapObjectList() {
+		return objects;
 	}
-	
-	/**
-	 * @return A list of the static lethal enemies on the map
-	 */
-	public List<FixedEnemy> getStaticEnemyList() {
-		return staticEnemies;
-	}
-	
-	/**
-	 * 
-	 * @return A list of the moving enemies on the map
-	 */
-	public List<MovingEnemy> getMovingEnemyList() {
-		return movingEnemies;
-	}
-	
-	/**
-	 * 
-	 * @return The key on the map
-	 */
-	public Key getKey() {
-		return key;
-	}
-	
 	
 	/**
 	 * @return The starting position of the character.
@@ -105,9 +76,9 @@ public class MapHandler implements IMapHandler {
 	 */
 	@SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
 	private void createObjectLists() {
-		final int objects = map.getObjectCount(0);
+		final int objectAmount = map.getObjectCount(0);
 		
-		for(int i = 0; i < objects; i++) {
+		for(int i = 0; i < objectAmount; i++) {
 			final Position position = new Position((float)map.getObjectX(0,i), (float)map.getObjectY(0,i));
 			final String type = map.getObjectType(0,i);
 			Size size;
@@ -116,13 +87,13 @@ public class MapHandler implements IMapHandler {
 			} else {
 				size = new Size((float)map.getObjectWidth(0,i), (float)map.getObjectHeight(0,i));
 				if("Terrain".equals(type)) {
-					blockingObjects.add(new Terrain(position, size));
+					objects.add(new Terrain(position, size));
 				} else if("Lethal".equals(type)) {
-					staticEnemies.add(new FixedEnemy(position, size));
+					objects.add(new FixedEnemy(position, size));
 				} else if("Door".equals(type)) {
-					blockingObjects.add(new Door(position, size));
+					objects.add(new Door(position, size));
 				} else if("Key".equals(type)) {
-					key = new Key(position, size);
+					objects.add(new Key(position, size));
 				}
 			}
 		}

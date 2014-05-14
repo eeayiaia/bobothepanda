@@ -8,21 +8,12 @@ import java.util.List;
 
 import org.newdawn.slick.SlickException;
 
-import model.Terrain;
-import model.Key;
-import model.FixedEnemy;
-import model.MovingEnemy;
+import model.AbstractMapObject;
 import model.Position;
 
 public interface IMapHandler {
 	
-	List<Terrain> getBlockingObjectList();
-	
-	List<FixedEnemy> getStaticEnemyList();
-
-	List<MovingEnemy> getMovingEnemyList();
-	
-	Key getKey();
+	List<AbstractMapObject> getMapObjectList();
 	
 	Position getCharacterStartPosition();
 	
