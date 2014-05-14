@@ -123,7 +123,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		mapHandler = new MapHandler("level" + currentLevelNumber);
 		character = new Character(mapHandler.getCharacterStartPosition(), new Size(WIDTH, HEIGHT));
 		character.addPropertyChangeListener(new CharacterView());
-		level = new Level(mapHandler.getBlockingObjectList(), mapHandler.getStaticEnemyList(), mapHandler.getMovingEnemyList(), mapHandler.getKey(), character);
+		level = new Level(mapHandler.getMapObjectList());
 		final LevelView levelView = new LevelView();
 		level.addPropertyChangeListener(levelView);
 		character.addPropertyChangeListener(level);
