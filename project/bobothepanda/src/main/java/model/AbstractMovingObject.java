@@ -13,8 +13,7 @@ public class AbstractMovingObject extends AbstractMapObject implements IVisitor,
 	}
 
 	public void accept(IVisitor visitor) {
-		// TODO Auto-generated method stub
-		
+		visitor.visit(this);
 	}
 
 }

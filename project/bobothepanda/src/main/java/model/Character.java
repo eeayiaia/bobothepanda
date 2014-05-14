@@ -201,6 +201,10 @@ public class Character {
 		die();
 	}
 	
+	public void visit(MovingEnemy movingEnemy){
+		die();
+	}
+	
 //	public void setNewX(int delta) {
 //		Rectangle collisionHitbox;
 //		Position nextPosition;
