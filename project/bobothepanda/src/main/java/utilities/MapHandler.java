@@ -94,6 +94,7 @@ public class MapHandler implements IMapHandler {
 				objects.add(new Key(position, size));
 			} else if("Startpos".equals(type)) {
 				characterStartPosition = position;
+				characterStartPosition.setY(position.getY()-10);
 			}
 		}
 	}
