@@ -9,9 +9,11 @@ import java.beans.PropertyChangeSupport;
 public class Character extends AbstractMovingObject{
 	
 	private CharacterState characterState;
-	//private Gravity gravity = new Gravity (0.01f);
+	private Gravity gravity = new Gravity (0.01f);
 	private final Position position;
 	private Position oldPosition;
+	private float oldY;
+	private float oldX;
 	private final PropertyChangeSupport pcs;
 	private final Size size;
 	private Facing facing;
@@ -127,7 +129,7 @@ public class Character extends AbstractMovingObject{
 	public void moveLeft(int delta){
 		characterState = CharacterState.MOVING_LEFT;
 			xVelocity = -0.25f;
-			this.oldPosition = this.getPosition();
+			this.oldX = this.getPosition().getX();
 			position.setX(position.getX() + xVelocity * delta );
 //			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.LEFT;
@@ -183,16 +185,18 @@ public class Character extends AbstractMovingObject{
 	 * @param delta 1000millis divided by the frame rate.
 	 */
 	public void applyGravity(int delta){
-//		//Change velocity due to gravity
-//		yVelocity = gravity.getNewVelocity(yVelocity, delta);
+		//Change velocity due to gravity
+		yVelocity = gravity.getNewVelocity(yVelocity, delta);
+		this.oldY = this.getPosition().getY();
+		position.setY(position.getY() + yVelocity);
 //		Position nextPosition;
 //		// Set next Y due to gravity
-//		float yAndYVelocity = gravity.getNewYPosition(position.getY(), yVelocity, delta);/*position.getY() + yVelocity;*/ 
-//		if(yAndYVelocity >= 0){
-//			nextPosition = new Position(position.getX(),yAndYVelocity);
-//		}else{
-//			nextPosition = new Position(position.getX(), position.getY());
-//		}	
+////		float yAndYVelocity = gravity.getNewYPosition(position.getY(), yVelocity, delta);/*position.getY() + yVelocity;*/ 
+////		if(yAndYVelocity >= 0){
+////			nextPosition = new Position(position.getX(),yAndYVelocity);
+////		}else{
+////			nextPosition = new Position(position.getX(), position.getY());
+////		}	
 	}
 	
 	/**
@@ -222,6 +226,7 @@ public class Character extends AbstractMovingObject{
 	
 	//terrain collision
 	public void visit(Terrain terrain){
+		this.position.setY(oldY);
 		//TODO stop movement
 	}
 	
