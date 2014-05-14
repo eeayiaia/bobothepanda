@@ -6,7 +6,7 @@ import java.beans.PropertyChangeSupport;
 
 @SuppressWarnings("PMD")
 
-public class Character {
+public class Character extends AbstractMovingObject{
 	
 	private CharacterState characterState;
 	//private Gravity gravity = new Gravity (0.01f);
@@ -25,6 +25,7 @@ public class Character {
 	 * @param position Starting position
 	 */
 	public Character(Position position, Size size){
+		super(position, size);
 		this.position = position;
 		oldPosition = position;
 		facing = Facing.RIGHT;
