@@ -1,6 +1,6 @@
 package model;
 
-public class LethalEnemy extends AbstractMapObject {
+public class LethalEnemy extends AbstractFixedObject {
 	
 	public LethalEnemy(Position position, Size size) {
 		super(position, size);

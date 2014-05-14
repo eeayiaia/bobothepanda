@@ -11,7 +11,7 @@ import model.BlockingObject;
 import model.Door;
 import model.IMapObject;
 import model.Key;
-import model.AbstractMapObject;
+import model.AbstractFixedObject;
 import model.LethalEnemy;
 import model.MovingLethalEnemy;
 import model.Position;

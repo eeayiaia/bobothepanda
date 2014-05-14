@@ -6,14 +6,14 @@ package model;
 
 import java.awt.Rectangle;
 
-public abstract class AbstractMapObject implements IMapObject {
+public abstract class AbstractFixedObject implements IMapObject {
 	
 	private final Position position;
 	private final Size size;
 	private final Rectangle hitbox;
 //	private final double TOP_LEFT_ANGLE;
 	
-	public AbstractMapObject(Position position, Size size) {
+	public AbstractFixedObject(Position position, Size size) {
 		this.position = position;
 		this.size = size;
 		hitbox = new Rectangle((int)Math.round(position.getX()), (int)Math.round(position.getY()), 

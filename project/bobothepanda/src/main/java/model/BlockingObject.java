@@ -1,6 +1,6 @@
 package model;
 
-public class BlockingObject extends AbstractMapObject implements IBlockingObject{
+public class BlockingObject extends AbstractFixedObject implements IBlockingObject{
 
 	public BlockingObject(Position position, Size size) {
 		super(position, size);

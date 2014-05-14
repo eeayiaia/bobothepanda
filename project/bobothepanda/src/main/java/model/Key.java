@@ -1,7 +1,7 @@
 package model;
 
 @SuppressWarnings("PMD")
-public class Key extends AbstractMapObject {
+public class Key extends AbstractFixedObject {
 
 	public Key(Position position, Size size) {
 		super(position, size);
