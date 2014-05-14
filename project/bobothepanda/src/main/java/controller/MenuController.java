@@ -34,6 +34,8 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 	}
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
+		menu.setCharacterPosition(menuMapHandler.getCharacterPosition());
+		menu.startMenu();
 	//	final GameContainer conta = container;
 		//TODO what should this method do?
 

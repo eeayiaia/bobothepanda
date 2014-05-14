@@ -10,6 +10,7 @@ import model.Position;
 public class Menu {
 	private final List<AbstractMenuItem> menuItems;
 	private final PropertyChangeSupport pcs;
+	private Position characterPosition = null;
 	
 	public Menu(List <AbstractMenuItem> menuItems){
 		this.menuItems = menuItems;
@@ -18,11 +19,13 @@ public class Menu {
 	public List <AbstractMenuItem> getMenuItems(){
 		return menuItems;
 	}
-
+	public void setCharacterPosition(Position pos){
+		characterPosition = pos;
+	}
 	@SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
 	public void mouseClicked(Position position){
 		for(final AbstractMenuItem butt:menuItems){
-			if("model.menu.MenuButton".equals(butt.getClass().getName())){
+			if(MenuButton.class == butt.getClass()){
 				final Point point = new Point((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 				final MenuButton menuButt = (MenuButton) butt;
 				if(menuButt.getHitbox().contains(point)){
@@ -36,6 +39,9 @@ public class Menu {
 	}
 	public void update(Position cursorPos) {
 		pcs.firePropertyChange("Update", true, false);
+	}
+	public void startMenu() {
+		pcs.firePropertyChange(MenuState.START_UP.toString(), characterPosition, null);
 	}
 	
 }

@@ -3,6 +3,9 @@ package view;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import model.Position;
+import model.menu.MenuState;
+
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -39,15 +42,21 @@ public class MenuView implements PropertyChangeListener{
 		//TODO at position?
 	}
 	
-	public enum MouseEvents{
-		QUIT_BUTTON_CLICKED,
-		START_BUTTON_CLICKED,
-		CURSOR_ON_QUIT,
-		CURSOR_ON_START,
-		UPDATE
-	}
 	public void propertyChange(PropertyChangeEvent evt) {
 		String source = evt.getPropertyName();
+		final Position pos = (Position) evt.getNewValue();
+
+		final float x;
+		final float y;
+		
+		if (pos != null){
+			x = pos.getX();
+			y = pos.getY();
+		}
+		switch(MenuState.valueOf(source){
+		case START_UP:
+			
+		}
 		
 	}
 
