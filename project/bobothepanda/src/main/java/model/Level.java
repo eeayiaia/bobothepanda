@@ -1,9 +1,11 @@
 package model;
 
+import java.awt.Rectangle;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.List;
+
 import model.Projectile;
 import model.Position;
 
@@ -74,6 +76,10 @@ public class Level implements PropertyChangeListener{
 				o.doCollision(playerCharacter);
 			}
 		}
+	}
+	
+	public boolean collision(Rectangle collider, Rectangle collidedWith){
+		return collider.intersects(collidedWith);
 	}
 	
 	
