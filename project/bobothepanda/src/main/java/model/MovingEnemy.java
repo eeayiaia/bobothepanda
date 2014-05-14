@@ -54,4 +54,21 @@ public class MovingEnemy extends AbstractMovingObject {
 			character.die();
 		}
 	}
+
+	public void visit(Key k) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void visit(Door d) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void accept(IVisitor visitor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }

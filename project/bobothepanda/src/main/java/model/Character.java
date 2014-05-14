@@ -186,8 +186,9 @@ public class Character extends AbstractMovingObject{
 	 */
 	public void applyGravity(int delta){
 		//Change velocity due to gravity
-		yVelocity = gravity.getNewVelocity(yVelocity, delta);
 		oldY = position.getY();
+		yVelocity = gravity.getNewVelocity(yVelocity, delta);
+		
 		getPosition().setY(getPosition().getY() + yVelocity);
 //		Position nextPosition;
 //		// Set next Y due to gravity
@@ -233,6 +234,23 @@ public class Character extends AbstractMovingObject{
 	public void visit(Key key){
 		keyPickedUp = true;
 	}
+
+	public void visit(Character c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void visit(Door d) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void accept(IVisitor visitor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	
 //	public void setNewX(int delta) {
 //		Rectangle collisionHitbox;

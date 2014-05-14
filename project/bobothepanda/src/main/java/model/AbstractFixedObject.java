@@ -10,8 +10,6 @@ public abstract class AbstractFixedObject extends AbstractMapObject implements I
 		super(position, size);
 	}
 	
-	public void accept(IVisitor visitor){
-		visitor.visit(this);
-	}
+
 
 }

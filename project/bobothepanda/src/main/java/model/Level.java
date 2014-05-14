@@ -14,7 +14,7 @@ public class Level implements PropertyChangeListener{
 	
 	private final PropertyChangeSupport pcs;
 	private Projectile projectile;
-	private final List <AbstractMapObject> abstractMapObjects;
+	private List <AbstractMapObject> abstractMapObjects;
 	
 	
 	public Level(List <AbstractMapObject> abstractMapObjects, Character player){
@@ -58,10 +58,13 @@ public class Level implements PropertyChangeListener{
 		
 		for(AbstractMapObject o: abstractMapObjects){
 			if(o instanceof AbstractMovingObject){
+				AbstractMovingObject movingObject = (AbstractMovingObject) o;
 				for(AbstractMapObject i: abstractMapObjects)
-					if(!o.equals(i) && i instanceof IVisitable){
-						if(collision(o.getHitbox(), i.getHitbox())){
-							((AbstractMovingObject) o).visit((IVisitable) i);
+					if(!movingObject.equals(i) && collision(movingObject.getHitbox(), i.getHitbox())){
+						if(i instanceof Terrain){
+							movingObject.visit((Terrain) i);
+						}else if(i instanceof FixedEnemy){
+							movingObject.visit((FixedEnemy) i);
 						}
 					}
 			}

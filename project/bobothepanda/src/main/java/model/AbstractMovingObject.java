@@ -1,18 +1,11 @@
 package model;
 
-public class AbstractMovingObject extends AbstractMapObject implements IVisitor, IVisitable{
+public abstract class AbstractMovingObject extends AbstractMapObject implements IVisitor, IVisitable{
 
 	public AbstractMovingObject(Position position, Size size) {
 		super(position, size);
 	}
 
-	public void visit(IVisitable i) {
-		// TODO Auto-generated method stub
-	}
-
-	public void accept(IVisitor visitor) {
-		visitor.visit(this);
-	}
 	
 	/**
 	 * Sets a new x-position for the object.
@@ -23,4 +16,15 @@ public class AbstractMovingObject extends AbstractMapObject implements IVisitor,
 		final float nextPositionX = getPosition().getX() - velocity * delta;
 		setX(nextPositionX);
 	}
+	
+	
+	public abstract void visit(Terrain t);
+	
+	public abstract void visit(Character c);
+	
+	public abstract void visit(Key k);
+	
+	public abstract void visit(Door d);
+	
+	public abstract void visit(FixedEnemy f);
 }
