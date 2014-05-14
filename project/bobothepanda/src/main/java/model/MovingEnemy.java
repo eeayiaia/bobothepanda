@@ -54,4 +54,11 @@ public class MovingEnemy extends AbstractMovingObject {
 	public void visit(Terrain terrain){
 		setReverseXDirection();
 	}
+	
+	public void visit(Character character){
+		if(getPosition().getY() > character.getPosition().getY()){
+			dead = true;
+			//TODO remove self 
+		}
+	}
 }
