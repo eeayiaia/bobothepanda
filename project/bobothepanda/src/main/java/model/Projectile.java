@@ -19,7 +19,6 @@ public class Projectile extends MovingEnemy{
 	 * @param delta
 	 */
 	public void update(int delta){
-		
 		//checks for legal position
 		try {
 			setNewX(delta);
@@ -27,32 +26,13 @@ public class Projectile extends MovingEnemy{
 			// TODO: remove itself
 			//changes direction
 			VELOCITY *= -1;
-			setNewX(delta);
-			
-			
+			setNewX(delta);	
 		}
-		
-		
 	}
-
+	
 	public void setNewX(int delta) throws IllegalArgumentException{
-		
 		final float nextPositionX = getPosition().getX() - VELOCITY * delta;
-		
 		//Position nextPosition = new Position(nextPositionX, getPosition().getY());
-		
-			setX(nextPositionX);
-		
-		
-		
-	}
-
-	public void doCollision(Character character) {
-		character.die();
-	}
-
-	public void doCollision(IMapObject mapObject) {
-		// TODO Auto-generated method stub
-		
+		setX(nextPositionX);
 	}
 }
