@@ -14,6 +14,11 @@ public class AbstractMovingObject extends AbstractMapObject implements IVisitor,
 		visitor.visit(this);
 	}
 	
+	/**
+	 * Sets a new x-position for the object.
+	 * @param delta The time between each update.
+	 * @param velocity The current velocity of the object.
+	 */
 	public void setNewX(int delta, float velocity){
 		final float nextPositionX = getPosition().getX() - velocity * delta;
 		setX(nextPositionX);

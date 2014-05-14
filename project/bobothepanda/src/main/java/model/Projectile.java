@@ -16,7 +16,7 @@ public class Projectile extends MovingEnemy{
 
 	/**
 	 * Updates the position of the projectile.
-	 * @param delta
+	 * @param delta The time between each update.
 	 */
 	public void update(int delta){
 		//checks for legal position
@@ -30,6 +30,9 @@ public class Projectile extends MovingEnemy{
 		}
 	}
 	
+	/**
+	 * Removes the projectile
+	 */
 	public void remove(){
 		//TODO Remove self
 	}
