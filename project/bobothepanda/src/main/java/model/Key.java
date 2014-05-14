@@ -7,9 +7,8 @@ public class Key extends AbstractFixedObject {
 		super(position, size);
 	}
 
-	public void doCollision(Character character) {
-		boolean testingMethod = true;
-		character.setKeyPickedUp(testingMethod);
+	public void accept(IVisitor visitor) {
+		// TODO Auto-generated method stub
 		
 	}
 }
