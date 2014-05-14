@@ -5,7 +5,7 @@ import java.beans.PropertyChangeListener;
 import java.util.List;
 
 import main.MainClass;
-import model.BlockingObject;
+import model.Terrain;
 import model.Character;
 import model.Collision;
 import model.Key;

@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.BlockingObject;
+import model.Terrain;
 import model.Character;
 import model.Collision;
 import model.AbstractFixedObject;
@@ -23,7 +23,7 @@ public class CharacterTest extends Assert {
 	
 	@Before
 	public void setUp() throws Exception {
-		final AbstractFixedObject terrain = new BlockingObject(new Position(1f,1f), new Size(5f,5f));
+		final AbstractFixedObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
 		final List <IMapObject> list = new ArrayList <IMapObject>();
 		list.add(terrain);
 		collision = new Collision(list);

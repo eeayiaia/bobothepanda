@@ -9,7 +9,7 @@ import model.Character;
 import model.IMapObject;
 import model.Position;
 import model.Size;
-import model.BlockingObject;
+import model.Terrain;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -29,7 +29,7 @@ public class CollisionTest extends Assert{
 
 	@Test
 	public void testCollidedWith(){
-		final IMapObject terrain = new BlockingObject(new Position(1f,1f), new Size(5f,5f));
+		final IMapObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
 		list.add(terrain);
 		assertTrue(collision.collidedWith(character.getHitbox()).equals(terrain.getHitbox()));
 	}
@@ -41,7 +41,7 @@ public class CollisionTest extends Assert{
 
 	@Test
 	public void testGetObjectType() {
-		final IMapObject terrain = new BlockingObject(new Position(1f,1f), new Size(5f,5f));
+		final IMapObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
 		list.add(terrain);
 		collision.collidedWith(character.getHitbox());
 		assertSame(terrain, collision.getObjectType());
@@ -53,7 +53,7 @@ public class CollisionTest extends Assert{
 
 	@Test
 	public void testGetObjectPosition() {
-		final IMapObject terrain = new BlockingObject(new Position(1f,1f), new Size(5f,5f));
+		final IMapObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
 		list.add(terrain);
 		collision.collidedWith(character.getHitbox());
 		assertTrue(collision.getObjectPosition().equals(new Position(1f,1f)));

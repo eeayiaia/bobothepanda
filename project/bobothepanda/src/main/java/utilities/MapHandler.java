@@ -7,7 +7,7 @@ package utilities;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.BlockingObject;
+import model.Terrain;
 import model.Door;
 import model.IMapObject;
 import model.Key;
@@ -25,7 +25,7 @@ public class MapHandler implements IMapHandler {
 	private TiledMap map;
 	private final static String MAP_LOCATION = "data/levels/";
 	private final static String TILESET_LOCATION = "data/img";
-	private List <BlockingObject> blockingObjects;
+	private List <Terrain> blockingObjects;
 	private List <LethalEnemy> staticEnemies;
 	private List <MovingLethalEnemy> movingEnemies;
 	private Key key;
@@ -58,14 +58,14 @@ public class MapHandler implements IMapHandler {
 	 */
 	public final void loadLevel(String levelName) throws SlickException{
 		map = new TiledMap(MAP_LOCATION + levelName + ".tmx", TILESET_LOCATION);
-		blockingObjects = new ArrayList<BlockingObject>();
+		blockingObjects = new ArrayList<Terrain>();
 		createObjectLists();
 	}
 	
 	/**
 	 * @return A list of the blocking objects located on the map
 	 */
-	public List<BlockingObject> getBlockingObjectList() {
+	public List<Terrain> getBlockingObjectList() {
 		return blockingObjects;
 	}
 	
@@ -116,7 +116,7 @@ public class MapHandler implements IMapHandler {
 			} else {
 				size = new Size((float)map.getObjectWidth(0,i), (float)map.getObjectHeight(0,i));
 				if("Terrain".equals(type)) {
-					blockingObjects.add(new BlockingObject(position, size));
+					blockingObjects.add(new Terrain(position, size));
 				} else if("Lethal".equals(type)) {
 					staticEnemies.add(new LethalEnemy(position, size));
 				} else if("Door".equals(type)) {

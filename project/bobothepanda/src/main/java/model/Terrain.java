@@ -1,8 +1,8 @@
 package model;
 
-public class BlockingObject extends AbstractFixedObject {
+public class Terrain extends AbstractFixedObject {
 
-	public BlockingObject(Position position, Size size) {
+	public Terrain(Position position, Size size) {
 		super(position, size);
 		// TODO Auto-generated constructor stub
 	}

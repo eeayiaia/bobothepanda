@@ -6,7 +6,7 @@ package model;
  *
  */
 
-public class Door extends BlockingObject {
+public class Door extends Terrain {
 
 	public Door(Position position, Size size) {
 		super(position, size);
