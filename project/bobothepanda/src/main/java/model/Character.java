@@ -10,7 +10,7 @@ public class Character extends AbstractMovingObject{
 	
 	private CharacterState characterState;
 	private Gravity gravity = new Gravity (0.01f);
-	private final Position position;
+	//private final Position position;
 	private Position oldPosition;
 	private float oldY;
 	private float oldX;
@@ -28,7 +28,8 @@ public class Character extends AbstractMovingObject{
 	 */
 	public Character(Position position, Size size){
 		super(position, size);
-		this.position = position;
+		//System.out.println(position.getY());
+		//this.position = position;
 		oldPosition = position;
 		facing = Facing.RIGHT;
 		pcs = new PropertyChangeSupport(this);	
@@ -46,10 +47,10 @@ public class Character extends AbstractMovingObject{
 	/**
 	 * @return The hitbox surrounding the character.
 	 */
-	public Rectangle getHitbox() {
-		return new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
-				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
-	}
+//	public Rectangle getHitbox() {
+//		return new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
+//				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
+//	}
 	
 	/**
 	 * Set whether or not the key has been picked up
@@ -96,10 +97,10 @@ public class Character extends AbstractMovingObject{
 	 */
 	public void update(){
 		if(lastTimedMoved + 150 >= System.currentTimeMillis()){
-			pcs.firePropertyChange(characterState.toString(), null, position);
+			pcs.firePropertyChange(characterState.toString(), null, getPosition());
 		
 		}else{
-			pcs.firePropertyChange(facing.toString(), null, position);
+			pcs.firePropertyChange(facing.toString(), null, getPosition());
 		}
 	}
 	
@@ -130,7 +131,7 @@ public class Character extends AbstractMovingObject{
 		characterState = CharacterState.MOVING_LEFT;
 			xVelocity = -0.25f;
 			this.oldX = this.getPosition().getX();
-			position.setX(position.getX() + xVelocity * delta );
+			getPosition().setX(getPosition().getX() + xVelocity * delta );
 //			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 			facing = Facing.LEFT;
 			lastTimedMoved = System.currentTimeMillis();
@@ -146,7 +147,7 @@ public class Character extends AbstractMovingObject{
 		characterState = CharacterState.MOVING_RIGHT;
 		xVelocity = 0.25f;
 		this.oldPosition = this.getPosition();
-		position.setX(position.getX() + xVelocity * delta );
+		getPosition().setX(getPosition().getX() + xVelocity * delta );
 		facing = Facing.RIGHT;
 		lastTimedMoved = System.currentTimeMillis();
 	}
@@ -187,8 +188,8 @@ public class Character extends AbstractMovingObject{
 	public void applyGravity(int delta){
 		//Change velocity due to gravity
 		yVelocity = gravity.getNewVelocity(yVelocity, delta);
-		this.oldY = this.getPosition().getY();
-		position.setY(position.getY() + yVelocity);
+		oldY = getPosition().getY();
+		getPosition().setY(getPosition().getY() + yVelocity);
 //		Position nextPosition;
 //		// Set next Y due to gravity
 ////		float yAndYVelocity = gravity.getNewYPosition(position.getY(), yVelocity, delta);/*position.getY() + yVelocity;*/ 
@@ -203,9 +204,9 @@ public class Character extends AbstractMovingObject{
 	 * The current position of the character
 	 * @return The current position of the character as a Position object
 	 */
-	public Position getPosition(){
-		return position;
-	}
+//	public Position getPosition(){
+//		return position;
+//	}
 	
 	public void die() {
 		pcs.firePropertyChange("reloadLevel", null, null);
@@ -226,7 +227,7 @@ public class Character extends AbstractMovingObject{
 	
 	//terrain collision
 	public void visit(Terrain terrain){
-		this.position.setY(oldY);
+		getPosition().setY(oldY);
 		//TODO stop movement
 	}
 	

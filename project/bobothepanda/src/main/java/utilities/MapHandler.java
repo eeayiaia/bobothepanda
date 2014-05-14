@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.AbstractMapObject;
+import model.Character;
 import model.Terrain;
 import model.Door;
 import model.Key;
@@ -82,19 +83,17 @@ public class MapHandler implements IMapHandler {
 			final Position position = new Position((float)map.getObjectX(0,i), (float)map.getObjectY(0,i));
 			final String type = map.getObjectType(0,i);
 			Size size;
-			if("Startpos".equals(type)) {
-				characterStartPosition = position;
-			} else {
-				size = new Size((float)map.getObjectWidth(0,i), (float)map.getObjectHeight(0,i));
-				if("Terrain".equals(type)) {
-					objects.add(new Terrain(position, size));
-				} else if("Lethal".equals(type)) {
-					objects.add(new FixedEnemy(position, size));
-				} else if("Door".equals(type)) {
-					objects.add(new Door(position, size));
-				} else if("Key".equals(type)) {
-					objects.add(new Key(position, size));
-				}
+			size = new Size((float)map.getObjectWidth(0,i), (float)map.getObjectHeight(0,i));
+			if("Terrain".equals(type)) {
+				objects.add(new Terrain(position, size));
+			} else if("Lethal".equals(type)) {
+				objects.add(new FixedEnemy(position, size));
+			} else if("Door".equals(type)) {
+				objects.add(new Door(position, size));
+			} else if("Key".equals(type)) {
+				objects.add(new Key(position, size));
+			} else if("Startpos".equals(type)) {
+				objects.add(new Character(position, size));
 			}
 		}
 	}
