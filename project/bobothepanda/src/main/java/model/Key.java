@@ -17,4 +17,8 @@ public class Key extends AbstractCollectibleObject {
 	public void accept(IVisitor visitor) {
 		visitor.visit(this);
 	}
+	
+	public void visit(Character character){
+		//TODO Remove self
+	}
 }
