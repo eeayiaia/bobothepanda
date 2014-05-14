@@ -23,25 +23,29 @@ public class Projectile extends MovingEnemy{
 		try {
 			setNewX(delta, velocity);
 		} catch (IllegalArgumentException e) {
-			// TODO: remove itself
+			remove();
 			//changes direction
 			velocity *= -1;
 			setNewX(delta, velocity);	
 		}
 	}
 	
+	public void remove(){
+		//TODO Remove self
+	}
+	
 	@Override
 	public void visit(Character character){
-		//TODO Remove self
+		remove();
 	}
 	
 	@Override
 	public void visit(Terrain terrain){
-		//TODO Remove self
+		remove();
 	}
 	
 	@Override
 	public void visit(FixedEnemy fixedEnemy){
-		//TODO Remove self
+		remove();
 	}
 }
