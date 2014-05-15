@@ -1,0 +1,80 @@
+﻿Meeting Agenda
+
+ Date: 2014-05-15
+
+ Facilitator: Elvira Jonsson
+
+ Participants: Victor Larsson, Sebastian Sandberg, Oscar Muhr, Elvira Jonsson
+
+1. Objectives (5 min) Resolve any issues preventing the team to 
+ continue (this should be possible to verify at next meeting, 
+ short clear description, use issues from project site). 
+
+
+make use of the accept method
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+ etc. , see also 4 
+
+
+In progress:
+DOCUMENTATION
+Collision “actions”
+Moving enemy implementation
+Projectile implementation
+Jump
+
+
+Solved:
+Collision detection
+Menu
+
+3. Discussion items (35 min) 
+
+ (a) How do we do...? 
+We are making a lot of progress
+
+ (b) What to do...? 
+Should start with DOCUMENTATION
+Implement ALL collision actions
+Implement all kinds of objects
+Draw new components
+Create new levels
+fix Jump
+write tests
+tweak gravity
+refactor character class
+if(time) {
+        add more object types
+        i.e boosts, coins
+}
+
+4. Outcomes and assignments (5 min) 
+
+ (a) All should…
+write some tests
+do some documenting
+
+
+  (b) Sebastian should.... 
+fix Jump
+tweak gravity
+refactor character
+
+ (c) Elvira should... 
+extra focus on documentation
+
+
+  (d) Oscar should…
+extra focus on documentation
+Draw new components
+Create new levels
+
+
+  (e) Victor should…
+implement collision
+(discuss with others)
+
+5. Wrap up 
+
+ (b) Next meeting? 2014-05-20 08.00 in 1212D
