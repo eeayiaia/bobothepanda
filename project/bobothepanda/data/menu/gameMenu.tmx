@@ -11,6 +11,6 @@
  <objectgroup name="Hitboxes" width="20" height="20">
   <object type="Start" x="352" y="224" width="128" height="64"/>
   <object type="Quit" x="160" y="224" width="128" height="64"/>
-  <object type="Character" x="316" y="448" width="18" height="30"/>
+  <object type="Character" x="311" y="450" width="18" height="30"/>
  </objectgroup>
 </map>
