@@ -28,8 +28,8 @@ public class Gravity {
 		//TODO add check, so that the maximum velocity is at certain speed
 		//velocity formula
 		final Float nextYVelocity =  yVelocity + this.getGravity() * delta;
-		if(nextYVelocity > 0.5f){
-			return 0.5f;
+		if(nextYVelocity > 10f){
+			return 10f;
 		}else{
 			return nextYVelocity;
 		}

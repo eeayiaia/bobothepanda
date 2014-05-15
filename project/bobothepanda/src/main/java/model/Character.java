@@ -145,7 +145,7 @@ public class Character extends AbstractMovingObject{
 	public void moveRight(int delta){
 		characterState = CharacterState.MOVING_RIGHT;
 		xVelocity = 0.25f;
-		this.oldPosition = this.getPosition();
+		this.oldX = this.getPosition().getX();
 		getPosition().setX(getPosition().getX() + xVelocity * delta );
 		facing = Facing.RIGHT;
 		lastTimedMoved = System.currentTimeMillis();
@@ -160,7 +160,7 @@ public class Character extends AbstractMovingObject{
 		//needs to be on the ground to jump
 //		if(onGround()){
 			
-			yVelocity = -2f;
+			yVelocity = -5f;
 //		}
 	}
 	
@@ -227,7 +227,17 @@ public class Character extends AbstractMovingObject{
 	
 	//terrain collision
 	public void visit(Terrain terrain){
-		getPosition().setY(oldY);
+		
+		//VICTOR! TODO FIXA DETTA!
+		yVelocity = 0f;
+		if(Math.abs(getPosition().getY() - terrain.getPosition().getY()) > 4f){
+				getPosition().setY(oldY);
+//		}
+//		if(Math.abs(getPosition().getX() - terrain.getPosition().getX()) > 4f){
+//			getPosition().setX(oldX);
+		}
+		
+		
 		//TODO stop movement
 	}
 	
@@ -241,13 +251,17 @@ public class Character extends AbstractMovingObject{
 	}
 
 	public void visit(Door d) {
-		// TODO Auto-generated method stub
+		if(keyPickedUp){
+			levelComplete();
+		}else{
+			getPosition().setX(oldX);
+		}
 		
 	}
 
 	public void accept(IVisitor visitor) {
 		// TODO Auto-generated method stub
-		
+		visitor.visit(this);
 	}
 
 
