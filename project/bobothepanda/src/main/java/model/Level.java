@@ -57,15 +57,12 @@ public class Level implements PropertyChangeListener{
 	public void checkCollisions() {
 		
 		for(AbstractMapObject o: abstractMapObjects){
-			if(o instanceof AbstractMovingObject){
-				AbstractMovingObject movingObject = (AbstractMovingObject) o;
+			if(o instanceof IVisitor){
+				
 				for(AbstractMapObject i: abstractMapObjects)
-					if(!movingObject.equals(i) && collision(movingObject.getHitbox(), i.getHitbox())){
-						if(i instanceof Terrain){
-							movingObject.visit((Terrain) i);
-						}else if(i instanceof FixedEnemy){
-							movingObject.visit((FixedEnemy) i);
-						}
+					if(collision(o.getHitbox(), i.getHitbox())){
+						IVisitor visitor = (IVisitor) o;
+						i.accept(visitor);
 					}
 			}
 			
@@ -94,6 +91,9 @@ public class Level implements PropertyChangeListener{
 	}
 	
 	public boolean collision(Rectangle collider, Rectangle collidedWith){
+		if(collider.equals(collidedWith)){
+			return false;
+		}
 		return collider.intersects(collidedWith);
 	}
 	

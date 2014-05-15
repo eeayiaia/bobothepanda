@@ -27,4 +27,6 @@ public abstract class AbstractMovingObject extends AbstractMapObject implements 
 	public abstract void visit(Door d);
 	
 	public abstract void visit(FixedEnemy f);
+	
+	
 }

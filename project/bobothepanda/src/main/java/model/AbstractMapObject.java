@@ -2,7 +2,7 @@ package model;
 
 import java.awt.Rectangle;
 
-public class AbstractMapObject {
+public abstract class AbstractMapObject implements IVisitable{
 
 	private final Position position;
 	private final Size size;
@@ -37,5 +37,7 @@ public class AbstractMapObject {
 		setX(position.getX());
 		setY(position.getY());
 	}
+	
+	
 	
 }
