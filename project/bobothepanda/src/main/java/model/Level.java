@@ -67,27 +67,7 @@ public class Level implements PropertyChangeListener{
 			}
 			
 		}
-//		Collision.collision(playerCharacter.getHitbox(), key.getHitbox());
-//		for(FixedEnemy e: staticEnemies) {
-//			if(Collision.collision(playerCharacter.getHitbox(), e.getHitbox())) {
-//				e.doCollision(playerCharacter);
-//			}
-//		}
-//		for(MovingEnemy e: movingEnemies) {
-//			if(Collision.collision(playerCharacter.getHitbox(), e.getHitbox())) {
-//				e.doCollision(playerCharacter);
-//			}
-//			for(Terrain o: blockingObjects) {
-//				if(Collision.collision(e.getHitbox(), o.getHitbox())) {
-//					o.doCollision(e);
-//				}
-//			}
-//		}
-//		for(Terrain o: blockingObjects) {
-//			if(Collision.collision(playerCharacter.getHitbox(), o.getHitbox())) {
-//				o.doCollision(playerCharacter);
-//			}
-//		}
+
 	}
 	
 	public boolean collision(Rectangle collider, Rectangle collidedWith){
