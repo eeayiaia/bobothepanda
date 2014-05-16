@@ -112,6 +112,11 @@ public class MenuView implements PropertyChangeListener{
 		case QUIT_BUTTON_PRESSED:
 			drawPressedQuit();
 			break;
+		case QUIT_BUTTON_RELEASED:
+			drawPressedQuit();
+			break;
+		case START_BUTTON_RELEASED:
+			drawPressedStart();
 		case UPDATE:
 			drawDefault();
 			break;
