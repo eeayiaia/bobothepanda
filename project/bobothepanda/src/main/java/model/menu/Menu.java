@@ -30,26 +30,16 @@ public class Menu {
 		}
 		menuState = MenuState.UPDATE;
 	}
-	//this method is supposed to run with every game loop
-	public void setMenuState(Position cursorPos){
-		if(mouseOverQuit(cursorPos)){
-			menuState = MenuState.CURSOR_ON_QUIT;
-		} else if (mouseOverStart(cursorPos)){
-			menuState = MenuState.CURSOR_ON_START;
-		} else {
-			menuState = MenuState.UPDATE;
-		}
-	}
-	public boolean mouseOverQuit(Position pos){
-		final Point point = new Point((int)Math.round(pos.getX()), (int)Math.round(pos.getY()));
+	public boolean mouseOnQuit(int x, int y){
+		final Point point = new Point(x,y);
 		if(quitButton.getHitbox().contains(point)){
 			return true;
 		} else {
 			return false;
 		}
 	}
-	public boolean mouseOverStart(Position pos){
-		final Point point = new Point((int)Math.round(pos.getX()), (int)Math.round(pos.getY()));
+	public boolean mouseOnStart(int x, int y){
+		final Point point = new Point(x,y);
 		if(startButton.getHitbox().contains(point)){
 			return true;
 		} else {
@@ -60,20 +50,10 @@ public class Menu {
 	public List <MenuItem> getMenuItems(){
 		return menuItems;
 	}
-	public void setCharacterPosition(Position pos){
-		characterPosition = pos;
-	}
-	public void mouseClicked(Position pos){
-		final Point point = new Point((int)Math.round(pos.getX()), (int)Math.round(pos.getY()));
-		if(quitButton.getHitbox().contains(point)){
-			pcs.firePropertyChange(MenuState.QUIT_BUTTON_CLICKED.toString(), true, false);
-		} else if(startButton.getHitbox().contains(point)){
-			pcs.firePropertyChange(MenuState.START_BUTTON_CLICKED.toString(), true, false);
-		}
-	}
 	public void addListener(PropertyChangeListener listener){
 		pcs.addPropertyChangeListener(listener);
 	}
+	//Should run in game loop
 	public void update() {
 		pcs.firePropertyChange(menuState.toString(), null, null);
 	}
@@ -83,12 +63,33 @@ public class Menu {
 		pcs.firePropertyChange(MenuState.START_UP.toString(), quitButton.getPosition(), quitButton.getType());
 	}
 	
-	public void mouseReleased(Position cursorPos) {
-		// TODO Auto-generated method stub
+	public void mousePressed(int x, int y) {
+		if(mouseOnQuit(x,y)){
+			menuState = MenuState.QUIT_BUTTON_PRESSED;
+		} else if(mouseOnStart(x,y)){
+			menuState = MenuState.START_BUTTON_PRESSED;
+		} else {
+			menuState = MenuState.UPDATE;
+		}
+	}
+	public void mouseReleased(int x, int y) {
+		if(mouseOnQuit(x,y)){
+			pcs.firePropertyChange(MenuState.QUIT_BUTTON_RELEASED.toString(), true, false);
+		} else if(mouseOnStart(x,y)){
+			pcs.firePropertyChange(MenuState.START_BUTTON_RELEASED.toString(), true, false);
+		} else {
+		
+		}
 		
 	}
-	public void mousePressed(Position position) {
-		// TODO Auto-generated method stub
+	public void mouseMoved(int newX, int newY) {
+		if(mouseOnQuit(newX,newY)){
+			menuState = MenuState.CURSOR_ON_QUIT;
+		} else if(mouseOnStart(newX,newY)){
+			menuState = MenuState.CURSOR_ON_START;
+		} else {
+			menuState = MenuState.UPDATE;
+		}
 		
 	}
 	

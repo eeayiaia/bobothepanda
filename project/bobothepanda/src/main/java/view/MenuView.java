@@ -15,6 +15,8 @@ public class MenuView implements PropertyChangeListener{
 	private final Image quitButton;
 	private final Image hoverStartButton;
 	private final Image hoverQuitButton;
+	private final Image startButtonPressed;
+	private final Image quitButtonPressed;
 	private final Animation characterAnimation;
 	private final static String SPRITE_RIGHT_IMAGE = "/data/Bobo-01.png";
 	private float startX;
@@ -31,6 +33,8 @@ public class MenuView implements PropertyChangeListener{
 		quitButton = new Image("data/img/quitButton.png");
 		hoverStartButton = new Image("data/img/hoverStartButton.png");
 		hoverQuitButton = new Image("data/img/hoverQuitButton.png");
+		startButtonPressed = new Image("data/img/pressedQuitButton.png");
+		quitButtonPressed = new Image("data/img/pressedQuitButton.png");
 		characterAnimation = new Animation(boboRightAnimation, 125);
 	}
 
@@ -64,6 +68,12 @@ public class MenuView implements PropertyChangeListener{
 		hoverStartButton.draw(startX, startY);
 		quitButton.draw(quitX,quitY);
 	}
+	public void drawPressedStart(){
+		//TODO
+	}
+	public void drawPressedQuit(){
+		
+	}
 	
 	public void propertyChange(PropertyChangeEvent evt) {
 		String source = evt.getPropertyName();
@@ -90,6 +100,12 @@ public class MenuView implements PropertyChangeListener{
 			break;
 		case CURSOR_ON_START:
 			drawHoverStart();
+			break;
+		case START_BUTTON_PRESSED:
+			drawPressedStart();
+			break;
+		case QUIT_BUTTON_PRESSED:
+			drawPressedQuit();
 			break;
 		case UPDATE:
 			drawDefault();

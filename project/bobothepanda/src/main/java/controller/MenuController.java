@@ -29,11 +29,7 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 
 	}
 	public void handleInput(Input i, int delta){
-		final Position cursorPos = new Position((float)i.getAbsoluteMouseX(),(float)i.getAbsoluteMouseY());
-		if(i.isMousePressed(Input.MOUSE_LEFT_BUTTON)){
-			menu.mouseClicked(cursorPos);
-		}
-		menu.setMenuState(cursorPos);
+		menu.update();
 	}
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
@@ -69,21 +65,27 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 	}
 	@Override
 	public void mousePressed(int button, int x, int y){
-		
+		if(button == Input.MOUSE_LEFT_BUTTON){
+			menu.mousePressed(x,y);
+		}
 	}
 	@Override
 	public void mouseReleased(int button, int x, int y){
 		if(button == Input.MOUSE_LEFT_BUTTON){
-			menu.mouseReleased(new Position(x,y));
+			menu.mouseReleased(x,y);
 		}		
+	}
+	@Override
+	public void mouseMoved(int oldX, int oldY, int newX, int newY){
+		menu.mouseMoved(newX, newY);
 	}
 	public void propertyChange(PropertyChangeEvent evt) {
 		String source = evt.getPropertyName();
 		switch(MenuState.valueOf(source)){
-			case QUIT_BUTTON_CLICKED:
+			case QUIT_BUTTON_RELEASED:
 				container.exit();
 				break;
-			case START_BUTTON_CLICKED:
+			case START_BUTTON_RELEASED:
 				game.enterState(0);
 				break;
 		default:
