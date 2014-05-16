@@ -8,7 +8,7 @@ package model;
 
 public class Gravity {
 	private final float GRAVITY_CONSTANT;
-	private final float TERMINAL_VELOCITY = 10f;
+	private final float TERMINAL_VELOCITY = 1f;
 	
 	public Gravity(float gravity){
 		this.GRAVITY_CONSTANT = gravity;
