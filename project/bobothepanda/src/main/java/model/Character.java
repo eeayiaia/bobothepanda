@@ -223,6 +223,19 @@ public class Character extends AbstractMovingObject{
 		}
 		
 		/*
+		if(characterState==CharacterState.MOVING_RIGHT) {
+			if((getPosition().getX() + getSize().getWidth()) >= terrain.getHitbox().g) {
+				position.setX(collisionHitboxXValue - WIDTH);
+			}
+		}else if(characterState==CharacterState.MOVING_LEFT) {
+			double newX = collisionHitboxXValue + collisionHitbox.getWidth();
+			if(nextPositionXValue <= newX) {
+				position.setX((float)newX);
+			}
+		}
+		
+		
+		/*
 		if(Math.abs(getPosition().getX() - terrain.getPosition().getX()) > 4f){
 			getPosition().setX(oldX);
 		}
