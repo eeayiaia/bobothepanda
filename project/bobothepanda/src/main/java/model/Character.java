@@ -218,9 +218,11 @@ public class Character extends AbstractMovingObject{
 			getPosition().setY(oldY);
 		}
 		
+		/*
 		if(Math.abs(getPosition().getX() - terrain.getPosition().getX()) > 4f){
 			getPosition().setX(oldX);
 		}
+		*/
 	}
 	
 	public void visit(Key key){
