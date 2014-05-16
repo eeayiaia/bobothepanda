@@ -38,5 +38,16 @@ public class LevelTest extends Assert {
 		assertFalse(level.collision(rec, rec));
 	}
 	
+	@Test
+	public void testCollisionDifferentRectanglesIntersecting(){
+		Rectangle rec1 = new Rectangle(10,10);
+		Rectangle rec2 = new Rectangle(10, 11);
+		assertTrue(level.collision(rec1, rec2));
+	}
+	
+	@Test
+	public void testCollisionNull(){
+		assertFalse(level.collision(null, null));
+	}
 	
 }

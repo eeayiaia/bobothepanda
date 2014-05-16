@@ -71,6 +71,10 @@ public class Level implements PropertyChangeListener{
 	}
 	
 	public boolean collision(Rectangle collider, Rectangle collidedWith){
+		//test for null
+		if(collider == null || collidedWith == null){
+			return false;
+		}
 		if(collider.equals(collidedWith)){
 			return false;
 		}
