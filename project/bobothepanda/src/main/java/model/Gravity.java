@@ -8,7 +8,8 @@ package model;
 
 public class Gravity {
 	private final float GRAVITY_CONSTANT;
-
+	private final float TERMINAL_VELOCITY = 10f;
+	
 	public Gravity(float gravity){
 		this.GRAVITY_CONSTANT = gravity;
 	}
@@ -28,8 +29,8 @@ public class Gravity {
 		//TODO add check, so that the maximum velocity is at certain speed
 		//velocity formula
 		final Float nextYVelocity =  yVelocity + this.getGravity() * delta;
-		if(nextYVelocity > 10f){
-			return 10f;
+		if(nextYVelocity > TERMINAL_VELOCITY){
+			return TERMINAL_VELOCITY;
 		}else{
 			return nextYVelocity;
 		}

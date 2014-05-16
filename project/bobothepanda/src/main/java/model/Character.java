@@ -9,7 +9,7 @@ import java.beans.PropertyChangeSupport;
 public class Character extends AbstractMovingObject{
 	
 	private CharacterState characterState;
-	private Gravity gravity = new Gravity (0.01f);
+	private Gravity gravity = new Gravity (0.1f);
 	private final Position position;
 	private Position oldPosition;
 	private float oldY;
@@ -21,6 +21,7 @@ public class Character extends AbstractMovingObject{
 	private float xVelocity = 0;
 	private long lastTimedMoved; 
 	private boolean keyPickedUp;
+	private boolean onGround;
 
 	/**
 	 * Sets the starting position and assigns PropertyChangeSupport to this class
@@ -153,8 +154,11 @@ public class Character extends AbstractMovingObject{
 	public void jump(int delta){
 		//needs to be on the ground to jump
 //		if(onGround()){
+			if(yVelocity < 1f && onGround){
+				yVelocity = -20f;
+				onGround = false;
+			}
 			
-			yVelocity = -5f;
 //		}
 	}
 	

@@ -22,7 +22,7 @@ public class MainClass extends StateBasedGame{
 	
 	/**
 	 * Enable fullscreen
-	 */
+	 */	
 	public static final boolean FULLSCREEN = false;
 	
 	public static final float SCALE = (float) ((double)WINDOW_WIDTH/640);
