@@ -52,13 +52,6 @@ public class Character extends AbstractMovingObject{
 //	}
 	
 	/**
-	 * Set whether or not the key has been picked up
-	 */
-	public void setKeyPickedUp(Boolean keyPickedUp) {
-		this.keyPickedUp = keyPickedUp;
-	}
-	
-	/**
 	 * Get whether or not the key has been picked up
 	 */
 	public boolean getKeyPickedUp() {
@@ -71,7 +64,6 @@ public class Character extends AbstractMovingObject{
 	public void levelComplete() {
 		pcs.firePropertyChange("loadLevel", null, null);
 	}
-	
 	
 	/**
 	 * Get the velocity of the character
@@ -91,6 +83,7 @@ public class Character extends AbstractMovingObject{
 	public Facing getFacing(){
 		return this.facing;
 	}
+	
 	/**
 	 * Updates the current character state.
 	 */
@@ -128,13 +121,14 @@ public class Character extends AbstractMovingObject{
      */
 	public void moveLeft(int delta){
 		characterState = CharacterState.MOVING_LEFT;
-			xVelocity = -0.25f;
-			this.oldX = this.getPosition().getX();
-			getPosition().setX(getPosition().getX() + xVelocity * delta );
-//			hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
-			facing = Facing.LEFT;
-			lastTimedMoved = System.currentTimeMillis();
+		xVelocity = -0.25f;
+		this.oldX = this.getPosition().getX();
+		getPosition().setX(getPosition().getX() + xVelocity * delta );
+//		hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
+		facing = Facing.LEFT;
+		lastTimedMoved = System.currentTimeMillis();
 	}
+	
 	/**
 	 * Moves the character to the right.
 	 * 
@@ -200,14 +194,6 @@ public class Character extends AbstractMovingObject{
 ////		}	
 	}
 	
-	/**
-	 * The current position of the character
-	 * @return The current position of the character as a Position object
-	 */
-//	public Position getPosition(){
-//		return position;
-//	}
-	
 	public void die() {
 		pcs.firePropertyChange("reloadLevel", null, null);
 	}
@@ -220,35 +206,28 @@ public class Character extends AbstractMovingObject{
 		die();
 	}
 	
-	//Should perhaps only decrease hitpoints or something like that, not kill
 	public void visit(Projectile projectile){
 		die();
 	}
 	
-	//terrain collision
 	public void visit(Terrain terrain){
 		
 		//VICTOR! TODO FIXA DETTA!
 		yVelocity = 0f;
 		if(Math.abs(getPosition().getY() - terrain.getPosition().getY()) > 4f){
-				getPosition().setY(oldY);
-//		}
-//		if(Math.abs(getPosition().getX() - terrain.getPosition().getX()) > 4f){
-//			getPosition().setX(oldX);
+			getPosition().setY(oldY);
 		}
 		
-		
-		//TODO stop movement
+		if(Math.abs(getPosition().getX() - terrain.getPosition().getX()) > 4f){
+			getPosition().setX(oldX);
+		}
 	}
 	
 	public void visit(Key key){
 		keyPickedUp = true;
 	}
 
-	public void visit(Character c) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void visit(Character c) {}
 
 	public void visit(Door d) {
 		if(keyPickedUp){
@@ -256,16 +235,12 @@ public class Character extends AbstractMovingObject{
 		}else{
 			getPosition().setX(oldX);
 		}
-		
 	}
 
 	public void accept(IVisitor visitor) {
-		// TODO Auto-generated method stub
 		visitor.visit(this);
 	}
 
-
-	
 //	public void setNewX(int delta) {
 //		Rectangle collisionHitbox;
 //		Position nextPosition;
