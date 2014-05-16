@@ -33,4 +33,13 @@ public class MovingEnemyTest extends Assert {
 		movingEnemy.visit(character);
 		assertFalse(movingEnemy.isDead());
 	}
+	
+	
+	@Test
+	public void testReverseVelocity(){
+		MovingEnemy movingEnemy1 = new MovingEnemy(new Position(1f,1f), new Size(10,10));
+		velocity = movingEnemy.getVelocity();
+		movingEnemy.visit(movingEnemy1);
+		assertTrue(movingEnemy.getVelocity() < velocity);
+	}
 }
