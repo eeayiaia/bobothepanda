@@ -57,6 +57,7 @@ public class Menu {
 	public void update() {
 		pcs.firePropertyChange(menuState.toString(), null, null);
 	}
+	//sends information on where to put menu components
 	public void startMenu() {
 		pcs.firePropertyChange(MenuState.START_UP.toString(), characterPosition, "Character");
 		pcs.firePropertyChange(MenuState.START_UP.toString(), startButton.getPosition(), startButton.getType());
@@ -74,11 +75,11 @@ public class Menu {
 	}
 	public void mouseReleased(int x, int y) {
 		if(mouseOnQuit(x,y)){
-			pcs.firePropertyChange(MenuState.QUIT_BUTTON_RELEASED.toString(), true, false);
+			menuState = MenuState.QUIT_BUTTON_RELEASED;
 		} else if(mouseOnStart(x,y)){
-			pcs.firePropertyChange(MenuState.START_BUTTON_RELEASED.toString(), true, false);
+			menuState = MenuState.START_BUTTON_RELEASED;
 		} else {
-		
+			menuState = MenuState.UPDATE;
 		}
 		
 	}

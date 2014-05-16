@@ -33,7 +33,7 @@ public class MenuView implements PropertyChangeListener{
 		quitButton = new Image("data/img/quitButton.png");
 		hoverStartButton = new Image("data/img/hoverStartButton.png");
 		hoverQuitButton = new Image("data/img/hoverQuitButton.png");
-		startButtonPressed = new Image("data/img/pressedQuitButton.png");
+		startButtonPressed = new Image("data/img/pressedStartButton.png");
 		quitButtonPressed = new Image("data/img/pressedQuitButton.png");
 		characterAnimation = new Animation(boboRightAnimation, 125);
 	}
@@ -69,10 +69,15 @@ public class MenuView implements PropertyChangeListener{
 		quitButton.draw(quitX,quitY);
 	}
 	public void drawPressedStart(){
-		//TODO
+		characterAnimation.draw(characterX, characterY);
+		quitButton.draw(quitX,quitY);
+		startButtonPressed.draw(startX, startY);
+
 	}
 	public void drawPressedQuit(){
-		
+		characterAnimation.draw(characterX, characterY);
+		startButton.draw(startX, startY);
+		quitButtonPressed.draw(quitX, quitY);
 	}
 	
 	public void propertyChange(PropertyChangeEvent evt) {
