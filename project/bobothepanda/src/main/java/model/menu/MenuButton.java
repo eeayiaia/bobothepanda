@@ -1,5 +1,6 @@
 package model.menu;
 
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 import model.Position;
@@ -18,8 +19,9 @@ public class MenuButton extends MenuItem{
 		super(position,size, name);
 		pcs = new PropertyChangeSupport(this);
 	}
-	public void mouseClicked() {
-			pcs.firePropertyChange(this.getType(), true, false);
+	public void addListener(PropertyChangeListener listener){
+		pcs.addPropertyChangeListener(listener);
 	}
+
 	
 }

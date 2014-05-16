@@ -67,6 +67,16 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 	public int getID() {
 		return 1;
 	}
+	@Override
+	public void mousePressed(int button, int x, int y){
+		
+	}
+	@Override
+	public void mouseReleased(int button, int x, int y){
+		if(button == Input.MOUSE_LEFT_BUTTON){
+			menu.mouseReleased(new Position(x,y));
+		}		
+	}
 	public void propertyChange(PropertyChangeEvent evt) {
 		String source = evt.getPropertyName();
 		switch(MenuState.valueOf(source)){

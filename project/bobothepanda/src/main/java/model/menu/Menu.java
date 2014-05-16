@@ -30,6 +30,7 @@ public class Menu {
 		}
 		menuState = MenuState.UPDATE;
 	}
+	//this method is supposed to run with every game loop
 	public void setMenuState(Position cursorPos){
 		if(mouseOverQuit(cursorPos)){
 			menuState = MenuState.CURSOR_ON_QUIT;
@@ -62,7 +63,6 @@ public class Menu {
 	public void setCharacterPosition(Position pos){
 		characterPosition = pos;
 	}
-	@SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
 	public void mouseClicked(Position pos){
 		final Point point = new Point((int)Math.round(pos.getX()), (int)Math.round(pos.getY()));
 		if(quitButton.getHitbox().contains(point)){
@@ -81,6 +81,15 @@ public class Menu {
 		pcs.firePropertyChange(MenuState.START_UP.toString(), characterPosition, "Character");
 		pcs.firePropertyChange(MenuState.START_UP.toString(), startButton.getPosition(), startButton.getType());
 		pcs.firePropertyChange(MenuState.START_UP.toString(), quitButton.getPosition(), quitButton.getType());
+	}
+	
+	public void mouseReleased(Position cursorPos) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void mousePressed(Position position) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
