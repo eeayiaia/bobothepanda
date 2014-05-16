@@ -10,6 +10,10 @@ public class MovingEnemy extends AbstractMovingObject {
 		dead = false;
 	}
 	
+	public void update(int delta){
+		setNewX(delta, velocity);
+	}
+	
 	/**
 	 * reverses the velocity
 	 */

@@ -215,29 +215,28 @@ public class Character extends AbstractMovingObject{
 	}
 	
 	public void visit(Terrain terrain){
-		
-		//VICTOR! TODO FIXA DETTA!
 		yVelocity = 0f;
 		onGround = true;
-		if(Math.abs(getPosition().getY() - terrain.getPosition().getY()) > 4f){
+		if(Math.abs(getPosition().getY() - terrain.getPosition().getY()) > 2f){
 			getPosition().setY(oldY);
 		}
-		
 		/*
 		if(characterState==CharacterState.MOVING_RIGHT) {
-			if((getPosition().getX() + getSize().getWidth()) >= terrain.getHitbox().g) {
-				position.setX(collisionHitboxXValue - WIDTH);
+			if(getPosition().getX() >= terrain.getPosition().getX()){
+				getPosition().setX(oldX);
 			}
-		}else if(characterState==CharacterState.MOVING_LEFT) {
+		}
+		/*
+		else if(characterState==CharacterState.MOVING_LEFT) {
 			double newX = collisionHitboxXValue + collisionHitbox.getWidth();
 			if(nextPositionXValue <= newX) {
 				position.setX((float)newX);
 			}
 		}
-		
+		*/
 		
 		/*
-		if(Math.abs(getPosition().getX() - terrain.getPosition().getX()) > 4f){
+		if(Math.abs(getPosition().getX() - terrain.getPosition().getX()) < 4f){
 			getPosition().setX(oldX);
 		}
 		*/
@@ -253,7 +252,11 @@ public class Character extends AbstractMovingObject{
 		if(keyPickedUp){
 			levelComplete();
 		}else{
-			getPosition().setX(oldX);
+			
+			if(Math.abs(getPosition().getY() - d.getPosition().getY()) > 4f){
+				getPosition().setY(oldY);
+			}
+			//getPosition().setX(oldX);
 		}
 	}
 
