@@ -218,6 +218,7 @@ public class Character extends AbstractMovingObject{
 		
 		//VICTOR! TODO FIXA DETTA!
 		yVelocity = 0f;
+		onGround = true;
 		if(Math.abs(getPosition().getY() - terrain.getPosition().getY()) > 4f){
 			getPosition().setY(oldY);
 		}
