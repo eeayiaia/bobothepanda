@@ -149,6 +149,14 @@ public class Character extends AbstractMovingObject{
 			yVelocity = -1.7f;
 			onGround = false;
 		}
+//		if(onGround()){
+			if(yVelocity == 0f && onGround){
+				yVelocity = -1.7f;
+				onGround = false;
+				pcs.firePropertyChange("jump", null, null);
+			}
+//		}
+
 	}
 	
 	/**
@@ -187,6 +195,7 @@ public class Character extends AbstractMovingObject{
 	}
 	
 	public void die() {
+		pcs.firePropertyChange("die", null, null);
 		pcs.firePropertyChange("reloadLevel", null, null);
 	}
 	
@@ -234,6 +243,7 @@ public class Character extends AbstractMovingObject{
 	}
 	
 	public void visit(Key key){
+		pcs.firePropertyChange("key", null, null);
 		keyPickedUp = true;
 	}
 
@@ -241,6 +251,7 @@ public class Character extends AbstractMovingObject{
 
 	public void visit(Door door) {
 		if(keyPickedUp){
+			pcs.firePropertyChange("door", null, null);
 			levelComplete();
 		}else{
 			collisionWithFixedObject(door);

@@ -27,6 +27,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private int currentLevelNumber;
 	private final float WIDTH = 18;
 	private final float HEIGHT = 30;
+	private AudioController audioController;
 	
 	
 	/**
@@ -113,7 +114,6 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		if(!loadCurrentLevel){
 			currentLevelNumber++;
 		}
-	
 		mapHandler = new MapHandler("level" + currentLevelNumber);
 		character = new Character(mapHandler.getCharacterStartPosition(), new Size(WIDTH, HEIGHT));
 		character.addPropertyChangeListener(new CharacterView());
@@ -121,7 +121,11 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		final LevelView levelView = new LevelView();
 		level.addPropertyChangeListener(levelView);
 		character.addPropertyChangeListener(level);
+		audioController = new AudioController();
+		character.addPropertyChangeListener(audioController);
 		characterController = new CharacterController(character);
+		
+		
 		
 		level.addPropertyChangeListener(this);
 	}
