@@ -219,6 +219,8 @@ public class Character extends AbstractMovingObject{
 	}
 	
 	public void collisionWithFixedObject(AbstractFixedObject afo){
+		onGround = true;
+		
 		final float characterXPos = getPosition().getX();
 		final float characterYPos = getPosition().getY();
 		final float characterWidth = getSize().getWidth();
@@ -231,14 +233,12 @@ public class Character extends AbstractMovingObject{
 
 		if((characterYPos <= objectYPos || characterYPos + characterWidth <= objectYPos) && yVelocity > 0){
 			getPosition().setY(afo.getPosition().getY() - getSize().getHeight());
-			onGround = true;
 			yVelocity = 0f;
 			
 		}else if((characterYPos <= objectYPos + objectHeight ||
 				characterYPos + characterWidth <= objectYPos + objectHeight) && yVelocity < 0){
 			
 			getPosition().setY(afo.getPosition().getY() + getSize().getHeight());
-			onGround = true;
 			yVelocity = 0f;
 			
 		}else if(characterXPos >= objectXPos || characterXPos + characterHeight >= objectXPos){
