@@ -215,31 +215,36 @@ public class Character extends AbstractMovingObject{
 	}
 	
 	public void visit(Terrain terrain){
-		yVelocity = 0f;
-		onGround = true;
-		if(Math.abs(getPosition().getY() - terrain.getPosition().getY()) > 2f){
-			getPosition().setY(oldY);
-		}
-		/*
-		if(characterState==CharacterState.MOVING_RIGHT) {
-			if(getPosition().getX() >= terrain.getPosition().getX()){
-				getPosition().setX(oldX);
-			}
-		}
-		/*
-		else if(characterState==CharacterState.MOVING_LEFT) {
-			double newX = collisionHitboxXValue + collisionHitbox.getWidth();
-			if(nextPositionXValue <= newX) {
-				position.setX((float)newX);
-			}
-		}
-		*/
+		collisionWithFixedObject(terrain);
+	}
+	
+	public void collisionWithFixedObject(AbstractFixedObject afo){
+		final float characterXPos = getPosition().getX();
+		final float characterYPos = getPosition().getY();
+		final float characterWidth = getSize().getWidth();
+		final float characterHeight = getSize().getHeight();
 		
-		/*
-		if(Math.abs(getPosition().getX() - terrain.getPosition().getX()) < 4f){
+		final float objectXPos = afo.getPosition().getX();
+		final float objectYPos = afo.getPosition().getY();
+		//final float objectWidth = afo.getSize().getWidth();
+		final float objectHeight = afo.getSize().getHeight();
+
+		if((characterYPos <= objectYPos || characterYPos + characterWidth <= objectYPos) && yVelocity > 0){
+			getPosition().setY(afo.getPosition().getY() - getSize().getHeight());
+			onGround = true;
+			yVelocity = 0f;
+			
+		}else if((characterYPos <= objectYPos + objectHeight ||
+				characterYPos + characterWidth <= objectYPos + objectHeight) && yVelocity < 0){
+			
+			getPosition().setY(afo.getPosition().getY() + getSize().getHeight());
+			onGround = true;
+			yVelocity = 0f;
+			
+		}else if(characterXPos >= objectXPos || characterXPos + characterHeight >= objectXPos){
 			getPosition().setX(oldX);
+			getPosition().setY(characterYPos);
 		}
-		*/
 	}
 	
 	public void visit(Key key){
@@ -248,15 +253,11 @@ public class Character extends AbstractMovingObject{
 
 	public void visit(Character c) {}
 
-	public void visit(Door d) {
+	public void visit(Door door) {
 		if(keyPickedUp){
 			levelComplete();
 		}else{
-			
-			if(Math.abs(getPosition().getY() - d.getPosition().getY()) > 4f){
-				getPosition().setY(oldY);
-			}
-			//getPosition().setX(oldX);
+			collisionWithFixedObject(door);
 		}
 	}
 
