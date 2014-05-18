@@ -10,12 +10,8 @@ public class Character extends AbstractMovingObject{
 	
 	private CharacterState characterState;
 	private Gravity gravity = new Gravity (0.01f);
-	private final Position position;
-	private Position oldPosition;
-	private float oldY;
 	private float oldX;
 	private final PropertyChangeSupport pcs;
-	private final Size size;
 	private Facing facing;
 	private float yVelocity = 0.15f;
 	private float xVelocity = 0;
@@ -29,11 +25,8 @@ public class Character extends AbstractMovingObject{
 	 */
 	public Character(Position position, Size size){
 		super(position, size);
-		this.position = position;
-		oldPosition = position;
 		facing = Facing.RIGHT;
 		pcs = new PropertyChangeSupport(this);	
-		this.size = size;
 	}
 	
 	/**
@@ -114,7 +107,7 @@ public class Character extends AbstractMovingObject{
     }
 	
     /**
-     * Moves the character to the right.
+     * Moves the character to the left.
      * 
      * TODO Implement acceleration 
      * 
@@ -125,7 +118,6 @@ public class Character extends AbstractMovingObject{
 		xVelocity = -0.25f;
 		this.oldX = this.getPosition().getX();
 		getPosition().setX(getPosition().getX() + xVelocity * delta );
-//		hitbox.setLocation((int)Math.round(position.getX()), (int)Math.round(position.getY()));
 		facing = Facing.LEFT;
 		lastTimedMoved = System.currentTimeMillis();
 	}
@@ -153,13 +145,10 @@ public class Character extends AbstractMovingObject{
 	 */	
 	public void jump(int delta){
 		//needs to be on the ground to jump
-//		if(onGround()){
-			if(yVelocity == 0f && onGround){
-				yVelocity = -1.7f;
-				onGround = false;
-			}
-			
-//		}
+		if(yVelocity == 0f && onGround){
+			yVelocity = -1.7f;
+			onGround = false;
+		}
 	}
 	
 	/**
@@ -184,10 +173,9 @@ public class Character extends AbstractMovingObject{
 	 */
 	public void applyGravity(int delta){
 		//Change velocity due to gravity
-		oldY = position.getY();
 		yVelocity = gravity.getNewVelocity(yVelocity, delta);
 		
-		getPosition().setY(gravity.getNewYPosition(position.getY(), yVelocity, delta));
+		getPosition().setY(gravity.getNewYPosition(getPosition().getY(), yVelocity, delta));
 //		Position nextPosition;
 //		// Set next Y due to gravity
 ////		float yAndYVelocity = gravity.getNewYPosition(position.getY(), yVelocity, delta);/*position.getY() + yVelocity;*/ 
@@ -228,22 +216,20 @@ public class Character extends AbstractMovingObject{
 		
 		final float objectXPos = afo.getPosition().getX();
 		final float objectYPos = afo.getPosition().getY();
-		//final float objectWidth = afo.getSize().getWidth();
 		final float objectHeight = afo.getSize().getHeight();
 
 		if((characterYPos <= objectYPos || characterYPos + characterWidth <= objectYPos) && yVelocity > 0){
-			getPosition().setY(afo.getPosition().getY() - getSize().getHeight());
+			getPosition().setY(objectYPos - characterHeight);
 			yVelocity = 0f;
 			
 		}else if((characterYPos <= objectYPos + objectHeight ||
 				characterYPos + characterWidth <= objectYPos + objectHeight) && yVelocity < 0){
 			
-			getPosition().setY(afo.getPosition().getY() + getSize().getHeight());
+			getPosition().setY(objectYPos + characterHeight);
 			yVelocity = 0f;
 			
-		}else if(characterXPos >= objectXPos || characterXPos + characterHeight >= objectXPos){
+		}else if(characterXPos <= objectXPos || characterXPos + characterHeight >= objectXPos){
 			getPosition().setX(oldX);
-			getPosition().setY(characterYPos);
 		}
 	}
 	
