@@ -17,20 +17,23 @@ import org.newdawn.slick.SlickException;
 
 public class FixedEnemyView implements PropertyChangeListener{
 
-	private Animation enemyAnimation;
+	private Animation sawAnimation;
 	
 	public FixedEnemyView() throws SlickException{
-		final Image [] enemyImages = {new Image("")};
+		final Image [] sawImages = {new Image("/data/saw1.png"), 
+									new Image("/data/saw2.png"), 
+									new Image("/data/saw3.png"), 
+									new Image("/data/saw4.png")};
 		
-		enemyAnimation = new Animation(enemyImages, 125); 
+		sawAnimation = new Animation(sawImages, 125); 
 	}
 	
-	public void drawEnemyAnimation(float x, float y){
-		enemyAnimation.draw(x, y);
+	public void drawSawAnimation(float x, float y){
+		sawAnimation.draw(x, y);
 	}
 	
 	public enum DrawObject{
-		ENEMY_ANIMATION
+		SAW_ANIMATION
 	}
 	
 	public void propertyChange(PropertyChangeEvent evt) {
@@ -42,8 +45,8 @@ public class FixedEnemyView implements PropertyChangeListener{
 			final float y = pos.getY();
 			
 			switch(DrawObject.valueOf(evt.getPropertyName())){
-			case ENEMY_ANIMATION:
-				drawEnemyAnimation(x, y);
+			case SAW_ANIMATION:
+				drawSawAnimation(x, y);
 				break;
 			}
 		}
