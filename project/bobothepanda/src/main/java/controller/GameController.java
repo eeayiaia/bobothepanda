@@ -34,6 +34,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private final float HEIGHT = 30;
 	private AudioController audioController;
 	private KeyView keyView;
+	private Key key;
 	
 	
 	/**
@@ -77,6 +78,10 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	public void update(GameContainer container, StateBasedGame game, int delta)throws SlickException {
 		characterController.handleInput(container.getInput(), delta);
 		level.update(delta);
+		if(key != null){
+			key.update();
+		}
+		
 		
 	}
 
@@ -126,6 +131,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		level = new Level(mapHandler.getMapObjectList(), character);
 		final LevelView levelView = new LevelView();
 		keyView = new KeyView();
+		addObjectViews(mapHandler.getMapObjectList());
 		level.addPropertyChangeListener(levelView);
 		character.addPropertyChangeListener(level);
 		audioController = new AudioController();
@@ -140,8 +146,9 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	
 	public void addObjectViews(List <AbstractMapObject> abstractMapObjects){
 		for(AbstractMapObject a: abstractMapObjects){
-			if(Key.class == a.getClass()){
-				Key key = (Key) a;
+			if(a.getClass() == Key.class){
+				System.out.println("KEY");
+				key = (Key) a;
 				key.addPropertyChangeListener(keyView);
 			}
 		}

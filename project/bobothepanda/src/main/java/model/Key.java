@@ -34,4 +34,9 @@ public class Key extends AbstractCollectibleObject {
 	public void removePropertyChangeListener(PropertyChangeListener listener){
 		pcs.removePropertyChangeListener(listener);
 	}
+	
+	
+	public void update(){
+		pcs.firePropertyChange("KEY_ANIMATION", null, null);
+	}
 }
