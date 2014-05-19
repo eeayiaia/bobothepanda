@@ -22,6 +22,9 @@ public class MenuButton extends MenuItem{
 	public void addListener(PropertyChangeListener listener){
 		pcs.addPropertyChangeListener(listener);
 	}
+	public void hover(){
+		
+	}
 
 	
 }
