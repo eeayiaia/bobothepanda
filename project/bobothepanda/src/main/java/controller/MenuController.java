@@ -29,6 +29,9 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 
 	}
 	public void handleInput(Input i, int delta){
+		if(i.isKeyPressed(Input.KEY_ENTER)){
+			game.enterState(0);
+		}
 		menu.update();
 	}
 	public void init(GameContainer container, StateBasedGame game)
