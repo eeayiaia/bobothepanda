@@ -37,6 +37,10 @@ public class MovingEnemy extends AbstractMovingObject {
 		return dead;
 	}
 	
+	public void remove(){
+		//TODO Remove self
+	}
+	
 	public void visit(MovingEnemy movingEnemy){
 		setReverseVelocity();
 	}
@@ -53,7 +57,7 @@ public class MovingEnemy extends AbstractMovingObject {
 		//If the character comes from above, object will remove itself
 		if(this.getPosition().getY() > character.getPosition().getY()){
 			dead = true;
-			//TODO remove self 
+			remove();
 		}
 	}
 
