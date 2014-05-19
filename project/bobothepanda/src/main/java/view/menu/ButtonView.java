@@ -26,6 +26,7 @@ public class ButtonView implements PropertyChangeListener{
 
 	public void propertyChange(PropertyChangeEvent evt) {
 		String source = evt.getPropertyName();
+		
 		switch(ButtonState.valueOf(source)){
 		case CLICKED:
 			clickedImage.draw(x,y);
