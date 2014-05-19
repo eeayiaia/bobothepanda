@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * @author Victor Larsson
+ */
+
 import model.Projectile;
 
 import java.beans.PropertyChangeListener;
