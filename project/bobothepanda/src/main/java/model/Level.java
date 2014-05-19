@@ -42,12 +42,11 @@ public class Level implements PropertyChangeListener{
 	
 	//TODO göra om både update och render, alternativt ta bort render
 	public void update(int delta){
-		projectile.update(delta);
+		//projectile.update(delta);
 		checkCollisions();
 		//TODO set gravity etc.	
 	}
 	public void render(){
-		pcs.firePropertyChange("drawProjectile", null, projectile.getPosition());
 	}
 	
 	/**
