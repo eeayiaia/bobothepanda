@@ -2,9 +2,13 @@ package controller;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.List;
 
 import main.MainClass;
+import model.AbstractMapObject;
+import model.AbstractMovingObject;
 import model.Character;
+import model.Key;
 import model.Level;
 import model.Size;
 import utilities.MapHandler;
@@ -128,5 +132,14 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		
 		
 		level.addPropertyChangeListener(this);
+	}
+	
+	
+	public void addObjectViews(List <AbstractMapObject> abstractMapObjects){
+		for(AbstractMapObject a: abstractMapObjects){
+			if(Key.class.equals(a.getClass())){
+//				a.
+			}
+		}
 	}
 }
