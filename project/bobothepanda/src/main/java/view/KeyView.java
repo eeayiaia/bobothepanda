@@ -20,9 +20,9 @@ public class KeyView implements PropertyChangeListener{
 	private Animation keyAnimation;
 	
 	public KeyView() throws SlickException{
-		final Image[] keyImages = {new Image("/data/keyDown-01.png"), 
-								new Image("/data/keyMid-01.png"), 
-								new Image("/data/keyUp-01.png")};
+		final Image[] keyImages = {new Image("/data/img/keyDown-01.png"), 
+								new Image("/data/img/keyMid-01.png"), 
+								new Image("/data/img/keyUp-01.png")};
 		
 		keyAnimation = new Animation(keyImages, 125);
 	}

@@ -15,6 +15,7 @@ import utilities.MapHandler;
 import utilities.MapHandlerException;
 import view.CharacterView;
 import view.LevelView;
+import view.KeyView;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -32,6 +33,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private final float WIDTH = 18;
 	private final float HEIGHT = 30;
 	private AudioController audioController;
+	private KeyView keyView;
 	
 	
 	/**
@@ -123,6 +125,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		character.addPropertyChangeListener(new CharacterView());
 		level = new Level(mapHandler.getMapObjectList(), character);
 		final LevelView levelView = new LevelView();
+		keyView = new KeyView();
 		level.addPropertyChangeListener(levelView);
 		character.addPropertyChangeListener(level);
 		audioController = new AudioController();
@@ -137,8 +140,9 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	
 	public void addObjectViews(List <AbstractMapObject> abstractMapObjects){
 		for(AbstractMapObject a: abstractMapObjects){
-			if(Key.class.equals(a.getClass())){
-//				a.
+			if(Key.class == a.getClass()){
+				Key key = (Key) a;
+				key.addPropertyChangeListener(keyView);
 			}
 		}
 	}

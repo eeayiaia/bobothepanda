@@ -1,5 +1,8 @@
 package model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 /**
  * 
  * @author Oscar Muhr
@@ -8,9 +11,11 @@ package model;
 
 @SuppressWarnings("PMD")
 public class Key extends AbstractCollectibleObject {
-
+	PropertyChangeSupport pcs;
+	
 	public Key(Position position, Size size) {
 		super(position, size);
+		pcs = new PropertyChangeSupport(this);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -20,5 +25,13 @@ public class Key extends AbstractCollectibleObject {
 	
 	public void visit(Character character){
 		//TODO Remove self
+	}
+	
+	public void addPropertyChangeListener(PropertyChangeListener listener){
+		pcs.addPropertyChangeListener(listener);
+	}
+	
+	public void removePropertyChangeListener(PropertyChangeListener listener){
+		pcs.removePropertyChangeListener(listener);
 	}
 }
