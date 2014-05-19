@@ -29,9 +29,10 @@ public class PositionTest extends Assert {
 		position.setX(6.7f);
 		assertEquals(position.getX(), 6.7f, 0);
 	}
-	@Test (expected = IllegalArgumentException.class)
-	public void testSetXException(){
+	@Test
+	public void testSetXIllegal(){
 		position.setX(-2f);
+		assertEquals(position.getX(), 0f, 0);
 	}
 
 	@Test
@@ -40,8 +41,9 @@ public class PositionTest extends Assert {
 		assertEquals(position.getY(), 100.1f, 0);
 	}
 	
-	@Test (expected = IllegalArgumentException.class)
-	public void testSetYException(){
+	@Test
+	public void testSetYIllegal(){
 		position.setY(-0.1f);
+		assertEquals(position.getY(), 0f, 0);
 	}
 }

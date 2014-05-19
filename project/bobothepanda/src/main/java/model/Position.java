@@ -14,7 +14,6 @@ public class Position {
 			this.x = x;
 			this.y = y;
 		} else {
-			//throw new IllegalArgumentException();
 			this.x = 0;
 			this.y = 0;
 		}
@@ -33,18 +32,20 @@ public class Position {
 	}
 	public void setX(float x) {
 		if (x < 0){
-			this.x = 0;
-			//throw new IllegalArgumentException();
+			this.x = 0f;
+		} else {
+			this.x = x;
+
 		}
-		this.x = x;
 	}
 
 	public void setY(float y) {
 		if(y < 0){
-			this.y = 0;
-			//throw new IllegalArgumentException();
+			this.y = 0f;
+		}else {
+			this.y = y;
+
 		}
-		this.y = y;
 	}
 	@Override
 	public int hashCode() {
