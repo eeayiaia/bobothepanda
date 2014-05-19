@@ -5,12 +5,12 @@
  </tileset>
  <layer name="Tile Layer 1" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+NgYGDgGMWjeBSP4lE8iknEAJ6zctZABgAA
+   H4sIAAAAAAAAC+NgYGDgGMWjeBSP4lE8iknEAJ6zctZABgAA
   </data>
  </layer>
  <layer name="Tile Layer 2" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA2NgGAWjYBSMAvIBCxAz45BjwoNxATYoRgacUJoVDyYF8FLJPJDfkf0E08tOontgZuFyC75wxIXx+Y1aGACUyNxQQAYAAA==
+   H4sIAAAAAAAAC2NgGAWjYBSMAvIBCxAz45BjwoNxATYoRgacUJoVDyYF8FLJPJDfkf1EjluQzcLlFnzhiAvj8xu1MACHDvgNQAYAAA==
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="20" height="20">
