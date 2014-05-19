@@ -100,6 +100,7 @@ public class MapHandler implements IMapHandler {
 		}
 		//temporary add of new enemy
 		objects.add(new MovingEnemy(new Position(300, 450), new Size(18,18)));
+		objects.add(new MovingEnemy(new Position(100, 250), new Size(18,18)));
 	}
 	
 	/**

@@ -2,6 +2,7 @@ package controller;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.AbstractMapObject;
@@ -36,7 +37,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private AudioController audioController;
 	private KeyView keyView;
 	private Key key;
-	private MovingEnemy movingEnemy;
+	private List <MovingEnemy> movingEnemies;
 	private MovingEnemyView movingEnemyView;
 	
 	
@@ -79,14 +80,20 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		if(key != null){
 			key.update();
 		}
-		movingEnemy.render();
+		for(MovingEnemy movingEnemy: movingEnemies){
+			movingEnemy.render();
+		}
+		
 		
 	}
 
 	public void update(GameContainer container, StateBasedGame game, int delta)throws SlickException {
 		characterController.handleInput(container.getInput(), delta);
 		level.update(delta);
-		movingEnemy.update(delta);
+		for(MovingEnemy movingEnemy: movingEnemies){
+			movingEnemy.update(delta);
+		}
+		
 	
 		
 	}
@@ -149,15 +156,19 @@ public class GameController extends BasicGameState implements PropertyChangeList
 
 
 	public void addObjectViews(List <AbstractMapObject> abstractMapObjects){
+		movingEnemies = new ArrayList<MovingEnemy>();
 		for(AbstractMapObject a: abstractMapObjects){
 			if(a.getClass() == Key.class){
 				key = (Key) a;
 				key.addPropertyChangeListener(keyView);
 			}
 			if(a.getClass() == MovingEnemy.class){
-				movingEnemy = (MovingEnemy) a;
+				MovingEnemy movingEnemy = (MovingEnemy) a;
 				movingEnemy.addPropertyChangeListener(movingEnemyView);
+				movingEnemies.add(movingEnemy);
 			}
 		}
 	}
+	
+
 }
