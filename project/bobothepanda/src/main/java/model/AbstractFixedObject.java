@@ -9,7 +9,4 @@ public abstract class AbstractFixedObject extends AbstractMapObject implements I
 	public AbstractFixedObject(Position position, Size size) {
 		super(position, size);
 	}
-	
-
-
 }

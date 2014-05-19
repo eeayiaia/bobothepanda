@@ -52,11 +52,12 @@ public class Projectile extends AbstractMovingObject{
 	public void visit(FixedEnemy fixedEnemy){
 		remove();
 	}
-
-	public void visit(Key k) {}
-	public void visit(Projectile p) {}
 	
 	public void visit(Door d) {
 		remove();
 	}
+	
+	public void visit(Key k) {}
+	public void visit(Projectile p) {}
+	public void visit(MovingEnemy m) {}
 }

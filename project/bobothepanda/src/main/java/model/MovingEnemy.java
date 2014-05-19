@@ -60,10 +60,7 @@ public class MovingEnemy extends AbstractMovingObject {
 			remove();
 		}
 	}
-
-	public void visit(Key k) {}
-	public void visit(Projectile p) {}
-
+	
 	public void visit(Door d) {
 		setReverseVelocity();
 	}
@@ -71,4 +68,7 @@ public class MovingEnemy extends AbstractMovingObject {
 	public void accept(IVisitor visitor) {
 		visitor.visit(this);
 	}
+	
+	public void visit(Key k) {}
+	public void visit(Projectile p) {}
 }

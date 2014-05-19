@@ -6,7 +6,6 @@ public abstract class AbstractMovingObject extends AbstractMapObject implements 
 		super(position, size);
 	}
 
-	
 	/**
 	 * Sets a new x-position for the object.
 	 * @param delta The time between each update.
@@ -16,17 +15,4 @@ public abstract class AbstractMovingObject extends AbstractMapObject implements 
 		final float nextPositionX = getPosition().getX() - velocity * delta;
 		setX(nextPositionX);
 	}
-	
-	
-	public abstract void visit(Terrain t);
-	
-	public abstract void visit(Character c);
-	
-	public abstract void visit(Key k);
-	
-	public abstract void visit(Door d);
-	
-	public abstract void visit(FixedEnemy f);
-	
-	public abstract void visit(Projectile p);
 }
