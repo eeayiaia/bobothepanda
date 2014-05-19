@@ -14,7 +14,6 @@ public class ProjectileTest extends Assert{
 	
 	private final Position position = new Position(3f,3f);
 	private final Size size = new Size(4,4);
-	private final Rectangle hitBox = new Rectangle(4,4);
 	private Projectile projectile;
 	
 	@Before
@@ -34,6 +33,8 @@ public class ProjectileTest extends Assert{
 	
 	@Test
 	public void testGetHitbox(){
-		assertEquals(hitBox, projectile.getHitbox());
+		final Rectangle hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
+				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
+		assertEquals(hitbox, projectile.getHitbox());
 	}
 }
