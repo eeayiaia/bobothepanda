@@ -30,6 +30,7 @@ public class AudioController implements PropertyChangeListener{
 		if("key".equals(evt.getPropertyName())){
 			audio.playKeySound();
 		}
+		SoundStore.get().poll(0);
 	}
 
 }

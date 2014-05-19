@@ -41,6 +41,7 @@ public class Character extends AbstractMovingObject{
 	 */
 	public boolean getKeyPickedUp() {
 		return keyPickedUp;
+		
 	}
 	
 	/**
@@ -205,7 +206,10 @@ public class Character extends AbstractMovingObject{
 	}
 	
 	public void visit(Key key){
-		pcs.firePropertyChange("key", null, null);
+		if(!keyPickedUp){
+			pcs.firePropertyChange("key", null, null);
+		}
+		
 		keyPickedUp = true;
 	}
 
