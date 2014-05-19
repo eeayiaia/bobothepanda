@@ -11,30 +11,26 @@ import java.beans.PropertyChangeListener;
 
 import model.Position;
 
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 public class FixedEnemyView implements PropertyChangeListener{
 
-	private Image enemyLeft;
-	private Image enemyRight;
+	private Animation enemyAnimation;
 	
 	public FixedEnemyView() throws SlickException{
-		//enemyLeft = new Image("PATH");
-		//enemyRight = new Image("PATH");
+		final Image [] enemyImages = {new Image("")};
+		
+		enemyAnimation = new Animation(enemyImages, 125); 
 	}
 	
-	public void drawEnemyLeft(float x, float y){
-		enemyLeft.draw(x, y);
-	}
-	
-	public void drawEnemyRight(float x, float y){
-		enemyRight.draw(x, y);
+	public void drawEnemyAnimation(float x, float y){
+		enemyAnimation.draw(x, y);
 	}
 	
 	public enum DrawObject{
-		ENEMY_LEFT,
-		ENEMY_RIGHT
+		ENEMY_ANIMATION
 	}
 	
 	public void propertyChange(PropertyChangeEvent evt) {
@@ -46,16 +42,10 @@ public class FixedEnemyView implements PropertyChangeListener{
 			final float y = pos.getY();
 			
 			switch(DrawObject.valueOf(evt.getPropertyName())){
-			case ENEMY_LEFT:
-				drawEnemyLeft(x, y);
-				break;
-				
-			case ENEMY_RIGHT:
-				drawEnemyRight(x, y);
+			case ENEMY_ANIMATION:
+				drawEnemyAnimation(x, y);
 				break;
 			}
 		}
-		
 	}
-
 }
