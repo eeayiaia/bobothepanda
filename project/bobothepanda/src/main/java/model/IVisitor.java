@@ -13,4 +13,6 @@ public interface IVisitor {
 	public void visit(FixedEnemy f);
 
 	public void visit(Projectile p);
+	
+	public void visit(MovingEnemy m);
 }

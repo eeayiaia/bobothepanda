@@ -54,30 +54,17 @@ public class MovingEnemy extends AbstractMovingObject {
 		if(this.getPosition().getY() > character.getPosition().getY()){
 			dead = true;
 			//TODO remove self 
-		}else{
-			character.die();
 		}
 	}
 
-	public void visit(Key k) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void visit(Key k) {}
+	public void visit(Projectile p) {}
 
 	public void visit(Door d) {
-		// TODO Auto-generated method stub
-		
+		setReverseVelocity();
 	}
 
 	public void accept(IVisitor visitor) {
-		// TODO Auto-generated method stub
-		
+		visitor.visit(this);
 	}
-
-	public void visit(Projectile p) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 }
