@@ -1,17 +1,32 @@
 package model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
 public class MovingEnemy extends AbstractMovingObject {
 	
 	private float velocity = 0.25f;
 	private boolean dead;
+	PropertyChangeSupport pcs;
 
 	public MovingEnemy(Position position, Size size) {
 		super(position, size);
 		dead = false;
+		pcs = new PropertyChangeSupport(this);
+	}
+	
+	
+	public void render(){
+		if(this.getVelocity() <= 0){
+			pcs.firePropertyChange("ENEMY_MOVING_LEFT", null, this.getPosition());
+		}else{
+			pcs.firePropertyChange("ENEMY_MOVING_RIGHT", null, this.getPosition());
+		}
 	}
 	
 	public void update(int delta){
 		setNewX(delta, velocity);
+		
 	}
 	
 	/**
@@ -75,4 +90,16 @@ public class MovingEnemy extends AbstractMovingObject {
 	
 	public void visit(Key k) {}
 	public void visit(Projectile p) {}
+	
+	
+	public void addPropertyChangeListener(PropertyChangeListener listener){
+		pcs.addPropertyChangeListener(listener);
+	}
+	
+	public void removePropertyChangeListener(PropertyChangeListener listener){
+		pcs.removePropertyChangeListener(listener);
+	}
+	
+	
+	
 }

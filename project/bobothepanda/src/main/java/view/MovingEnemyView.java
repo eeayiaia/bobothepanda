@@ -21,8 +21,11 @@ public class MovingEnemyView implements PropertyChangeListener{
 	private Animation enemyRightAnimation;
 	
 	public MovingEnemyView() throws SlickException{
-		final Image [] leftAnimation = {new Image("")};
-		final Image [] rightAnimation = {new Image("")};
+		final Image [] leftAnimation = {new Image("data/img/saw1.png"),
+										new Image("data/img/saw2.png"),
+										new Image("data/img/saw3.png"),
+										new Image("data/img/saw4.png")};
+		final Image [] rightAnimation = leftAnimation;
 		
 		enemyLeftAnimation = new Animation(leftAnimation, 125);
 		enemyRightAnimation = new Animation(rightAnimation, 125);

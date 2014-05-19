@@ -9,12 +9,14 @@ import main.MainClass;
 import model.Character;
 import model.Key;
 import model.Level;
+import model.MovingEnemy;
 import model.Size;
 import utilities.MapHandler;
 import utilities.MapHandlerException;
 import view.CharacterView;
 import view.LevelView;
 import view.KeyView;
+import view.MovingEnemyView;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -34,6 +36,8 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private AudioController audioController;
 	private KeyView keyView;
 	private Key key;
+	private MovingEnemy movingEnemy;
+	private MovingEnemyView movingEnemyView;
 	
 	
 	
@@ -75,12 +79,14 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		if(key != null){
 			key.update();
 		}
+		movingEnemy.render();
 		
 	}
 
 	public void update(GameContainer container, StateBasedGame game, int delta)throws SlickException {
 		characterController.handleInput(container.getInput(), delta);
 		level.update(delta);
+		movingEnemy.update(delta);
 	
 		
 	}
@@ -131,6 +137,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		level = new Level(mapHandler.getMapObjectList(), character);
 		final LevelView levelView = new LevelView();
 		keyView = new KeyView();
+		movingEnemyView = new MovingEnemyView();
 		addObjectViews(mapHandler.getMapObjectList());
 		level.addPropertyChangeListener(levelView);
 		character.addPropertyChangeListener(level);
@@ -147,6 +154,10 @@ public class GameController extends BasicGameState implements PropertyChangeList
 				System.out.println("KEY");
 				key = (Key) a;
 				key.addPropertyChangeListener(keyView);
+			}
+			if(a.getClass() == MovingEnemy.class){
+				movingEnemy = (MovingEnemy) a;
+				movingEnemy.addPropertyChangeListener(movingEnemyView);
 			}
 		}
 	}

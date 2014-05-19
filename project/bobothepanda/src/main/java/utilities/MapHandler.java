@@ -9,6 +9,7 @@ import java.util.List;
 
 import model.AbstractMapObject;
 import model.Character;
+import model.MovingEnemy;
 import model.Terrain;
 import model.Door;
 import model.Key;
@@ -97,6 +98,8 @@ public class MapHandler implements IMapHandler {
 				characterStartPosition.setY(position.getY()-10);
 			}
 		}
+		//temporary add of new enemy
+		objects.add(new MovingEnemy(new Position(300, 450), new Size(18,18)));
 	}
 	
 	/**
