@@ -2,7 +2,6 @@ package model;
 
 public interface IVisitor {
 	
-	
 	public void visit(Terrain t);
 	
 	public void visit(Character c);
@@ -13,5 +12,5 @@ public interface IVisitor {
 	
 	public void visit(FixedEnemy f);
 
-
+	public void visit(Projectile p);
 }

@@ -74,5 +74,10 @@ public class MovingEnemy extends AbstractMovingObject {
 		
 	}
 
+	public void visit(Projectile p) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

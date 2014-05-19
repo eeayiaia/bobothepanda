@@ -6,7 +6,7 @@ package model;
  *
  */
 @edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
-public class Projectile extends MovingEnemy{
+public class Projectile extends AbstractMovingObject{
 
 	private float velocity = 0.25f;
 	
@@ -24,7 +24,6 @@ public class Projectile extends MovingEnemy{
 			setNewX(delta, velocity);
 		} catch (IllegalArgumentException e) {
 			remove();
-			//changes direction
 			velocity *= -1;
 			setNewX(delta, velocity);	
 		}
@@ -37,18 +36,27 @@ public class Projectile extends MovingEnemy{
 		//TODO Remove self
 	}
 	
-	@Override
+	public void accept(IVisitor visitor){
+		System.out.println("hit in Projectile");
+		visitor.visit(this);
+	}
+	
 	public void visit(Character character){
 		remove();
 	}
 	
-	@Override
 	public void visit(Terrain terrain){
 		remove();
 	}
 	
-	@Override
 	public void visit(FixedEnemy fixedEnemy){
+		remove();
+	}
+
+	public void visit(Key k) {}
+	public void visit(Projectile p) {}
+	
+	public void visit(Door d) {
 		remove();
 	}
 }

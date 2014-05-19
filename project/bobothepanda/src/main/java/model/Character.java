@@ -1,6 +1,5 @@
 	package model;
 
-import java.awt.Rectangle;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
@@ -203,6 +202,7 @@ public class Character extends AbstractMovingObject{
 	}
 	
 	public void visit(Projectile projectile){
+		System.out.println("hit in character");
 		die();
 	}
 	
