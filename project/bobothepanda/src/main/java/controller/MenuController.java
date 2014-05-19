@@ -16,7 +16,7 @@ import model.Position;
 import model.menu.Menu;
 import model.menu.MenuState;
 import utilities.MenuMapHandler;
-import view.MenuView;
+import view.menu.MenuView;
 
 public class MenuController extends BasicGameState implements PropertyChangeListener{
 	private Menu menu;
