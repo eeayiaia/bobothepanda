@@ -151,7 +151,6 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	public void addObjectViews(List <AbstractMapObject> abstractMapObjects){
 		for(AbstractMapObject a: abstractMapObjects){
 			if(a.getClass() == Key.class){
-				System.out.println("KEY");
 				key = (Key) a;
 				key.addPropertyChangeListener(keyView);
 			}

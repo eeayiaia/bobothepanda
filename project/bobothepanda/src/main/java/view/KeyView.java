@@ -28,7 +28,6 @@ public class KeyView implements PropertyChangeListener{
 	}
 	
 	public void drawKeyAnimation(float x, float y){
-		System.out.println("x = " + x + "    Y = " + y);
 		keyAnimation.draw(x, y);
 	}
 	
@@ -45,7 +44,6 @@ public class KeyView implements PropertyChangeListener{
 			
 			switch(DrawObject.valueOf(evt.getPropertyName())){
 			case KEY_ANIMATION:
-				
 				drawKeyAnimation(x, y);
 				break;
 			}
