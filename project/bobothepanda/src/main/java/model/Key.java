@@ -39,4 +39,5 @@ public class Key extends AbstractCollectibleObject {
 	public void update(){
 		pcs.firePropertyChange("KEY_ANIMATION", null, this.getPosition());
 	}
+	
 }

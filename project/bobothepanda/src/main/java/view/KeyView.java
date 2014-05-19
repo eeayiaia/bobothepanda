@@ -20,15 +20,15 @@ public class KeyView implements PropertyChangeListener{
 	private Animation keyAnimation;
 	
 	public KeyView() throws SlickException{
-		final Image[] keyImages = {new Image("/data/img/keyDown-01.png"), 
-								new Image("/data/img/keyMid-01.png"), 
-								new Image("/data/img/keyUp-01.png")};
+		final Image[] keyImages = {new Image("/data/img/keyDown-01.png"),
+									new Image("/data/img/keyMid-01.png"),
+									new Image("/data/img/keyUp-01.png")};
 		
-		keyAnimation = new Animation(keyImages, 125);
+		keyAnimation = new Animation(keyImages, 150);
 	}
 	
 	public void drawKeyAnimation(float x, float y){
-		System.out.println("RITAR UT KEY");
+		System.out.println("x = " + x + "    Y = " + y);
 		keyAnimation.draw(x, y);
 	}
 	

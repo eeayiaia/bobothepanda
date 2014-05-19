@@ -2,15 +2,19 @@ package controller;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.List;
 
+import model.AbstractMapObject;
 import main.MainClass;
 import model.Character;
+import model.Key;
 import model.Level;
 import model.Size;
 import utilities.MapHandler;
 import utilities.MapHandlerException;
 import view.CharacterView;
 import view.LevelView;
+import view.KeyView;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -28,6 +32,9 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private final float WIDTH = 18;
 	private final float HEIGHT = 30;
 	private AudioController audioController;
+	private KeyView keyView;
+	private Key key;
+	
 	
 	
 	/**
@@ -65,12 +72,16 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		mapHandler.renderMap();
 		character.update();
 		level.render();
+		if(key != null){
+			key.update();
+		}
 		
 	}
 
 	public void update(GameContainer container, StateBasedGame game, int delta)throws SlickException {
 		characterController.handleInput(container.getInput(), delta);
 		level.update(delta);
+	
 		
 	}
 
@@ -119,11 +130,24 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		character.addPropertyChangeListener(new CharacterView());
 		level = new Level(mapHandler.getMapObjectList(), character);
 		final LevelView levelView = new LevelView();
+		keyView = new KeyView();
+		addObjectViews(mapHandler.getMapObjectList());
 		level.addPropertyChangeListener(levelView);
 		character.addPropertyChangeListener(level);
 		audioController = new AudioController();
 		character.addPropertyChangeListener(audioController);
 		characterController = new CharacterController(character);
 		level.addPropertyChangeListener(this);
+	}
+
+
+	public void addObjectViews(List <AbstractMapObject> abstractMapObjects){
+		for(AbstractMapObject a: abstractMapObjects){
+			if(a.getClass() == Key.class){
+				System.out.println("KEY");
+				key = (Key) a;
+				key.addPropertyChangeListener(keyView);
+			}
+		}
 	}
 }
