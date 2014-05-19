@@ -14,16 +14,15 @@ public class Menu {
 	private MenuButton startButton;
 	private MenuButton quitButton;
 	private MenuState menuState;
+	private List <MenuButton> menuButtons;
 
 	
 	public Menu(List <MenuItem> menuItems){
 		this.menuItems = menuItems;
 		pcs = new PropertyChangeSupport(this);
 		for(MenuItem butt:menuItems){
-			if("Start".equals(butt.getType())){
-				startButton = (MenuButton) butt;
-			} else if("Quit".equals(butt.getType())){
-				quitButton = (MenuButton) butt;
+			if(butt.getClass() == MenuButton.class){
+				menuButtons.add((MenuButton) butt);
 			} else {
 				characterPosition = butt.getPosition();
 			}
@@ -52,6 +51,10 @@ public class Menu {
 	}
 	public void addListener(PropertyChangeListener listener){
 		pcs.addPropertyChangeListener(listener);
+		for(MenuButton butt:menuButtons){
+			butt.addListener(listener);
+		}
+		
 	}
 	//Should run in game loop
 	public void update() {
