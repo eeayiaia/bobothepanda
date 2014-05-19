@@ -137,9 +137,6 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		audioController = new AudioController();
 		character.addPropertyChangeListener(audioController);
 		characterController = new CharacterController(character);
-		
-		
-		
 		level.addPropertyChangeListener(this);
 	}
 	
