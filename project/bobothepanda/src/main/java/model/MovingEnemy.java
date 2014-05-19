@@ -64,6 +64,10 @@ public class MovingEnemy extends AbstractMovingObject {
 	public void visit(Door d) {
 		setReverseVelocity();
 	}
+	
+	public void visit(ShootingEnemy s) {
+		setReverseVelocity();
+	}
 
 	public void accept(IVisitor visitor) {
 		visitor.visit(this);

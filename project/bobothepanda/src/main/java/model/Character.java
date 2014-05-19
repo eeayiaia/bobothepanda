@@ -219,6 +219,10 @@ public class Character extends AbstractMovingObject{
 			collisionWithFixedObject(door);
 		}
 	}
+	
+	public void visit(ShootingEnemy s) {
+		collisionWithFixedObject(s);
+	}
 
 	public void accept(IVisitor visitor) {
 		visitor.visit(this);
