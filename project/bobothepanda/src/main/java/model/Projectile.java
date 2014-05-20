@@ -33,7 +33,7 @@ public class Projectile extends AbstractMovingObject{
 	 * Removes the projectile
 	 */
 	public void remove(){
-		//TODO Remove self
+		//TODO Render itself
 	}
 	
 	public void accept(IVisitor visitor){
