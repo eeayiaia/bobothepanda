@@ -25,7 +25,7 @@ public class MovingEnemyTest extends Assert {
 		Character character = new Character(new Position(0f,0f), new Size(11f,11f));
 		movingEnemy.visit(character);
 		assertTrue(movingEnemy.isDead());
-	}
+	}	
 	
 	@Test
 	public void testVisitCharacterFromBelow(){
