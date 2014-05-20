@@ -51,6 +51,7 @@ public class ShootingEnemy extends AbstractFixedObject implements PropertyChange
 	public void fireProjectile(){
 		if(lastTimedFired + 1000 >= System.currentTimeMillis()){
 			Projectile projectile = new Projectile(centerPos, projectileSize);
+			projectile.addPropertyChangeListener(this);
 			pcs.firePropertyChange("projectile", null, projectile);
 			projectiles.add(projectile);
 			lastTimedFired = System.currentTimeMillis();
