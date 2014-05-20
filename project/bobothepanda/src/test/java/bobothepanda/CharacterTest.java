@@ -16,6 +16,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 public class CharacterTest extends Assert {
 	private Character character;
 	private final Position position = new Position(3f,3f);

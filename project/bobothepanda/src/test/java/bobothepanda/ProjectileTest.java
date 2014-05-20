@@ -17,7 +17,7 @@ public class ProjectileTest extends Assert{
 	private Projectile projectile;
 	
 	@Before
-	public void setup() throws Exception{
+	public void setUp() throws Exception{
 		projectile = new Projectile(position, size);
 	}
 	
