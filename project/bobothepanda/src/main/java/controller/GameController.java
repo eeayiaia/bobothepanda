@@ -8,6 +8,7 @@ import java.util.List;
 import model.AbstractMapObject;
 import main.MainClass;
 import model.Character;
+import model.FixedEnemy;
 import model.Key;
 import model.Level;
 import model.MovingEnemy;
@@ -15,6 +16,7 @@ import model.Size;
 import utilities.MapHandler;
 import utilities.MapHandlerException;
 import view.CharacterView;
+import view.FixedEnemyView;
 import view.LevelView;
 import view.KeyView;
 import view.MovingEnemyView;
@@ -35,10 +37,10 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private final float WIDTH = 18;
 	private final float HEIGHT = 30;
 	private AudioController audioController;
-	private KeyView keyView;
 	private Key key;
 	private List <MovingEnemy> movingEnemies;
-	private MovingEnemyView movingEnemyView;
+	private List <FixedEnemy> fixedEnemies;
+
 	
 	
 	
@@ -82,6 +84,9 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		}
 		for(MovingEnemy movingEnemy: movingEnemies){
 			movingEnemy.render();
+		}
+		for(FixedEnemy fixedEnemy: fixedEnemies){
+			fixedEnemy.render();
 		}
 		
 		
@@ -143,8 +148,6 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		character.addPropertyChangeListener(new CharacterView());
 		level = new Level(mapHandler.getMapObjectList(), character);
 		final LevelView levelView = new LevelView();
-		keyView = new KeyView();
-		movingEnemyView = new MovingEnemyView();
 		addObjectViews(mapHandler.getMapObjectList());
 		level.addPropertyChangeListener(levelView);
 		character.addPropertyChangeListener(level);
@@ -155,17 +158,23 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	}
 
 
-	public void addObjectViews(List <AbstractMapObject> abstractMapObjects){
+	public void addObjectViews(List <AbstractMapObject> abstractMapObjects) throws SlickException{
 		movingEnemies = new ArrayList<MovingEnemy>();
+		fixedEnemies = new ArrayList<FixedEnemy>();
 		for(AbstractMapObject a: abstractMapObjects){
 			if(a.getClass() == Key.class){
 				key = (Key) a;
-				key.addPropertyChangeListener(keyView);
+				key.addPropertyChangeListener(new KeyView());
 			}
 			if(a.getClass() == MovingEnemy.class){
 				MovingEnemy movingEnemy = (MovingEnemy) a;
-				movingEnemy.addPropertyChangeListener(movingEnemyView);
+				movingEnemy.addPropertyChangeListener(new MovingEnemyView());
 				movingEnemies.add(movingEnemy);
+			}
+			if(a.getClass() == FixedEnemy.class){
+				FixedEnemy fixedEnemy = (FixedEnemy) a;
+				fixedEnemy.addPropertyChangeListener(new FixedEnemyView());
+				fixedEnemies.add(fixedEnemy);
 			}
 		}
 	}

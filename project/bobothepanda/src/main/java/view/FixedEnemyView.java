@@ -20,10 +20,10 @@ public class FixedEnemyView implements PropertyChangeListener{
 	private Animation sawAnimation;
 	
 	public FixedEnemyView() throws SlickException{
-		final Image [] sawImages = {new Image("/data/saw1.png"), 
-									new Image("/data/saw2.png"), 
-									new Image("/data/saw3.png"), 
-									new Image("/data/saw4.png")};
+		final Image [] sawImages = {new Image("/data/img/saw1.png"), 
+									new Image("/data/img/saw2.png"), 
+									new Image("/data/img/saw3.png"), 
+									new Image("/data/img/saw4.png")};
 		
 		sawAnimation = new Animation(sawImages, 125); 
 	}
