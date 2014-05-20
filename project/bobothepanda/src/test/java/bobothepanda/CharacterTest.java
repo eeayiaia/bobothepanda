@@ -19,38 +19,51 @@ import org.junit.Test;
 @edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 public class CharacterTest extends Assert {
 	private Character character;
-	private final Position position = new Position(3f,3f);
+	private Position position = new Position(3f,3f);
+	private final Size size = new Size(5f,5f);
 	
 	@Before
 	public void setUp() throws Exception {
 		final AbstractMapObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
 		final List <AbstractMapObject> list = new ArrayList <AbstractMapObject>();
 		list.add(terrain);
-		character = new Character(position, new Size(7f,7f));
+		character = new Character(position, size);
 	}
 	
-//	@Test
-	public void testGetPosition(){
+	@Test
+	public void testGetPosition() {
 		assertEquals(position, character.getPosition());
 	}
 	
-//	@Test
-	public void validateOnGround(){
-		assertTrue(character.onGround());
+	@Test
+	public void testGetSize() {
+		assertEquals(size, character.getSize());
 	}
 	
-//	@Test
-	public void validateNotOnGround(){
-		assertFalse(new Character(new Position(8f, 8f), collision).onGround());
-	}
-	
-//	@Test
-	public void testGetHitbox(){
-		final Size size = new Size(18,30);
+	@Test
+	public void testGetHitbox() {
 		final Rectangle hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
 				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
 		assertEquals(hitbox, character.getHitbox());
-
+	}
+	
+	@Test
+	public void testSetX() {
+		position.setX(5f);
+		character.setX(position.getX());
+		assertEquals(position.getX(), character.getPosition().getX(), 0);
+	}
+	
+	public void testSetY() {
+		position.setY(5f);
+		character.setY(position.getY());
+		assertEquals(position.getY(), character.getPosition().getY(), 0);
+	}
+	
+	public void testSetPosition() {
+		position = new Position(1f,1f);
+		character.setPosition(position);
+		assertEquals(position, character.getPosition());
 	}
 	
 	
