@@ -20,14 +20,10 @@ public class Key extends AbstractCollectibleObject {
 	}
 
 	public void accept(IVisitor visitor) {
-		//should check for character?
-		pcs.firePropertyChange("KEY_PICKED_UP", null, this.getPosition());
+		if(visitor.getClass() == Character.class) {
+			pcs.firePropertyChange("KEY_PICKED_UP", null, this.getPosition());
+		}
 		visitor.visit(this);
-	}
-	
-	public void visit(Character character){
-		//TODO Remove self
-		
 	}
 	
 	public void addPropertyChangeListener(PropertyChangeListener listener){
