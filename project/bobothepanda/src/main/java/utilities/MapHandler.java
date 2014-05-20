@@ -96,11 +96,10 @@ public class MapHandler implements IMapHandler {
 			} else if("Startpos".equals(type)) {
 				characterStartPosition = position;
 				characterStartPosition.setY(position.getY()-10);
+			} else if("MovingEnemy".equals(type)){
+				objects.add(new MovingEnemy(position, size));
 			}
 		}
-		//temporary add of new enemy
-		objects.add(new MovingEnemy(new Position(300, 450), new Size(18,18)));
-		objects.add(new MovingEnemy(new Position(100, 250), new Size(18,18)));
 	}
 	
 	/**
