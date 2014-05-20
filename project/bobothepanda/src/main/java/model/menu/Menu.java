@@ -3,6 +3,7 @@ package model.menu;
 import java.awt.Point;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Position;
@@ -19,6 +20,7 @@ public class Menu {
 	
 	public Menu(List <MenuItem> menuItems){
 		this.menuItems = menuItems;
+		menuButtons = new ArrayList<MenuButton>();
 		pcs = new PropertyChangeSupport(this);
 		for(MenuItem butt:menuItems){
 			if(butt.getClass() == MenuButton.class){
