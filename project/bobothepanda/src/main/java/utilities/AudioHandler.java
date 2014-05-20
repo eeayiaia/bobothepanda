@@ -52,7 +52,6 @@ public class AudioHandler {
 	}
 	
 	public void playKeySound() {
-		//due to error with the key soundfile, the death sound is played
 		key.playAsSoundEffect(1.0f, 1.0f, false);
 	}
 	
