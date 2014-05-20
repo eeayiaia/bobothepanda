@@ -1,5 +1,7 @@
 package model;
 
+import java.beans.PropertyChangeSupport;
+
 /**
  * 
  * @author Victor Larsson
@@ -7,11 +9,13 @@ package model;
  */
 @edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 public class Projectile extends AbstractMovingObject{
-
+	
+	PropertyChangeSupport pcs;
 	private float velocity = 0.25f;
 	
 	public Projectile(Position position, Size size) {
 		super(position, size);
+		pcs = new PropertyChangeSupport(this);
 	}
 
 	/**
@@ -33,7 +37,11 @@ public class Projectile extends AbstractMovingObject{
 	 * Removes the projectile
 	 */
 	public void remove(){
-		//TODO Render itself
+		pcs.firePropertyChange("PROJECTILE_COLLISION", null, this);//TODO Render itself
+	}
+	
+	public void render(){
+		pcs.firePropertyChange("PROJECTILE", null, this.getPosition());
 	}
 	
 	public void accept(IVisitor visitor){
