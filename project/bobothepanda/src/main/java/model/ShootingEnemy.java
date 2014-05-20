@@ -5,11 +5,14 @@ package model;
  */
 
 import model.Projectile;
+import view.ProjectileView;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.List;
+
+import org.newdawn.slick.SlickException;
 
 public class ShootingEnemy extends AbstractFixedObject implements PropertyChangeListener {
 
@@ -52,6 +55,12 @@ public class ShootingEnemy extends AbstractFixedObject implements PropertyChange
 		if(lastTimedFired + 1000 >= System.currentTimeMillis()){
 			Projectile projectile = new Projectile(centerPos, projectileSize);
 			projectile.addPropertyChangeListener(this);
+			try {
+				projectile.addPropertyChangeListener(new ProjectileView());
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			pcs.firePropertyChange("projectile", null, projectile);
 			projectiles.add(projectile);
 			lastTimedFired = System.currentTimeMillis();
