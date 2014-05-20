@@ -21,7 +21,7 @@ public class CharacterController {
 		if(i.isKeyDown(Input.KEY_LEFT) && character.getPosition().getX() > 0){
 			character.moveLeft(delta);
 
-		}else if(i.isKeyDown(Input.KEY_RIGHT) && character.getPosition().getX() < 608){
+		}else if(i.isKeyDown(Input.KEY_RIGHT) && character.getPosition().getX() < 1262){
 			character.moveRight(delta);
 			
 		}

@@ -10,7 +10,7 @@
  </layer>
  <layer name="Other" width="64" height="36">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+2Z3QrCMAyFe6MX6oXWV/AHdUx9/5czBQth6kihpltOPjiMloXmkKzrWAiO4yCx+DK3Jm20E1Emvq+rplm0IXnfsysSMXz6j6MRzpQo6dl8r6Uel3rivY34nM+d0j3aYo1/eRrOafS4xpnIYg1LQPSf/SJ6RwW91hbPZWPMsd4133do9c4gf2cnUH0jeraOdD9E7fkE8n6H7B0VhP8kDg7LCWnL8toprXkgHUkn0lk4/peGufH1aubEYy+kK+lG6oTjFqqZE4/tSXfSg/QUjluoZk489gXjnfPwACQAAA==
+   H4sIAAAAAAAAA+2Z2w7CIBBEedEHNUbxF7zES6z+/885JBA3XhqICO0OJ5kQSAk73S2lqTGNRoOJyYexObQoHUhhrG9nVaOog/O+ES0T1rz7t70zGkMipWbDtZpqPNaTrG3G53zspO7RGnP8zdPrWIkaL3Em0pjDFBj9B7+M3llhz7XGc1kfY8x3zvcdW74DzN/ZDlbfjJ61E7sfsta8g3m/Y/bOCsN/kgYP0wFpBa2hpVeJNbfQDtpDh8j+vxRiunvJ9XLGJOceoRN0hi6R/RrKGZOce4U66ObveUy/hjrzrItfY5JzH34GnlAAJAAA
   </data>
  </layer>
  <objectgroup name="Objects" width="64" height="36">
@@ -20,9 +20,7 @@
   <object type="Terrain" x="1140" y="120" width="120" height="20"/>
   <object type="Lethal" x="700" y="640" width="20" height="20"/>
   <object type="Lethal" x="720" y="640" width="20" height="20"/>
-  <object type="Lethal" x="740" y="640" width="20" height="20"/>
-  <object type="Lethal" x="760" y="640" width="20" height="20"/>
-  <object type="Key" x="730" y="580" width="20" height="20"/>
+  <object type="Key" x="710" y="560" width="20" height="20"/>
   <object type="Lethal" x="80" y="140" width="20" height="20"/>
   <object type="Lethal" x="100" y="140" width="20" height="20"/>
   <object type="Lethal" x="180" y="200" width="20" height="20"/>
@@ -32,8 +30,8 @@
   <object type="Lethal" x="40" y="340" width="20" height="20"/>
   <object type="Lethal" x="100" y="300" width="20" height="20"/>
   <object type="Terrain" x="0" y="640" width="700" height="20"/>
-  <object type="Terrain" x="780" y="640" width="500" height="20"/>
-  <object type="Terrain" x="700" y="660" width="80" height="20"/>
+  <object type="Terrain" x="740" y="640" width="540" height="20"/>
+  <object type="Terrain" x="700" y="660" width="40" height="20"/>
   <object type="Terrain" x="700" y="220" width="80" height="20"/>
   <object type="Terrain" x="720" y="240" width="40" height="20"/>
   <object type="Terrain" x="640" y="260" width="40" height="40"/>

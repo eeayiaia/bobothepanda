@@ -5,23 +5,22 @@
  </tileset>
  <layer name="Tile Layer 1" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC+NgYGDgGMWjeBSP4lE8iknEAJ6zctZABgAA
+   H4sIAAAAAAAAA+NgYGDgGMWjeBSP4lE8iknEAJ6zctZABgAA
   </data>
  </layer>
  <layer name="Tile Layer 2" width="20" height="20">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYBSMAvIBCxAz45BjwoNxATYoRgacUJoVDyYF8FLJPJDfkf1EjluQzcLlFnzhiAvj8xu1MACHDvgNQAYAAA==
+   H4sIAAAAAAAAA2NgGAWjYBSMAvIBCxAz45BjwoNxAQ4oRgacUJoVDyYF8FLJPJDfkf1EjluQzcLlFnzhiAvj8xu1MADVqcEMQAYAAA==
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="20" height="20">
   <object type="Terrain" x="0" y="448" width="224" height="32"/>
   <object type="Key" x="64" y="544" width="32" height="32"/>
-  <object type="Terrain" x="32" y="544" width="32" height="32"/>
-  <object type="Terrain" x="64" y="576" width="416" height="32"/>
+  <object type="Terrain" x="32" y="512" width="32" height="96"/>
+  <object type="Terrain" x="32" y="576" width="480" height="32"/>
   <object type="Terrain" x="192" y="480" width="32" height="64"/>
   <object type="Terrain" x="416" y="416" width="64" height="32"/>
-  <object type="Lethal" x="416" y="448" width="64" height="32"/>
-  <object type="Terrain" x="480" y="544" width="32" height="32"/>
+  <object type="Terrain" x="480" y="544" width="64" height="32"/>
   <object type="Terrain" x="512" y="512" width="128" height="32"/>
   <object type="Door" x="576" y="448" width="32" height="64"/>
   <object type="Terrain" x="64" y="512" width="128" height="32"/>

@@ -13,19 +13,19 @@ public class MainClass extends StateBasedGame{
 	/**
 	 * Set the window width
 	 */
-	public static final int WINDOW_WIDTH = 640;
+	public static final int WINDOW_WIDTH = 1280;
 	
 	/**
 	 * Set the window height and aspect ratio, with regards to width
 	 */
-	public static final int WINDOW_HEIGHT = WINDOW_WIDTH;
+	public static final int WINDOW_HEIGHT = 720;
 	
 	/**
 	 * Enable fullscreen
 	 */	
 	public static final boolean FULLSCREEN = false;
 	
-	public static final float SCALE = (float) ((double)WINDOW_WIDTH/640);
+	public static final float SCALE = (float) ((double)WINDOW_WIDTH/1280);
 	public static final String GAME_NAME = "Bobo the panda";
 	
 	public MainClass(){
