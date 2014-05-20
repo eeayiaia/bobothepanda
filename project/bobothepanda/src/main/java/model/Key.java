@@ -20,14 +20,22 @@ public class Key extends AbstractCollectibleObject {
 	}
 
 	public void accept(IVisitor visitor) {
-		if(visitor.getClass() == Character.class) {
-			pcs.firePropertyChange("KEY_PICKED_UP", null, this.getPosition());
+		if(visitor != null) {
+			if(visitor.getClass() == Character.class) {
+				pcs.firePropertyChange("KEY_PICKED_UP", null, this.getPosition());
+			}
+			visitor.visit(this);
+		}else {
+			throw new NullPointerException("null parameter in accept method");
 		}
-		visitor.visit(this);
 	}
 	
 	public void addPropertyChangeListener(PropertyChangeListener listener){
-		pcs.addPropertyChangeListener(listener);
+		if(listener != null) {
+			pcs.addPropertyChangeListener(listener);
+		}else {
+			
+		}
 	}
 	
 	public void removePropertyChangeListener(PropertyChangeListener listener){
