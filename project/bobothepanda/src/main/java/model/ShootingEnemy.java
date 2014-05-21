@@ -14,13 +14,13 @@ import java.util.List;
 
 import org.newdawn.slick.SlickException;
 
-public class ShootingEnemy extends AbstractFixedObject implements PropertyChangeListener {
+public class ShootingEnemy extends AbstractFixedObject {
 
 	private final Position centerPos = new Position((float)getHitbox().getCenterX(),(float)getHitbox().getCenterY());
 	private final Size projectileSize = new Size(4,4);
 	private PropertyChangeSupport pcs;
 	private long lastTimedFired;
-	private List<Projectile> projectiles;
+//	private List<Projectile> projectiles;
 	
 	public ShootingEnemy(Position position, Size size) {
 		super(position, size);
@@ -54,41 +54,21 @@ public class ShootingEnemy extends AbstractFixedObject implements PropertyChange
 	public void fireProjectile(){
 		if(lastTimedFired + 1000 >= System.currentTimeMillis()){
 			Projectile projectile = new Projectile(centerPos, projectileSize);
-			projectile.addPropertyChangeListener(this);
-			try {
-				projectile.addPropertyChangeListener(new ProjectileView());
-			} catch (SlickException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+//			projectile.addPropertyChangeListener(this);
+//			try {
+//				projectile.addPropertyChangeListener(new ProjectileView());
+//			} catch (SlickException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			pcs.firePropertyChange("projectile", null, projectile);
-			projectiles.add(projectile);
+//			projectiles.add(projectile);
 			lastTimedFired = System.currentTimeMillis();
 		}
 	}
 	
 	public void update(int delta){
-		for(Projectile p: projectiles){
-			p.update(delta);
-		}
+		pcs.firePropertyChange("ENEMY_RIGHT", null, this.getPosition());
+//		fireProjectile();
 	}
-	
-	public void render(){
-		for(Projectile p: projectiles){
-			p.render();
-		}
-		
-	}
-	
-	public void propertyChange(PropertyChangeEvent evt){
-		if("PROJECTILE_COLLISION".equals(evt.getPropertyName())){
-			Projectile projectile =(Projectile) evt.getNewValue();
-			for(Projectile p: projectiles){
-				if(p.equals(projectile)){
-					projectiles.remove(p);
-				}
-			}
-		}
-	}
-	
 }

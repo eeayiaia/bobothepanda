@@ -12,6 +12,8 @@ import model.FixedEnemy;
 import model.Key;
 import model.Level;
 import model.MovingEnemy;
+import model.Projectile;
+import model.ShootingEnemy;
 import model.Size;
 import utilities.MapHandler;
 import utilities.MapHandlerException;
@@ -20,6 +22,7 @@ import view.FixedEnemyView;
 import view.LevelView;
 import view.KeyView;
 import view.MovingEnemyView;
+import view.ShootingEnemyView;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -40,6 +43,8 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private Key key;
 	private List <MovingEnemy> movingEnemies;
 	private List <FixedEnemy> fixedEnemies;
+	private List <ShootingEnemy> shootingEnemies;
+	private List <Projectile> projectiles;
 
 	
 	
@@ -52,6 +57,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	public GameController() throws SlickException{
 		super();
 		loadLevel(false);
+		projectiles = new ArrayList<Projectile>();
 	}
 	
 	public void init(GameContainer container, StateBasedGame game) throws SlickException{
@@ -98,6 +104,9 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		for(MovingEnemy movingEnemy: movingEnemies){
 			movingEnemy.update(delta);
 		}
+		for(ShootingEnemy shootingEnemy: shootingEnemies) {
+			shootingEnemy.update(delta);
+		}
 		
 	
 		
@@ -132,6 +141,11 @@ public class GameController extends BasicGameState implements PropertyChangeList
 				throw new MapHandlerException(e);
 			}
 		}
+		
+		if("projectile".equals(evt.getPropertyName())) {
+			projectiles.add((Projectile)evt.getNewValue());
+			mapHandler.getMapObjectList().add((Projectile)evt.getNewValue());
+		}
 	}
 
 	/**
@@ -161,21 +175,26 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	public void addObjectViews(List <AbstractMapObject> abstractMapObjects) throws SlickException{
 		movingEnemies = new ArrayList<MovingEnemy>();
 		fixedEnemies = new ArrayList<FixedEnemy>();
+		shootingEnemies = new ArrayList<ShootingEnemy>();
 		for(AbstractMapObject a: abstractMapObjects){
 			if(a.getClass() == Key.class){
 				key = (Key) a;
 				key.addPropertyChangeListener(new KeyView());
-			}
-			if(a.getClass() == MovingEnemy.class){
+			}else if(a.getClass() == MovingEnemy.class){
 				MovingEnemy movingEnemy = (MovingEnemy) a;
 				movingEnemy.addPropertyChangeListener(new MovingEnemyView());
 				movingEnemies.add(movingEnemy);
-			}
-			if(a.getClass() == FixedEnemy.class){
+			}else if(a.getClass() == FixedEnemy.class){
 				FixedEnemy fixedEnemy = (FixedEnemy) a;
 				fixedEnemy.addPropertyChangeListener(new FixedEnemyView());
 				fixedEnemies.add(fixedEnemy);
+			}else if(a.getClass() == ShootingEnemy.class) {
+				ShootingEnemy shootingEnemy = (ShootingEnemy) a;
+				shootingEnemy.addPropertyChangeListener(new ShootingEnemyView());
+				shootingEnemies.add(shootingEnemy);
+				shootingEnemy.addPropertyChangeListener(this);
 			}
+			
 		}
 	}
 	

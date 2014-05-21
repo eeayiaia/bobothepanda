@@ -10,6 +10,7 @@ import java.util.List;
 import model.AbstractMapObject;
 import model.Character;
 import model.MovingEnemy;
+import model.ShootingEnemy;
 import model.Terrain;
 import model.Door;
 import model.Key;
@@ -95,9 +96,11 @@ public class MapHandler implements IMapHandler {
 				objects.add(new Key(position, size));
 			} else if("Startpos".equals(type)) {
 				characterStartPosition = position;
-				characterStartPosition.setY(position.getY()-10);
-			} else if("MovingEnemy".equals(type)){
+				characterStartPosition.setY(position.getY());
+			} else if("MovingEnemy".equals(type)) {
 				objects.add(new MovingEnemy(position, size));
+			} else if("ShootingEnemy".equals(type)) {
+				objects.add(new ShootingEnemy(position, size));
 			}
 		}
 	}
