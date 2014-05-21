@@ -66,10 +66,6 @@ public class Character extends AbstractMovingObject{
 		RIGHT, LEFT
 	}
 	
-	public Facing getFacing(){
-		return this.facing;
-	}
-	
 	/**
 	 * Updates the current character state.
 	 */
@@ -106,12 +102,16 @@ public class Character extends AbstractMovingObject{
      * @param delta
      */
 	public void moveLeft(int delta){
-		characterState = CharacterState.MOVING_LEFT;
-		xVelocity = -0.25f;
-		this.oldX = this.getPosition().getX();
-		getPosition().setX(getPosition().getX() + xVelocity * delta );
-		facing = Facing.LEFT;
-		lastTimedMoved = System.currentTimeMillis();
+		if(delta < 0) {
+			throw new IllegalArgumentException("Time since last update can not be negative");
+		}else {
+			characterState = CharacterState.MOVING_LEFT;
+			xVelocity = -0.25f;
+			this.oldX = this.getPosition().getX();
+			getPosition().setX(getPosition().getX() + xVelocity * delta );
+			facing = Facing.LEFT;
+			lastTimedMoved = System.currentTimeMillis();
+		}
 	}
 	
 	/**
@@ -122,12 +122,16 @@ public class Character extends AbstractMovingObject{
 	 * @param delta
 	 */
 	public void moveRight(int delta){
-		characterState = CharacterState.MOVING_RIGHT;
-		xVelocity = 0.25f;
-		this.oldX = this.getPosition().getX();
-		getPosition().setX(getPosition().getX() + xVelocity * delta );
-		facing = Facing.RIGHT;
-		lastTimedMoved = System.currentTimeMillis();
+		if(delta < 0) {
+			throw new IllegalArgumentException("Time since last update can not be negative");
+		}else {
+			characterState = CharacterState.MOVING_RIGHT;
+			xVelocity = 0.25f;
+			this.oldX = this.getPosition().getX();
+			getPosition().setX(getPosition().getX() + xVelocity * delta );
+			facing = Facing.RIGHT;
+			lastTimedMoved = System.currentTimeMillis();
+		}
 	}
 
 	/**

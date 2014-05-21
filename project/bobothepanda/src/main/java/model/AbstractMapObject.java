@@ -26,7 +26,7 @@ public abstract class AbstractMapObject implements IVisitable{
 	}
 	
 	public void setX(float xValue) {
-		position.setX(xValue);
+			position.setX(xValue);
 	}
 	
 	public void setY(float yValue) {
@@ -34,8 +34,12 @@ public abstract class AbstractMapObject implements IVisitable{
 	}
 	
 	public void setPosition(Position position) {
-		setX(position.getX());
-		setY(position.getY());
+		if(position == null) {
+			throw new NullPointerException("Cannot set position to null");
+		}else {
+			setX(position.getX());
+			setY(position.getY());
+		}
 	}
 	
 	

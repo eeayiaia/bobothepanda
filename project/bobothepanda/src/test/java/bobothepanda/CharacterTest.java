@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.AbstractMapObject;
+import model.Key;
 import model.Terrain;
 import model.Character;
 import model.AbstractFixedObject;
@@ -21,6 +22,7 @@ public class CharacterTest extends Assert {
 	private Character character;
 	private Position position = new Position(3f,3f);
 	private final Size size = new Size(5f,5f);
+	private final int delta = 17;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -54,40 +56,46 @@ public class CharacterTest extends Assert {
 		assertEquals(position.getX(), character.getPosition().getX(), 0);
 	}
 	
+	@Test
 	public void testSetY() {
 		position.setY(5f);
 		character.setY(position.getY());
 		assertEquals(position.getY(), character.getPosition().getY(), 0);
 	}
 	
+	@Test
 	public void testSetPosition() {
 		position = new Position(1f,1f);
 		character.setPosition(position);
 		assertEquals(position, character.getPosition());
 	}
 	
-	
-//	@Test
-	public void testMoveRightFacingRight(){
-		character.moveRight(10);
-		assertSame(Character.Facing.RIGHT, character.getFacing());
+	@Test(expected = NullPointerException.class)
+	public void testSetPositionNull() {
+		position = null;
+		character.setPosition(position);
 	}
 	
-//	@Test
-	public void testMoveRightCharacterState(){
-		character.moveRight(10);
-		assertSame(Character.CharacterState.MOVING_RIGHT, character.getCharacterState());
+	@Test
+	public void testGetKeyPickedUpFalse() {
+		assertEquals(false, character.getKeyPickedUp());
 	}
 	
-//	@Test
-	public void testMoveLeftFacingLeft(){
-		character.moveLeft(10);
-		assertSame(Character.Facing.LEFT, character.getFacing());
+	@Test
+	public void testGetKeyPickedUpTrue() {
+		Key key = new Key(position, new Size(20f,20f));
+		character.visit(key);
+		assertEquals(true, character.getKeyPickedUp());
+	}
+
+	@Test
+	public void testMoveLeft() {
+		character.moveLeft(delta); 
+		assertTrue(0 > character.getXVelocity());
 	}
 	
-//	@Test
-	public void testMoveLeftCharacterState(){
-		character.moveLeft(10);
-		assertSame(Character.CharacterState.MOVING_LEFT, character.getCharacterState());
+	@Test
+	public void testMoveRight() {
+		
 	}
 }
