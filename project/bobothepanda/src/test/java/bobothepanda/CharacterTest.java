@@ -117,5 +117,25 @@ public class CharacterTest extends Assert {
 		character.moveRight(-delta);
 	}
 	
+	@Test
+	public void testJump() {
+		Terrain terrain = new Terrain(position, size);
+		terrain.setY(position.getY()+1);
+		character.visit(terrain);
+		character.jump(delta);
+		assertEquals(-1.7f, character.getYVelocity(), 0.0001);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testJumpNegative() {
+		character.jump(-delta);
+	}
+	
+	@Test
+	public void testJumpNotOnGround() {
+		float yVelocity = character.getYVelocity();
+		character.jump(delta);
+		assertEquals(yVelocity, character.getYVelocity(), 0.0001);
+	}
 	
 }

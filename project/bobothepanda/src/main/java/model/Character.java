@@ -148,11 +148,15 @@ public class Character extends AbstractMovingObject{
 	 * Character needs to be on the ground to jump.
 	 */	
 	public void jump(int delta){
-		//needs to be on the ground to jump
-		if(getYVelocity() == 0f && onGround){
-			setYVelocity(-1.7f);
-			onGround = false;
-			pcs.firePropertyChange("jump", null, null);
+		if(delta < 0) {
+			throw new IllegalArgumentException("Time since last update can not be negative");
+		}else {
+			//needs to be on the ground to jump
+			if(getYVelocity() == 0f && onGround){
+				setYVelocity(-1.7f);
+				onGround = false;
+				pcs.firePropertyChange("jump", null, null);
+			}
 		}
 	}
 	
@@ -161,9 +165,13 @@ public class Character extends AbstractMovingObject{
 	 * @param delta 1000millis divided by the frame rate.
 	 */
 	public void applyGravity(int delta){
-		//Change velocity due to gravity
-		setYVelocity(gravity.getNewVelocity(yVelocity, delta));
-		getPosition().setY(gravity.getNewYPosition(getPosition().getY(), getYVelocity(), delta));
+		if(delta < 0) {
+			throw new IllegalArgumentException("Time since last update can not be negative");
+		}else {
+			//Change velocity due to gravity
+			setYVelocity(gravity.getNewVelocity(yVelocity, delta));
+			getPosition().setY(gravity.getNewYPosition(getPosition().getY(), getYVelocity(), delta));
+		}
 	}
 	
 	public void die() {
