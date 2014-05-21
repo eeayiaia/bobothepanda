@@ -87,6 +87,13 @@ public class CharacterTest extends Assert {
 		character.visit(key);
 		assertEquals(true, character.getKeyPickedUp());
 	}
+	
+	@Test
+	public void testSetYVelocity() {
+		float yVelocity = 2f;
+		character.setYVelocity(yVelocity);
+		assertEquals(yVelocity, character.getYVelocity(),0);
+	}
 
 	@Test
 	public void testMoveLeft() {
@@ -94,8 +101,21 @@ public class CharacterTest extends Assert {
 		assertTrue(0 > character.getXVelocity());
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void testMoveLeftNegative() {
+		character.moveLeft(-delta);
+	}
+	
 	@Test
 	public void testMoveRight() {
-		
+		character.moveRight(delta);
+		assertTrue(0 < character.getXVelocity());
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testMoveRightNegative() {
+		character.moveRight(-delta);
+	}
+	
+	
 }

@@ -58,6 +58,14 @@ public class Character extends AbstractMovingObject{
 		return xVelocity;
 	}
 	
+	public float getYVelocity() {
+		return yVelocity;
+	}
+	
+	public void setYVelocity(float yVelocity) {
+		this.yVelocity = yVelocity;
+	}
+	
 	/**
 	 * The current direction the character is facing
 	 * RIGH, LEFT
@@ -141,13 +149,11 @@ public class Character extends AbstractMovingObject{
 	 */	
 	public void jump(int delta){
 		//needs to be on the ground to jump
-		if(yVelocity == 0f && onGround){
-			yVelocity = -1.7f;
+		if(getYVelocity() == 0f && onGround){
+			setYVelocity(-1.7f);
 			onGround = false;
 			pcs.firePropertyChange("jump", null, null);
 		}
-
-
 	}
 	
 	/**
@@ -156,8 +162,8 @@ public class Character extends AbstractMovingObject{
 	 */
 	public void applyGravity(int delta){
 		//Change velocity due to gravity
-		yVelocity = gravity.getNewVelocity(yVelocity, delta);	
-		getPosition().setY(gravity.getNewYPosition(getPosition().getY(), yVelocity, delta));
+		setYVelocity(gravity.getNewVelocity(yVelocity, delta));
+		getPosition().setY(gravity.getNewYPosition(getPosition().getY(), getYVelocity(), delta));
 	}
 	
 	public void die() {
@@ -194,15 +200,15 @@ public class Character extends AbstractMovingObject{
 		final float objectYPos = afo.getPosition().getY();
 		final float objectHeight = afo.getSize().getHeight();
 
-		if((characterYPos <= objectYPos || characterYPos + characterWidth <= objectYPos) && yVelocity > 0){
+		if((characterYPos <= objectYPos || characterYPos + characterWidth <= objectYPos) && getYVelocity() > 0){
 			getPosition().setY(objectYPos - characterHeight);
-			yVelocity = 0f;
+			setYVelocity(0f);
 			
 		}else if((characterYPos <= objectYPos + objectHeight ||
-				characterYPos + characterWidth <= objectYPos + objectHeight) && yVelocity < 0){
+				characterYPos + characterWidth <= objectYPos + objectHeight) && getYVelocity() < 0){
 			
 			getPosition().setY(objectYPos + characterHeight);
-			yVelocity = 0f;
+			setYVelocity(0f);
 			
 		}else if(characterXPos <= objectXPos || characterXPos + characterHeight >= objectXPos){
 			getPosition().setX(oldX);
