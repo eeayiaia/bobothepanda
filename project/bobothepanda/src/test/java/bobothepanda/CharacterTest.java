@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.AbstractMapObject;
+import model.Gravity;
 import model.Key;
 import model.Terrain;
 import model.Character;
@@ -102,7 +103,7 @@ public class CharacterTest extends Assert {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testMoveLeftNegative() {
+	public void testMoveLeftNegativeDelta() {
 		character.moveLeft(-delta);
 	}
 	
@@ -113,7 +114,7 @@ public class CharacterTest extends Assert {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testMoveRightNegative() {
+	public void testMoveRightNegativeDelta() {
 		character.moveRight(-delta);
 	}
 	
@@ -127,7 +128,7 @@ public class CharacterTest extends Assert {
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void testJumpNegative() {
+	public void testJumpNegativeDelta() {
 		character.jump(-delta);
 	}
 	
@@ -136,6 +137,25 @@ public class CharacterTest extends Assert {
 		float yVelocity = character.getYVelocity();
 		character.jump(delta);
 		assertEquals(yVelocity, character.getYVelocity(), 0.0001);
+	}
+	
+	@Test
+	public void testApplyGravityYVelocity() {
+		Gravity gravity = new Gravity (0.01f);
+		float yVelocity = character.getYVelocity();
+		float newYVelocity = gravity.getNewVelocity(yVelocity, delta);
+		character.applyGravity(delta);
+		assertEquals(newYVelocity, character.getYVelocity(), 0.0001);
+	}
+	
+	@Test
+	public void testApplyGravityPosition() {
+		
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testApplyGravityNegativeDelta() {
+		character.applyGravity(-delta);
 	}
 	
 }
