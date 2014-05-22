@@ -14,7 +14,12 @@ public class Size {
 	}
 	
 	public Size(Size size) {
-		this(size.getWidth(), size.getHeight());
+		if(size == null){
+			throw new NullPointerException("Size must be initialized");
+		}else{
+			this.width = size.getWidth();
+			this.height = size.getHeight();
+		}
 	}
 	
 	public float getWidth() {

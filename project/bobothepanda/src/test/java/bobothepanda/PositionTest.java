@@ -38,14 +38,10 @@ public class PositionTest extends Assert {
 		assertEquals(position.getY(), pos.getY(), 0f);
 	}
 	
-	@Test
+	@Test(expected = NullPointerException.class)
 	public void testConstructorOtherPosNull(){
-		try {
 			Position pos = null;
 			Position pos1 = new Position(pos);
-		} catch (Exception e) {
-			assertTrue(NullPointerException.class.equals(e.getClass()));
-		}
 	}
 	
 	@Test
