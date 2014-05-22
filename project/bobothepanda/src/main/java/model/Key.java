@@ -11,7 +11,7 @@ import java.beans.PropertyChangeSupport;
 
 @SuppressWarnings("PMD")
 public class Key extends AbstractCollectibleObject {
-	PropertyChangeSupport pcs;
+	private PropertyChangeSupport pcs;
 	
 	public Key(Position position, Size size) {
 		super(position, size);
