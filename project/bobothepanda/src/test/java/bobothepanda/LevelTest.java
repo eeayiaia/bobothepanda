@@ -50,4 +50,14 @@ public class LevelTest extends Assert {
 		assertFalse(level.collision(null, null));
 	}
 	
+	@Test
+	public void testCollisionOneNull(){
+		Rectangle rec1 = new Rectangle(10,10);
+		assertFalse(level.collision(rec1, null));
+	}
+	
+	@Test
+	public void testFirePropertyChange(){
+		//TODO check the propertyChangeEvents
+	}
 }
