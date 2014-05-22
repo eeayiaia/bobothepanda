@@ -1,6 +1,8 @@
 package bobothepanda;
 
 import java.awt.Rectangle;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,6 +60,25 @@ public class LevelTest extends Assert {
 	
 	@Test
 	public void testFirePropertyChange(){
-		//TODO check the propertyChangeEvents
+		//TODO check for propertyChnageEvents
+//		level.addPropertyChangeListener();
 	}
+	
+	@Test
+	public void testCheckCollisions(){
+		level.checkCollisions();
+	}
+	
+	@Test
+	public void testCheckCollisionsNoCollisions(){
+		List<AbstractMapObject> list = new ArrayList<AbstractMapObject>();
+		abstractMapObjects.add(new MovingEnemy(new Position(10f,10f), new Size(10f,10f)));
+		abstractMapObjects.add(new Terrain(new Position(15f,15f), new Size(10f,10f)));
+		Level level1 = new Level(list, character);
+		level1.checkCollisions();
+		
+	}
+	
+	
+	
 }
