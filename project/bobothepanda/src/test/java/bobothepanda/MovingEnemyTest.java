@@ -52,24 +52,24 @@ public class MovingEnemyTest extends Assert {
 	public void testVisitDoor(){
 		final float velocity = movingEnemy.getVelocity() * -1;
 		movingEnemy.visit(new Door(new Position(1f,1f), new Size(10,10)));
-		assertTrue(velocity == movingEnemy.getVelocity());
+		assertEquals(velocity, movingEnemy.getVelocity(), 0f);
 	}
 	@Test
 	public void testVisitShootingEnemy(){
 		final float velocity = movingEnemy.getVelocity() * -1;
 		movingEnemy.visit(new ShootingEnemy(new Position(1f,1f), new Size(10,10)));
-		assertTrue(velocity == movingEnemy.getVelocity());
+		assertEquals(velocity, movingEnemy.getVelocity(), 0f);
 	}
 	@Test
 	public void testVisitFixedEnemy(){
 		final float velocity = movingEnemy.getVelocity() * -1;
 		movingEnemy.visit(new FixedEnemy(new Position(1f,1f), new Size(10,10)));
-		assertTrue(velocity == movingEnemy.getVelocity());
+		assertEquals(velocity, movingEnemy.getVelocity(), 0f);
 	}
 	@Test
 	public void testVisitTerrain(){
 		final float velocity = movingEnemy.getVelocity() * -1;
 		movingEnemy.visit(new Terrain(new Position(1f,1f), new Size(10,10)));
-		assertTrue(velocity == movingEnemy.getVelocity());
+		assertEquals(velocity, movingEnemy.getVelocity(), 0f);
 	}
 }
