@@ -16,14 +16,14 @@ public class PositionTest extends Assert {
 	}
 	
 	@Test
-	public void testConstructorLessThanZeroX(){
-		Position pos = new Position(-1f, -1f);
+	public void testConstructorXLessThanZero(){
+		Position pos = new Position(-1f, 1f);
 		assertEquals(0f, pos.getX(), 0);
 	}
 	
 	@Test
-	public void testConstructorLessThanZeroY(){
-		Position pos = new Position(-1f, -1f);
+	public void testConstructorYLessThanZero(){
+		Position pos = new Position(1f, -1f);
 		assertEquals(0f, pos.getY(), 0);
 	}
 	
@@ -38,6 +38,15 @@ public class PositionTest extends Assert {
 		assertEquals(position.getY(), pos.getY(), 0f);
 	}
 	
+	@Test
+	public void testConstructorOtherPosNull(){
+		try {
+			Position pos = null;
+			Position pos1 = new Position(pos);
+		} catch (Exception e) {
+			assertTrue(NullPointerException.class.equals(e.getClass()));
+		}
+	}
 	
 	@Test
 	public void testGetX() {
@@ -71,4 +80,25 @@ public class PositionTest extends Assert {
 		position.setY(-0.1f);
 		assertEquals(position.getY(), 0f, 0);
 	}	
+	
+	@Test
+	public void testEqualsNull(){
+		assertFalse(position.equals(null));
+	}
+	
+	@Test
+	public void testEqualsOtherObj(){
+		assertFalse(position.equals(new Object()));
+	}
+	
+	@Test
+	public void testEqualsDiferrentX(){
+		assertFalse(position.equals(new Position(position.getX() -1f, position.getY())));
+	}
+	
+	@Test
+	public void testEqualsDiferrentY(){
+		assertFalse(position.equals(new Position(position.getX(), position.getY()- 1f)));
+	}
+	
 }

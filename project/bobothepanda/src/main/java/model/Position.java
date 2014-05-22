@@ -10,17 +10,18 @@ public class Position {
 	private float y;
 	
 	public Position(float x, float y) {
-		if(x >= 0 && y >= 0){
-			this.x = x;
-			this.y = y;
-		} else {
-			this.x = 0;
-			this.y = 0;
-		}
+		setX(x);
+		setY(y);
 	}
 	
-	public Position(Position position) {
-		this(position.getX(), position.getY());
+	public Position(Position position){
+		if(position == null){
+			throw new NullPointerException("Position needs to be initialized");
+		}else{
+			setX(position.getX());
+			setY(position.getY());
+		}
+		
 	}
 
 	public float getX() {
