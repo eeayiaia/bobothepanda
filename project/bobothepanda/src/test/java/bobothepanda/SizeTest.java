@@ -52,19 +52,24 @@ public class SizeTest extends Assert {
 	
 	@Test
 	public void testEqualsDiferrentHeight(){
-		assertFalse(size.equals(new Size(size.getHeight() -1f, size.getWidth())));
+		assertFalse(size.equals(new Size(size.getWidth(), size.getHeight() -1f)));
 	}
 	
 	@Test
-	public void testEqualsDiferrentY(){
-		assertFalse(size.equals(new Size(size.getHeight(), size.getWidth()- 1f)));
+	public void testEqualsDiferrentWidth(){
+		assertFalse(size.equals(new Size(size.getWidth() -1f, size.getHeight())));
+	}
+	
+	@Test
+	public void testEquals(){
+		assertTrue(size.equals(new Size(size)));
 	}
 	
 	@Test(expected = NullPointerException.class)
 	public void testConstructorNull(){
 			Size size1 = null;
 			Size size2 = new Size(size1);
-		
 	}
+	
 	
 }
