@@ -101,4 +101,10 @@ public class PositionTest extends Assert {
 		assertFalse(position.equals(new Position(position.getX(), position.getY()- 1f)));
 	}
 	
+	@Test
+	public void testHashCode(){
+		Position pos = new Position(position);
+		assertNotSame(pos, position);
+		assertEquals(position.hashCode(), pos.hashCode(), 0f);
+	}
 }
