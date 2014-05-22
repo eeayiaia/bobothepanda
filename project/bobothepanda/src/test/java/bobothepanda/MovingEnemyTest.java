@@ -1,9 +1,13 @@
 package bobothepanda;
 
+import model.Door;
+import model.FixedEnemy;
 import model.MovingEnemy;
 import model.Position;
+import model.ShootingEnemy;
 import model.Size;
 import model.Character;
+import model.Terrain;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -41,5 +45,31 @@ public class MovingEnemyTest extends Assert {
 		velocity = movingEnemy.getVelocity();
 		movingEnemy.visit(movingEnemy1);
 		assertTrue(movingEnemy.getVelocity() < velocity);
+	}
+	
+	
+	@Test
+	public void testVisitDoor(){
+		final float velocity = movingEnemy.getVelocity() * -1;
+		movingEnemy.visit(new Door(new Position(1f,1f), new Size(10,10)));
+		assertTrue(velocity == movingEnemy.getVelocity());
+	}
+	@Test
+	public void testVisitShootingEnemy(){
+		final float velocity = movingEnemy.getVelocity() * -1;
+		movingEnemy.visit(new ShootingEnemy(new Position(1f,1f), new Size(10,10)));
+		assertTrue(velocity == movingEnemy.getVelocity());
+	}
+	@Test
+	public void testVisitFixedEnemy(){
+		final float velocity = movingEnemy.getVelocity() * -1;
+		movingEnemy.visit(new FixedEnemy(new Position(1f,1f), new Size(10,10)));
+		assertTrue(velocity == movingEnemy.getVelocity());
+	}
+	@Test
+	public void testVisitTerrain(){
+		final float velocity = movingEnemy.getVelocity() * -1;
+		movingEnemy.visit(new Terrain(new Position(1f,1f), new Size(10,10)));
+		assertTrue(velocity == movingEnemy.getVelocity());
 	}
 }
