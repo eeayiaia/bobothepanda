@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="32" tileheight="32">
- <tileset firstgid="1" name="GroundTiles" tilewidth="32" tileheight="32">
-  <image source="../img/tilesets/GroundTiles.png" width="128" height="128"/>
+<map version="1.0" orientation="orthogonal" width="64" height="32" tilewidth="20" tileheight="20">
+ <tileset firstgid="1" name="Tiles" tilewidth="20" tileheight="20">
+  <image source="../img/tilesets/Tiles.png" width="100" height="200"/>
  </tileset>
- <layer name="Tile Layer 1" width="20" height="20">
+ <layer name="Tile Layer 1" width="64" height="32">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+NgYGDgGMWjmALMhoZh4uxoeKDMG8UjA7MAMRMaZiagB109pZh1hGEACKIwqkAGAAA=
+   H4sIAAAAAAAAA+3DQQ0AAAgEoEvgzwb2z2gPhY1O0qqqqqqqquqJ9fzo4wtGN3JhACAAAA==
   </data>
  </layer>
- <objectgroup name="Hitboxes" width="20" height="20">
-  <object type="Start" x="352" y="224" width="128" height="64"/>
-  <object type="Quit" x="160" y="224" width="128" height="64"/>
-  <object type="Character" x="311" y="450" width="18" height="30"/>
+ <objectgroup name="Object Layer 1" width="64" height="32">
+  <object name="QuitButton" type="Quit" x="480" y="191" width="128" height="64"/>
+  <object name="StartButton" type="Start" x="685" y="189" width="128" height="64"/>
+  <object name="Bobo" type="Character" x="621" y="506" width="32" height="52"/>
  </objectgroup>
 </map>
