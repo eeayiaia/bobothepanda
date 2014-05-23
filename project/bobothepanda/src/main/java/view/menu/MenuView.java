@@ -25,6 +25,9 @@ public class MenuView implements PropertyChangeListener{
 	private float quitX;
 	private float characterX;
 	private float characterY;
+	private final ButtonView start;
+	private final ButtonView quit;
+	
 
 	public MenuView() throws SlickException{
 		final Image [] boboRightAnimation = {new Image(SPRITE_RIGHT_IMAGE), new Image("/data/BoboRightLeg-01.png"),
@@ -36,11 +39,16 @@ public class MenuView implements PropertyChangeListener{
 		startButtonPressed = new Image("data/img/pressedStartButton.png");
 		quitButtonPressed = new Image("data/img/pressedQuitButton.png");
 		characterAnimation = new Animation(boboRightAnimation, 125);
+		start = new ButtonView(startButtonImg, hoverStartButton, startButtonPressed, "Start");
+		quit = new ButtonView(quitButtonImg, hoverQuitButton, quitButtonPressed, "Quit");
 		
 	}
 
-	public Image getStartButton() {
-		return startButtonImg;
+	public ButtonView getStartView(){
+		return start;
+	}
+	public ButtonView getQuitView(){
+		return quit;
 	}
 
 	public Image getQuitButton() {
@@ -84,7 +92,7 @@ public class MenuView implements PropertyChangeListener{
 	public void propertyChange(PropertyChangeEvent evt) {
 		String source = evt.getPropertyName();
 		
-		switch(MenuState.valueOf(source)){
+		/*switch(MenuState.valueOf(source)){
 		case START_UP:
 			final Position cursorPos = (Position) evt.getOldValue();
 			final float x = cursorPos.getX();
@@ -125,7 +133,7 @@ public class MenuView implements PropertyChangeListener{
 		default:
 			break;
 			
-		}
+		}*/
 		
 	}
 

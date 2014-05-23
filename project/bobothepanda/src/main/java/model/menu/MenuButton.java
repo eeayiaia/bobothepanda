@@ -12,7 +12,7 @@ import model.Size;
  *
  */
 
-public class MenuButton extends MenuItem{
+public class MenuButton extends AbstractMenuItem{
 	private final PropertyChangeSupport pcs;
 	private ButtonState buttonState;
 	
@@ -34,7 +34,7 @@ public class MenuButton extends MenuItem{
 		buttonState = ButtonState.DEFAULT;
 	}
 	public void update(){
-		pcs.firePropertyChange(buttonState.toString(), true, false);
+		pcs.firePropertyChange(buttonState.toString(), this.getPosition(), this.getType());
 	}
 
 	

@@ -9,7 +9,7 @@ import java.util.List;
 import model.Position;
 
 public class Menu {
-	private final List<MenuItem> menuItems;
+	private final List<AbstractMenuItem> menuItems;
 	private final PropertyChangeSupport pcs;
 	private Position characterPosition;
 	private MenuButton startButton;
@@ -18,12 +18,17 @@ public class Menu {
 	private List <MenuButton> menuButtons;
 
 	
-	public Menu(List <MenuItem> menuItems){
+	public Menu(List <AbstractMenuItem> menuItems){
 		this.menuItems = menuItems;
 		menuButtons = new ArrayList<MenuButton>();
 		pcs = new PropertyChangeSupport(this);
-		for(MenuItem butt:menuItems){
+		for(AbstractMenuItem butt:menuItems){
 			if(butt.getClass() == MenuButton.class){
+				if("Start".equals(butt.getType())){
+					startButton = (MenuButton) butt;
+				} else if("Quit".equals(butt.getType())){
+					quitButton = (MenuButton) butt;
+				}
 				menuButtons.add((MenuButton) butt);
 			} else {
 				characterPosition = butt.getPosition();
@@ -48,34 +53,45 @@ public class Menu {
 		}
 	}
 	
-	public List <MenuItem> getMenuItems(){
+	public List <AbstractMenuItem> getMenuItems(){
 		return menuItems;
 	}
 	public void addListener(PropertyChangeListener listener){
 		pcs.addPropertyChangeListener(listener);
-		for(MenuButton butt:menuButtons){
-			butt.addListener(listener);
-		}
-		
+	}
+	public MenuButton getStartButton(){
+		return startButton;
+	}
+	public MenuButton getQuitButton(){
+		return quitButton;
 	}
 	//Should run in game loop
 	public void update() {
-		pcs.firePropertyChange(menuState.toString(), null, null);
+		//pcs.firePropertyChange(menuState.toString(), null, null);
+		for(AbstractMenuItem item : menuItems){
+			item.update();
+		}
 	}
 	//sends information on where to put menu components
 	public void startMenu() {
-		pcs.firePropertyChange(MenuState.START_UP.toString(), characterPosition, "Character");
-		pcs.firePropertyChange(MenuState.START_UP.toString(), startButton.getPosition(), startButton.getType());
-		pcs.firePropertyChange(MenuState.START_UP.toString(), quitButton.getPosition(), quitButton.getType());
+		//pcs.firePropertyChange(MenuState.START_UP.toString(), characterPosition, "Character");
+		for(AbstractMenuItem butt:menuItems){
+			pcs.firePropertyChange(MenuState.START_UP.toString(), butt.getPosition(), butt.getType());
+		}
 	}
-	
+	public boolean cursorOnButton(int x, int y){
+		for(MenuButton butt:menuButtons){
+			if(butt.getHitbox().contains(new Point(x,y))){
+				return true;
+			}
+		}
+		return false;
+	}
 	public void mousePressed(int x, int y) {
-		if(mouseOnQuit(x,y)){
-			menuState = MenuState.QUIT_BUTTON_PRESSED;
-		} else if(mouseOnStart(x,y)){
-			menuState = MenuState.START_BUTTON_PRESSED;
-		} else {
-			menuState = MenuState.UPDATE;
+		for(MenuButton butt:menuButtons){
+			if(cursorOnButton(x,y)){
+				butt.clicked();
+			}
 		}
 	}
 	public void mouseReleased(int x, int y) {
