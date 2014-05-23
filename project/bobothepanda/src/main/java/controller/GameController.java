@@ -45,7 +45,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private List <FixedEnemy> fixedEnemies;
 	private List <ShootingEnemy> shootingEnemies;
 	private List <Projectile> projectiles;
-
+	private boolean noMoreLevel = false;
 	
 	
 	
@@ -107,8 +107,10 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		for(ShootingEnemy shootingEnemy: shootingEnemies) {
 			shootingEnemy.update(delta);
 		}
+		if(noMoreLevel){
+			game.enterState(1);
+		}
 		
-	
 		
 	}
 
@@ -154,10 +156,17 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	 * @throws SlickException
 	 */
 	public final void loadLevel(boolean loadCurrentLevel) throws SlickException{
+		noMoreLevel = false;
 		if(!loadCurrentLevel){
 			currentLevelNumber++;
 		}
-		mapHandler = new MapHandler("newLevel" + currentLevelNumber);
+		try{
+			mapHandler = new MapHandler("newLevel" + currentLevelNumber);
+		}catch(Exception e){
+			currentLevelNumber = 1;
+			noMoreLevel = true;
+		}
+		
 		character = new Character(mapHandler.getCharacterStartPosition(), new Size(WIDTH, HEIGHT));
 		character.addPropertyChangeListener(new CharacterView());
 		level = new Level(mapHandler.getMapObjectList(), character);
