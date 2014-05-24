@@ -18,7 +18,7 @@ public class AudioController implements PropertyChangeListener{
 	public void propertyChange(PropertyChangeEvent evt) {
 		// TODO Auto-generated method stub
 		SoundStore.get().poll(0);
-		String propertyName = evt.getPropertyName();
+		final String propertyName = evt.getPropertyName();
 		if("jump".equals(propertyName)){
 			audio.playJumpSound();
 		}
@@ -31,7 +31,7 @@ public class AudioController implements PropertyChangeListener{
 		if("key".equals(propertyName)){
 			audio.playKeySound();
 		}
-		SoundStore.get().poll(0);
+		
 	}
 
 }
