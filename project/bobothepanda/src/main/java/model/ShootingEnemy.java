@@ -5,14 +5,9 @@ package model;
  */
 
 import model.Projectile;
-import view.ProjectileView;
 
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-import java.util.List;
-
-import org.newdawn.slick.SlickException;
 
 public class ShootingEnemy extends AbstractFixedObject {
 
