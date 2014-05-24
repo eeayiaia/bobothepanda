@@ -1,6 +1,8 @@
 package bobothepanda;
 
 import java.awt.Rectangle;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class CharacterTest extends Assert {
 	private Position position = new Position(3f,3f);
 	private final Size size = new Size(5f,5f);
 	private final int delta = 17;
+	private boolean eventRecieved = false;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -88,10 +91,82 @@ public class CharacterTest extends Assert {
 	}
 	
 	@Test
+	public void testLevelComplete() {
+		character.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if("loadLevel".equals(evt.getPropertyName())) {
+			    	eventRecieved = true;
+			    }	
+		   }
+		});
+		eventRecieved = false;
+		character.levelComplete();
+		assertTrue(eventRecieved);
+	}
+	
+	@Test
 	public void testSetYVelocity() {
 		float yVelocity = 2f;
 		character.setYVelocity(yVelocity);
 		assertEquals(yVelocity, character.getYVelocity(),0);
+	}
+	
+	@Test
+	public void testUpdateAfterMovementNameCorrect() {
+		character.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if("MOVING_RIGHT".equals(evt.getPropertyName())) {
+			    	eventRecieved = true;
+			    }	
+		   }
+		});
+		eventRecieved = false;
+		character.moveRight(delta);
+		character.update();
+		assertTrue(eventRecieved);
+	}
+	
+	@Test
+	public void testUpdateAfterMovementValueCorrect() {
+		character.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if(character.getPosition().equals(evt.getNewValue())) {
+			    	eventRecieved = true;
+			    }	
+		   }
+		});
+		eventRecieved = false;
+		character.moveRight(delta);
+		character.update();
+		assertTrue(eventRecieved);
+	}
+	
+	@Test
+	public void testUpdateNoMovementNameCorrect() {
+		character.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if("RIGHT".equals(evt.getPropertyName())) {
+			    	eventRecieved = true;
+			    }	
+		   }
+		});
+		eventRecieved = false;
+		character.update();
+		assertTrue(eventRecieved);
+	}
+	
+	@Test
+	public void testUpdateNoMovementValueCorrect() {
+		character.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if(character.getPosition().equals(evt.getNewValue())) {
+			    	eventRecieved = true;
+			    }	
+		   }
+		});
+		eventRecieved = false;
+		character.update();
+		assertTrue(eventRecieved);
 	}
 
 	@Test
