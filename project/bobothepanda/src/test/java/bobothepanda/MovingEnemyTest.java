@@ -16,11 +16,14 @@ import org.junit.Test;
 public class MovingEnemyTest extends Assert {
 	
 	MovingEnemy movingEnemy;
-	float velocity;
+	float initialVelocity;
+	float reverseInitialVelocity;
 	
 	@Before
 	public void setUp(){
 		movingEnemy = new MovingEnemy(new Position(1f,1f), new Size(10,10));
+		initialVelocity = movingEnemy.getVelocity();
+		reverseInitialVelocity = initialVelocity * -1;
 	}
 	
 	
@@ -42,34 +45,29 @@ public class MovingEnemyTest extends Assert {
 	@Test
 	public void testReverseVelocity(){
 		MovingEnemy movingEnemy1 = new MovingEnemy(new Position(1f,1f), new Size(10,10));
-		velocity = movingEnemy.getVelocity();
 		movingEnemy.visit(movingEnemy1);
-		assertTrue(movingEnemy.getVelocity() < velocity);
+		assertTrue(movingEnemy.getVelocity() < initialVelocity);
 	}
 	
 	
 	@Test
 	public void testVisitDoor(){
-		final float velocity = movingEnemy.getVelocity() * -1;
 		movingEnemy.visit(new Door(new Position(1f,1f), new Size(10,10)));
-		assertEquals(velocity, movingEnemy.getVelocity(), 0f);
+		assertEquals(reverseInitialVelocity, movingEnemy.getVelocity(), 0f);
 	}
 	@Test
 	public void testVisitShootingEnemy(){
-		final float velocity = movingEnemy.getVelocity() * -1;
 		movingEnemy.visit(new ShootingEnemy(new Position(1f,1f), new Size(10,10)));
-		assertEquals(velocity, movingEnemy.getVelocity(), 0f);
+		assertEquals(reverseInitialVelocity, movingEnemy.getVelocity(), 0f);
 	}
 	@Test
 	public void testVisitFixedEnemy(){
-		final float velocity = movingEnemy.getVelocity() * -1;
 		movingEnemy.visit(new FixedEnemy(new Position(1f,1f), new Size(10,10)));
-		assertEquals(velocity, movingEnemy.getVelocity(), 0f);
+		assertEquals(reverseInitialVelocity, movingEnemy.getVelocity(), 0f);
 	}
 	@Test
 	public void testVisitTerrain(){
-		final float velocity = movingEnemy.getVelocity() * -1;
 		movingEnemy.visit(new Terrain(new Position(1f,1f), new Size(10,10)));
-		assertEquals(velocity, movingEnemy.getVelocity(), 0f);
+		assertEquals(reverseInitialVelocity, movingEnemy.getVelocity(), 0f);
 	}
 }

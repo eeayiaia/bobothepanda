@@ -41,7 +41,7 @@ public class PositionTest extends Assert {
 	@Test(expected = NullPointerException.class)
 	public void testConstructorOtherPosNull(){
 			Position pos = null;
-			Position pos1 = new Position(pos);
+			new Position(pos);
 	}
 	
 	@Test
