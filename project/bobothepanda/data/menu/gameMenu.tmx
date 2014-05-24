@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="64" height="32" tilewidth="20" tileheight="20">
+<map version="1.0" orientation="orthogonal" width="64" height="36" tilewidth="20" tileheight="20">
  <tileset firstgid="1" name="Tiles" tilewidth="20" tileheight="20">
   <image source="../img/tilesets/Tiles.png" width="100" height="200"/>
  </tileset>
- <layer name="Tile Layer 1" width="64" height="32">
+ <layer name="Tile Layer 2" width="64" height="36">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3DQQ0AAAgEoEvgzwb2z2gPhY1O0qqqqqqqquqJ9fzo4wtGN3JhACAAAA==
+   H4sIAAAAAAAAA+3DAQkAAAwEoYvx/ZMux0DBVVNVVVVVVVVVVV8+Xq9bKwAkAAA=
   </data>
  </layer>
- <objectgroup name="Object Layer 1" width="64" height="32">
-  <object name="QuitButton" type="Quit" x="480" y="191" width="128" height="64"/>
-  <object name="StartButton" type="Start" x="685" y="189" width="128" height="64"/>
-  <object name="Bobo" type="Character" x="621" y="506" width="32" height="52"/>
+ <layer name="Tile Layer 1" width="64" height="36">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3WMQ6AIAyFYU7gQkg8gKP3P5+LgyEWH6AI+g9fSCwhlhY0OOcCAFTwu/iZGj/O8VHcG/GepN5ZGa09S83tSVwXq3ZWPNUz1ho9of7151/Jv+ceQF4/nNVZ6ZERKOe+9I4Ywdl9b+U84vderf9VP3y5/iX5K/8IAAAAAIB8M4Dfmn5uubCK7lqnteUwPpmDsv4b+5X7Xi21yH8DKZiFNQAkAAA=
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="64" height="36">
+  <object name="QuitButton" type="Quit" x="478" y="433" width="128" height="64"/>
+  <object name="StartButton" type="Start" x="681" y="441" width="128" height="64"/>
+  <object name="Bobo" type="Character" x="631" y="588" width="32" height="52"/>
  </objectgroup>
 </map>

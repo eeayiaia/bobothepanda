@@ -1,0 +1,59 @@
+﻿Meeting Agenda
+
+ Date: 2014-05-24
+
+ Facilitator: Elvira Jonsson
+
+ Participants: Ocsar Muhr, Sebastian Sandberg, Victor Larsson, Elvira Jonsson
+
+1. Objectives (5 min) Resolve any issues preventing the team to 
+ continue (this should be possible to verify at next meeting, 
+ short clear description, use issues from project site). 
+
+
+Nothing
+
+2. Reports (15 min) From previous meetings, (un)solved issues, 
+ etc. , see also 4 
+
+Documentation has been worked on by everyone.
+Some refactoring still remaining, regarding the menu.
+New levels work.
+Shooting enemy has almost been implemented.
+Collision still need some fixing.
+
+3. Discussion items (35 min) 
+
+ (a) How do we do...? 
+        It’s a nice...
+ (b) What to do...? 
+        Create the remaining tests
+        Complete the SDD, before doing anything else.
+        Bug fix.
+        Implement shooting enemy, almost done.
+  (c) What is … ?
+    this?
+
+4. Outcomes and assignments (5 min) 
+
+ (a) All should…
+Everything
+
+ (b) Oscar should...
+        Do something!
+
+ (c) Victor should…
+Also do something!
+
+
+  (d) Elvira Jonsson should…
+Keep on working!        
+
+
+  (e) Sebastian should…
+Do what ever he wants!
+
+5. Wrap up 
+
+ (a) Next meeting?
+        NEVER!
