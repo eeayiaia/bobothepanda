@@ -9,8 +9,6 @@ import model.Gravity;
 import model.Key;
 import model.Terrain;
 import model.Character;
-import model.AbstractFixedObject;
-import model.IMapObject;
 import model.Position;
 import model.Size;
 
