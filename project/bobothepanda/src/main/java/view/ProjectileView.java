@@ -29,16 +29,19 @@ public class ProjectileView implements PropertyChangeListener{
 	}
 	
 	public void propertyChange(PropertyChangeEvent evt) {
-		final Position pos = (Position)evt.getNewValue();
 		
-		if(pos != null){
-			final float x = pos.getX();
-			final float y = pos.getY();
+		if(Position.class == evt.getNewValue().getClass()){
+			final Position pos = (Position)evt.getNewValue();
 			
-			switch(DrawObject.valueOf(evt.getPropertyName())){
-			case PROJECTILE:
-				drawProjectile(x, y);
-				break;
+			if(pos != null){
+				final float x = pos.getX();
+				final float y = pos.getY();
+				
+				switch(DrawObject.valueOf(evt.getPropertyName())){
+				case PROJECTILE:
+					drawProjectile(x, y);
+					break;
+				}
 			}
 		}
 	}

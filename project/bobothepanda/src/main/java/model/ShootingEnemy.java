@@ -54,7 +54,10 @@ public class ShootingEnemy extends AbstractFixedObject {
 	}
 	
 	public void update(int delta){
+		fireProjectile();
+	}
+	
+	public void render(){
 		pcs.firePropertyChange("ENEMY_RIGHT", null, this.getPosition());
-//		fireProjectile();
 	}
 }

@@ -116,7 +116,6 @@ public class Character extends AbstractMovingObject{
 			characterState = CharacterState.MOVING_LEFT;
 			xVelocity = 0.25f;
 			this.oldX = this.getPosition().getX();
-			//getPosition().setX(getPosition().getX() + xVelocity * delta );
 			setNewX(delta, xVelocity);
 			facing = Facing.LEFT;
 			lastTimedMoved = System.currentTimeMillis();
@@ -137,7 +136,6 @@ public class Character extends AbstractMovingObject{
 			characterState = CharacterState.MOVING_RIGHT;
 			xVelocity = -0.25f;
 			this.oldX = this.getPosition().getX();
-			//getPosition().setX(getPosition().getX() + xVelocity * delta );
 			setNewX(delta, xVelocity);
 			facing = Facing.RIGHT;
 			lastTimedMoved = System.currentTimeMillis();
@@ -190,7 +188,6 @@ public class Character extends AbstractMovingObject{
 	}
 	
 	public void visit(Projectile projectile){
-		System.out.println("hit in character");
 		die();
 	}
 	

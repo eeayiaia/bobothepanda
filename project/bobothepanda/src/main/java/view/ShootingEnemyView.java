@@ -41,32 +41,24 @@ public class ShootingEnemyView implements PropertyChangeListener{
 	}
 	
 	public void propertyChange(PropertyChangeEvent evt) {
-//		final Position pos = (Position)evt.getNewValue();
-//		
-//		if(pos != null){
-//			final float x = pos.getX();
-//			final float y = pos.getY();
-			
-//			switch(DrawObject.valueOf(evt.getPropertyName())){
-//			case ENEMY_LEFT:
-////				drawEnemyLeft(x, y);
-////				break;
-//				
-//			case ENEMY_RIGHT:
-//				Position pos = (Position)evt.getNewValue();
-//				float x = pos.getX();
-//				float y = pos.getY();
-//				drawEnemyRight(x, y);
-//				break;
-//			}
-//		}
 		
-		if("ENEMY_RIGHT".equals(evt.getPropertyName())) {
-			System.out.println(evt.getPropertyName());
-			Position pos = (Position)evt.getNewValue();
-			float x = pos.getX();
-			float y = pos.getY();
-			drawEnemyRight(x, y);
+		if(Position.class == evt.getNewValue().getClass()){
+			final Position pos = (Position)evt.getNewValue();
+			
+			if(pos != null){
+				final float x = pos.getX();
+				final float y = pos.getY();
+				
+				switch(DrawObject.valueOf(evt.getPropertyName())){
+				case ENEMY_LEFT:
+					drawEnemyLeft(x, y);
+					break;
+					
+				case ENEMY_RIGHT:
+					drawEnemyRight(x, y);
+					break;
+				}
+			}
 		}
 	}
 }

@@ -22,6 +22,7 @@ import view.FixedEnemyView;
 import view.LevelView;
 import view.KeyView;
 import view.MovingEnemyView;
+import view.ProjectileView;
 import view.ShootingEnemyView;
 
 import org.newdawn.slick.*;
@@ -94,6 +95,12 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		for(FixedEnemy fixedEnemy: fixedEnemies){
 			fixedEnemy.render();
 		}
+		for(ShootingEnemy shootingEnemy: shootingEnemies){
+			shootingEnemy.render();
+		}
+		for(Projectile projectile: projectiles){
+			projectile.render();
+		}
 		
 		
 	}
@@ -109,6 +116,9 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		}
 		for(ShootingEnemy shootingEnemy: shootingEnemies) {
 			shootingEnemy.update(delta);
+		}
+		for(Projectile projectile: projectiles){
+			projectile.update(delta);
 		}
 		
 		
@@ -128,7 +138,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		}
 	}
 	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
-	public void propertyChange(PropertyChangeEvent evt) {
+	public void propertyChange(PropertyChangeEvent evt){
 		if("loadLevel".equals(evt.getPropertyName())){
 			try {
 				loadLevel(false);
@@ -146,8 +156,15 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		}
 		
 		if("projectile".equals(evt.getPropertyName())) {
-			projectiles.add((Projectile)evt.getNewValue());
-			mapHandler.getMapObjectList().add((Projectile)evt.getNewValue());
+			try{
+				Projectile projectile = (Projectile)evt.getNewValue();
+				projectile.addPropertyChangeListener(new ProjectileView());
+				projectiles.add(projectile);
+				mapHandler.getMapObjectList().add(projectile);
+			}catch(SlickException e){
+				
+			}
+			
 		}
 	}
 
