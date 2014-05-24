@@ -193,9 +193,7 @@ public class CharacterTest extends Assert {
 	
 	@Test
 	public void testJump() {
-		Terrain terrain = new Terrain(position, size);
-		terrain.setY(position.getY()+1);
-		character.visit(terrain);
+		character.visit(new Terrain(position, size));
 		character.jump(delta);
 		assertEquals(-1.7f, character.getYVelocity(), 0.0001);
 	}
@@ -210,6 +208,21 @@ public class CharacterTest extends Assert {
 		float yVelocity = character.getYVelocity();
 		character.jump(delta);
 		assertEquals(yVelocity, character.getYVelocity(), 0.0001);
+	}
+	
+	@Test
+	public void testJumpEvent() {
+		character.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if("jump".equals(evt.getPropertyName())) {
+			    	eventRecieved = true;
+			    }	
+		   }
+		});
+		eventRecieved = false;
+		character.visit(new Terrain(position, size));
+		character.jump(delta);
+		assertTrue(eventRecieved);
 	}
 	
 	@Test

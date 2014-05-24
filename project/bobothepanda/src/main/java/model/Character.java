@@ -154,10 +154,10 @@ public class Character extends AbstractMovingObject{
 			throw new IllegalArgumentException("Time since last update can not be negative");
 		}else {
 			//needs to be on the ground to jump
-			if(getYVelocity() == 0f && onGround){
+			if(onGround){
 				setYVelocity(-1.7f);
-				onGround = false;
 				pcs.firePropertyChange("jump", null, null);
+				onGround = false;
 			}
 		}
 	}
