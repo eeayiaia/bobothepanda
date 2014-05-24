@@ -8,7 +8,7 @@ package model;
  *
  */
 
-public abstract class AbstractCollectibleObject extends AbstractMapObject implements IVisitable {
+public abstract class AbstractCollectibleObject extends AbstractMapObject{
 
 	public AbstractCollectibleObject(Position position, Size size) {
 		super(position, size);
