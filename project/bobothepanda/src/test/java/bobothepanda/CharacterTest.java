@@ -94,22 +94,22 @@ public class CharacterTest extends Assert {
 		assertEquals(yVelocity, character.getYVelocity(),0);
 	}
 
-//	@Test
-//	public void testMoveLeft() {
-//		character.moveLeft(delta); 
-//		assertTrue(0 > character.getXVelocity());
-//	}
+	@Test
+	public void testMoveLeft() {
+		character.moveLeft(delta); 
+		assertTrue(0 < character.getXVelocity());
+	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testMoveLeftNegativeDelta() {
 		character.moveLeft(-delta);
 	}
 	
-//	@Test
-//	public void testMoveRight() {
-//		character.moveRight(delta);
-//		assertTrue(0 < character.getXVelocity());
-//	}
+	@Test
+	public void testMoveRight() {
+		character.moveRight(delta);
+		assertTrue(0 > character.getXVelocity());
+	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testMoveRightNegativeDelta() {
