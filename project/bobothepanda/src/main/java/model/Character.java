@@ -172,7 +172,8 @@ public class Character extends AbstractMovingObject{
 		}else {
 			//Change velocity due to gravity
 			setYVelocity(gravity.getNewVelocity(yVelocity, delta));
-			getPosition().setY(gravity.getNewYPosition(getPosition().getY(), getYVelocity(), delta));
+			final Position pos = getPosition();
+			pos.setY(gravity.getNewYPosition(pos.getY(), getYVelocity(), delta));
 		}
 	}
 	
@@ -201,27 +202,30 @@ public class Character extends AbstractMovingObject{
 	public void collisionWithFixedObject(AbstractFixedObject afo){
 		onGround = true;
 		
-		final float characterXPos = getPosition().getX();
-		final float characterYPos = getPosition().getY();
-		final float characterWidth = getSize().getWidth();
-		final float characterHeight = getSize().getHeight();
+		final Position pos = getPosition();
+		final float characterXPos = pos.getX();
+		final float characterYPos = pos.getY();
+		final Size size = getSize();
+		final float characterWidth = size.getWidth();
+		final float characterHeight = size.getHeight();
 		
-		final float objectXPos = afo.getPosition().getX();
-		final float objectYPos = afo.getPosition().getY();
+		final Position objPos = afo.getPosition();
+		final float objectXPos = objPos.getX();
+		final float objectYPos = objPos.getY();
 		final float objectHeight = afo.getSize().getHeight();
 
 		if((characterYPos <= objectYPos || characterYPos + characterWidth <= objectYPos) && getYVelocity() > 0){
-			getPosition().setY(objectYPos - characterHeight);
+			pos.setY(objectYPos - characterHeight);
 			setYVelocity(0f);
 			
 		}else if((characterYPos <= objectYPos + objectHeight ||
 				characterYPos + characterWidth <= objectYPos + objectHeight) && getYVelocity() < 0){
 			
-			getPosition().setY(objectYPos + characterHeight);
+			pos.setY(objectYPos + characterHeight);
 			setYVelocity(0f);
 			
 		}else if(characterXPos <= objectXPos || characterXPos + characterHeight >= objectXPos){
-			getPosition().setX(oldX);
+			pos.setX(oldX);
 		}
 	}
 	
