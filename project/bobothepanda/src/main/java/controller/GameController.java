@@ -164,6 +164,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			mapHandler = new MapHandler("newLevel" + currentLevelNumber);
 		}catch(Exception e){
 			currentLevelNumber = 1;
+			mapHandler = new MapHandler("newLevel" + currentLevelNumber);
 			noMoreLevel = true;
 		}
 		
