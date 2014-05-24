@@ -20,7 +20,6 @@ public class ShootingEnemy extends AbstractFixedObject {
 	private final Size projectileSize = new Size(4,4);
 	private PropertyChangeSupport pcs;
 	private long lastTimedFired;
-//	private List<Projectile> projectiles;
 	
 	public ShootingEnemy(Position position, Size size) {
 		super(position, size);
@@ -54,15 +53,7 @@ public class ShootingEnemy extends AbstractFixedObject {
 	public void fireProjectile(){
 		if(lastTimedFired + 1000 >= System.currentTimeMillis()){
 			Projectile projectile = new Projectile(centerPos, projectileSize);
-//			projectile.addPropertyChangeListener(this);
-//			try {
-//				projectile.addPropertyChangeListener(new ProjectileView());
-//			} catch (SlickException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
 			pcs.firePropertyChange("projectile", null, projectile);
-//			projectiles.add(projectile);
 			lastTimedFired = System.currentTimeMillis();
 		}
 	}
