@@ -41,12 +41,11 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 			throws SlickException {
 		menuMapHandler = new MenuMapHandler();
 		menu = new Menu(menuMapHandler.getMenuItemList());
-		menuView = new MenuView();
+		menuView = new MenuView(menu.getCharacterPosition().getX(), menu.getCharacterPosition().getY());
 		menu.addListener(this);
 		menu.addListener(menuView);
-		menu.getStartButton().addListener(menuView.getStartView());
-		menu.getQuitButton().addListener(menuView.getQuitView());
-		menu.startMenu();
+		menu.addListener(menuView.getStartView());
+		menu.addListener(menuView.getQuitView());
 		this.container = container;
 		this.game = game;
 		
@@ -90,7 +89,6 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 	}
 	public void propertyChange(PropertyChangeEvent evt) {
 		String source = evt.getPropertyName();
-		if(evt.getSource().getClass() == Menu.class){
 		switch(MenuState.valueOf(source)){
 			case QUIT_BUTTON_RELEASED:
 				container.exit();
@@ -100,7 +98,6 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 				break;
 		default:
 			break;
-		}
 		}
 	}
 

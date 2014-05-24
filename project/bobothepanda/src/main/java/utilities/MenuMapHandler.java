@@ -9,8 +9,9 @@ import java.util.List;
 import model.Position;
 import model.Size;
 import model.menu.AbstractMenuItem;
-import model.menu.MenuButton;
 import model.menu.MenuItem;
+import model.menu.QuitButton;
+import model.menu.StartButton;
 
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
@@ -44,8 +45,10 @@ public class MenuMapHandler {
 			final String type = map.getObjectType(0, i);
 			final Position tmpPos = new Position((float)map.getObjectX(0, i), (float)map.getObjectY(0, i));
 			final Size tmpSize = new Size(map.getObjectWidth(0, i), map.getObjectHeight(0, i));
-			if("Start".equals(type) || "Quit".equals(type)){
-				menuItemList.add(new MenuButton(tmpPos, tmpSize, type));
+			if("Start".equals(type)){
+				menuItemList.add(new StartButton(tmpPos,tmpSize,type));
+			} else if("Quit".equals(type)){
+				menuItemList.add(new QuitButton(tmpPos, tmpSize, type));
 			} else {
 				menuItemList.add(new MenuItem(tmpPos, tmpSize, type));
 			}
