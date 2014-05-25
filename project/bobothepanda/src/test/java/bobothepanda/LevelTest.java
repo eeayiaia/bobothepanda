@@ -3,6 +3,7 @@ package bobothepanda;
 import java.awt.Rectangle;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class LevelTest extends Assert {
 	Level level;
 	Character character;
 	List <AbstractMapObject> abstractMapObjects;
+	private boolean eventReceived;
 	
 	@Before
 	public void setUp(){
@@ -72,11 +74,59 @@ public class LevelTest extends Assert {
 	@Test
 	public void testCheckCollisionsNoCollisions(){
 		List<AbstractMapObject> list = new ArrayList<AbstractMapObject>();
-		abstractMapObjects.add(new MovingEnemy(new Position(10f,10f), new Size(10f,10f)));
-		abstractMapObjects.add(new Terrain(new Position(15f,15f), new Size(10f,10f)));
+		MovingEnemy movingEnemy = new MovingEnemy(new Position(0f,0f), new Size(10f,10f)); 
+		list.add(movingEnemy);
+		list.add(new Terrain(new Position(15f,15f), new Size(10f,10f)));
 		Level level1 = new Level(list, character);
+		float initialVelocity = movingEnemy.getVelocity();
 		level1.checkCollisions();
-		
+		//if there is no collision, the movingEnemy should NOT have reversed its velocity
+		assertEquals(initialVelocity, movingEnemy.getVelocity(), 0f);
+	}
+	
+	@Test
+	public void testCheckCollisionsWithCollisions(){
+		List<AbstractMapObject> list = new ArrayList<AbstractMapObject>();
+		MovingEnemy movingEnemy = new MovingEnemy(new Position(10f,10f), new Size(10f,10f)); 
+		list.add(movingEnemy);
+		list.add(new Terrain(new Position(7f,7f), new Size(10f,10f)));
+		Level level1 = new Level(list, character);
+		float initialVelocity = movingEnemy.getVelocity();
+		level1.checkCollisions();
+		//if there is  collision, the movingEnemy should have reversed its velocity
+		assertNotEquals(initialVelocity, movingEnemy.getVelocity(), 0f);
+	}
+	
+	@Test
+	public void testPropertyChangeLoadLevel(){
+		PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+		pcs.addPropertyChangeListener(level);
+		level.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if("loadLevel".equals(evt.getPropertyName())) {
+			    	eventReceived = true;
+			    }	
+		   }
+		});
+		eventReceived = false;
+		pcs.firePropertyChange("loadLevel", null, null);
+		assertTrue(eventReceived);
+	}
+	
+	@Test
+	public void testPropertyChangeReLoadLevel(){
+		PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+		pcs.addPropertyChangeListener(level);
+		level.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if("reloadLevel".equals(evt.getPropertyName())) {
+			    	eventReceived = true;
+			    }	
+		   }
+		});
+		eventReceived = false;
+		pcs.firePropertyChange("reloadLevel", null, null);
+		assertTrue(eventReceived);
 	}
 	
 	
