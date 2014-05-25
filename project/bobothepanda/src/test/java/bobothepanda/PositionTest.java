@@ -1,12 +1,12 @@
 package bobothepanda;
 
 import model.Position;
-import model.Projectile;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+@SuppressWarnings("PMD.TooManyMethods")//Everything that should be tested, is tested
 public class PositionTest extends Assert {
 	private Position position;
 
@@ -17,31 +17,31 @@ public class PositionTest extends Assert {
 	
 	@Test
 	public void testConstructorXLessThanZero(){
-		Position pos = new Position(-1f, 1f);
+		final Position pos = new Position(-1f, 1f);
 		assertEquals(0f, pos.getX(), 0);
 	}
 	
 	@Test
 	public void testConstructorYLessThanZero(){
-		Position pos = new Position(1f, -1f);
+		final Position pos = new Position(1f, -1f);
 		assertEquals(0f, pos.getY(), 0);
 	}
 	
 	@Test
 	public void testConstructorOtherPosX(){
-		Position pos = new Position(position);
+		final Position pos = new Position(position);
 		assertEquals(position.getX(), pos.getX(), 0f);
 	}
 	@Test
 	public void testConstructorOtherPosY(){
-		Position pos = new Position(position);
+		final Position pos = new Position(position);
 		assertEquals(position.getY(), pos.getY(), 0f);
 	}
 	
 	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 	@Test(expected = NullPointerException.class)
 	public void testConstructorOtherPosNull(){
-			Position pos = null;
+			final Position pos = null;
 			new Position(pos);
 	}
 	
@@ -77,7 +77,7 @@ public class PositionTest extends Assert {
 		position.setY(-0.1f);
 		assertEquals(position.getY(), 0f, 0);
 	}	
-	
+	@SuppressWarnings("PMD")//checking that the equals method behaves correctly
 	@Test
 	public void testEqualsNull(){
 		assertFalse(position.equals(null));
@@ -100,8 +100,7 @@ public class PositionTest extends Assert {
 	
 	@Test
 	public void testHashCode(){
-		Position pos = new Position(position);
-		assertNotSame(pos, position);
+		final Position pos = new Position(position);
 		assertEquals(position.hashCode(), pos.hashCode(), 0f);
 	}
 }
