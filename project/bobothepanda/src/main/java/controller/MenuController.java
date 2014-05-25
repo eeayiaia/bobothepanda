@@ -29,7 +29,7 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 		} else if (i.isKeyPressed(Input.KEY_ESCAPE)){
 			container.exit();
 		}
-//		menu.update();
+		menu.update();
 	}
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
@@ -62,8 +62,7 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
 		handleInput(container.getInput(),delta);
-
-		
+		menu.update();
 	}
 	@Override
 	public int getID() {
@@ -93,6 +92,7 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 				break;
 			case START_BUTTON_RELEASED:
 				game.enterState(0);
+				menu.reset();
 				break;
 			case AUDIO_ON_RELEASED:
 				container.setMusicOn(false);
