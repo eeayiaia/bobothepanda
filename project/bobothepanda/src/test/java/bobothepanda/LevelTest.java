@@ -72,6 +72,20 @@ public class LevelTest extends Assert {
 	}
 	
 	@Test
+	public void testUpdate(){
+		List<AbstractMapObject> list = new ArrayList<AbstractMapObject>();
+		MovingEnemy movingEnemy = new MovingEnemy(new Position(0f,0f), new Size(10f,10f)); 
+		list.add(movingEnemy);
+		list.add(new Terrain(new Position(15f,15f), new Size(10f,10f)));
+		Level level1 = new Level(list, character);
+		float initialVelocity = movingEnemy.getVelocity();
+		level1.update();
+		//if there is no collision, the movingEnemy should NOT have reversed its velocity
+		assertEquals(initialVelocity, movingEnemy.getVelocity(), 0f);
+	}
+	
+	
+	@Test
 	public void testCheckCollisionsNoCollisions(){
 		List<AbstractMapObject> list = new ArrayList<AbstractMapObject>();
 		MovingEnemy movingEnemy = new MovingEnemy(new Position(0f,0f), new Size(10f,10f)); 
