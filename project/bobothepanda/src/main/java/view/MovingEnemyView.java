@@ -15,12 +15,11 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
-import view.ShootingEnemyView.DrawObject;
 
 public class MovingEnemyView implements PropertyChangeListener{
 
-	private Animation enemyLeftAnimation;
-	private Animation enemyRightAnimation;
+	private final Animation enemyLeftAnimation;
+	private final Animation enemyRightAnimation;
 	
 	public MovingEnemyView() throws SlickException{
 		final Image [] leftAnimation = {new Image("data/img/saw1.png"),
@@ -46,6 +45,7 @@ public class MovingEnemyView implements PropertyChangeListener{
 		ENEMY_MOVING_RIGHT
 	}
 	
+	@SuppressWarnings("PMD.DataflowAnomalyAnalysis")//It is not incorrect to set x,y to new values everytime
 	public void propertyChange(PropertyChangeEvent evt) {
 		final Position pos = (Position)evt.getNewValue();
 		
