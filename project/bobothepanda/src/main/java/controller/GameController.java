@@ -157,7 +157,6 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			
 		}else if("RELOAD_LEVEL".equals(evt.getPropertyName())){
 			try {
-				System.out.println("GC");
 				loadLevel(true);
 			} catch (SlickException e) {
 				throw new MapHandlerException(e);
@@ -181,11 +180,9 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			while(iterator.hasNext()){
 				Projectile p = iterator.next();
 				if(p != evt.getNewValue()){
-					System.out.println("next");
 					iterator.next();
 				}else{
 					if(p != null){
-						System.out.println("remove element");
 						iterator.remove();
 						break;
 					}

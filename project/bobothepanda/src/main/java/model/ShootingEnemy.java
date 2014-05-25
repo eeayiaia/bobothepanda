@@ -8,6 +8,8 @@ import model.Projectile;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShootingEnemy extends AbstractFixedObject {
 
@@ -16,11 +18,14 @@ public class ShootingEnemy extends AbstractFixedObject {
 	private PropertyChangeSupport pcs;
 	private long lastTimedFired;
 	private boolean fired;
+	private List<Projectile>projectiles;
+	private int count;
 	
 	public ShootingEnemy(Position position, Size size) {
 		super(position, size);
 		centerPos = new Position((float)getHitbox().getCenterX(),(float)getHitbox().getCenterY());
 		lastTimedFired = System.currentTimeMillis();
+		projectiles = new ArrayList<Projectile>();
 		pcs = new PropertyChangeSupport(this);
 	}
 	
@@ -50,12 +55,11 @@ public class ShootingEnemy extends AbstractFixedObject {
 	public void fireProjectile(){
 		
 		if(!fired){
-			System.out.println("shooting");
-			System.out.println(centerPos.getX());
-			Projectile projectile = new Projectile(centerPos, projectileSize);
-			pcs.firePropertyChange("ADD_PROJECTILE", null, projectile);
+			projectiles.add(new Projectile(centerPos, projectileSize));
+			pcs.firePropertyChange("ADD_PROJECTILE", null, projectiles.get(count));
 			lastTimedFired = System.currentTimeMillis();
 			fired = true;
+			count++;
 		}
 		
 		/*
