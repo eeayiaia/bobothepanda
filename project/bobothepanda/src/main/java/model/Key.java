@@ -10,30 +10,28 @@ import java.beans.PropertyChangeSupport;
  */
 
 public class Key extends AbstractCollectibleObject {
-	private PropertyChangeSupport pcs;
+	private final PropertyChangeSupport pcs;
 	
 	public Key(Position position, Size size) {
 		super(position, size);
 		pcs = new PropertyChangeSupport(this);
 	}
-
+	
+	//Programme should not run if parameter is null, intentional throwing of nullpointerexception
+	@SuppressWarnings("PMD.AvoidThrowingNullPointerException")
 	public void accept(IVisitor visitor) {
-		if(visitor != null) {
+		if(visitor == null) {
+			throw new NullPointerException(this.getClass().toString());
+		}else {
 			if(visitor.getClass() == Character.class) {
 				pcs.firePropertyChange("KEY_PICKED_UP", null, this.getPosition());
 			}
 			visitor.visit(this);
-		}else {
-			throw new NullPointerException(this.getClass().toString());
 		}
 	}
 	
 	public void addPropertyChangeListener(PropertyChangeListener listener){
-		if(listener != null) {
 			pcs.addPropertyChangeListener(listener);
-		}else {
-			
-		}
 	}
 	
 	public void removePropertyChangeListener(PropertyChangeListener listener){

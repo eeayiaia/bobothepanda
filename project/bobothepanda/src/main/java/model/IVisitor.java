@@ -2,19 +2,19 @@ package model;
 
 public interface IVisitor {
 	
-	public void visit(Terrain t);
+	void visit(Terrain t);
 	
-	public void visit(Character c);
+	void visit(Character c);
 	
-	public void visit(Key k);
+	void visit(Key k);
 	
-	public void visit(Door d);
+	void visit(Door d);
 	
-	public void visit(FixedEnemy f);
+	void visit(FixedEnemy f);
 
-	public void visit(Projectile p);
+	void visit(Projectile p);
 	
-	public void visit(MovingEnemy m);
+	void visit(MovingEnemy m);
 	
-	public void visit(ShootingEnemy s);
+	void visit(ShootingEnemy s);
 }
