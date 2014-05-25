@@ -176,7 +176,7 @@ public class CharacterTest extends Assert {
 	@Test
 	public void testMoveLeft() {
 		character.moveLeft(delta); 
-		assertTrue(0 < character.getXVelocity());
+		assertTrue(0 > character.getXVelocity());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -187,7 +187,7 @@ public class CharacterTest extends Assert {
 	@Test
 	public void testMoveRight() {
 		character.moveRight(delta);
-		assertTrue(0 > character.getXVelocity());
+		assertTrue(0 < character.getXVelocity());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)

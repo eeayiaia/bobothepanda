@@ -113,7 +113,7 @@ public class Character extends AbstractMovingObject{
 			throw new IllegalArgumentException("Time since last update can not be negative");
 		}else {
 			characterState = CharacterState.MOVING_LEFT;
-			xVelocity = 0.25f;
+			xVelocity = -0.25f;
 			this.oldX = this.getPosition().getX();
 			setNewX(delta, xVelocity);
 			facing = Facing.LEFT;
@@ -133,7 +133,7 @@ public class Character extends AbstractMovingObject{
 			throw new IllegalArgumentException("Time since last update can not be negative");
 		}else {
 			characterState = CharacterState.MOVING_RIGHT;
-			xVelocity = -0.25f;
+			xVelocity = 0.25f;
 			this.oldX = this.getPosition().getX();
 			setNewX(delta, xVelocity);
 			facing = Facing.RIGHT;

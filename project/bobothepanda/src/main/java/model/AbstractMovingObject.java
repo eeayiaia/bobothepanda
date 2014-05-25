@@ -12,7 +12,7 @@ public abstract class AbstractMovingObject extends AbstractMapObject implements 
 	 * @param velocity The current velocity of the object.
 	 */
 	public void setNewX(int delta, float velocity){
-		final float nextPositionX = getPosition().getX() - velocity * delta;
+		final float nextPositionX = getPosition().getX() + velocity * delta;
 		setX(nextPositionX);
 	}
 }

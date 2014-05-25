@@ -12,7 +12,7 @@ import java.beans.PropertyChangeSupport;
 public class Projectile extends AbstractMovingObject{
 	
 	PropertyChangeSupport pcs;
-	private float velocity = 0.25f;
+	private float velocity = -0.35f;
 	private Position startPos;
 	
 	public Projectile(Position position, Size size) {
