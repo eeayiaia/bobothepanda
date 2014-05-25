@@ -10,7 +10,7 @@
  </layer>
  <layer name="Other" width="64" height="36">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+1Zy04DMQxMD4CAag/lF3gIiij8/8+xFht1GuXh7Npeb8VIc1i1aTyxPW7TEHi4BWrjmNADXoDauAtn7fcG+3FAMZF2i3hQv7f8W+hH7V7yb1n/EZr5v+l8f6z/OfoPwBweR+7hOfqspv6Hzvcv0d8Lbf9Pz5uDVv8fQjvPXGj4Xym2IVzOdmLubKT7v3ZWHuf/K1AbHud/hIV+yfmX9uXc3hwmzomnd99W/iW9pgTySPSED2AJHvxP61w4+qXg8fsvxUTapfxoa/4vrV8Dc7xuyDA3/2Pto34LH0JY74eQ6v81NSxBrH+u/i1q5MBz/0uC5j96Qq7/14ZlL9X0t3z3Gvqgt/+3gidgDWvNfy/zopR/L/FpAGtiaf1z/MHzGV5r/xNavU8o+X8tb95zWkN6Jh7n/z/ksRP4jK3W/Q5ova/lOlyf3v17YPzNYbHXc/j7T4Putd+YzxrE+4WfibifZEy49n3ak+7ZPpnPWoz6S69JxYRrv0aeRn5PZ855XoOncK6LpTHh2l9+lksgACQAAA==
+   H4sIAAAAAAAAA+1Z207DMAzNHgABUx/GL3ARDDH4/5+jFo12FjWJ09quM3Gk8xCtWXx87bIQeLgFauOY0ANegNq4C2ft9wbncUA2kXYLe1C/t/hb6EftXuJvmf8RmvG/aXw+5v8S/QfgHB5H7mEd+6ym/ofG59fob4V2/0/9zUGt/g+hHmcuNPpfzrYhXM524pxvpOu/5CuP8/8VqA2P8z/CQr/k/EvrcmltDhOX2NN6bi3+kr0mB+qR2BM+gDl46H9afuHol4LH91+yibRL9aPe+r+0/hZw631JrxtmODf/Y+6jfos+5AVS9d+rz2L+c/X3qJEDb+9jWqD5jz1hrv63hmUtlfTX+u411EFr/feCJ2AJW81/L/MiF38v9mkAc2Jt/nP6g2cfXmv9E2q1T8j1/1LcvMe0hNQnHuf/P+SxE/iOXvN+B7Q+13If7k/v/j0w/uawOOs5/P2nQffab8y1BvF+4WcinidpE+59n86ke7ZP5lqLUX/uMymbcO/XyNPI78nnnPUWPIVzXqy1Cff+Ani3wb8AJAAA
   </data>
  </layer>
  <objectgroup name="Objects" width="64" height="36">
@@ -67,7 +67,7 @@
   <object type="Terrain" x="500" y="420" width="40" height="20"/>
   <object type="Terrain" x="800" y="460" width="80" height="20"/>
   <object type="Terrain" x="940" y="400" width="80" height="20"/>
-  <object type="Terrain" x="860" y="320" width="80" height="20"/>
+  <object type="Terrain" x="820" y="300" width="80" height="20"/>
   <object type="Terrain" x="900" y="220" width="80" height="20"/>
   <object type="Terrain" x="1040" y="240" width="60" height="20"/>
   <object type="Terrain" x="1020" y="300" width="100" height="20"/>
