@@ -11,28 +11,27 @@ import java.beans.PropertyChangeListener;
 
 import model.Position;
 
-import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 public class ShootingEnemyView implements PropertyChangeListener{
 
-	private Image EnemyLeft;
-	private Image EnemyRight;
+	private Image enemyLeft;
+	private Image enemyRight;
 	
 	public ShootingEnemyView() throws SlickException{
 	
 		//TODO use Animation
-		EnemyRight = new Image("/data/img/Cannon-02.png");
-		EnemyLeft = new Image("/data/img/Cannon-02.png").getFlippedCopy(true, false);
+		enemyRight = new Image("/data/img/Cannon-02.png");
+		enemyLeft = new Image("/data/img/Cannon-02.png").getFlippedCopy(true, false);
 	}
 	
 	public void drawEnemyLeft(float x, float y){
-		EnemyLeft.draw(x, y);
+		enemyLeft.draw(x, y);
 	}
 	
 	public void drawEnemyRight(float x, float y){
-		EnemyRight.draw(x, y);
+		enemyRight.draw(x, y);
 	}
 
 	public enum DrawObject{
@@ -41,9 +40,9 @@ public class ShootingEnemyView implements PropertyChangeListener{
 	}
 	
 	public void propertyChange(PropertyChangeEvent evt) {
-		
-		if(Position.class == evt.getNewValue().getClass()){
-			final Position pos = (Position)evt.getNewValue();
+		Object tmp = evt.getNewValue();
+		if(Position.class == tmp.getClass()){
+			final Position pos = (Position)tmp;
 			
 			if(pos != null){
 				final float x = pos.getX();
