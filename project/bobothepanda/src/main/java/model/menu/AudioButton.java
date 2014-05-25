@@ -87,8 +87,7 @@ public class AudioButton extends AbstractMenuButton {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-
+		pcs.firePropertyChange(state.toString(), this.getPosition(), this.getType());
 	}
 
 }
