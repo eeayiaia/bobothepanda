@@ -13,8 +13,8 @@ import java.beans.PropertyChangeSupport;
 public class Projectile extends AbstractMovingObject{
 	
 	private final PropertyChangeSupport pcs;
-	private float velocity = -0.35f;
-	private Position startPos;
+	private final float velocity = -0.35f;
+	private final Position startPos;
 	
 	public Projectile(Position position, Size size) {
 		super(position, size);
@@ -74,8 +74,16 @@ public class Projectile extends AbstractMovingObject{
 		reset();
 	}
 	
-	public void visit(ShootingEnemy s) {}
-	public void visit(Key k) {}
-	public void visit(Projectile p) {}
-	public void visit(MovingEnemy m) {}
+	public void visit(ShootingEnemy s) {
+		//sholdn't be affected
+	}
+	public void visit(Key k) {
+		//should'nt be affected
+	}
+	public void visit(Projectile p) {
+		//shouldn't be affected
+	}
+	public void visit(MovingEnemy m) {
+		//shouldn't be affected
+	}
 }
