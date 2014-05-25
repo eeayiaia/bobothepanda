@@ -12,7 +12,6 @@ public class Character extends AbstractMovingObject{
 	private final PropertyChangeSupport pcs;
 	private Facing facing;
 	private float yVelocity = 0.15f;
-	private float xVelocity = 0;
 	private long lastTimedMoved; 
 	private boolean keyPickedUp;
 	private boolean onGround;
@@ -54,7 +53,11 @@ public class Character extends AbstractMovingObject{
 	 * Get the velocity of the character
 	 */
 	public float getXVelocity() {
-		return xVelocity;
+		if(characterState == CharacterState.MOVING_LEFT){
+			return -0.25f;
+		}else{
+			return 0.25f;
+		}
 	}
 	
 	public float getYVelocity() {
@@ -110,12 +113,11 @@ public class Character extends AbstractMovingObject{
      */
 	public void moveLeft(int delta){
 		if(delta < 0) {
-			throw new IllegalArgumentException("Time since last update can not be negative");
+			throw new IllegalArgumentException(this.getClass().toString() + "   :Time since last update can not be negative");
 		}else {
 			characterState = CharacterState.MOVING_LEFT;
-			xVelocity = -0.25f;
 			this.oldX = this.getPosition().getX();
-			setNewX(delta, xVelocity);
+			setNewX(delta, getXVelocity());
 			facing = Facing.LEFT;
 			lastTimedMoved = System.currentTimeMillis();
 		}
@@ -130,12 +132,11 @@ public class Character extends AbstractMovingObject{
 	 */
 	public void moveRight(int delta){
 		if(delta < 0) {
-			throw new IllegalArgumentException("Time since last update can not be negative");
+			throw new IllegalArgumentException(this.getClass().toString() + "   :Time since last update can not be negative");
 		}else {
 			characterState = CharacterState.MOVING_RIGHT;
-			xVelocity = 0.25f;
 			this.oldX = this.getPosition().getX();
-			setNewX(delta, xVelocity);
+			setNewX(delta, getXVelocity());
 			facing = Facing.RIGHT;
 			lastTimedMoved = System.currentTimeMillis();
 		}
@@ -148,7 +149,7 @@ public class Character extends AbstractMovingObject{
 	 */	
 	public void jump(int delta){
 		if(delta < 0) {
-			throw new IllegalArgumentException("Time since last update can not be negative");
+			throw new IllegalArgumentException(this.getClass().toString() + "   :Time since last update can not be negative");
 		}else {
 			//needs to be on the ground to jump
 			if(onGround){
@@ -165,7 +166,7 @@ public class Character extends AbstractMovingObject{
 	 */
 	public void applyGravity(int delta){
 		if(delta < 0) {
-			throw new IllegalArgumentException("Time since last update can not be negative");
+			throw new IllegalArgumentException(this.getClass().toString() + "   :Time since last update can not be negative");
 		}else {
 			//Change velocity due to gravity
 			setYVelocity(gravity.getNewVelocity(yVelocity, delta));
