@@ -76,7 +76,7 @@ public class MapHandler implements IMapHandler {
 	/**
 	 * Creates a list of all the MapObjects.
 	 */
-	@SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
+	@SuppressWarnings({"PMD.AvoidInstantiatingObjectsInLoops", "DataflowAnomalyAnalysis"})//Behaves as expected
 	private void createObjectLists() {
 		final int objectAmount = map.getObjectCount(0);
 		
