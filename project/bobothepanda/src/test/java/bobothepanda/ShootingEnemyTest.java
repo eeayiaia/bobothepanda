@@ -19,6 +19,6 @@ public class ShootingEnemyTest extends Assert {
 		shootingEnemy = new ShootingEnemy(position, size);
 	}
 	
-	@Test
-	public void 
+//	@Test
+//	public void 
 }
