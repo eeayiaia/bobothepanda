@@ -51,9 +51,7 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 		menu.addListener(menuView.getAudioView());
 		this.container = container;
 		this.game = game;
-		
-	//	final GameContainer conta = container;
-		//TODO what should this method do?
+
 
 		
 	}

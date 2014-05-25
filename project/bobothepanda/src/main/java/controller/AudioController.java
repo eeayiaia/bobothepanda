@@ -8,7 +8,7 @@ import org.newdawn.slick.openal.SoundStore;
 import utilities.AudioHandler;
 
 public class AudioController implements PropertyChangeListener{
-	private AudioHandler audio;
+	private final AudioHandler audio;
 	
 	
 	public AudioController(){
