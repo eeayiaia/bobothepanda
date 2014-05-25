@@ -1,8 +1,10 @@
 package model;
 
 import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 
+//This class has many methods because of visitor
+import java.beans.PropertyChangeSupport;
+@SuppressWarnings("PMD.TooManyMethods")
 public class MovingEnemy extends AbstractMovingObject {
 	
 	private float velocity = 0.25f;

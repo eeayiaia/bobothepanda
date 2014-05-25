@@ -8,10 +8,11 @@ import java.beans.PropertyChangeSupport;
  * @author Victor Larsson
  *
  */
-@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
+//This class has many methods because of visitor pattern
+@SuppressWarnings("PMD.TooManyMethods")
 public class Projectile extends AbstractMovingObject{
 	
-	PropertyChangeSupport pcs;
+	private final PropertyChangeSupport pcs;
 	private float velocity = -0.35f;
 	private Position startPos;
 	
