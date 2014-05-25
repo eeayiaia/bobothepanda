@@ -9,6 +9,7 @@ import java.util.List;
 import model.Position;
 import model.Size;
 import model.menu.AbstractMenuItem;
+import model.menu.AudioButton;
 import model.menu.MenuItem;
 import model.menu.QuitButton;
 import model.menu.StartButton;
@@ -49,6 +50,8 @@ public class MenuMapHandler {
 				menuItemList.add(new StartButton(tmpPos,tmpSize,type));
 			} else if("Quit".equals(type)){
 				menuItemList.add(new QuitButton(tmpPos, tmpSize, type));
+			} else if("Audio".equals(type)){
+				menuItemList.add(new AudioButton(tmpPos,tmpSize,type));
 			} else {
 				menuItemList.add(new MenuItem(tmpPos, tmpSize, type));
 			}

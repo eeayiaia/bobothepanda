@@ -15,7 +15,8 @@
  </layer>
  <objectgroup name="Object Layer 1" width="64" height="36">
   <object name="QuitButton" type="Quit" x="478" y="433" width="128" height="64"/>
-  <object name="StartButton" type="Start" x="681" y="441" width="128" height="64"/>
-  <object name="Bobo" type="Character" x="631" y="588" width="32" height="52"/>
+  <object name="StartButton" type="Start" x="681" y="434" width="128" height="64"/>
+  <object name="Bobo" type="Character" x="640" y="611" width="20" height="30"/>
+  <object name="AudioButton" type="Audio" x="1233" y="673" width="40" height="40"/>
  </objectgroup>
 </map>

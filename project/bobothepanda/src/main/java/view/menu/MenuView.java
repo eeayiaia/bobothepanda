@@ -13,6 +13,7 @@ public class MenuView implements PropertyChangeListener{
 	private final static String SPRITE_RIGHT_IMAGE = "/data/Bobo-01.png";
 	private final StartButtonView start;
 	private final QuitButtonView quit;
+	private final AudioButtonView audio;
 	private final float x;
 	private final float y;
 	
@@ -23,9 +24,13 @@ public class MenuView implements PropertyChangeListener{
 		characterAnimation = new Animation(boboRightAnimation, 125);
 		start = new StartButtonView();
 		quit = new QuitButtonView();
+		audio = new AudioButtonView();
 		this.x = x;
 		this.y = y;
 		
+	}
+	public AudioButtonView getAudioView(){
+		return audio;
 	}
 
 	public StartButtonView getStartView(){
