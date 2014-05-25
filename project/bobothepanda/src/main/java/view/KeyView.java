@@ -19,7 +19,7 @@ import view.ShootingEnemyView.DrawObject;
 
 public class KeyView implements PropertyChangeListener{
 
-	private Animation keyAnimation;
+	private final Animation keyAnimation;
 	private boolean keyPickedUp;
 	
 	public KeyView() throws SlickException{
@@ -41,6 +41,7 @@ public class KeyView implements PropertyChangeListener{
 		KEY_ANIMATION, KEY_PICKED_UP
 	}
 	
+	@SuppressWarnings("PMD.DataflowAnomalyAnalysis")//It is not incorrect to set x,y to new values everytime
 	public void propertyChange(PropertyChangeEvent evt) {
 		final Position pos = (Position)evt.getNewValue();
 		
