@@ -1,6 +1,5 @@
 package bobothepanda;
 
-import java.awt.Rectangle;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -18,6 +17,7 @@ public class ProjectileTest extends Assert{
 	private final Size size = new Size(4,4);
 	private Projectile projectile;
 	private boolean eventReceived;
+	private final int delta = 17;
 	
 	@Before
 	public void setUp() throws Exception{
@@ -25,30 +25,31 @@ public class ProjectileTest extends Assert{
 	}
 	
 	@Test
-	public void testGetPosition(){
-		assertEquals(position, projectile.getPosition());
+	public void testUpdate() {
+		projectile.setPosition(new Position(10f, 10f));
+		float nextPositionX = 10f - 0.25f * delta;
+		position.setX(nextPositionX);
+		projectile.update(delta);
+		assertEquals(position.getX(), projectile.getPosition().getX(), 0.0001);
 	}
 	
 	@Test
-	public void testGetSize(){
-		assertEquals(size, projectile.getSize());
-	}
-	
-	@Test
-	public void testGetHitbox(){
-		final Rectangle hitbox = new Rectangle((int)Math.round(position.getX()),(int)Math.round(position.getY()),
-				(int)Math.round(size.getWidth()), (int)Math.round(size.getHeight()));
-		assertEquals(hitbox, projectile.getHitbox());
+	public void testUpdateXIsZero() {
+		projectile.setPosition(new Position(0f,0f));
+		float nextPositionX = position.getX() - 0.25f * delta;
+		position.setX(nextPositionX);
+		projectile.update(delta);
+		assertEquals(position.getX(), projectile.getPosition().getX(), 0.0001);
 	}
 	
 	@Test
 	public void testRender(){
 		projectile.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-		    if("PROJECTILE".equals(evt.getPropertyName())) {
-			    	eventReceived = true;
-		    }	
-		   }
+			    if("PROJECTILE".equals(evt.getPropertyName())) {
+				    	eventReceived = true;
+			    }	
+			}
 		});
 		eventReceived = false;
 		projectile.render();
