@@ -43,14 +43,12 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private final static float WIDTH = 18;
 	private final static float HEIGHT = 30;
 	private Key key;
-	private AudioController audioController;
 	private List <MovingEnemy> movingEnemies;
 	private List <FixedEnemy> fixedEnemies;
 	private List <ShootingEnemy> shootingEnemies;
 	private List <Projectile> projectiles;
 	private boolean noMoreLevel = false;
 	private StateBasedGame game;
-	private Position characterStartPos;
 	//private Iterator<Projectile> iterator;
 	
 	
@@ -185,12 +183,6 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	 * @param loadCurrentLevel true: loads current level, false: loads next level.
 	 * @throws SlickException
 	 */
-	
-	public void reloadLevel(){
-		System.out.println(characterStartPos.getX());
-		character.setPosition(characterStartPos);
-	}
-	
 	public final void loadLevel(boolean loadCurrentLevel) throws SlickException{
 		noMoreLevel = false;
 		if(!loadCurrentLevel){
@@ -198,22 +190,20 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		}
 		try{
 			mapHandler = new MapHandler("newLevel" + currentLevelNumber);
-			characterStartPos = new Position(mapHandler.getCharacterStartPosition());
 		}catch(Exception e){
 			currentLevelNumber = 1;
 //			noMoreLevel = true;
 			game.enterState(1);
 		}
 		
-		character = new Character(characterStartPos, new Size(WIDTH, HEIGHT));
+		character = new Character(mapHandler.getCharacterStartPosition(), new Size(WIDTH, HEIGHT));
 		character.addPropertyChangeListener(new CharacterView());
 		level = new Level(mapHandler.getMapObjectList(), character);
 		final LevelView levelView = new LevelView();
 		addObjectViews(mapHandler.getMapObjectList());
 		level.addPropertyChangeListener(levelView);
 		character.addPropertyChangeListener(level);
-		audioController = new AudioController();
-		character.addPropertyChangeListener(audioController);
+		character.addPropertyChangeListener(new AudioController());
 		characterController = new CharacterController(character);
 		level.addPropertyChangeListener(this);
 		if(projectiles != null){
