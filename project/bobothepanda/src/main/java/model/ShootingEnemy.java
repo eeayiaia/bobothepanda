@@ -24,7 +24,7 @@ public class ShootingEnemy extends AbstractFixedObject {
 	public ShootingEnemy(Position position, Size size) {
 		super(position, size);
 		Position pos = getPosition();
-		projectilePos = new Position(pos.getX(), pos.getY());
+		projectilePos = new Position(pos.getX(), pos	.getY());
 		//lastTimedFired = System.currentTimeMillis();
 		projectiles = new ArrayList<Projectile>();
 		pcs = new PropertyChangeSupport(this);
