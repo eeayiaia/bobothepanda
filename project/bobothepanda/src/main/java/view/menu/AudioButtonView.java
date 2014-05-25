@@ -34,7 +34,7 @@ public class AudioButtonView implements PropertyChangeListener{
 		final float x = pos.getX();
 		final float y = pos.getY();
 		switch(MenuState.valueOf(source)){
-		case AUDIO_OFF_DEFAULT:
+		case AUDIO_OFF_DEFAULT: case AUDIO_ON_RELEASED:
 			audioOffDefault.draw(x, y);
 			break;
 		case AUDIO_OFF_HOVER:
@@ -46,16 +46,10 @@ public class AudioButtonView implements PropertyChangeListener{
 		case AUDIO_ON_HOVER:
 			audioOnHover.draw(x, y);
 			break;
-		case AUDIO_ON_PRESSED:
+		case AUDIO_ON_PRESSED: case AUDIO_OFF_RELEASED:
 			audioOnPressed.draw(x, y);
 			break;
 		case AUIDO_ON_DEFAULT:
-			audioOnDefault.draw(x, y);
-			break;
-		case AUDIO_ON_RELEASED:
-			audioOffDefault.draw(x, y);
-			break;
-		case AUDIO_OFF_RELEASED:
 			audioOnDefault.draw(x, y);
 			break;
 		default:
