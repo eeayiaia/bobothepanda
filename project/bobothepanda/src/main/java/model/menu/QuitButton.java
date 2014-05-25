@@ -61,4 +61,10 @@ public class QuitButton extends AbstractMenuButton {
 		pcs.firePropertyChange(state.toString(), this.getPosition(), this.getType());
 		
 	}
+
+	@Override
+	public void reset() {
+		state = MenuState.QUIT_DEFAULT;
+		
+	}
 }

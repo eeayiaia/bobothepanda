@@ -62,7 +62,7 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 	public void update(GameContainer container, StateBasedGame game, int delta)
 			throws SlickException {
 		handleInput(container.getInput(),delta);
-		menu.update();
+
 		
 	}
 	@Override

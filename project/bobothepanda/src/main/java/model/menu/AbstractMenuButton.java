@@ -26,4 +26,6 @@ public abstract class AbstractMenuButton extends AbstractMenuItem{
 
 	abstract public void update();
 	
+	abstract public void reset();
+	
 }

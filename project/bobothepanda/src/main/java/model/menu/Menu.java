@@ -24,6 +24,11 @@ public class Menu {
 			}
 		}
 	}
+	public void reset(){
+		for(final AbstractMenuButton butt:menuButtons){
+			butt.reset();
+		}
+	}
 
 	public List <AbstractMenuItem> getMenuItems(){
 		return menuItems;

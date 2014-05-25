@@ -62,5 +62,11 @@ public class StartButton extends AbstractMenuButton {
 
 	}
 
+	@Override
+	public void reset() {
+		state = MenuState.START_DEFAULT;
+		
+	}
+
 
 }
