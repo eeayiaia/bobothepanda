@@ -13,6 +13,8 @@ public class Size {
 		this.height = Math.abs(height);
 	}
 	
+	//This method should throw exception
+	@SuppressWarnings("PMD.AvoidThrowingNullPointerException")
 	public Size(Size size) {
 		if(size == null){
 			throw new NullPointerException(this.getClass().toString());

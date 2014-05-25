@@ -1,7 +1,6 @@
 package model.menu;
 
 import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 
 import model.Position;
 import model.Size;

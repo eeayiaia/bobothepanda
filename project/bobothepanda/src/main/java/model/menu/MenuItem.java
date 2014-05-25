@@ -17,7 +17,7 @@ public class MenuItem extends AbstractMenuItem {
 
 	@Override
 	public void update() {
-
+		//Isn't used
 	}
 
 }
