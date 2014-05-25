@@ -10,13 +10,13 @@
  </layer>
  <layer name="Other" width="64" height="36">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+2Z2w6CMBBElxeN0fSFX/ASLxH9/5+zDd04kEJKBGt2PMk8NNB0B3a7oYjksQIxcgAxspbW+6Z0IIXQd8/unz3///45sVr/Trq9PWiXuI+9/o8gZlj9uyhr9T/EVrp7wgXECLv/0P+Dd5b872PVv0so1f819635nwpr/WtuWPRfT7jXov8Uof/jnsBe/+z+tf9Zy/8aNIbV/p+L1fc/BuYEo3/Esv+c/s+2//efCZt/VqrSARSkArHQP/v/Bek3xzfW2kv7TyOca58yx0sIzxefUbjenDHh3HNc8+p1yxwvJfU/dG2umHDu3avxesRnnjMuoUbeefFpTDj3BdaFT2cAJAAA
+   H4sIAAAAAAAAA+2ZzQrCMBCEtxdFlFx8BX/QitX3fzkTmuA0pDVga2QnH8whtCE77W6WpiJ5rECMHEGMrKX3vikdSCHCu2f3z57/1T8nWuvfyLC3O+0S97HX/wnEDKt/46Wt/sfYynBPuIIYYffv+r/zzpL/MVr9m4RS/T/kvjb/udT65/YfYMl/1/9xT6j1z+1fa/3vQVNo7f+5aH3/U2BOMPpHNPv/VPsOtv0/fiZs/llpSgdQkAbEQnz2/w8K3xy/WOsg/T8Nd659zhwvITxfeHrhenPGhHMvfs3W6pY5XkrB/9i1uWLCuXerzurhn3nOuIQ6eefFtzHh3BeqBIlUACQAAA==
   </data>
  </layer>
  <objectgroup name="Objects" width="64" height="36">
   <object type="Startpos" x="60" y="128" width="18" height="30"/>
   <object type="ShootingEnemy" x="200" y="201" width="40" height="20"/>
-  <object type="ShootingEnemy" x="200" y="340" width="40" height="20"/>
+  <object type="ShootingEnemy" x="200" y="380" width="40" height="20"/>
   <object type="Lethal" x="0" y="200" width="20" height="20"/>
   <object type="Lethal" x="0" y="180" width="20" height="20"/>
   <object type="Lethal" x="0" y="280" width="20" height="20"/>
@@ -28,10 +28,25 @@
   <object type="Lethal" x="200" y="580" width="20" height="20"/>
   <object type="Lethal" x="220" y="580" width="20" height="20"/>
   <object type="Lethal" x="240" y="580" width="20" height="20"/>
-  <object type="ShootingEnemy" x="320" y="620" width="40" height="20"/>
+  <object type="ShootingEnemy" x="420" y="620" width="40" height="20"/>
   <object type="MovingEnemy" x="60" y="460" width="20" height="20"/>
   <object type="MovingEnemy" x="100" y="400" width="20" height="20"/>
   <object type="MovingEnemy" x="140" y="520" width="20" height="20"/>
   <object type="MovingEnemy" x="60" y="500" width="20" height="20"/>
+  <object type="Terrain" x="200" y="0" width="60" height="200"/>
+  <object type="Terrain" x="200" y="400" width="60" height="180"/>
+  <object type="Terrain" x="200" y="220" width="60" height="160"/>
+  <object type="Terrain" x="0" y="160" width="120" height="20"/>
+  <object type="Terrain" x="0" y="320" width="120" height="20"/>
+  <object type="Terrain" x="120" y="240" width="80" height="20"/>
+  <object type="Terrain" x="120" y="400" width="80" height="20"/>
+  <object type="Terrain" x="140" y="500" width="20" height="20"/>
+  <object type="Terrain" x="120" y="560" width="20" height="20"/>
+  <object type="Terrain" x="20" y="540" width="20" height="20"/>
+  <object type="Terrain" x="0" y="640" width="1280" height="80"/>
+  <object type="Terrain" x="0" y="460" width="60" height="20"/>
+  <object type="Terrain" x="60" y="620" width="60" height="20"/>
+  <object type="Terrain" x="80" y="600" width="20" height="20"/>
+  <object type="Terrain" x="240" y="200" width="20" height="20"/>
  </objectgroup>
 </map>

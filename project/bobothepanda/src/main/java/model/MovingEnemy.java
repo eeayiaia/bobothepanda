@@ -26,7 +26,8 @@ public class MovingEnemy extends AbstractMovingObject {
 	
 	public void update(int delta){
 		setNewX(delta, velocity);
-		
+		if(0 == getPosition().getX())
+			setReverseVelocity();
 	}
 	
 	/**
