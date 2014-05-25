@@ -23,8 +23,8 @@ public class ShootingEnemyView implements PropertyChangeListener{
 	public ShootingEnemyView() throws SlickException{
 	
 		//TODO use Animation
-		EnemyRight = new Image("/data/Bobo-01.png");
-		EnemyLeft = new Image("/data/Bobo-01.png").getFlippedCopy(true, false);
+		EnemyRight = new Image("/data/img/Cannon-02.png");
+		EnemyLeft = new Image("/data/img/Cannon-02.png").getFlippedCopy(true, false);
 	}
 	
 	public void drawEnemyLeft(float x, float y){

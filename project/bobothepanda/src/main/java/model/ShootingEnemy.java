@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ShootingEnemy extends AbstractFixedObject {
 
-	private Position centerPos;
+	private Position projectilePos;
 	private final Size projectileSize = new Size(4,4);
 	private PropertyChangeSupport pcs;
 	//private long lastTimedFired;
@@ -23,7 +23,7 @@ public class ShootingEnemy extends AbstractFixedObject {
 	
 	public ShootingEnemy(Position position, Size size) {
 		super(position, size);
-		centerPos = new Position((float)getHitbox().getCenterX(),(float)getHitbox().getCenterY());
+		projectilePos = new Position(getPosition().getX(), getPosition().getY());
 		//lastTimedFired = System.currentTimeMillis();
 		projectiles = new ArrayList<Projectile>();
 		pcs = new PropertyChangeSupport(this);
@@ -55,7 +55,7 @@ public class ShootingEnemy extends AbstractFixedObject {
 	public void fireProjectile(){
 		
 		if(!fired){
-			projectiles.add(new Projectile(centerPos, projectileSize));
+			projectiles.add(new Projectile(projectilePos, projectileSize));
 			pcs.firePropertyChange("ADD_PROJECTILE", null, projectiles.get(count));
 			//lastTimedFired = System.currentTimeMillis();
 			fired = true;
