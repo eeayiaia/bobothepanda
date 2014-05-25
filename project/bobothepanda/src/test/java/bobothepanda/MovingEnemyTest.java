@@ -1,5 +1,8 @@
 package bobothepanda;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 import model.Door;
 import model.FixedEnemy;
 import model.MovingEnemy;
@@ -15,9 +18,10 @@ import org.junit.Test;
 
 public class MovingEnemyTest extends Assert {
 	
-	MovingEnemy movingEnemy;
-	float initialVelocity;
-	float reverseInitialVelocity;
+	private MovingEnemy movingEnemy;
+	private float initialVelocity;
+	private float reverseInitialVelocity;
+	private boolean eventReceived;
 	
 	@Before
 	public void setUp(){
@@ -26,6 +30,41 @@ public class MovingEnemyTest extends Assert {
 		reverseInitialVelocity = initialVelocity * -1;
 	}
 	
+	@Test
+	public void testRenderMovingLeft(){
+		movingEnemy.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if("ENEMY_MOVING_LEFT".equals(evt.getPropertyName())) {
+			    	eventReceived = true;
+			    }	
+		   }
+		});
+		eventReceived = false;
+		movingEnemy.visit(new Door(new Position(1f,1f), new Size(10,10)));
+		movingEnemy.render();
+		assertTrue(eventReceived);
+	}
+	
+	@Test
+	public void testRenderMovingRight(){
+		movingEnemy.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if("ENEMY_MOVING_RIGHT".equals(evt.getPropertyName())) {
+			    	eventReceived = true;
+			    }	
+		   }
+		});
+		eventReceived = false;
+		movingEnemy.render();
+		assertTrue(eventReceived);
+	}
+	
+	@Test
+	public void testUpdate(){
+		final float oldX = movingEnemy.getPosition().getX();
+		movingEnemy.update(1000);
+		assertNotEquals(oldX, movingEnemy.getPosition().getX());
+	}
 	
 	@Test
 	public void testVisitCharacterFromAbove(){

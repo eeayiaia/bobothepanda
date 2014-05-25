@@ -17,7 +17,7 @@ public class MovingEnemy extends AbstractMovingObject {
 	
 	
 	public void render(){
-		if(this.getVelocity() <= 0){
+		if(this.getVelocity() < 0){
 			pcs.firePropertyChange("ENEMY_MOVING_LEFT", null, this.getPosition());
 		}else{
 			pcs.firePropertyChange("ENEMY_MOVING_RIGHT", null, this.getPosition());
