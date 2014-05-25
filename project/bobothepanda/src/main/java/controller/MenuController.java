@@ -6,13 +6,11 @@ import java.beans.PropertyChangeListener;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.MouseListener;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import main.MainClass;
-import model.Position;
 import model.menu.Menu;
 import model.menu.MenuState;
 import utilities.MenuMapHandler;
@@ -23,7 +21,6 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 	private MenuMapHandler menuMapHandler;
 	private GameContainer container;
 	private StateBasedGame game;
-	private MenuView menuView;
 	
 	public MenuController(){
 		super();
@@ -41,7 +38,7 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 			throws SlickException {
 		menuMapHandler = new MenuMapHandler();
 		menu = new Menu(menuMapHandler.getMenuItemList());
-		menuView = new MenuView(menu.getCharacterPosition().getX(), menu.getCharacterPosition().getY());
+		final MenuView menuView = new MenuView(menu.getCharacterPosition().getX(), menu.getCharacterPosition().getY());
 		menu.addListener(this);
 		menu.addListener(menuView);
 		menu.addListener(menuView.getStartView());

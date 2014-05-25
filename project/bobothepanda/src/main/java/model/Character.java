@@ -3,7 +3,6 @@ package model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-@SuppressWarnings("PMD")
 
 public class Character extends AbstractMovingObject{
 	

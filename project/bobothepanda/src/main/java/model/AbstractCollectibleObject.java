@@ -15,9 +15,6 @@ public abstract class AbstractCollectibleObject extends AbstractMapObject{
 		// TODO Auto-generated constructor stub
 	}
 
-	public void accept(IVisitor visitor) {
-		// TODO Auto-generated method stub
-
-	}
+	abstract public void accept(IVisitor visitor);
 
 }

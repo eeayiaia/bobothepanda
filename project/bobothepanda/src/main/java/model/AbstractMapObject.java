@@ -35,7 +35,7 @@ public abstract class AbstractMapObject implements IVisitable{
 	
 	public void setPosition(Position position) {
 		if(position == null) {
-			throw new NullPointerException("Cannot set position to null");
+			throw new NullPointerException(this.getClass().toString());
 		}else {
 			setX(position.getX());
 			setY(position.getY());
