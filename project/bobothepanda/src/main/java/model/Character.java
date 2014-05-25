@@ -209,17 +209,16 @@ public class Character extends AbstractMovingObject{
 		final float objectYPos = objPos.getY();
 		final float objectHeight = afo.getSize().getHeight();
 
-		if((characterYPos <= objectYPos || characterYPos + characterWidth <= objectYPos) && getYVelocity() > 0){
+		if((characterYPos <= objectYPos) && getYVelocity() > 0){
 			pos.setY(objectYPos - characterHeight);
 			setYVelocity(0f);
 			
-		}else if((characterYPos <= objectYPos + objectHeight ||
-				characterYPos + characterWidth <= objectYPos + objectHeight) && getYVelocity() < 0){
+		}else if((characterYPos <= objectYPos + objectHeight) && getYVelocity() < 0){
 			
 			pos.setY(objectYPos + characterHeight);
 			setYVelocity(0f);
 			
-		}else if(characterXPos <= objectXPos || characterXPos + characterHeight >= objectXPos){
+		}else if(characterXPos <= objectXPos || characterXPos + characterWidth >= objectXPos){
 			pos.setX(oldX);
 		}
 	}
