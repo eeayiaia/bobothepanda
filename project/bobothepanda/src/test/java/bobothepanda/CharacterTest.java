@@ -27,9 +27,9 @@ public class CharacterTest extends Assert {
 	private Character character;
 	private Position position = new Position(3f,3f);
 	private final Size size = new Size(5f,5f);
-	private final static int delta = 17;
+	private final static int DELTA = 17;
 	private boolean eventRecieved;
-	private final String reloadLevel = "RELOAD_LEVEL";
+	private final static String RELOAD_LEVEL = "RELOAD_LEVEL";
 	
 	@Before
 	public void setUp() throws Exception {
@@ -127,7 +127,7 @@ public class CharacterTest extends Assert {
 		   }
 		});
 		eventRecieved = false;
-		character.moveRight(delta);
+		character.moveRight(DELTA);
 		character.update();
 		assertTrue(eventRecieved);
 	}
@@ -142,7 +142,7 @@ public class CharacterTest extends Assert {
 		   }
 		});
 		eventRecieved = false;
-		character.moveRight(delta);
+		character.moveRight(DELTA);
 		character.update();
 		assertTrue(eventRecieved);
 	}
@@ -177,42 +177,42 @@ public class CharacterTest extends Assert {
 
 	@Test
 	public void testMoveLeft() {
-		character.moveLeft(delta); 
+		character.moveLeft(DELTA); 
 		assertTrue(0 > character.getXVelocity());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testMoveLeftNegativeDelta() {
-		character.moveLeft(-delta);
+		character.moveLeft(-DELTA);
 	}
 	
 	@Test
 	public void testMoveRight() {
-		character.moveRight(delta);
+		character.moveRight(DELTA);
 		assertTrue(0 < character.getXVelocity());
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testMoveRightNegativeDelta() {
-		character.moveRight(-delta);
+		character.moveRight(-DELTA);
 	}
 	
 	@Test
 	public void testJump() {
 		character.visit(new Terrain(position, size));
-		character.jump(delta);
+		character.jump(DELTA);
 		assertEquals(-1.7f, character.getYVelocity(), 0.0001);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testJumpNegativeDelta() {
-		character.jump(-delta);
+		character.jump(-DELTA);
 	}
 	
 	@Test
 	public void testJumpNotOnGround() {
 		final float yVelocity = character.getYVelocity();
-		character.jump(delta);
+		character.jump(DELTA);
 		assertEquals(yVelocity, character.getYVelocity(), 0.0001);
 	}
 	
@@ -227,7 +227,7 @@ public class CharacterTest extends Assert {
 		});
 		eventRecieved = false;
 		character.visit(new Terrain(position, size));
-		character.jump(delta);
+		character.jump(DELTA);
 		assertTrue(eventRecieved);
 	}
 	
@@ -235,21 +235,21 @@ public class CharacterTest extends Assert {
 	public void testApplyGravityYVelocity() {
 		final Gravity gravity = new Gravity (0.01f);
 		final float yVelocity = character.getYVelocity();
-		final float newYVelocity = gravity.getNewVelocity(yVelocity, delta);
-		character.applyGravity(delta);
+		final float newYVelocity = gravity.getNewVelocity(yVelocity, DELTA);
+		character.applyGravity(DELTA);
 		assertEquals(newYVelocity, character.getYVelocity(), 0.0001);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testApplyGravityNegativeDelta() {
-		character.applyGravity(-delta);
+		character.applyGravity(-DELTA);
 	}
 	
 	@Test
 	public void testDie() {
 		character.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if(reloadLevel.equals(evt.getPropertyName())) {
+			    if(RELOAD_LEVEL.equals(evt.getPropertyName())) {
 			    	eventRecieved = true;
 			    }	
 		   }
@@ -263,7 +263,7 @@ public class CharacterTest extends Assert {
 	public void testVisitFixedEnemy() {
 		character.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if(reloadLevel.equals(evt.getPropertyName())) {
+			    if(RELOAD_LEVEL.equals(evt.getPropertyName())) {
 			    	eventRecieved = true;
 			    }	
 		   }
@@ -277,7 +277,7 @@ public class CharacterTest extends Assert {
 	public void testVisitMovingEnemy() {
 		character.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if(reloadLevel.equals(evt.getPropertyName())) {
+			    if(RELOAD_LEVEL.equals(evt.getPropertyName())) {
 			    	eventRecieved = true;
 			    }	
 		   }
@@ -291,7 +291,7 @@ public class CharacterTest extends Assert {
 	public void testVisitProjectile() {
 		character.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if(reloadLevel.equals(evt.getPropertyName())) {
+			    if(RELOAD_LEVEL.equals(evt.getPropertyName())) {
 			    	eventRecieved = true;
 			    }	
 		   }
