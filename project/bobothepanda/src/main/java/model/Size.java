@@ -15,7 +15,7 @@ public class Size {
 	
 	public Size(Size size) {
 		if(size == null){
-			throw new NullPointerException(this.getClass().toString() + "  :Size must be initialized");
+			throw new NullPointerException(this.getClass().toString());
 		}else{
 			this.width = size.getWidth();
 			this.height = size.getHeight();

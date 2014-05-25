@@ -16,7 +16,7 @@ public class Position {
 	
 	public Position(Position position){
 		if(position == null){
-			throw new NullPointerException(this.getClass().toString() + "  :Parameter must be non-null");
+			throw new NullPointerException(this.getClass().toString());
 		}else{
 			setX(position.getX());
 			setY(position.getY());
