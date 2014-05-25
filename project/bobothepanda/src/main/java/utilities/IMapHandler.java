@@ -17,5 +17,5 @@ public interface IMapHandler {
 	
 	Position getCharacterStartPosition();
 	
-	void loadLevel(String levelName) throws SlickException;
+	void loadLevel(String levelName) throws SlickException, MapHandlerException;
 }

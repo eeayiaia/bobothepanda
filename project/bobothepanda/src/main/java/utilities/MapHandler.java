@@ -4,6 +4,7 @@ package utilities;
  * @author Oscar Muhr
  */
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +54,11 @@ public class MapHandler implements IMapHandler {
 	/**
 	 * Loads the specified level.
 	 */
-	public final void loadLevel(String levelName) throws SlickException{
+	public final void loadLevel(String levelName) throws SlickException, MapHandlerException{
+		File file = new File(MAP_LOCATION + levelName + ".tmx");
+		if(!file.exists()){
+			throw new MapHandlerException();
+		}
 		map = new TiledMap(MAP_LOCATION + levelName + ".tmx", TILESET_LOCATION);
 		objects = new ArrayList<AbstractMapObject>();
 		createObjectLists();

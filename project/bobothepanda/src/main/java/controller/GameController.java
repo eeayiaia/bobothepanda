@@ -71,43 +71,45 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	}
 
 	public void render(GameContainer container, StateBasedGame game, Graphics g)throws SlickException {
-		g.scale(MainClass.SCALE, MainClass.SCALE);
-		mapHandler.renderMap();
-		character.update();
-		if(key != null){
-			key.update();
-		}
-		for(final MovingEnemy movingEnemy: movingEnemies){
-			movingEnemy.render();
-		}
-		for(final FixedEnemy fixedEnemy: fixedEnemies){
-			fixedEnemy.render();
-		}
-		for(final ShootingEnemy shootingEnemy: shootingEnemies){
-			shootingEnemy.render();
-		}
-		
-		for(final Projectile projectile: projectiles){
-			projectile.render();
+		if(!noMoreLevel){
+			g.scale(MainClass.SCALE, MainClass.SCALE);
+			mapHandler.renderMap();
+			character.update();
+			if(key != null){
+				key.update();
+			}
+			for(final MovingEnemy movingEnemy: movingEnemies){
+				movingEnemy.render();
+			}
+			for(final FixedEnemy fixedEnemy: fixedEnemies){
+				fixedEnemy.render();
+			}
+			for(final ShootingEnemy shootingEnemy: shootingEnemies){
+				shootingEnemy.render();
+			}
+			
+			for(final Projectile projectile: projectiles){
+				projectile.render();
+			}
 		}
 	}
 
 	public void update(GameContainer container, StateBasedGame game, int delta)throws SlickException {
-		if(noMoreLevel){
-			game.enterState(1);
-		}
-		characterController.handleInput(container.getInput(), delta);
-		level.update();
-		for(final MovingEnemy movingEnemy: movingEnemies){
-			movingEnemy.update(delta);
-		}
-		for(final ShootingEnemy shootingEnemy: shootingEnemies) {
-			shootingEnemy.update(delta);
+		if(!noMoreLevel){
+			characterController.handleInput(container.getInput(), delta);
+			level.update();
+			for(final MovingEnemy movingEnemy: movingEnemies){
+				movingEnemy.update(delta);
+			}
+			for(final ShootingEnemy shootingEnemy: shootingEnemies) {
+				shootingEnemy.update(delta);
+			}
+			
+			for(final Projectile projectile: projectiles){
+				projectile.update(delta);
+			}
 		}
 		
-		for(final Projectile projectile: projectiles){
-			projectile.update(delta);
-		}
 	}
 
 	@Override
@@ -174,25 +176,28 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		}
 		try{
 			mapHandler = new MapHandler("newLevel" + currentLevelNumber);
+			character = new Character(mapHandler.getCharacterStartPosition(), new Size(WIDTH, HEIGHT));
+			character.addPropertyChangeListener(new CharacterView());
+			level = new Level(mapHandler.getMapObjectList(), character);
+			final LevelView levelView = new LevelView();
+			addObjectViews(mapHandler.getMapObjectList());
+			level.addPropertyChangeListener(levelView);
+			character.addPropertyChangeListener(level);
+			character.addPropertyChangeListener(new AudioController());
+			characterController = new CharacterController(character);
+			level.addPropertyChangeListener(this);
+			if(projectiles != null){
+				projectiles.clear();
+			}
 		}catch(MapHandlerException e){
-			currentLevelNumber = 1;
-//			noMoreLevel = true;
+			System.out.println("found exception iin loadlevel gc");
 			game.enterState(1);
+			currentLevelNumber = 1;
+			noMoreLevel = true;
+			
 		}
 		
-		character = new Character(mapHandler.getCharacterStartPosition(), new Size(WIDTH, HEIGHT));
-		character.addPropertyChangeListener(new CharacterView());
-		level = new Level(mapHandler.getMapObjectList(), character);
-		final LevelView levelView = new LevelView();
-		addObjectViews(mapHandler.getMapObjectList());
-		level.addPropertyChangeListener(levelView);
-		character.addPropertyChangeListener(level);
-		character.addPropertyChangeListener(new AudioController());
-		characterController = new CharacterController(character);
-		level.addPropertyChangeListener(this);
-		if(projectiles != null){
-			projectiles.clear();
-		}
+		
 	}
 
 	@SuppressFBWarnings
