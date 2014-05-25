@@ -3,10 +3,7 @@ package bobothepanda;
 import java.awt.Rectangle;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
-import java.util.List;
 
-import model.AbstractMapObject;
 import model.Door;
 import model.FixedEnemy;
 import model.Gravity;
@@ -22,7 +19,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
+//Supressed PMD warnings because the class is big from being
+//a test class. 
+@SuppressWarnings({"PMD.GodClass", "PMD.ExcessivePublicCount", "PMD.TooManyMethods"})
 public class CharacterTest extends Assert {
 	private Character character;
 	private Position position = new Position(3f,3f);
@@ -33,9 +32,6 @@ public class CharacterTest extends Assert {
 	
 	@Before
 	public void setUp() throws Exception {
-		final AbstractMapObject terrain = new Terrain(new Position(1f,1f), new Size(5f,5f));
-		final List <AbstractMapObject> list = new ArrayList <AbstractMapObject>();
-		list.add(terrain);
 		character = new Character(position, size);
 	}
 	
@@ -77,6 +73,8 @@ public class CharacterTest extends Assert {
 		assertEquals(position, character.getPosition());
 	}
 	
+	//Intention is to see what happens when
+	//a null object is used as parameter.
 	@SuppressWarnings("PMD.NullAssignment")
 	@Test(expected = NullPointerException.class)
 	public void testSetPositionNull() {
@@ -209,6 +207,10 @@ public class CharacterTest extends Assert {
 		character.jump(-DELTA);
 	}
 	
+	
+	//Suppress FBWarnings as the method works as intended
+	//and should always call character.jump()
+	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 	@Test
 	public void testJumpNotOnGround() {
 		final float yVelocity = character.getYVelocity();
@@ -231,6 +233,9 @@ public class CharacterTest extends Assert {
 		assertTrue(eventRecieved);
 	}
 	
+	//Suppress FBWarnings as the method works as intended
+	//and should always call character.applyGravity()
+	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 	@Test
 	public void testApplyGravityYVelocity() {
 		final Gravity gravity = new Gravity (0.01f);
