@@ -178,7 +178,6 @@ public class Character extends AbstractMovingObject{
 	}
 	
 	public void die() {
-		pcs.firePropertyChange("die", null, null);
 		pcs.firePropertyChange("reloadLevel", null, null);
 	}
 	
