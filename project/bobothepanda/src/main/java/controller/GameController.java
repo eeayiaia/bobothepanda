@@ -85,7 +85,6 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		g.scale(MainClass.SCALE, MainClass.SCALE);
 		mapHandler.renderMap();
 		character.update();
-		level.render();
 		if(key != null){
 			key.update();
 		}
@@ -104,7 +103,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			game.enterState(1);
 		}
 		characterController.handleInput(container.getInput(), delta);
-		level.update(delta);
+		level.update();
 		for(MovingEnemy movingEnemy: movingEnemies){
 			movingEnemy.update(delta);
 		}

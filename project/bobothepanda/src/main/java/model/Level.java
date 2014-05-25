@@ -40,14 +40,11 @@ public class Level implements PropertyChangeListener{
 		}
 	}
 	
-	//TODO göra om både update och render, alternativt ta bort render
-	public void update(int delta){
-		//projectile.update(delta);
-		checkCollisions();
-		//TODO set gravity etc.	
+	
+	public void update(){
+		checkCollisions();		
 	}
-	public void render(){
-	}
+	
 	
 	/**
 	 * Loops through all objects on the map and checks if any collisions has occured
