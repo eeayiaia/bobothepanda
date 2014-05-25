@@ -7,7 +7,7 @@ public class MovingEnemy extends AbstractMovingObject {
 	
 	private float velocity = 0.25f;
 	private boolean dead;
-	PropertyChangeSupport pcs;
+	private final PropertyChangeSupport pcs;
 
 	public MovingEnemy(Position position, Size size) {
 		super(position, size);
@@ -26,8 +26,9 @@ public class MovingEnemy extends AbstractMovingObject {
 	
 	public void update(int delta){
 		setNewX(delta, velocity);
-		if(0 == getPosition().getX())
+		if(0 == getPosition().getX()){
 			setReverseVelocity();
+		}
 	}
 	
 	/**
@@ -89,8 +90,12 @@ public class MovingEnemy extends AbstractMovingObject {
 		visitor.visit(this);
 	}
 	
-	public void visit(Key k) {}
-	public void visit(Projectile p) {}
+	public void visit(Key k) {
+		//this is never the case
+	}
+	public void visit(Projectile p) {
+		//shouldn't be affected by strike of projectile
+	}
 	
 	
 	public void addPropertyChangeListener(PropertyChangeListener listener){
