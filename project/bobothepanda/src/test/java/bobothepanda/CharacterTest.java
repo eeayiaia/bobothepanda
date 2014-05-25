@@ -27,8 +27,9 @@ public class CharacterTest extends Assert {
 	private Character character;
 	private Position position = new Position(3f,3f);
 	private final Size size = new Size(5f,5f);
-	private final int delta = 17;
-	private boolean eventRecieved = false;
+	private final static int delta = 17;
+	private boolean eventRecieved;
+	private final String reloadLevel = "RELOAD_LEVEL";
 	
 	@Before
 	public void setUp() throws Exception {
@@ -76,6 +77,7 @@ public class CharacterTest extends Assert {
 		assertEquals(position, character.getPosition());
 	}
 	
+	@SuppressWarnings("PMD.NullAssignment")
 	@Test(expected = NullPointerException.class)
 	public void testSetPositionNull() {
 		position = null;
@@ -84,14 +86,14 @@ public class CharacterTest extends Assert {
 	
 	@Test
 	public void testGetKeyPickedUpFalse() {
-		assertEquals(false, character.isKeyPickedUp());
+		assertFalse(character.isKeyPickedUp());
 	}
 	
 	@Test
 	public void testGetKeyPickedUpTrue() {
-		Key key = new Key(position, new Size(20f,20f));
+		final Key key = new Key(position, new Size(20f,20f));
 		character.visit(key);
-		assertEquals(true, character.isKeyPickedUp());
+		assertTrue(character.isKeyPickedUp());
 	}
 	
 	@Test
@@ -110,7 +112,7 @@ public class CharacterTest extends Assert {
 	
 	@Test
 	public void testSetYVelocity() {
-		float yVelocity = 2f;
+		final float yVelocity = 2f;
 		character.setYVelocity(yVelocity);
 		assertEquals(yVelocity, character.getYVelocity(),0);
 	}
@@ -209,7 +211,7 @@ public class CharacterTest extends Assert {
 	
 	@Test
 	public void testJumpNotOnGround() {
-		float yVelocity = character.getYVelocity();
+		final float yVelocity = character.getYVelocity();
 		character.jump(delta);
 		assertEquals(yVelocity, character.getYVelocity(), 0.0001);
 	}
@@ -231,16 +233,11 @@ public class CharacterTest extends Assert {
 	
 	@Test
 	public void testApplyGravityYVelocity() {
-		Gravity gravity = new Gravity (0.01f);
-		float yVelocity = character.getYVelocity();
-		float newYVelocity = gravity.getNewVelocity(yVelocity, delta);
+		final Gravity gravity = new Gravity (0.01f);
+		final float yVelocity = character.getYVelocity();
+		final float newYVelocity = gravity.getNewVelocity(yVelocity, delta);
 		character.applyGravity(delta);
 		assertEquals(newYVelocity, character.getYVelocity(), 0.0001);
-	}
-	
-	@Test
-	public void testApplyGravityPosition() {
-		
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -252,7 +249,7 @@ public class CharacterTest extends Assert {
 	public void testDie() {
 		character.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if("RELOAD_LEVEL".equals(evt.getPropertyName())) {
+			    if(reloadLevel.equals(evt.getPropertyName())) {
 			    	eventRecieved = true;
 			    }	
 		   }
@@ -266,7 +263,7 @@ public class CharacterTest extends Assert {
 	public void testVisitFixedEnemy() {
 		character.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if("RELOAD_LEVEL".equals(evt.getPropertyName())) {
+			    if(reloadLevel.equals(evt.getPropertyName())) {
 			    	eventRecieved = true;
 			    }	
 		   }
@@ -280,7 +277,7 @@ public class CharacterTest extends Assert {
 	public void testVisitMovingEnemy() {
 		character.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if("RELOAD_LEVEL".equals(evt.getPropertyName())) {
+			    if(reloadLevel.equals(evt.getPropertyName())) {
 			    	eventRecieved = true;
 			    }	
 		   }
@@ -294,7 +291,7 @@ public class CharacterTest extends Assert {
 	public void testVisitProjectile() {
 		character.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if("RELOAD_LEVEL".equals(evt.getPropertyName())) {
+			    if(reloadLevel.equals(evt.getPropertyName())) {
 			    	eventRecieved = true;
 			    }	
 		   }
