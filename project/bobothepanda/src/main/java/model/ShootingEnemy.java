@@ -13,17 +13,16 @@ import java.util.List;
 
 public class ShootingEnemy extends AbstractFixedObject {
 
-	private Position projectilePos;
+	private final Position projectilePos;
 	private final Size projectileSize = new Size(4,4);
-	private PropertyChangeSupport pcs;
-	//private long lastTimedFired;
+	private final PropertyChangeSupport pcs;
 	private boolean fired;
-	private List<Projectile>projectiles;
+	private final List<Projectile>projectiles;
 	private int count;
 	
 	public ShootingEnemy(Position position, Size size) {
 		super(position, size);
-		Position pos = getPosition();
+		final Position pos = getPosition();
 		projectilePos = new Position(pos.getX(), pos	.getY());
 		//lastTimedFired = System.currentTimeMillis();
 		projectiles = new ArrayList<Projectile>();
