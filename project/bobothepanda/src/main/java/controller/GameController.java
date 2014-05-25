@@ -48,9 +48,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private List <FixedEnemy> fixedEnemies;
 	private List <ShootingEnemy> shootingEnemies;
 	private final List <Projectile> projectiles;
-	private boolean noMoreLevel;
 	private StateBasedGame game;
-	//private Iterator<Projectile> iterator;
 	
 	
 	/**

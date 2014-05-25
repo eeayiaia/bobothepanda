@@ -55,7 +55,7 @@ public class MapHandler implements IMapHandler {
 	 * Loads the specified level.
 	 */
 	public final void loadLevel(String levelName) throws SlickException, MapHandlerException{
-		File file = new File(MAP_LOCATION + levelName + ".tmx");
+		final File file = new File(MAP_LOCATION + levelName + ".tmx");
 		if(!file.exists()){
 			throw new MapHandlerException();
 		}
