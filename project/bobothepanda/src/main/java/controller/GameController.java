@@ -31,6 +31,8 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 
 public class GameController extends BasicGameState implements PropertyChangeListener{
 	
@@ -211,7 +213,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		}
 	}
 
-
+	@SuppressFBWarnings
 	public void addObjectViews(List <AbstractMapObject> abstractMapObjects) throws SlickException{
 		movingEnemies = new ArrayList<MovingEnemy>();
 		fixedEnemies = new ArrayList<FixedEnemy>();
