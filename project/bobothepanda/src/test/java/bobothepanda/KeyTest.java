@@ -40,7 +40,7 @@ public class KeyTest extends Assert{
 	
 	@Test
 	public void testAccept(){
-		Character character = new Character(new Position(10f,10f), new Size(10,10));
+		final Character character = new Character(new Position(10f,10f), new Size(10,10));
 		key.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
 			    if("KEY_PICKED_UP".equals(evt.getPropertyName())) {
@@ -55,7 +55,7 @@ public class KeyTest extends Assert{
 	@SuppressFBWarnings
 	@Test(expected = NullPointerException.class)
 	public void testAcceptNull(){
-		Character character = null;
+		final Character character = null;
 		key.accept(character);
 	}
 }

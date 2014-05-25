@@ -12,9 +12,8 @@ import org.junit.Test;
 
 public class GravityTest extends Assert {
 	
-	Gravity gravity;
-	float velocity;
-	int delta;
+	private Gravity gravity;
+	private int delta;
 	
 	@Before
 	public void setUp() {
@@ -29,21 +28,21 @@ public class GravityTest extends Assert {
 	
 	@Test
 	public void testGetNewVelocity() {
-		velocity = -2.5f;
+		final float velocity = -2.5f;
 		
 		assertEquals(gravity.getNewVelocity(velocity, delta), velocity + gravity.getGravity()*delta, 0);
 	}
 	
 	@Test
 	public void testGetNewVelocityMaxValue() {
-		velocity = 0.51f;
+		final float velocity = 0.51f;
 		
 		assertEquals(gravity.getNewVelocity(velocity, delta), 1f, 0);
 	}
 	
 	@Test
 	public void testGetNewYPosition() {
-		velocity = 0.2f;
+		final float velocity = 0.2f;
 		final float yValue = 10f;
 		
 		assertEquals(gravity.getNewYPosition(yValue, velocity, delta), yValue + velocity * delta + 0.5 * gravity.getGravity() * delta * delta, 0.001);
