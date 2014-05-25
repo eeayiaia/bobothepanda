@@ -14,6 +14,7 @@ import model.FixedEnemy;
 import model.Key;
 import model.Level;
 import model.MovingEnemy;
+import model.Position;
 import model.Projectile;
 import model.ShootingEnemy;
 import model.Size;
@@ -50,6 +51,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private List <Projectile> projectiles;
 	private boolean noMoreLevel = false;
 	private StateBasedGame game;
+	private Position characterStartPos;
 	//private Iterator<Projectile> iterator;
 	
 	
@@ -156,11 +158,14 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			}
 			
 		}else if("RELOAD_LEVEL".equals(evt.getPropertyName())){
+			
+			//reloadLevel();
 			try {
 				loadLevel(true);
 			} catch (SlickException e) {
 				throw new MapHandlerException(e);
 			}
+			
 			
 		}else if("ADD_PROJECTILE".equals(evt.getPropertyName())){
 			try{
@@ -232,6 +237,12 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	 * @param loadCurrentLevel true: loads current level, false: loads next level.
 	 * @throws SlickException
 	 */
+	
+	public void reloadLevel(){
+		System.out.println(characterStartPos.getX());
+		character.setPosition(characterStartPos);
+	}
+	
 	public final void loadLevel(boolean loadCurrentLevel) throws SlickException{
 		noMoreLevel = false;
 		if(!loadCurrentLevel){
@@ -239,13 +250,14 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		}
 		try{
 			mapHandler = new MapHandler("newLevel" + currentLevelNumber);
+			characterStartPos = new Position(mapHandler.getCharacterStartPosition());
 		}catch(Exception e){
 			currentLevelNumber = 1;
 //			noMoreLevel = true;
 			game.enterState(1);
 		}
 		
-		character = new Character(mapHandler.getCharacterStartPosition(), new Size(WIDTH, HEIGHT));
+		character = new Character(characterStartPos, new Size(WIDTH, HEIGHT));
 		character.addPropertyChangeListener(new CharacterView());
 		level = new Level(mapHandler.getMapObjectList(), character);
 		final LevelView levelView = new LevelView();
@@ -256,6 +268,9 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		character.addPropertyChangeListener(audioController);
 		characterController = new CharacterController(character);
 		level.addPropertyChangeListener(this);
+		if(projectiles != null){
+			projectiles.clear();
+		}
 	}
 
 

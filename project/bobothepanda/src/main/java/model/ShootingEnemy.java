@@ -64,11 +64,10 @@ public class ShootingEnemy extends AbstractFixedObject {
 		
 		/*
 		if(lastTimedFired + 1000 <= System.currentTimeMillis()){
-			System.out.println("shooting");
-			System.out.println(centerPos.getX());
-			Projectile projectile = new Projectile(centerPos, projectileSize);
-			pcs.firePropertyChange("ADD_PROJECTILE", null, projectile);
+			projectiles.add(new Projectile(centerPos, projectileSize));
+			pcs.firePropertyChange("ADD_PROJECTILE", null, projectiles.get(count));
 			lastTimedFired = System.currentTimeMillis();
+			count++;
 		}
 		*/
 	}
