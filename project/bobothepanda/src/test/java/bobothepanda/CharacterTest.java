@@ -7,8 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.AbstractMapObject;
+import model.FixedEnemy;
 import model.Gravity;
 import model.Key;
+import model.MovingEnemy;
+import model.Projectile;
 import model.Terrain;
 import model.Character;
 import model.Position;
@@ -244,4 +247,59 @@ public class CharacterTest extends Assert {
 		character.applyGravity(-delta);
 	}
 	
+	@Test
+	public void testDie() {
+		character.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if("reloadLevel".equals(evt.getPropertyName())) {
+			    	eventRecieved = true;
+			    }	
+		   }
+		});
+		eventRecieved = false;
+		character.die();
+		assertTrue(eventRecieved);
+	}
+	
+	@Test
+	public void testVisitFixedEnemy() {
+		character.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if("reloadLevel".equals(evt.getPropertyName())) {
+			    	eventRecieved = true;
+			    }	
+		   }
+		});
+		eventRecieved = false;
+		character.visit(new FixedEnemy(position, size));
+		assertTrue(eventRecieved);
+	}
+	
+	@Test
+	public void testVisitMovingEnemy() {
+		character.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if("reloadLevel".equals(evt.getPropertyName())) {
+			    	eventRecieved = true;
+			    }	
+		   }
+		});
+		eventRecieved = false;
+		character.visit(new MovingEnemy(position, size));
+		assertTrue(eventRecieved);
+	}
+	
+	@Test
+	public void testVisitProjectile() {
+		character.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if("reloadLevel".equals(evt.getPropertyName())) {
+			    	eventRecieved = true;
+			    }	
+		   }
+		});
+		eventRecieved = false;
+		character.visit(new Projectile(position, size));
+		assertTrue(eventRecieved);
+	}
 }
