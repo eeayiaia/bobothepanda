@@ -32,7 +32,7 @@ public abstract class AbstractMapObject implements IVisitable{
 	public void setY(float yValue) {
 		position.setY(yValue);
 	}
-	
+	@SuppressWarnings("PMD.AvoidThrowingNullPointerException")
 	public void setPosition(Position position) {
 		if(position == null) {
 			throw new NullPointerException(this.getClass().toString());

@@ -84,14 +84,14 @@ public class CharacterTest extends Assert {
 	
 	@Test
 	public void testGetKeyPickedUpFalse() {
-		assertEquals(false, character.getKeyPickedUp());
+		assertEquals(false, character.isKeyPickedUp());
 	}
 	
 	@Test
 	public void testGetKeyPickedUpTrue() {
 		Key key = new Key(position, new Size(20f,20f));
 		character.visit(key);
-		assertEquals(true, character.getKeyPickedUp());
+		assertEquals(true, character.isKeyPickedUp());
 	}
 	
 	@Test
@@ -321,7 +321,7 @@ public class CharacterTest extends Assert {
 	@Test
 	public void testVisitKeyBoolean() {
 		character.visit(new Key(position, size));
-		assertTrue(character.getKeyPickedUp());
+		assertTrue(character.isKeyPickedUp());
 	}
 	
 	@Test

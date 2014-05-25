@@ -7,7 +7,7 @@ import java.beans.PropertyChangeSupport;
 public class Character extends AbstractMovingObject{
 	
 	private CharacterState characterState;
-	private Gravity gravity = new Gravity (0.01f);
+	private final Gravity gravity = new Gravity (0.01f);
 	private float oldX;
 	private final PropertyChangeSupport pcs;
 	private Facing facing;
@@ -37,9 +37,8 @@ public class Character extends AbstractMovingObject{
 	/**
 	 * Get whether or not the key has been picked up
 	 */
-	public boolean getKeyPickedUp() {
+	public boolean isKeyPickedUp() {
 		return keyPickedUp;
-		
 	}
 	
 	/**
@@ -233,7 +232,9 @@ public class Character extends AbstractMovingObject{
 		keyPickedUp = true;
 	}
 
-	public void visit(Character c) {}
+	public void visit(Character c) {
+		//this case doesn't happen during gameplay
+	}
 
 	public void visit(Door door) {
 		if(keyPickedUp){

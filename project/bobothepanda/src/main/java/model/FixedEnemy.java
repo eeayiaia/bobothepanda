@@ -4,7 +4,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class FixedEnemy extends AbstractFixedObject {
-	PropertyChangeSupport pcs;
+	private final PropertyChangeSupport pcs;
 	
 	public FixedEnemy(Position position, Size size) {
 		super(position, size);
