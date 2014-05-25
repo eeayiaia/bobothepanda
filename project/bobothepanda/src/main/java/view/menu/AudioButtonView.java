@@ -27,7 +27,8 @@ public class AudioButtonView implements PropertyChangeListener{
 		audioOffPressed = new Image(LOCATION + "pressedAudioOff.png");
 		
 	}
-
+	
+	@SuppressWarnings("PMD.DataflowAnomalyAnalysis")//It is not incorrect to set x,y to new values everytime
 	public void propertyChange(PropertyChangeEvent evt) {
 		final String source = evt.getPropertyName();
 		final Position pos = (Position) evt.getOldValue();
