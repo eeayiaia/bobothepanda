@@ -16,7 +16,7 @@ import view.ShootingEnemyView.DrawObject;
 
 public class ProjectileView implements PropertyChangeListener{
 
-	private Image projectileSprite;
+	private final Image projectileSprite;
 	
 	public ProjectileView() throws SlickException{
 		projectileSprite = new Image("/data/img/projectiles/testProjectile-01.png"); 
@@ -30,8 +30,9 @@ public class ProjectileView implements PropertyChangeListener{
 		PROJECTILE
 	}
 	
+	@SuppressWarnings("PMD.DataflowAnomalyAnalysis")//It is not incorrect to set x,y to new values everytime
 	public void propertyChange(PropertyChangeEvent evt) {
-		Object obj = evt.getNewValue();
+		final Object obj = evt.getNewValue();
 		if(Position.class == obj.getClass()){
 			final Position pos = (Position)obj;
 			
