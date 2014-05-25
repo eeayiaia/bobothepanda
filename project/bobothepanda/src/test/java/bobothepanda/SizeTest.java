@@ -3,7 +3,6 @@ package bobothepanda;
  * Test class for Size
  * @author Elvira Jonsson
  */
-import model.Position;
 import model.Size;
 
 import org.junit.Assert;
@@ -35,11 +34,11 @@ public class SizeTest extends Assert {
 	
 	@Test
 	public void testHashCode(){
-		Size size1 = new Size(size);
-		assertNotSame(size1, size);
+		final Size size1 = new Size(size);
 		assertEquals(size.hashCode(), size1.hashCode(), 0f);
 	}
 	
+	@SuppressWarnings("PMD")//The equals method should return false, when checked against null
 	@Test
 	public void testEqualsNull(){
 		assertFalse(size.equals(null));
@@ -60,6 +59,7 @@ public class SizeTest extends Assert {
 		assertFalse(size.equals(new Size(size.getWidth() -1f, size.getHeight())));
 	}
 	
+	@SuppressWarnings("PMD")//testing the equals method
 	@Test
 	public void testEquals(){
 		assertTrue(size.equals(new Size(size)));
@@ -68,8 +68,8 @@ public class SizeTest extends Assert {
 	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 	@Test(expected = NullPointerException.class)
 	public void testConstructorNull(){
-			Size size1 = null;
-			Size size2 = new Size(size1);
+			final Size size1 = null;
+			new Size(size1);
 	}
 	
 	
