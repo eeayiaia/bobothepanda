@@ -3,7 +3,7 @@ package model;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-
+@SuppressWarnings("PMD.TooManyMethods")
 public class Character extends AbstractMovingObject{
 	
 	private CharacterState characterState;
