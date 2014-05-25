@@ -13,7 +13,8 @@ public class Position {
 		setX(x);
 		setY(y);
 	}
-	
+	//This method should throw nullPointerException if parameter isn't non-null
+	@SuppressWarnings("PMD.AvoidThrowingNullPointerException")
 	public Position(Position position){
 		if(position == null){
 			throw new NullPointerException(this.getClass().toString());
