@@ -10,7 +10,7 @@
  </layer>
  <layer name="Other" width="64" height="36">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+2ZzQrCMBCEtxdFlFx8BX/QitX3fzkTmuA0pDVga2QnH8whtCE77W6WpiJ5rECMHEGMrKX3vikdSCHCu2f3z57/1T8nWuvfyLC3O+0S97HX/wnEDKt/46Wt/sfYynBPuIIYYffv+r/zzpL/MVr9m4RS/T/kvjb/udT65/YfYMl/1/9xT6j1z+1fa/3vQVNo7f+5aH3/U2BOMPpHNPv/VPsOtv0/fiZs/llpSgdQkAbEQnz2/w8K3xy/WOsg/T8Nd659zhwvITxfeHrhenPGhHMvfs3W6pY5XkrB/9i1uWLCuXerzurhn3nOuIQ6eefFtzHh3BeqBIlUACQAAA==
+   H4sIAAAAAAAAA+2Z2w6CMBBElwc1XtIXf8FLUCP6/z9nG9o4EMBNBGt2OMk8NLbpDux2QxXRsQQxcgQxspLa+zp3IJlI757dP3v+W/O/UM6z6n+jnGe1/p00e3vQrmMee/2fQMyw+ndR1uq/j600z4QLiBF2/6H/B+8s+d/Gqn/Xoa7+n3Lfmn8tc/1z+0+w5H/o/3gmzPXP7d9q/e9BQ1jt/1qsvv8hMCcY/SOW/X+q/QDb+d9+Jmz+WSlyB5CRAsRC++7/H5S+OX6x10Hq/zTCvfZZOZ5CeL/wjML9xowJ15Zxz6vXTTmeSsl/329jxYRr716V1yM+c804hyp558W3MeHaF3Z9CawAJAAA
   </data>
  </layer>
  <objectgroup name="Objects" width="64" height="36">
@@ -48,5 +48,7 @@
   <object type="Terrain" x="60" y="620" width="60" height="20"/>
   <object type="Terrain" x="80" y="600" width="20" height="20"/>
   <object type="Terrain" x="240" y="200" width="20" height="20"/>
+  <object type="Door" x="0" y="120" width="20" height="40"/>
+  <object type="Key" x="100" y="140" width="20" height="20"/>
  </objectgroup>
 </map>
