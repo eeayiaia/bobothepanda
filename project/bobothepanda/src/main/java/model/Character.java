@@ -240,7 +240,6 @@ public class Character extends AbstractMovingObject{
 
 	public void visit(Door door) {
 		if(keyPickedUp){
-			pcs.firePropertyChange("door", null, null);
 			levelComplete();
 		}else{
 			collisionWithFixedObject(door);

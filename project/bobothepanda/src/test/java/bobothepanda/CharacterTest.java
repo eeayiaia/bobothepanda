@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.AbstractMapObject;
+import model.Door;
 import model.FixedEnemy;
 import model.Gravity;
 import model.Key;
@@ -300,6 +301,41 @@ public class CharacterTest extends Assert {
 		});
 		eventRecieved = false;
 		character.visit(new Projectile(position, size));
+		assertTrue(eventRecieved);
+	}
+	
+	@Test
+	public void testVisitKeyEvent() {
+		character.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if("key".equals(evt.getPropertyName())) {
+			    	eventRecieved = true;
+			    }	
+		   }
+		});
+		eventRecieved = false;
+		character.visit(new Key(position, size));
+		assertTrue(eventRecieved);
+	}
+	
+	@Test
+	public void testVisitKeyBoolean() {
+		character.visit(new Key(position, size));
+		assertTrue(character.getKeyPickedUp());
+	}
+	
+	@Test
+	public void testVisitDoorKeyPickedUp() {
+		character.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+			    if("loadLevel".equals(evt.getPropertyName())) {
+			    	eventRecieved = true;
+			    }	
+		   }
+		});
+		eventRecieved = false;
+		character.visit(new Key(position, size));
+		character.visit(new Door(position, size));
 		assertTrue(eventRecieved);
 	}
 }
