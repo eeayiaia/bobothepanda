@@ -41,10 +41,9 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private GameContainer container;
 	private Level level;
 	private int currentLevelNumber;
-	private final float WIDTH = 18;
-	private final float HEIGHT = 30;
+	private final static float WIDTH = 18;
+	private final static float HEIGHT = 30;
 	private AudioController audioController;
-	private Key key;
 	private List <MovingEnemy> movingEnemies;
 	private List <FixedEnemy> fixedEnemies;
 	private List <ShootingEnemy> shootingEnemies;
@@ -70,21 +69,6 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		this.container = container;
 		this.game = game;
 		
-		/*
-		mapHandler = new MapHandler("level" + currentLevelNumber);
-		final Collision collision = new Collision(mapHandler.getMapObjectList());
-		
-		character = new Character(mapHandler.getCharacterStartPosition(), collision);
-		character.addPropertyChangeListener(new CharacterView());
-		final Level level = new Level(mapHandler.getMapObjectList(), character);
-		character.addPropertyChangeListener(level);
-		characterController = new CharacterController(character);
-		
-		level.addPropertyChangeListener(this);
-		*/
-		
-		
-		//levelView = new LevelView();
 	}
 
 	public void render(GameContainer container, StateBasedGame game, Graphics g)throws SlickException {
@@ -129,7 +113,6 @@ public class GameController extends BasicGameState implements PropertyChangeList
 
 	@Override
 	public int getID() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 	
@@ -147,7 +130,6 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		REMOVE_PROJECTILE
 	}
 	
-	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 	public void propertyChange(PropertyChangeEvent evt){
 		
 		if("LOAD_LEVEL".equals(evt.getPropertyName())){
@@ -196,40 +178,6 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			
 		}
 		
-		/*
-		switch(Events.valueOf(evt.getPropertyName())){
-			case LOAD_LEVEL:
-				try {
-					loadLevel(false);
-				} catch (SlickException e) {
-					throw new MapHandlerException(e);
-				}
-				break;
-				
-			case RELOAD_LEVEL:
-				try {
-					loadLevel(true);
-				} catch (SlickException e) {
-					throw new MapHandlerException(e);
-				}
-				break;
-				
-			case PROJECTILE:
-				try{
-					Projectile projectile = (Projectile)evt.getNewValue();
-					projectile.addPropertyChangeListener(new ProjectileView());
-					projectiles.add(projectile);
-					mapHandler.getMapObjectList().add(projectile);
-				}catch(SlickException e){
-					
-				}
-				break;
-				
-			case REMOVE_PROJECTILE:
-				projectiles.remove(evt.getNewValue());
-				break;
-			}
-			*/
 		}
 
 	/**
@@ -280,7 +228,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		shootingEnemies = new ArrayList<ShootingEnemy>();
 		for(AbstractMapObject a: abstractMapObjects){
 			if(a.getClass() == Key.class){
-				key = (Key) a;
+				final Key key = (Key) a;
 				key.addPropertyChangeListener(new KeyView());
 			}else if(a.getClass() == MovingEnemy.class){
 				MovingEnemy movingEnemy = (MovingEnemy) a;

@@ -65,6 +65,7 @@ public class SizeTest extends Assert {
 		assertTrue(size.equals(new Size(size)));
 	}
 	
+	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 	@Test(expected = NullPointerException.class)
 	public void testConstructorNull(){
 			Size size1 = null;
