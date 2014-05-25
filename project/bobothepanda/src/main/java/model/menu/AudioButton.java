@@ -7,16 +7,18 @@ import model.Position;
 import model.Size;
 
 public class AudioButton extends AbstractMenuButton {
-	private PropertyChangeSupport pcs;
+	private final PropertyChangeSupport pcs;
+	private MenuState state;
 	
 	public AudioButton(Position pos, Size size, String type){
 		super(pos,size,type);
 		pcs = new PropertyChangeSupport(this);
+		state = MenuState.AUIDO_ON_DEFAULT;
 	}
 
 	@Override
 	public void addListener(PropertyChangeListener listener) {
-		// TODO Auto-generated method stub
+		pcs.addPropertyChangeListener(listener);
 
 	}
 
