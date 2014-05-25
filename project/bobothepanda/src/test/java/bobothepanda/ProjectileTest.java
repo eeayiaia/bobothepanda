@@ -52,6 +52,6 @@ public class ProjectileTest extends Assert{
 		});
 		eventReceived = false;
 		projectile.render();
-		assertTrue(eventReceived);	
+		assertTrue(eventReceived);
 	}
 }
