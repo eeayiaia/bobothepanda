@@ -3,7 +3,6 @@ package controller;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -43,6 +42,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private int currentLevelNumber;
 	private final static float WIDTH = 18;
 	private final static float HEIGHT = 30;
+	private Key key;
 	private AudioController audioController;
 	private List <MovingEnemy> movingEnemies;
 	private List <FixedEnemy> fixedEnemies;
@@ -228,7 +228,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		shootingEnemies = new ArrayList<ShootingEnemy>();
 		for(AbstractMapObject a: abstractMapObjects){
 			if(a.getClass() == Key.class){
-				final Key key = (Key) a;
+				key = (Key) a;
 				key.addPropertyChangeListener(new KeyView());
 			}else if(a.getClass() == MovingEnemy.class){
 				MovingEnemy movingEnemy = (MovingEnemy) a;
