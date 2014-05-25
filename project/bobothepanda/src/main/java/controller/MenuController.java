@@ -22,11 +22,7 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 	private MenuMapHandler menuMapHandler;
 	private GameContainer container;
 	private StateBasedGame game;
-	
-	public MenuController(){
-		super();
 
-	}
 	public void handleInput(Input i, int delta){
 		if(i.isKeyPressed(Input.KEY_ENTER)){
 			game.enterState(0);
@@ -89,7 +85,7 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 		menu.mouseMoved(newX, newY);
 	}
 	public void propertyChange(PropertyChangeEvent evt) {
-		String source = evt.getPropertyName();
+		final String source = evt.getPropertyName();
 		switch(MenuState.valueOf(source)){
 			case QUIT_BUTTON_RELEASED:
 				container.exit();
