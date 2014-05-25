@@ -21,9 +21,9 @@ public class QuitButtonView implements PropertyChangeListener{
 		hoverImage = new Image(LOCATION + "hoverQuitButton.png");
 		pressedImage = new Image(LOCATION + "pressedQuitButton.png");
 	}
-	
+	@SuppressWarnings("PMD.DataflowAnomalyAnalysis")//It is not incorrect to set x,y to new values everytime
 	public void propertyChange(PropertyChangeEvent evt) {
-		String source = evt.getPropertyName();
+		final String source = evt.getPropertyName();
 		final Position buttPos = (Position)evt.getOldValue();
 		final float x = buttPos.getX();
 		final float y = buttPos.getY();
