@@ -1,6 +1,5 @@
 package model.menu;
 
-import java.awt.Point;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
@@ -10,16 +9,13 @@ import model.Position;
 
 public class Menu {
 	private final List<AbstractMenuItem> menuItems;
-	private final PropertyChangeSupport pcs;
 	private Position characterPosition;
-	private MenuState menuState;
 	private List <AbstractMenuButton> menuButtons;
 
 	
 	public Menu(List <AbstractMenuItem> menuItems){
 		this.menuItems = menuItems;
 		menuButtons = new ArrayList<AbstractMenuButton>();
-		pcs = new PropertyChangeSupport(this);
 		for(AbstractMenuItem butt:menuItems){
 			if(butt instanceof AbstractMenuButton){
 				menuButtons.add((AbstractMenuButton)butt);
@@ -33,6 +29,7 @@ public class Menu {
 		return menuItems;
 	}
 	public void addListener(PropertyChangeListener listener){
+		final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 		pcs.addPropertyChangeListener(listener);
 		for(AbstractMenuButton butt:menuButtons){
 			butt.addListener(listener);
