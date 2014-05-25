@@ -10,7 +10,7 @@ import java.util.List;
 public class Level implements PropertyChangeListener{
 	
 	private final PropertyChangeSupport pcs;
-	private List <AbstractMapObject> abstractMapObjects;
+	private final List <AbstractMapObject> abstractMapObjects;
 	
 	
 	public Level(List <AbstractMapObject> abstractMapObjects, Character player){
@@ -49,14 +49,15 @@ public class Level implements PropertyChangeListener{
 	 */
 	public void checkCollisions() {
 		
-		for(AbstractMapObject o: abstractMapObjects){
+		for(final AbstractMapObject o: abstractMapObjects){
 			if(o instanceof IVisitor){
 				
-				for(AbstractMapObject i: abstractMapObjects)
+				for(final AbstractMapObject i: abstractMapObjects){
 					if(collision(o.getHitbox(), i.getHitbox())){
-						IVisitor visitor = (IVisitor) o;
+						final IVisitor visitor = (IVisitor) o;
 						i.accept(visitor);
 					}
+				}
 			}
 			
 		}
