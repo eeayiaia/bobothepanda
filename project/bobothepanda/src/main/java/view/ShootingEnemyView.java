@@ -51,7 +51,7 @@ public class ShootingEnemyView implements PropertyChangeListener{
 			
 			if(drawObj == DrawObject.ENEMY_LEFT){
 				drawEnemyLeft(x, y);
-			}else if(drawObj == DrawObject.ENEMY_LEFT){
+			}else if(drawObj == DrawObject.ENEMY_RIGHT){
 				drawEnemyRight(x, y);
 			}
 			

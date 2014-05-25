@@ -15,6 +15,8 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+import view.ShootingEnemyView.DrawObject;
+
 public class KeyView implements PropertyChangeListener{
 
 	private Animation keyAnimation;
@@ -45,15 +47,13 @@ public class KeyView implements PropertyChangeListener{
 		if(pos != null){
 			final float x = pos.getX();
 			final float y = pos.getY();
+			final DrawObject drawObj = DrawObject.valueOf(evt.getPropertyName());
 			
-			switch(DrawObject.valueOf(evt.getPropertyName())){
-			case KEY_ANIMATION:
+			if(drawObj == DrawObject.KEY_ANIMATION){
 				drawKeyAnimation(x, y);
-				break;
 				
-			case KEY_PICKED_UP:
+			}else if(drawObj == DrawObject.KEY_PICKED_UP){
 				keyPickedUp = true;
-				break;
 			}
 		}	
 	}

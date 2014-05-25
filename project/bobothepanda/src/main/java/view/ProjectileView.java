@@ -12,6 +12,8 @@ import model.Position;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+import view.ShootingEnemyView.DrawObject;
+
 public class ProjectileView implements PropertyChangeListener{
 
 	private Image projectileSprite;
@@ -35,11 +37,10 @@ public class ProjectileView implements PropertyChangeListener{
 			
 			final float x = pos.getX();
 			final float y = pos.getY();
-				
-			switch(DrawObject.valueOf(evt.getPropertyName())){
-			case PROJECTILE:
+			final DrawObject drawObj = DrawObject.valueOf(evt.getPropertyName());	
+			
+			if(drawObj == DrawObject.PROJECTILE){
 				drawProjectile(x, y);
-				break;
 			}
 		}
 	}

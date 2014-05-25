@@ -15,6 +15,8 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+import view.ShootingEnemyView.DrawObject;
+
 public class FixedEnemyView implements PropertyChangeListener{
 
 	private Animation sawAnimation;
@@ -43,11 +45,11 @@ public class FixedEnemyView implements PropertyChangeListener{
 			
 			final float x = pos.getX();
 			final float y = pos.getY();
+			final DrawObject drawObj = DrawObject.valueOf(evt.getPropertyName());
 			
-			switch(DrawObject.valueOf(evt.getPropertyName())){
-			case SAW_ANIMATION:
+			if(drawObj == DrawObject.SAW_ANIMATION){
 				drawSawAnimation(x, y);
-				break;
+				
 			}
 		}
 	}

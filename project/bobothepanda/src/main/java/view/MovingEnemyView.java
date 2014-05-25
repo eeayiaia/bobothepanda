@@ -15,6 +15,8 @@ import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+import view.ShootingEnemyView.DrawObject;
+
 public class MovingEnemyView implements PropertyChangeListener{
 
 	private Animation enemyLeftAnimation;
@@ -50,17 +52,15 @@ public class MovingEnemyView implements PropertyChangeListener{
 		if(pos != null){
 			final float x = pos.getX();
 			final float y = pos.getY();
+			final DrawObject drawObj = DrawObject.valueOf(evt.getPropertyName());
 			
-			switch(DrawObject.valueOf(evt.getPropertyName())){
-			case ENEMY_MOVING_LEFT:
+			if(drawObj == DrawObject.ENEMY_MOVING_LEFT){
 				drawEnemyAnimationLeft(x, y);
-				break;
 				
-			case ENEMY_MOVING_RIGHT:
+			}else if(drawObj == DrawObject.ENEMY_MOVING_RIGHT){
 				drawEnemyAnimationRight(x, y);
-				break;
+				
 			}
 		}
 	}
-
 }
