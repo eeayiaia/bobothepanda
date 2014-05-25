@@ -117,13 +117,13 @@ public class LevelTest extends Assert {
 		pcs.addPropertyChangeListener(level);
 		level.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if("loadLevel".equals(evt.getPropertyName())) {
+			    if("LOAD_LEVEL".equals(evt.getPropertyName())) {
 			    	eventReceived = true;
 			    }	
 		   }
 		});
 		eventReceived = false;
-		pcs.firePropertyChange("loadLevel", null, null);
+		pcs.firePropertyChange("LOAD_LEVEL", null, null);
 		assertTrue(eventReceived);
 	}
 	
@@ -133,13 +133,13 @@ public class LevelTest extends Assert {
 		pcs.addPropertyChangeListener(level);
 		level.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if("reloadLevel".equals(evt.getPropertyName())) {
+			    if("RELOAD_LEVEL".equals(evt.getPropertyName())) {
 			    	eventReceived = true;
-			    }	
+			    }
 		   }
 		});
 		eventReceived = false;
-		pcs.firePropertyChange("reloadLevel", null, null);
+		pcs.firePropertyChange("RELOAD_LEVEL", null, null);
 		assertTrue(eventReceived);
 	}
 	

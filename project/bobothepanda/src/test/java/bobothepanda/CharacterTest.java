@@ -98,7 +98,7 @@ public class CharacterTest extends Assert {
 	public void testLevelComplete() {
 		character.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if("loadLevel".equals(evt.getPropertyName())) {
+			    if("LOAD_LEVEL".equals(evt.getPropertyName())) {
 			    	eventRecieved = true;
 			    }	
 		   }
@@ -252,7 +252,7 @@ public class CharacterTest extends Assert {
 	public void testDie() {
 		character.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if("reloadLevel".equals(evt.getPropertyName())) {
+			    if("RELOAD_LEVEL".equals(evt.getPropertyName())) {
 			    	eventRecieved = true;
 			    }	
 		   }
@@ -266,7 +266,7 @@ public class CharacterTest extends Assert {
 	public void testVisitFixedEnemy() {
 		character.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if("reloadLevel".equals(evt.getPropertyName())) {
+			    if("RELOAD_LEVEL".equals(evt.getPropertyName())) {
 			    	eventRecieved = true;
 			    }	
 		   }
@@ -280,7 +280,7 @@ public class CharacterTest extends Assert {
 	public void testVisitMovingEnemy() {
 		character.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if("reloadLevel".equals(evt.getPropertyName())) {
+			    if("RELOAD_LEVEL".equals(evt.getPropertyName())) {
 			    	eventRecieved = true;
 			    }	
 		   }
@@ -294,7 +294,7 @@ public class CharacterTest extends Assert {
 	public void testVisitProjectile() {
 		character.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if("reloadLevel".equals(evt.getPropertyName())) {
+			    if("RELOAD_LEVEL".equals(evt.getPropertyName())) {
 			    	eventRecieved = true;
 			    }	
 		   }
@@ -328,7 +328,7 @@ public class CharacterTest extends Assert {
 	public void testVisitDoorKeyPickedUp() {
 		character.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent evt) {
-			    if("loadLevel".equals(evt.getPropertyName())) {
+			    if("LOAD_LEVEL".equals(evt.getPropertyName())) {
 			    	eventRecieved = true;
 			    }	
 		   }
