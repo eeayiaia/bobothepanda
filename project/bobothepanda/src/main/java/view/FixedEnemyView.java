@@ -19,7 +19,7 @@ import view.ShootingEnemyView.DrawObject;
 
 public class FixedEnemyView implements PropertyChangeListener{
 
-	private Animation sawAnimation;
+	private final Animation sawAnimation;
 	
 	public FixedEnemyView() throws SlickException{
 		final Image [] sawImages = {new Image("/data/img/saw1.png"), 
@@ -38,6 +38,7 @@ public class FixedEnemyView implements PropertyChangeListener{
 		SAW_ANIMATION
 	}
 	
+	@SuppressWarnings("PMD.DataflowAnomalyAnalysis")//It is not incorrect to set x,y to new values everytime
 	public void propertyChange(PropertyChangeEvent evt) {
 		final Position pos = (Position)evt.getNewValue();
 		
