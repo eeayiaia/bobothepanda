@@ -13,9 +13,11 @@ public class Projectile extends AbstractMovingObject{
 	
 	PropertyChangeSupport pcs;
 	private float velocity = 0.25f;
+	private Position startPos;
 	
 	public Projectile(Position position, Size size) {
 		super(position, size);
+		startPos = new Position(position);
 		pcs = new PropertyChangeSupport(this);
 	}
 
@@ -24,14 +26,10 @@ public class Projectile extends AbstractMovingObject{
 	 * @param delta The time between each update.
 	 */
 	public void update(int delta){
-		//checks for legal position
-		try {
-			setNewX(delta, velocity);
-		} catch (IllegalArgumentException e) {
+		setNewX(delta, velocity);
+		if(0 == getPosition().getX()){
 			remove();
-			velocity *= -1;
-			setNewX(delta, velocity);	
-		}
+		}	
 	}
 	
 	
@@ -47,15 +45,15 @@ public class Projectile extends AbstractMovingObject{
 	 * Removes the projectile
 	 */
 	public void remove(){
-		pcs.firePropertyChange("PROJECTILE_COLLISION", null, this);//TODO Render itself
+		getPosition().setX(startPos.getX());
+		//pcs.firePropertyChange("REMOVE_PROJECTILE", null, this);
 	}
 	
 	public void render(){
-		pcs.firePropertyChange("PROJECTILE", null, this.getPosition());
+		pcs.firePropertyChange("PROJECTILE", null, getPosition());
 	}
 	
 	public void accept(IVisitor visitor){
-		System.out.println("hit in Projectile");
 		visitor.visit(this);
 	}
 	

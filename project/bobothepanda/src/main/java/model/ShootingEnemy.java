@@ -11,13 +11,15 @@ import java.beans.PropertyChangeSupport;
 
 public class ShootingEnemy extends AbstractFixedObject {
 
-	private final Position centerPos = new Position((float)getHitbox().getCenterX(),(float)getHitbox().getCenterY());
+	private Position centerPos;
 	private final Size projectileSize = new Size(4,4);
 	private PropertyChangeSupport pcs;
 	private long lastTimedFired;
+	private boolean fired;
 	
 	public ShootingEnemy(Position position, Size size) {
 		super(position, size);
+		centerPos = new Position((float)getHitbox().getCenterX(),(float)getHitbox().getCenterY());
 		lastTimedFired = System.currentTimeMillis();
 		pcs = new PropertyChangeSupport(this);
 	}
@@ -46,11 +48,25 @@ public class ShootingEnemy extends AbstractFixedObject {
 	 * Fires a projectile at one second intervals.
 	 */
 	public void fireProjectile(){
-		if(lastTimedFired + 1000 >= System.currentTimeMillis()){
+		
+		if(!fired){
+			System.out.println("shooting");
+			System.out.println(centerPos.getX());
 			Projectile projectile = new Projectile(centerPos, projectileSize);
-			pcs.firePropertyChange("projectile", null, projectile);
+			pcs.firePropertyChange("ADD_PROJECTILE", null, projectile);
+			lastTimedFired = System.currentTimeMillis();
+			fired = true;
+		}
+		
+		/*
+		if(lastTimedFired + 1000 <= System.currentTimeMillis()){
+			System.out.println("shooting");
+			System.out.println(centerPos.getX());
+			Projectile projectile = new Projectile(centerPos, projectileSize);
+			pcs.firePropertyChange("ADD_PROJECTILE", null, projectile);
 			lastTimedFired = System.currentTimeMillis();
 		}
+		*/
 	}
 	
 	public void update(int delta){

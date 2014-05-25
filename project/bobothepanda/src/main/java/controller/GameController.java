@@ -3,6 +3,8 @@ package controller;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import model.AbstractMapObject;
@@ -48,6 +50,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private List <Projectile> projectiles;
 	private boolean noMoreLevel = false;
 	private StateBasedGame game;
+	//private Iterator<Projectile> iterator;
 	
 	
 	/**
@@ -98,11 +101,10 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		for(ShootingEnemy shootingEnemy: shootingEnemies){
 			shootingEnemy.render();
 		}
+		
 		for(Projectile projectile: projectiles){
 			projectile.render();
 		}
-		
-		
 	}
 
 	public void update(GameContainer container, StateBasedGame game, int delta)throws SlickException {
@@ -117,12 +119,10 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		for(ShootingEnemy shootingEnemy: shootingEnemies) {
 			shootingEnemy.update(delta);
 		}
+		
 		for(Projectile projectile: projectiles){
 			projectile.update(delta);
 		}
-		
-		
-		
 	}
 
 	@Override
@@ -137,36 +137,98 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			container.exit();
 		}
 	}
+	
+	public enum Events{
+		LOAD_LEVEL,
+		RELOAD_LEVEL,
+		ADD_PROJECTILE,
+		REMOVE_PROJECTILE
+	}
+	
 	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 	public void propertyChange(PropertyChangeEvent evt){
-		if("loadLevel".equals(evt.getPropertyName())){
+		
+		if("LOAD_LEVEL".equals(evt.getPropertyName())){
 			try {
 				loadLevel(false);
 			} catch (SlickException e) {
 				throw new MapHandlerException(e);
 			}
-		}
-		
-		if("reloadLevel".equals(evt.getPropertyName())){
+			
+		}else if("RELOAD_LEVEL".equals(evt.getPropertyName())){
 			try {
+				System.out.println("GC");
 				loadLevel(true);
 			} catch (SlickException e) {
 				throw new MapHandlerException(e);
 			}
-		}
-		
-		if("projectile".equals(evt.getPropertyName())) {
+			
+		}else if("ADD_PROJECTILE".equals(evt.getPropertyName())){
 			try{
 				Projectile projectile = (Projectile)evt.getNewValue();
 				projectile.addPropertyChangeListener(new ProjectileView());
+				projectile.addPropertyChangeListener(this);
 				projectiles.add(projectile);
 				mapHandler.getMapObjectList().add(projectile);
 			}catch(SlickException e){
 				
 			}
 			
+		}else if("REMOVE_PROJECTILE".equals(evt.getPropertyName())){
+			//int index = projectiles.indexOf(evt.getNewValue());
+					
+			Iterator<Projectile> iterator = projectiles.iterator();
+			while(iterator.hasNext()){
+				Projectile p = iterator.next();
+				if(p != evt.getNewValue()){
+					System.out.println("next");
+					iterator.next();
+				}else{
+					if(p != null){
+						System.out.println("remove element");
+						iterator.remove();
+						break;
+					}
+				}
+			}
+			
 		}
-	}
+		
+		/*
+		switch(Events.valueOf(evt.getPropertyName())){
+			case LOAD_LEVEL:
+				try {
+					loadLevel(false);
+				} catch (SlickException e) {
+					throw new MapHandlerException(e);
+				}
+				break;
+				
+			case RELOAD_LEVEL:
+				try {
+					loadLevel(true);
+				} catch (SlickException e) {
+					throw new MapHandlerException(e);
+				}
+				break;
+				
+			case PROJECTILE:
+				try{
+					Projectile projectile = (Projectile)evt.getNewValue();
+					projectile.addPropertyChangeListener(new ProjectileView());
+					projectiles.add(projectile);
+					mapHandler.getMapObjectList().add(projectile);
+				}catch(SlickException e){
+					
+				}
+				break;
+				
+			case REMOVE_PROJECTILE:
+				projectiles.remove(evt.getNewValue());
+				break;
+			}
+			*/
+		}
 
 	/**
 	 * Loads a new level or reloads the current level

@@ -24,6 +24,7 @@ public class Level implements PropertyChangeListener{
 		this.pcs = new PropertyChangeSupport(this);
 		
 	}
+	
 
 	public void addPropertyChangeListener(PropertyChangeListener listener){
 		pcs.addPropertyChangeListener(listener);
@@ -33,11 +34,11 @@ public class Level implements PropertyChangeListener{
 		pcs.removePropertyChangeListener(listener);
 	}
 	public void propertyChange(PropertyChangeEvent evt) {
-		if("loadLevel".equals(evt.getPropertyName())){
-			pcs.firePropertyChange("loadLevel", null, null);
-		}
-		if("reloadLevel".equals(evt.getPropertyName())){
-			pcs.firePropertyChange("reloadLevel", null, null);
+		if("LOAD_LEVEL".equals(evt.getPropertyName())){
+			pcs.firePropertyChange("LOAD_LEVEL", null, null);
+		}else if("RELOAD_LEVEL".equals(evt.getPropertyName())){
+			pcs.firePropertyChange("RELOAD_LEVEL", null, null);
+
 		}
 	}
 	

@@ -48,7 +48,7 @@ public class Character extends AbstractMovingObject{
 	 * Makes Bobo move on to the next level
 	 */
 	public void levelComplete() {
-		pcs.firePropertyChange("loadLevel", null, null);
+		pcs.firePropertyChange("LOAD_LEVEL", null, null);
 	}
 	
 	/**
@@ -176,7 +176,7 @@ public class Character extends AbstractMovingObject{
 	}
 	
 	public void die() {
-		pcs.firePropertyChange("reloadLevel", null, null);
+		pcs.firePropertyChange("RELOAD_LEVEL", null, null);
 	}
 	
 	public void visit(FixedEnemy fixedEnemy){
