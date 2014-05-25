@@ -3,7 +3,6 @@ package controller;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import model.AbstractMapObject;
@@ -29,6 +28,7 @@ import view.ShootingEnemyView;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.util.Log;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
@@ -47,8 +47,8 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	private List <MovingEnemy> movingEnemies;
 	private List <FixedEnemy> fixedEnemies;
 	private List <ShootingEnemy> shootingEnemies;
-	private List <Projectile> projectiles;
-	private boolean noMoreLevel = false;
+	private final List <Projectile> projectiles;
+	private boolean noMoreLevel;
 	private StateBasedGame game;
 	//private Iterator<Projectile> iterator;
 	
@@ -77,17 +77,17 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		if(key != null){
 			key.update();
 		}
-		for(MovingEnemy movingEnemy: movingEnemies){
+		for(final MovingEnemy movingEnemy: movingEnemies){
 			movingEnemy.render();
 		}
-		for(FixedEnemy fixedEnemy: fixedEnemies){
+		for(final FixedEnemy fixedEnemy: fixedEnemies){
 			fixedEnemy.render();
 		}
-		for(ShootingEnemy shootingEnemy: shootingEnemies){
+		for(final ShootingEnemy shootingEnemy: shootingEnemies){
 			shootingEnemy.render();
 		}
 		
-		for(Projectile projectile: projectiles){
+		for(final Projectile projectile: projectiles){
 			projectile.render();
 		}
 	}
@@ -98,14 +98,14 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		}
 		characterController.handleInput(container.getInput(), delta);
 		level.update();
-		for(MovingEnemy movingEnemy: movingEnemies){
+		for(final MovingEnemy movingEnemy: movingEnemies){
 			movingEnemy.update(delta);
 		}
-		for(ShootingEnemy shootingEnemy: shootingEnemies) {
+		for(final ShootingEnemy shootingEnemy: shootingEnemies) {
 			shootingEnemy.update(delta);
 		}
 		
-		for(Projectile projectile: projectiles){
+		for(final Projectile projectile: projectiles){
 			projectile.update(delta);
 		}
 	}
@@ -126,7 +126,6 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		LOAD_LEVEL,
 		RELOAD_LEVEL,
 		ADD_PROJECTILE,
-		REMOVE_PROJECTILE
 	}
 	
 	public void propertyChange(PropertyChangeEvent evt){
@@ -150,29 +149,13 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			
 		}else if("ADD_PROJECTILE".equals(evt.getPropertyName())){
 			try{
-				Projectile projectile = (Projectile)evt.getNewValue();
+				final Projectile projectile = (Projectile)evt.getNewValue();
 				projectile.addPropertyChangeListener(new ProjectileView());
 				projectile.addPropertyChangeListener(this);
 				projectiles.add(projectile);
 				mapHandler.getMapObjectList().add(projectile);
 			}catch(SlickException e){
-				
-			}
-			
-		}else if("REMOVE_PROJECTILE".equals(evt.getPropertyName())){
-			//int index = projectiles.indexOf(evt.getNewValue());
-					
-			Iterator<Projectile> iterator = projectiles.iterator();
-			while(iterator.hasNext()){
-				Projectile p = iterator.next();
-				if(p != evt.getNewValue()){
-					iterator.next();
-				}else{
-					if(p != null){
-						iterator.remove();
-						break;
-					}
-				}
+				Log.error(e);
 			}
 			
 		}
@@ -213,24 +196,25 @@ public class GameController extends BasicGameState implements PropertyChangeList
 	}
 
 	@SuppressFBWarnings
+	@SuppressWarnings("PMD.AvoidInstantiatingObjectsInLoops")
 	public void addObjectViews(List <AbstractMapObject> abstractMapObjects) throws SlickException{
 		movingEnemies = new ArrayList<MovingEnemy>();
 		fixedEnemies = new ArrayList<FixedEnemy>();
 		shootingEnemies = new ArrayList<ShootingEnemy>();
-		for(AbstractMapObject a: abstractMapObjects){
+		for(final AbstractMapObject a: abstractMapObjects){
 			if(a.getClass() == Key.class){
 				key = (Key) a;
 				key.addPropertyChangeListener(new KeyView());
 			}else if(a.getClass() == MovingEnemy.class){
-				MovingEnemy movingEnemy = (MovingEnemy) a;
+				final MovingEnemy movingEnemy = (MovingEnemy) a;
 				movingEnemy.addPropertyChangeListener(new MovingEnemyView());
 				movingEnemies.add(movingEnemy);
 			}else if(a.getClass() == FixedEnemy.class){
-				FixedEnemy fixedEnemy = (FixedEnemy) a;
+				final FixedEnemy fixedEnemy = (FixedEnemy) a;
 				fixedEnemy.addPropertyChangeListener(new FixedEnemyView());
 				fixedEnemies.add(fixedEnemy);
 			}else if(a.getClass() == ShootingEnemy.class) {
-				ShootingEnemy shootingEnemy = (ShootingEnemy) a;
+				final ShootingEnemy shootingEnemy = (ShootingEnemy) a;
 				shootingEnemy.addPropertyChangeListener(new ShootingEnemyView());
 				shootingEnemies.add(shootingEnemy);
 				shootingEnemy.addPropertyChangeListener(this);
