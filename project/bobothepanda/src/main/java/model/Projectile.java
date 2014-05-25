@@ -27,8 +27,8 @@ public class Projectile extends AbstractMovingObject{
 	 */
 	public void update(int delta){
 		setNewX(delta, velocity);
-		if(0 == getPosition().getX()){
-			remove();
+		if(0 >= getPosition().getX()){
+			reset();
 		}	
 	}
 	
@@ -44,7 +44,7 @@ public class Projectile extends AbstractMovingObject{
 	/**
 	 * Removes the projectile
 	 */
-	public void remove(){
+	public void reset(){
 		getPosition().setX(startPos.getX());
 		//pcs.firePropertyChange("REMOVE_PROJECTILE", null, this);
 	}
@@ -58,19 +58,19 @@ public class Projectile extends AbstractMovingObject{
 	}
 	
 	public void visit(Character character){
-		remove();
+		reset();
 	}
 	
 	public void visit(Terrain terrain){
-		remove();
+		reset();
 	}
 	
 	public void visit(FixedEnemy fixedEnemy){
-		remove();
+		reset();
 	}
 	
 	public void visit(Door d) {
-		remove();
+		reset();
 	}
 	
 	public void visit(ShootingEnemy s) {}

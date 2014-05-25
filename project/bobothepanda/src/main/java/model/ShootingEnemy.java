@@ -16,7 +16,7 @@ public class ShootingEnemy extends AbstractFixedObject {
 	private Position centerPos;
 	private final Size projectileSize = new Size(4,4);
 	private PropertyChangeSupport pcs;
-	private long lastTimedFired;
+	//private long lastTimedFired;
 	private boolean fired;
 	private List<Projectile>projectiles;
 	private int count;
@@ -24,7 +24,7 @@ public class ShootingEnemy extends AbstractFixedObject {
 	public ShootingEnemy(Position position, Size size) {
 		super(position, size);
 		centerPos = new Position((float)getHitbox().getCenterX(),(float)getHitbox().getCenterY());
-		lastTimedFired = System.currentTimeMillis();
+		//lastTimedFired = System.currentTimeMillis();
 		projectiles = new ArrayList<Projectile>();
 		pcs = new PropertyChangeSupport(this);
 	}
@@ -57,7 +57,7 @@ public class ShootingEnemy extends AbstractFixedObject {
 		if(!fired){
 			projectiles.add(new Projectile(centerPos, projectileSize));
 			pcs.firePropertyChange("ADD_PROJECTILE", null, projectiles.get(count));
-			lastTimedFired = System.currentTimeMillis();
+			//lastTimedFired = System.currentTimeMillis();
 			fired = true;
 			count++;
 		}
@@ -66,7 +66,7 @@ public class ShootingEnemy extends AbstractFixedObject {
 		if(lastTimedFired + 1000 <= System.currentTimeMillis()){
 			projectiles.add(new Projectile(centerPos, projectileSize));
 			pcs.firePropertyChange("ADD_PROJECTILE", null, projectiles.get(count));
-			lastTimedFired = System.currentTimeMillis();
+			//lastTimedFired = System.currentTimeMillis();
 			count++;
 		}
 		*/
