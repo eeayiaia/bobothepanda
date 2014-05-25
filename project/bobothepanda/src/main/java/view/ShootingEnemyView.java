@@ -16,8 +16,8 @@ import org.newdawn.slick.SlickException;
 
 public class ShootingEnemyView implements PropertyChangeListener{
 
-	private Image enemyLeft;
-	private Image enemyRight;
+	private final Image enemyLeft;
+	private final Image enemyRight;
 	
 	public ShootingEnemyView() throws SlickException{
 	
@@ -39,23 +39,22 @@ public class ShootingEnemyView implements PropertyChangeListener{
 		ENEMY_RIGHT
 	}
 	
+	@SuppressWarnings("PMD.DataflowAnomalyAnalysis")//It is not incorrect to set x,y to new values everytime
 	public void propertyChange(PropertyChangeEvent evt) {
-		Object obj = evt.getNewValue();
+		final Object obj = evt.getNewValue();
 		if(Position.class == obj.getClass()){
 			final Position pos = (Position)obj;
 			
 			final float x = pos.getX();
 			final float y = pos.getY();
-				
-			switch(DrawObject.valueOf(evt.getPropertyName())){
-			case ENEMY_LEFT:
+			final DrawObject drawObj = DrawObject.valueOf(evt.getPropertyName());
+			
+			if(drawObj == DrawObject.ENEMY_LEFT){
 				drawEnemyLeft(x, y);
-				break;
-					
-			case ENEMY_RIGHT:
+			}else if(drawObj == DrawObject.ENEMY_LEFT){
 				drawEnemyRight(x, y);
-				break;
 			}
+			
 		}
 	}
 }
