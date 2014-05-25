@@ -194,6 +194,7 @@ public class Character extends AbstractMovingObject{
 		collisionWithFixedObject(terrain);
 	}
 	
+	@SuppressWarnings("PMD.DataflowAnomalyAnalysis")//It is not incorrect to set x,y to new values everytime
 	public void collisionWithFixedObject(AbstractFixedObject afo){
 		onGround = true;
 		
@@ -209,11 +210,11 @@ public class Character extends AbstractMovingObject{
 		final float objectYPos = objPos.getY();
 		final float objectHeight = afo.getSize().getHeight();
 
-		if((characterYPos <= objectYPos) && getYVelocity() > 0){
+		if(characterYPos <= objectYPos && getYVelocity() > 0){
 			pos.setY(objectYPos - characterHeight);
 			setYVelocity(0f);
 			
-		}else if((characterYPos <= objectYPos + objectHeight) && getYVelocity() < 0){
+		}else if(characterYPos <= objectYPos + objectHeight && getYVelocity() < 0){
 			
 			pos.setY(objectYPos + characterHeight);
 			setYVelocity(0f);
