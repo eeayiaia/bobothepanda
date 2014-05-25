@@ -13,7 +13,7 @@ import java.beans.PropertyChangeSupport;
 public class Projectile extends AbstractMovingObject{
 	
 	private final PropertyChangeSupport pcs;
-	private static final float velocity = -0.35f;
+	private static final float VELOCITY = -0.35f;
 	private final Position startPos;
 	
 	public Projectile(Position position, Size size) {
@@ -27,7 +27,7 @@ public class Projectile extends AbstractMovingObject{
 	 * @param delta The time between each update.
 	 */
 	public void update(int delta){
-		setNewX(delta, velocity);
+		setNewX(delta, VELOCITY);
 		if(0 >= getPosition().getX()){
 			reset();
 		}	
