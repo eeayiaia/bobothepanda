@@ -23,7 +23,7 @@ public class ProjectileTest extends Assert{
 	private final Size size = new Size(4,4);
 	private Projectile projectile;
 	private boolean eventReceived;
-	private final static int delta = 17;
+	private final static int DELTA = 17;
 	
 	@Before
 	public void setUp() throws Exception{
@@ -33,9 +33,9 @@ public class ProjectileTest extends Assert{
 	@Test
 	public void testUpdate() {
 		projectile.setPosition(new Position(10f, 10f));
-		float nextPositionX = 10f - 0.25f * delta;
+		final float nextPositionX = 10f - 0.25f * DELTA;
 		position.setX(nextPositionX);
-		projectile.update(delta);
+		projectile.update(DELTA);
 		assertEquals(position.getX(), projectile.getPosition().getX(), 0.0001);
 	}
 	
@@ -43,9 +43,9 @@ public class ProjectileTest extends Assert{
 	@Test
 	public void testUpdateXIsZero() {
 		projectile.setPosition(new Position(0f,0f));
-		float nextPositionX = position.getX() - 0.25f * delta;
+		final float nextPositionX = position.getX() - 0.25f * DELTA;
 		position.setX(nextPositionX);
-		projectile.update(delta);
+		projectile.update(DELTA);
 		assertEquals(position.getX(), projectile.getPosition().getX(), 0.0001);
 	}
 	

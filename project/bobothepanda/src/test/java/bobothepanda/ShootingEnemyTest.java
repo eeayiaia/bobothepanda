@@ -13,15 +13,11 @@ import org.junit.Test;
 
 public class ShootingEnemyTest extends Assert {
 	private ShootingEnemy shootingEnemy;
-	private Size size;
-	private Position position;
 	private boolean eventReceived;
 	
 	@Before
 	public void setUp() {
-		size  = new Size(2f, 2f);
-		position = new Position(2f, 2f);
-		shootingEnemy = new ShootingEnemy(position, size);
+		shootingEnemy = new ShootingEnemy(new Position(2f, 2f), new Size(2f, 2f));
 	}
 	
 	@Test
