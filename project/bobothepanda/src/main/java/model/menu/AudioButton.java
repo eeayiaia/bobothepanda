@@ -90,4 +90,14 @@ public class AudioButton extends AbstractMenuButton {
 		pcs.firePropertyChange(state.toString(), this.getPosition(), this.getType());
 	}
 
+	@Override
+	public void reset() {
+		if(audioOn){
+			state = MenuState.AUIDO_ON_DEFAULT;
+		} else {
+			state = MenuState.AUDIO_OFF_DEFAULT;
+		}
+		
+	}
+
 }
