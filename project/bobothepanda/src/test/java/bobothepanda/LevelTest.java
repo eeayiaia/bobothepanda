@@ -70,7 +70,7 @@ public class LevelTest extends Assert {
 	public void testCheckCollisions(){
 		level.checkCollisions();
 	}
-	
+	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 	@Test
 	public void testUpdate(){
 		List<AbstractMapObject> list = new ArrayList<AbstractMapObject>();
@@ -84,7 +84,7 @@ public class LevelTest extends Assert {
 		assertEquals(initialVelocity, movingEnemy.getVelocity(), 0f);
 	}
 	
-	
+	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 	@Test
 	public void testCheckCollisionsNoCollisions(){
 		List<AbstractMapObject> list = new ArrayList<AbstractMapObject>();
@@ -98,6 +98,7 @@ public class LevelTest extends Assert {
 		assertEquals(initialVelocity, movingEnemy.getVelocity(), 0f);
 	}
 	
+	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 	@Test
 	public void testCheckCollisionsWithCollisions(){
 		List<AbstractMapObject> list = new ArrayList<AbstractMapObject>();

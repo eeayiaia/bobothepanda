@@ -59,6 +59,7 @@ public class MovingEnemyTest extends Assert {
 		assertTrue(eventReceived);
 	}
 	
+	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 	@Test
 	public void testUpdate(){
 		final float oldX = movingEnemy.getPosition().getX();

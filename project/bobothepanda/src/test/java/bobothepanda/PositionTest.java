@@ -38,6 +38,7 @@ public class PositionTest extends Assert {
 		assertEquals(position.getY(), pos.getY(), 0f);
 	}
 	
+	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
 	@Test(expected = NullPointerException.class)
 	public void testConstructorOtherPosNull(){
 			Position pos = null;
