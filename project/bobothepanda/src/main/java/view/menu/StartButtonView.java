@@ -5,7 +5,6 @@ import java.beans.PropertyChangeListener;
 
 import model.Position;
 import model.menu.MenuState;
-import model.menu.StartButton;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -22,9 +21,10 @@ public class StartButtonView implements PropertyChangeListener{
 		hoverImage = new Image(LOCATION + "hoverStartButton.png");
 		pressedImage = new Image(LOCATION + "pressedStartButton.png");
 	}
-
+	
+	@SuppressWarnings("PMD.DataflowAnomalyAnalysis")//It is not incorrect to set x,y to new values everytime
 	public void propertyChange(PropertyChangeEvent evt) {
-		String source = evt.getPropertyName();
+		final String source = evt.getPropertyName();
 		final Position buttPos = (Position)evt.getOldValue();
 		final float x = buttPos.getX();
 		final float y = buttPos.getY();
