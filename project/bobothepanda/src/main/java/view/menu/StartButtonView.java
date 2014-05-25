@@ -15,7 +15,7 @@ public class StartButtonView implements PropertyChangeListener{
 	private final Image defaultImage;
 	private final Image hoverImage;
 	private final Image pressedImage;
-	private final static String LOCATION = "data/img/";
+	private final static String LOCATION = "data/img/Buttons/";
 	
 	public StartButtonView() throws SlickException {
 		defaultImage = new Image(LOCATION + "startbutton.png");
