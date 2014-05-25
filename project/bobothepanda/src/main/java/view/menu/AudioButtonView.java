@@ -3,6 +3,9 @@ package view.menu;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import model.Position;
+import model.menu.MenuState;
+
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -26,7 +29,33 @@ public class AudioButtonView implements PropertyChangeListener{
 	}
 
 	public void propertyChange(PropertyChangeEvent evt) {
-		// TODO Auto-generated method stub
+		final String source = evt.getPropertyName();
+		final Position pos = (Position) evt.getOldValue();
+		final float x = pos.getX();
+		final float y = pos.getY();
+		switch(MenuState.valueOf(source)){
+		case AUDIO_OFF_DEFAULT:
+			audioOnDefault.draw(x, y);
+			break;
+		case AUDIO_OFF_HOVER:
+			audioOffHover.draw(x, y);
+			break;
+		case AUDIO_OFF_PRESSED:
+			audioOffPressed.draw(x, y);
+			break;
+		case AUDIO_ON_HOVER:
+			audioOnHover.draw(x, y);
+			break;
+		case AUDIO_ON_PRESSED:
+			audioOnPressed.draw(x, y);
+			break;
+		case AUIDO_ON_DEFAULT:
+			audioOnDefault.draw(x, y);
+			break;
+		default:
+			break;
+		
+		}
 		
 	}
 
