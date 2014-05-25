@@ -47,6 +47,14 @@ public class Menu {
 			item.update();
 		}
 	}
+	public void setAudioOn(boolean isOn){
+		for(AbstractMenuButton butt:menuButtons){
+			if(butt.getClass() == AudioButton.class){
+				AudioButton tmp = (AudioButton) butt;
+				tmp.setAudioOn(isOn);	
+			}
+		}
+	}
 	
 	public void mousePressed(int x, int y) {
 		for(AbstractMenuButton butt:menuButtons){

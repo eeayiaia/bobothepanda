@@ -46,6 +46,7 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 		menu.addListener(menuView);
 		menu.addListener(menuView.getStartView());
 		menu.addListener(menuView.getQuitView());
+		menu.addListener(menuView.getAudioView());
 		this.container = container;
 		this.game = game;
 		
@@ -95,6 +96,16 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 				break;
 			case START_BUTTON_RELEASED:
 				game.enterState(0);
+				break;
+			case AUDIO_ON_RELEASED:
+				container.setMusicOn(false);
+				container.setSoundOn(false);
+				menu.setAudioOn(false);
+				break;
+			case AUDIO_OFF_RELEASED:
+				container.setMusicOn(true);
+				container.setSoundOn(true);
+				menu.setAudioOn(true);
 				break;
 		default:
 			break;
