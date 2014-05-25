@@ -33,7 +33,7 @@ public class MapHandler implements IMapHandler {
 	 * Test Constructor
 	 * Loads the map from tmx file. 
 	 */
-	public MapHandler() {
+	public MapHandler() throws MapHandlerException{
 		this("level1");
 	}
 	
@@ -42,7 +42,7 @@ public class MapHandler implements IMapHandler {
 	 * @param levelName the name of the level
 	 */
 	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
-	public MapHandler(String levelName){
+	public MapHandler(String levelName) throws MapHandlerException{
 		try{
 			loadLevel(levelName);
 		

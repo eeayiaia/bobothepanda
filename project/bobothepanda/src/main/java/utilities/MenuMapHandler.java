@@ -25,11 +25,11 @@ public class MenuMapHandler {
 	private List<AbstractMenuItem> menuItemList;
 	private Position characterPosition;
 	
-	public MenuMapHandler(){
+	public MenuMapHandler() throws MapHandlerException{
 		this("gameMenu");
 	}
 	@edu.umd.cs.findbugs.annotations.SuppressFBWarnings()
-	public MenuMapHandler(String menuName){
+	public MenuMapHandler(String menuName) throws MapHandlerException{
 		try{
 			map = new TiledMap(MAP_LOCATION + menuName + ".tmx", TILESET_LOCATION);
 		} catch (SlickException e){

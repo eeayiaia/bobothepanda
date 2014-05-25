@@ -80,7 +80,6 @@ public class CharacterView implements PropertyChangeListener{
 	 * Renders the character differently depending on what state
 	 * the character is in.
 	 */
-	@SuppressWarnings("PMD.DataflowAnomalyAnalysis")
 	public void propertyChange(PropertyChangeEvent evt) {
 		
 		final Position pos = (Position) evt.getNewValue();

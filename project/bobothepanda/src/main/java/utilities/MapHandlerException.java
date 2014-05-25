@@ -1,6 +1,7 @@
 package utilities;
 
-public class MapHandlerException extends RuntimeException {
+@SuppressWarnings("serial")
+public class MapHandlerException extends Exception {
 	
 	public MapHandlerException(){
 		super();

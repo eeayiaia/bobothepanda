@@ -13,6 +13,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import main.MainClass;
 import model.menu.Menu;
 import model.menu.MenuState;
+import utilities.MapHandlerException;
 import utilities.MenuMapHandler;
 import view.menu.MenuView;
 
@@ -36,7 +37,11 @@ public class MenuController extends BasicGameState implements PropertyChangeList
 	}
 	public void init(GameContainer container, StateBasedGame game)
 			throws SlickException {
-		menuMapHandler = new MenuMapHandler();
+		try{
+			menuMapHandler = new MenuMapHandler();
+		} catch(MapHandlerException e){
+			game.enterState(0);
+		}
 		menu = new Menu(menuMapHandler.getMenuItemList());
 		final MenuView menuView = new MenuView(menu.getCharacterPosition().getX(), menu.getCharacterPosition().getY());
 		menu.addListener(this);

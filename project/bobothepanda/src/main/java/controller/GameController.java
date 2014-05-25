@@ -13,7 +13,6 @@ import model.FixedEnemy;
 import model.Key;
 import model.Level;
 import model.MovingEnemy;
-import model.Position;
 import model.Projectile;
 import model.ShootingEnemy;
 import model.Size;
@@ -136,7 +135,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			try {
 				loadLevel(false);
 			} catch (SlickException e) {
-				throw new MapHandlerException(e);
+				game.enterState(1);
 			}
 			
 		}else if("RELOAD_LEVEL".equals(evt.getPropertyName())){
@@ -145,7 +144,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 			try {
 				loadLevel(true);
 			} catch (SlickException e) {
-				throw new MapHandlerException(e);
+				game.enterState(1);
 			}
 			
 			
@@ -192,7 +191,7 @@ public class GameController extends BasicGameState implements PropertyChangeList
 		}
 		try{
 			mapHandler = new MapHandler("newLevel" + currentLevelNumber);
-		}catch(Exception e){
+		}catch(MapHandlerException e){
 			currentLevelNumber = 1;
 //			noMoreLevel = true;
 			game.enterState(1);
