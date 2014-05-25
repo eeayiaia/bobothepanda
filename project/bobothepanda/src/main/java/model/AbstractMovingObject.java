@@ -1,6 +1,6 @@
 package model;
 
-public abstract class AbstractMovingObject extends AbstractMapObject implements IVisitor, IVisitable{
+public abstract class AbstractMovingObject extends AbstractMapObject implements IVisitor{
 
 	public AbstractMovingObject(Position position, Size size) {
 		super(position, size);
