@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.AbstractMapObject;
-import model.Character;
 import model.MovingEnemy;
 import model.ShootingEnemy;
 import model.Terrain;
@@ -84,8 +83,7 @@ public class MapHandler implements IMapHandler {
 		for(int i = 0; i < objectAmount; i++) {
 			final Position position = new Position((float)map.getObjectX(0,i), (float)map.getObjectY(0,i));
 			final String type = map.getObjectType(0,i);
-			Size size;
-			size = new Size((float)map.getObjectWidth(0,i), (float)map.getObjectHeight(0,i));
+			final Size size = new Size((float)map.getObjectWidth(0,i), (float)map.getObjectHeight(0,i));
 			if("Terrain".equals(type)) {
 				objects.add(new Terrain(position, size));
 			} else if("Lethal".equals(type)) {
