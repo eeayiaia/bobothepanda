@@ -9,14 +9,12 @@ import java.beans.PropertyChangeSupport;
  *
  */
 
-@SuppressWarnings("PMD")
 public class Key extends AbstractCollectibleObject {
 	private PropertyChangeSupport pcs;
 	
 	public Key(Position position, Size size) {
 		super(position, size);
 		pcs = new PropertyChangeSupport(this);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void accept(IVisitor visitor) {
@@ -26,7 +24,7 @@ public class Key extends AbstractCollectibleObject {
 			}
 			visitor.visit(this);
 		}else {
-			throw new NullPointerException("null parameter in accept method");
+			throw new NullPointerException(this.getClass().toString());
 		}
 	}
 	

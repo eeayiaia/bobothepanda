@@ -6,21 +6,16 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.List;
 
-import model.Projectile;
-import model.Position;
 
-@SuppressWarnings("PMD")
 public class Level implements PropertyChangeListener{
 	
 	private final PropertyChangeSupport pcs;
-	private Projectile projectile;
 	private List <AbstractMapObject> abstractMapObjects;
 	
 	
 	public Level(List <AbstractMapObject> abstractMapObjects, Character player){
 		this.abstractMapObjects = abstractMapObjects;
 		abstractMapObjects.add(player);
-		projectile = new Projectile(new Position(392.0f, 470.0f), new Size(4,4));
 		this.pcs = new PropertyChangeSupport(this);
 		
 	}

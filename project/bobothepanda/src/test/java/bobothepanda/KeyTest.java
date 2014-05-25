@@ -12,6 +12,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 public class KeyTest extends Assert{
 
 	private Key key;
@@ -50,7 +52,7 @@ public class KeyTest extends Assert{
 		key.accept(character);
 		assertTrue(eventReceived);
 	}
-	
+	@SuppressFBWarnings
 	@Test(expected = NullPointerException.class)
 	public void testAcceptNull(){
 		Character character = null;

@@ -31,7 +31,7 @@ public class Position {
 	public float getY() {
 		return y;
 	}
-	public void setX(float x) {
+	public final void setX(float x) {
 		if (x < 0){
 			this.x = 0f;
 		} else {
@@ -40,7 +40,7 @@ public class Position {
 		}
 	}
 
-	public void setY(float y) {
+	public final void setY(float y) {
 		if(y < 0){
 			this.y = 0f;
 		}else {

@@ -15,13 +15,15 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 public class ProjectileTest extends Assert{
 	
 	private final Position position = new Position(3f,3f);
 	private final Size size = new Size(4,4);
 	private Projectile projectile;
 	private boolean eventReceived;
-	private final int delta = 17;
+	private final static int delta = 17;
 	
 	@Before
 	public void setUp() throws Exception{
@@ -37,6 +39,7 @@ public class ProjectileTest extends Assert{
 		assertEquals(position.getX(), projectile.getPosition().getX(), 0.0001);
 	}
 	
+	@SuppressFBWarnings
 	@Test
 	public void testUpdateXIsZero() {
 		projectile.setPosition(new Position(0f,0f));
